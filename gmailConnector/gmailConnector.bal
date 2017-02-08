@@ -167,8 +167,27 @@ connector Gmail (string userId, string accessToken) {
         string listDraftPath;
         message request;
         message response;
+        string uriParams;
 
-        listDraftPath = "/v1/users/" + userId + "/drafts?includeSpamTrash=" + includeSpamTrash + "&maxResults=" + maxResults + "&pageToken=" + pageToken + "&q=" + q;
+        listDraftPath = "/v1/users/" + userId + "/drafts";
+
+        if(includeSpamTrash != "null"){
+            uriParams = uriParams + "&includeSpamTrash=" + includeSpamTrash;
+        }
+
+        if(maxResults != "null"){
+            uriParams = uriParams + "&maxResults=" + maxResults;
+        }
+
+        if(pageToken != "null"){
+            uriParams = uriParams + "&pageToken=" + pageToken;
+        }
+
+        if(q != "null"){
+            uriParams = uriParams + "&q=" + q;
+        }
+
+        listDraftPath = listDraftPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
 
         message:setHeader(request, "Authorization", "Bearer " + accessToken);
 
@@ -371,9 +390,31 @@ connector Gmail (string userId, string accessToken) {
         string listThreadPath;
         message request;
         message response;
-        string queryParams;
+        string uriParams;
 
-        listThreadPath = "/v1/users/" + userId + "/threads?includeSpamTrash=" + includeSpamTrash + "&labelIds=" + labelIds + "&maxResults=" + maxResults + "&pageToken=" + pageToken + "&q=" + q;
+        listThreadPath = "/v1/users/" + userId + "/threads";
+
+        if(includeSpamTrash != "null"){
+            uriParams = uriParams + "&includeSpamTrash=" + includeSpamTrash;
+        }
+
+        if(labelIds != "null"){
+            uriParams = uriParams + "&labelIds=" + labelIds;
+        }
+
+        if(maxResults != "null"){
+            uriParams = uriParams + "&maxResults=" + maxResults;
+        }
+
+        if(pageToken != "null"){
+            uriParams = uriParams + "&pageToken=" + pageToken;
+        }
+
+        if(q != "null"){
+            uriParams = uriParams + "&q=" + q;
+        }
+
+        listThreadPath = listThreadPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
 
         message:setHeader(request, "Authorization", "Bearer " + accessToken);
 
@@ -434,8 +475,31 @@ connector Gmail (string userId, string accessToken) {
         string listMailPath;
         message request;
         message response;
+        string uriParams;
 
-        listMailPath = "/v1/users/" + userId + "/messages?includeSpamTrash=" + includeSpamTrash + "&labelIds=" + labelIds +"&maxResults=" + maxResults + "&pageToken=" + pageToken + "&q=" + q;
+        listMailPath = "/v1/users/" + userId + "/messages";
+
+        if(includeSpamTrash != "null"){
+            uriParams = uriParams + "&includeSpamTrash=" + includeSpamTrash;
+        }
+
+        if(labelIds != "null"){
+            uriParams = uriParams + "&labelIds=" + labelIds;
+        }
+
+        if(maxResults != "null"){
+            uriParams = uriParams + "&maxResults=" + maxResults;
+        }
+
+        if(pageToken != "null"){
+            uriParams = uriParams + "&pageToken=" + pageToken;
+        }
+
+        if(q != "null"){
+            uriParams = uriParams + "&q=" + q;
+        }
+
+        listMailPath = listMailPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
 
         message:setHeader(request, "Authorization", "Bearer " + accessToken);
 
