@@ -25,8 +25,9 @@ connector OAuth2ClientConnector (string accessToken, string clientId, string cli
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
+             response = http:HTTPConnector.get(httpConnectorEP, path, request);
+
         }
-        response = http:HTTPConnector.get(httpConnectorEP, path, request);
 
         return response, accessTokenValue ;
     }
@@ -41,8 +42,9 @@ connector OAuth2ClientConnector (string accessToken, string clientId, string cli
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
              accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
+             response = http:HTTPConnector.post(httpConnectorEP, path, request);
+
         }
-        response = http:HTTPConnector.post(httpConnectorEP, path, request);
 
         return response, accessTokenValue ;
     }
@@ -57,9 +59,9 @@ connector OAuth2ClientConnector (string accessToken, string clientId, string cli
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
-        }
+            response = http:HTTPConnector.put(httpConnectorEP, path, request);
 
-        response = http:HTTPConnector.put(httpConnectorEP, path, request);
+        }
 
         return response, accessTokenValue ;
     }
@@ -74,8 +76,9 @@ connector OAuth2ClientConnector (string accessToken, string clientId, string cli
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
+            response = http:HTTPConnector.delete(httpConnectorEP, path, request);
+
         }
-        response = http:HTTPConnector.delete(httpConnectorEP, path, request);
 
         return response, accessTokenValue ;
     }
