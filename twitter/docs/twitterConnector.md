@@ -4,7 +4,7 @@
 with a ballerina main function. The following section provide you the details on connector operations.
 
 ### Update statuses
-    The **tweet** action allows to update the authenticated user's current status, also known as **tweeting**.
+    The tweet action allows to update the authenticated user's current status, also known as tweeting.
 
     ###### Properties
         * status - The text of status update.
@@ -13,7 +13,7 @@ with a ballerina main function. The following section provide you the details on
         https://dev.twitter.com/rest/reference/post/statuses/update
 
 ### Search
-    The **search** action allows to retrieve the collection of relevant Tweets matching a specified query.
+    The search action allows to retrieve the collection of relevant Tweets matching a specified query.
 
     ###### Properties
         * query - Query string to retrieve the related tweets.
@@ -22,7 +22,7 @@ with a ballerina main function. The following section provide you the details on
         https://dev.twitter.com/rest/reference/get/search/tweets
 
 ### Retweet a tweet
-    The **reTweet** action allows to retweets a tweet.
+    The reTweet action allows to retweets a tweet.
 
     ###### Properties
         * tweetId - The numerical ID of the desired status.
@@ -31,7 +31,7 @@ with a ballerina main function. The following section provide you the details on
         https://dev.twitter.com/rest/reference/post/statuses/retweet/id
 
 ### Untweet a retweeted status
-    The **unReTweet** action allows to Untweets a retweeted status.
+    The unReTweet action allows to Untweets a retweeted status.
 
     ###### Properties
         * tweetId - The numerical ID of the desired status.
@@ -40,7 +40,7 @@ with a ballerina main function. The following section provide you the details on
         https://dev.twitter.com/rest/reference/post/statuses/unretweet/id
 
 ### Retrive a single status
-    The **showStatus** action allows to retrieve a single Tweet, specified by the id parameter.
+    The showStatus action allows to retrieve a single Tweet, specified by the id parameter.
 
     ###### Properties
         * tweetId - The numerical ID of the desired status.
@@ -49,7 +49,7 @@ with a ballerina main function. The following section provide you the details on
         https://dev.twitter.com/rest/reference/get/statuses/show/id
 
 ### Distroy a status
-    The **destroyStatus** action allows to destroy the status specified by the required ID parameter.
+    The destroyStatus action allows to destroy the status specified by the required ID parameter.
 
     ###### Properties
         * tweetId - The numerical ID of the desired status.
@@ -58,7 +58,7 @@ with a ballerina main function. The following section provide you the details on
         https://dev.twitter.com/rest/reference/post/statuses/destroy/id
 
 ### Retrive closest trend locations
-    The **getClosestTrendLocations** action allows to retrieve the locations that Twitter has trending topic information
+    The getClosestTrendLocations action allows to retrieve the locations that Twitter has trending topic information
 for, closest to a specified location.
 
     ###### Properties
@@ -73,7 +73,7 @@ for, closest to a specified location.
         https://dev.twitter.com/rest/reference/get/trends/closest
 
 ### Retrive top trends by place
-    The **getTopTrendsByPlace** action allows to retrieve the top topics for a specified location.
+    The getTopTrendsByPlace action allows to retrieve the top topics for a specified location.
 
     ###### Properties
         * locationId -  The Yahoo! Where On Earth ID of the location to return trending information for.
