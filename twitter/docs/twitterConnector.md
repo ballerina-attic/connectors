@@ -7,7 +7,7 @@ with a ballerina main function. The following section provide you the details on
     The tweet action allows to update the authenticated user's current status, also known as tweeting.
 
 ###### Properties
-        *status - The text of status update.
+  * status - The text of status update.
 
 ###### Related Twitter documentation
         [https://dev.twitter.com/rest/reference/post/statuses/update](https://dev.twitter.com/rest/reference/post/statuses/update)
@@ -16,7 +16,7 @@ with a ballerina main function. The following section provide you the details on
     The search action allows to retrieve the collection of relevant Tweets matching a specified query.
 
 ###### Properties
-        *query - Query string to retrieve the related tweets.
+  * query - Query string to retrieve the related tweets.
 
 ###### Related Twitter documentation
         [https://dev.twitter.com/rest/reference/get/search/tweets](https://dev.twitter.com/rest/reference/get/search/tweets)
@@ -25,7 +25,7 @@ with a ballerina main function. The following section provide you the details on
     The reTweet action allows to retweets a tweet.
 
 ###### Properties
-        *tweetId - The numerical ID of the desired status.
+  * tweetId - The numerical ID of the desired status.
 
 ###### Related Twitter documentation
         [https://dev.twitter.com/rest/reference/post/statuses/retweet/id](https://dev.twitter.com/rest/reference/post/statuses/retweet/id)
@@ -34,7 +34,7 @@ with a ballerina main function. The following section provide you the details on
     The unReTweet action allows to Untweets a retweeted status.
 
 ###### Properties
-        *tweetId - The numerical ID of the desired status.
+  * tweetId - The numerical ID of the desired status.
 
 ###### Related Twitter documentation
         [https://dev.twitter.com/rest/reference/post/statuses/unretweet/id](https://dev.twitter.com/rest/reference/post/statuses/unretweet/id)
@@ -43,7 +43,7 @@ with a ballerina main function. The following section provide you the details on
     The showStatus action allows to retrieve a single Tweet, specified by the id parameter.
 
 ###### Properties
-        *tweetId - The numerical ID of the desired status.
+  * tweetId - The numerical ID of the desired status.
 
 ###### Related Twitter documentation
         [https://dev.twitter.com/rest/reference/get/statuses/show/id](https://dev.twitter.com/rest/reference/get/statuses/show/id)
@@ -52,7 +52,7 @@ with a ballerina main function. The following section provide you the details on
     The destroyStatus action allows to destroy the status specified by the required ID parameter.
 
 ###### Properties
-        *tweetId - The numerical ID of the desired status.
+  * tweetId - The numerical ID of the desired status.
 
 ###### Related Twitter documentation
         [https://dev.twitter.com/rest/reference/post/statuses/destroy/id](https://dev.twitter.com/rest/reference/post/statuses/destroy/id)
@@ -62,10 +62,10 @@ with a ballerina main function. The following section provide you the details on
 for, closest to a specified location.
 
 ###### Properties
-        *lat -  If specified with the long property, the available trend location will be sorted by distance, nearest
+  * lat -  If specified with the long property, the available trend location will be sorted by distance, nearest
                 to furthest to the coordinate pair. The valid range for latitude is -180.0 to +180.0 (West is negative,
                 East is positive) inclusive.
-        *long - If specified with the lat property the available trend location will be sorted by distance, nearest to
+  * long - If specified with the lat property the available trend location will be sorted by distance, nearest to
                 furthest, to the co-ordinate pair. The valid range for longitude is -180.0 to +180.0 (West is negative,
                 East is positive) inclusive.
 
@@ -76,7 +76,7 @@ for, closest to a specified location.
     The getTopTrendsByPlace action allows to retrieve the top topics for a specified location.
 
 ###### Properties
-        *locationId -  The Yahoo! Where On Earth ID of the location to return trending information for.
+  * locationId -  The Yahoo! Where On Earth ID of the location to return trending information for.
 
 ###### Related Twitter documentation
         [https://dev.twitter.com/rest/reference/get/trends/place](https://dev.twitter.com/rest/reference/get/trends/place)
@@ -84,39 +84,39 @@ for, closest to a specified location.
 ## How to use
 
 ###### Prerequisites
-        1. Create a twitter app by visiting [https://apps.twitter.com/](https://apps.twitter.com/)
-        2. Obtain the following parameters
-            *Consumer Key (API Key)
-            *Consumer Secret (API Secret)
-            *Access Token
-            *Access Token Secret
+1. Create a twitter app by visiting [https://apps.twitter.com/](https://apps.twitter.com/)
+2. Obtain the following parameters
+  *Consumer Key (API Key)
+  *Consumer Secret (API Secret)
+  *Access Token
+  *Access Token Secret
 
-        IMPORTANT: This access token can be used to make API requests on your own account's behalf. Do not share your access token secret with anyone.
+    IMPORTANT: This access token can be used to make API requests on your own account's behalf. Do not share your access token secret with anyone.
 
 ###### Invoke the actions
-        - Place the twitterConnector into {BALLERINA_HOME}/samples.
-        - To run the following commands to execute the relevant action.
-            1. tweet:
-            bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal tweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <message>
+- Place the twitterConnector into {BALLERINA_HOME}/samples.
+- To run the following commands to execute the relevant action.
+1. tweet:
+bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal tweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <message>
 
-            2. search:
-            bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal search <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <query>
+2. search:
+bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal search <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <query>
 
-            3. reTweet:
-            bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal reTweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>
+3. reTweet:
+bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal reTweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>
 
-            4. unReTweet:
-            bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal unReTweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>
+4. unReTweet:
+bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal unReTweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>
 
-            5. showStatus:
-            bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal showStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>
+5. showStatus:
+bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal showStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>
 
-            6. destroyStatus:
-            bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal destroyStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>
+6. destroyStatus:
+bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal destroyStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>
 
-            7. getClosestTrendLocations:
-            bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal getClosestTrendLocations <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <latitude> <longitude>
+7. getClosestTrendLocations:
+bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal getClosestTrendLocations <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <latitude> <longitude>
 
-            7. getTopTrendsByPlace:
-            bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal getTopTrendsByPlace <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <locationId>
+7. getTopTrendsByPlace:
+bin$ ./ballerina run ../samples/twitterConnector/twitterConnector.bal getTopTrendsByPlace <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <locationId>
 
