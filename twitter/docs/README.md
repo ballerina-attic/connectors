@@ -25,7 +25,7 @@ The search action allows to retrieve the collection of relevant Tweets matching 
 The retweet action allows to retweets a tweet.
 
 ###### Properties
-  * tweetId - The numerical ID of the desired status.
+  * id - The numerical ID of the desired status.
 
 ###### Related Twitter documentation
 <https://dev.twitter.com/rest/reference/post/statuses/retweet/id>
@@ -34,7 +34,7 @@ The retweet action allows to retweets a tweet.
 The unretweet action allows to Untweets a retweeted status.
 
 ###### Properties
-  * tweetId - The numerical ID of the desired status.
+  * id - The numerical ID of the desired status.
 
 ###### Related Twitter documentation
 <https://dev.twitter.com/rest/reference/post/statuses/unretweet/id>
@@ -43,7 +43,7 @@ The unretweet action allows to Untweets a retweeted status.
 The showStatus action allows to retrieve a single Tweet, specified by the id parameter.
 
 ###### Properties
-  * tweetId - The numerical ID of the desired status.
+  * id - The numerical ID of the desired status.
 
 ###### Related Twitter documentation
 <https://dev.twitter.com/rest/reference/get/statuses/show/id>
@@ -52,7 +52,7 @@ The showStatus action allows to retrieve a single Tweet, specified by the id par
 The destroyStatus action allows to destroy the status specified by the required ID parameter.
 
 ###### Properties
-  * tweetId - The numerical ID of the desired status.
+  * id - The numerical ID of the desired status.
 
 ###### Related Twitter documentation
 <https://dev.twitter.com/rest/reference/post/statuses/destroy/id>
@@ -101,13 +101,13 @@ The getTopTrendsByPlace action allows to retrieve the top topics for a specified
   2. search:    
   `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal search <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <query>`
   3. retweet: 
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal retweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>`
+  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal retweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   4. unretweet: 
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal unretweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>`
+  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal unretweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   5. showStatus: 
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal showStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>`
+  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal showStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   6. destroyStatus:
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal destroyStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <tweetId>`
+  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal destroyStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   7. getClosestTrendLocations:
   `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal getClosestTrendLocations <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <latitude> <longitude>`
   8. getTopTrendsByPlace:

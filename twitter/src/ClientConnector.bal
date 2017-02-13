@@ -10,10 +10,18 @@ import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.util;
 
+@Description("Twitter client connector")
+@Param("consumerKey: The consumer key of the Twitter account")
+@Param("consumerSecret: The consumer secret of the Twitter account")
+@Param("accessToken: The access token of the Twitter account")
+@Param("accessTokenSecret: The access token secret of the Twitter account")
 connector ClientConnector (string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret) {
 
     http:ClientConnector tweeterEP = create http:ClientConnector("https://api.twitter.com");
 
+    @Description("Update the status")
+    @Param("status: The text of status update")
+    @Return("response object")
     action tweet(ClientConnector t, string status) (message) {
         message request = {};
         map parameters = {};
@@ -32,11 +40,14 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         return response;
     }
 
-    action retweet(ClientConnector t, string tweetId) (message) {
+    @Description("Retweet a tweet")
+    @Param("id: The numerical ID of the desired status")
+    @Return("response object")
+    action retweet(ClientConnector t, string id) (message) {
         message request = {};
         map parameters = {};
 
-        string tweetPath = "/1.1/statuses/retweet/" + tweetId + ".json";
+        string tweetPath = "/1.1/statuses/retweet/" + id + ".json";
         constructRequestHeaders(request, "POST", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
 
@@ -45,11 +56,14 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         return response;
     }
 
-    action unretweet(ClientConnector t, string tweetId) (message) {
+    @Description("Untweet a retweeted status")
+    @Param("id: The numerical ID of the desired status")
+    @Return("response object")
+    action unretweet(ClientConnector t, string id) (message) {
         message request = {};
         map parameters = {};
 
-        string tweetPath = "/1.1/statuses/unretweet/" + tweetId + ".json";
+        string tweetPath = "/1.1/statuses/unretweet/" + id + ".json";
         constructRequestHeaders(request, "POST", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
 
@@ -58,6 +72,9 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         return response;
     }
 
+    @Description("Search")
+    @Param("query: Query string to retrieve the related tweets")
+    @Return("response object")
     action search(ClientConnector t, string query) (message) {
         message request = {};
         map parameters = {};
@@ -75,14 +92,17 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         return response;
     }
 
-    action showStatus(ClientConnector t, string tweetId) (message) {
+    @Description("Retrive a single status")
+    @Param("id: The numerical ID of the desired status")
+    @Return("response object")
+    action showStatus(ClientConnector t, string id) (message) {
         string urlParams;
         message request = {};
         map parameters = {};
 
         string tweetPath = "/1.1/statuses/show.json";
-        parameters["id"] = tweetId;
-        urlParams = "id=" + tweetId;
+        parameters["id"] = id;
+        urlParams = "id=" + id;
         constructRequestHeaders(request, "GET", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + urlParams;
@@ -92,11 +112,14 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         return response;
     }
 
-    action destroyStatus(ClientConnector t, string tweetId) (message) {
+    @Description("Distroy a status")
+    @Param("id: The numerical ID of the desired status")
+    @Return("response object")
+    action destroyStatus(ClientConnector t, string id) (message) {
         message request = {};
         map parameters = {};
 
-        string tweetPath = "/1.1/statuses/destroy/" + tweetId + ".json";
+        string tweetPath = "/1.1/statuses/destroy/" + id + ".json";
         constructRequestHeaders(request, "POST", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
 
@@ -105,6 +128,10 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         return response;
     }
 
+    @Description("Retrive closest trend locations")
+    @Param("lat: Latitude of the location")
+    @Param("long: Longitude of the location")
+    @Return("response object")
     action getClosestTrendLocations(ClientConnector t, string lat, string long) (message) {
         string urlParams;
         message request = {};
@@ -124,6 +151,9 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         return response;
     }
 
+    @Description("Retrive top trends by place")
+    @Param("locationId: The Yahoo! Where On Earth ID of the location to return trending information for")
+    @Return("response object")
     action getTopTrendsByPlace(ClientConnector t, string locationId) (message) {
         string urlParams;
         message request = {};
