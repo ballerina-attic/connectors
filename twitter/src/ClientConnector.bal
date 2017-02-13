@@ -10,11 +10,11 @@ import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.util;
 
-connector Twitter (string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret) {
+connector ClientConnector (string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret) {
 
     http:ClientConnector tweeterEP = create http:ClientConnector("https://api.twitter.com");
 
-    action tweet(Twitter t, string status) (message) {
+    action tweet(ClientConnector t, string status) (message) {
         message request = {};
         map parameters = {};
         string urlParams;
@@ -32,7 +32,7 @@ connector Twitter (string consumerKey, string consumerSecret, string accessToken
         return response;
     }
 
-    action retweet(Twitter t, string tweetId) (message) {
+    action retweet(ClientConnector t, string tweetId) (message) {
         message request = {};
         map parameters = {};
 
@@ -45,7 +45,7 @@ connector Twitter (string consumerKey, string consumerSecret, string accessToken
         return response;
     }
 
-    action unretweet(Twitter t, string tweetId) (message) {
+    action unretweet(ClientConnector t, string tweetId) (message) {
         message request = {};
         map parameters = {};
 
@@ -58,7 +58,7 @@ connector Twitter (string consumerKey, string consumerSecret, string accessToken
         return response;
     }
 
-    action search(Twitter t, string query) (message) {
+    action search(ClientConnector t, string query) (message) {
         message request = {};
         map parameters = {};
         string urlParams;
@@ -75,7 +75,7 @@ connector Twitter (string consumerKey, string consumerSecret, string accessToken
         return response;
     }
 
-    action showStatus(Twitter t, string tweetId) (message) {
+    action showStatus(ClientConnector t, string tweetId) (message) {
         string urlParams;
         message request = {};
         map parameters = {};
@@ -92,7 +92,7 @@ connector Twitter (string consumerKey, string consumerSecret, string accessToken
         return response;
     }
 
-    action destroyStatus(Twitter t, string tweetId) (message) {
+    action destroyStatus(ClientConnector t, string tweetId) (message) {
         message request = {};
         map parameters = {};
 
@@ -105,7 +105,7 @@ connector Twitter (string consumerKey, string consumerSecret, string accessToken
         return response;
     }
 
-    action getClosestTrendLocations(Twitter t, string lat, string long) (message) {
+    action getClosestTrendLocations(ClientConnector t, string lat, string long) (message) {
         string urlParams;
         message request = {};
         map parameters = {};
@@ -124,7 +124,7 @@ connector Twitter (string consumerKey, string consumerSecret, string accessToken
         return response;
     }
 
-    action getTopTrendsByPlace(Twitter t, string locationId) (message) {
+    action getTopTrendsByPlace(ClientConnector t, string locationId) (message) {
         string urlParams;
         message request = {};
         map parameters = {};
@@ -182,61 +182,61 @@ function constructRequestHeaders(message request, string httpMethod, string serv
 
 function main (string[] args) {
 
-    Twitter twitterConnector = create Twitter(args[1], args[2], args[3], args[4]);
+    ClientConnector twitterConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
     message tweetResponse;
     json tweetJSONResponse;
 
     if (args[0] == "tweet"){
-        tweetResponse = Twitter.tweet(twitterConnector, args[5]);
+        tweetResponse = ClientConnector.tweet(twitterConnector, args[5]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
     }
 
     if (args[0] == "search"){
-        tweetResponse = Twitter.search(twitterConnector, args[5]);
+        tweetResponse = ClientConnector.search(twitterConnector, args[5]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
     }
 
     if (args[0] == "retweet"){
-        tweetResponse = Twitter.retweet(twitterConnector, args[5]);
+        tweetResponse = ClientConnector.retweet(twitterConnector, args[5]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
     }
 
     if (args[0] == "unretweet"){
-        tweetResponse = Twitter.unretweet(twitterConnector, args[5]);
+        tweetResponse = ClientConnector.unretweet(twitterConnector, args[5]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
     }
 
     if (args[0] == "showStatus"){
-        tweetResponse = Twitter.showStatus(twitterConnector, args[5]);
+        tweetResponse = ClientConnector.showStatus(twitterConnector, args[5]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
     }
 
     if (args[0] == "destroyStatus"){
-        tweetResponse = Twitter.destroyStatus(twitterConnector, args[5]);
+        tweetResponse = ClientConnector.destroyStatus(twitterConnector, args[5]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
     }
 
     if (args[0] == "getClosestTrendLocations"){
-        tweetResponse = Twitter.getClosestTrendLocations(twitterConnector, args[5], args[6]);
+        tweetResponse = ClientConnector.getClosestTrendLocations(twitterConnector, args[5], args[6]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
     }
 
     if (args[0] == "getTopTrendsByPlace"){
-        tweetResponse = Twitter.getTopTrendsByPlace(twitterConnector, args[5]);
+        tweetResponse = ClientConnector.getTopTrendsByPlace(twitterConnector, args[5]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
