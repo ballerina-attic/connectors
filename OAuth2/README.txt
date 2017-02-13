@@ -7,6 +7,3 @@ if get 401 responses to the actual call. In client connector, you can persist th
 How to run this sample
 ======================
 bin$ ./ballerina run ../samples/ClientConnector/ClientConnector.bal <API_URL> <Access_Token> <Client_ID> <Client_Secret> <Refresh_Token> <Refresh_Token_Url>
-
-
-

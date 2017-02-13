@@ -24,7 +24,7 @@ connector ClientConnector (string userName, string password) {
 
     action post(ClientConnector clientConnector, string url, message request) (message) {
 
-	    message response;
+        message response;
 
     	encodedBasicAuthValue = constructBasicAuthHeader (request, encodedBasicAuthValue, userName, password);
     	response = http:ClientConnector.post(httpConnectorEP, url, request);

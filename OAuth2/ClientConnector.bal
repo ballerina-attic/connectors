@@ -112,7 +112,6 @@ function getAccessTokenFromRefreshToken (message request, string accessToken, st
 
 }
 
-
 function main (string[] args) {
 
     ClientConnector clientConnector = create ClientConnector (args[1], args[2], args[3], args[4], args[5]);
