@@ -32,7 +32,7 @@ connector Twitter (string consumerKey, string consumerSecret, string accessToken
         return response;
     }
 
-    action reTweet(Twitter t, string tweetId) (message) {
+    action retweet(Twitter t, string tweetId) (message) {
         message request = {};
         map parameters = {};
 
@@ -45,7 +45,7 @@ connector Twitter (string consumerKey, string consumerSecret, string accessToken
         return response;
     }
 
-    action unReTweet(Twitter t, string tweetId) (message) {
+    action unretweet(Twitter t, string tweetId) (message) {
         message request = {};
         map parameters = {};
 
@@ -200,15 +200,15 @@ function main (string[] args) {
         system:println(json:toString(tweetJSONResponse));
     }
 
-    if (args[0] == "reTweet"){
-        tweetResponse = Twitter.reTweet(twitterConnector, args[5]);
+    if (args[0] == "retweet"){
+        tweetResponse = Twitter.retweet(twitterConnector, args[5]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
     }
 
-    if (args[0] == "unReTweet"){
-        tweetResponse = Twitter.unReTweet(twitterConnector, args[5]);
+    if (args[0] == "unretweet"){
+        tweetResponse = Twitter.unretweet(twitterConnector, args[5]);
 
         tweetJSONResponse = message:getJsonPayload(tweetResponse);
         system:println(json:toString(tweetJSONResponse));
