@@ -6,13 +6,12 @@ import ballerina.lang.message;
 import ballerina.lang.system;
 import ballerina.net.http;
 
-connector Linkedin (string accessToken) {
+connector ClientConnector (string accessToken) {
 
     http:ClientConnector linkedInEP = create http:ClientConnector("https://api.linkedin.com");
 
-    action getProfileInfo(Linkedin t, string format) (message) {
+    action getProfileInfo(ClientConnector t, string format) (message) {
 
-        string oauthHeader;
         string getProfileInfoPath;
         message request = {};
         message response;
@@ -25,54 +24,50 @@ connector Linkedin (string accessToken) {
         return response;
     }
 
-    action getCompanyInfo(Linkedin t, string company_id, string format) (message) {
+    action getCompanyInfo(ClientConnector t, string companyId, string format) (message) {
 
-        string oauthHeader;
         string getProfileInfoPath;
         message request = {};
         message response;
 
         format = validateFormat(format);
-        getProfileInfoPath = "/v1/companies/" + company_id + "?format=" + format;
+        getProfileInfoPath = "/v1/companies/" + companyId + "?format=" + format;
         message:setHeader(request, "Authorization", "Bearer " + accessToken);
         response = http:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
 
         return response;
     }
 
-    action isCompanyShareEnabled(Linkedin t, string company_id, string format) (message) {
+    action isCompanyShareEnabled(ClientConnector t, string companyId, string format) (message) {
 
-        string oauthHeader;
         string getProfileInfoPath;
         message request = {};
         message response;
 
         format = validateFormat(format);
-        getProfileInfoPath = "/v1/companies/" + company_id + "/is-company-share-enabled?format=" + format;
+        getProfileInfoPath = "/v1/companies/" + companyId + "/is-company-share-enabled?format=" + format;
         message:setHeader(request, "Authorization", "Bearer " + accessToken);
         response = http:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
 
         return response;
     }
 
-    action isMemberAdmin(Linkedin t, string company_id, string format) (message) {
+    action isMemberAdmin(ClientConnector t, string companyId, string format) (message) {
 
-        string oauthHeader;
         string getProfileInfoPath;
         message request = {};
         message response;
 
         format = validateFormat(format);
-        getProfileInfoPath = "/v1/companies/" + company_id + "/relation-to-viewer/is-company-share-enabled?format=" + format;
+        getProfileInfoPath = "/v1/companies/" + companyId + "/relation-to-viewer/is-company-share-enabled?format=" + format;
         message:setHeader(request, "Authorization", "Bearer " + accessToken);
         response = http:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
 
         return response;
     }
 
-    action profileShare(Linkedin t, json payload) (message) {
+    action profileShare(ClientConnector t, json payload) (message) {
 
-        string oauthHeader;
         string profileSharePath;
         message request = {};
         message response;
@@ -87,9 +82,8 @@ connector Linkedin (string accessToken) {
         return response;
     }
 
-    action profileShare(Linkedin t, xml payload) (message) {
+    action profileShare(ClientConnector t, xml payload) (message) {
 
-        string oauthHeader;
         string profileSharePath;
         message request = {};
         message response;
@@ -104,14 +98,13 @@ connector Linkedin (string accessToken) {
         return response;
     }
 
-    action companyShare(Linkedin t, string company_id, json payload) (message) {
+    action companyShare(ClientConnector t, string companyId, json payload) (message) {
 
-        string oauthHeader;
         string companySharePath;
         message request = {};
         message response;
 
-        companySharePath = "/v1/companies/" + company_id + "/shares?format=json";
+        companySharePath = "/v1/companies/" + companyId + "/shares?format=json";
         message:setHeader(request, "Content-Type", "application/json");
         message:setHeader(request, "x-li-format", "json");
         message:setHeader(request, "Authorization", "Bearer " + accessToken);
@@ -121,14 +114,13 @@ connector Linkedin (string accessToken) {
         return response;
     }
 
-    action companyShare(Linkedin t, string company_id, xml payload) (message) {
+    action companyShare(ClientConnector t, string companyId, xml payload) (message) {
 
-        string oauthHeader;
         string companySharePath;
         message request = {};
         message response;
 
-        companySharePath = "/v1/companies/" + company_id + "/shares?format=xml";
+        companySharePath = "/v1/companies/" + companyId + "/shares?format=xml";
         message:setHeader(request, "Content-Type", "application/xml");
         message:setHeader(request, "x-li-format", "xml");
         message:setHeader(request, "Authorization", "Bearer " + accessToken);
@@ -164,7 +156,7 @@ function printXmlResponse(message linkedInResponse) (string) {
     system:println(xml:toString(linkedInXMLResponse));
 }
 
-function runGETSamples(Linkedin linkedInConnector, string company_id) (string) {
+function runGETSamples(ClientConnector linkedInConnector, string companyId) (string) {
 
     message linkedInResponse;
 
@@ -175,58 +167,58 @@ function runGETSamples(Linkedin linkedInConnector, string company_id) (string) {
 
     system:println(" ");
     system:println("Get Profile Info in XML format");
-    linkedInResponse = Linkedin.getProfileInfo(linkedInConnector, "xml");
+    linkedInResponse = ClientConnector.getProfileInfo(linkedInConnector, "xml");
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Get Profile Info in JSON format");
-    linkedInResponse = Linkedin.getProfileInfo(linkedInConnector, "json");
+    linkedInResponse = ClientConnector.getProfileInfo(linkedInConnector, "json");
     printJsonResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Get Company Info in XML format");
-    linkedInResponse = Linkedin.getCompanyInfo(linkedInConnector, company_id, "xml");
+    linkedInResponse = ClientConnector.getCompanyInfo(linkedInConnector, companyId, "xml");
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Get Company Info in JSON format");
-    linkedInResponse = Linkedin.getCompanyInfo(linkedInConnector, company_id, "json");
+    linkedInResponse = ClientConnector.getCompanyInfo(linkedInConnector, companyId, "json");
     printJsonResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Get IsCompanyShareEnabled in XML format");
-    linkedInResponse = Linkedin.isCompanyShareEnabled(linkedInConnector, company_id, "xml");
+    linkedInResponse = ClientConnector.isCompanyShareEnabled(linkedInConnector, companyId, "xml");
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Get IsCompanyShareEnabled in JSON format");
-    linkedInResponse = Linkedin.isCompanyShareEnabled(linkedInConnector, company_id, "json");
+    linkedInResponse = ClientConnector.isCompanyShareEnabled(linkedInConnector, companyId, "json");
     printJsonResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Get IsMemberAdmin in XML format");
-    linkedInResponse = Linkedin.isMemberAdmin(linkedInConnector, company_id, "xml");
+    linkedInResponse = ClientConnector.isMemberAdmin(linkedInConnector, companyId, "xml");
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Get IsMemberAdmin in JSON format");
-    linkedInResponse = Linkedin.isMemberAdmin(linkedInConnector, company_id, "json");
+    linkedInResponse = ClientConnector.isMemberAdmin(linkedInConnector, companyId, "json");
     printJsonResponse(linkedInResponse);
     system:println(" ");
 }
 
-function runPOSTSamples(Linkedin linkedInConnector, string company_id) (string) {
+function runPOSTSamples(ClientConnector linkedInConnector, string companyId) (string) {
 
     message linkedInResponse;
-	xml short_xml_payload;
-	json short_json_payload;
-	xml full_xml_payload;
-	json full_json_payload;
+	xml shortXmlPayload;
+	json shortJsonPayload;
+	xml fullXmlPayload;
+	json fullJsonPayload;
 
-	short_xml_payload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test simple payload http://wso2.com</comment> </share>`;
-    short_json_payload = `{comment: 'json test simple payload http://wso2.com',visibility: {code: anyone}}`;
-    full_xml_payload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test full payload</comment> <content> <submitted-url>https://www.wso2.com</submitted-url> <title>Test Share with Content</title> <description>content description</description> <submitted-image-url>https://www.example.com/img.jpg</submitted-image-url> </content> </share>`;
-    full_json_payload = `{ visibility: { code: anyone }, comment: 'json test full payload', content: { submitted-url: 'https://www.wso2.com', title: 'Test Share with Content', description: 'content description', submitted‐image-­url: 'https://www.example.com/img.jpg' } }`;
+	shortXmlPayload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test simple payload http://wso2.com</comment> </share>`;
+    shortJsonPayload = `{comment: 'json test simple payload http://wso2.com',visibility: {code: anyone}}`;
+    fullXmlPayload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test full payload</comment> <content> <submitted-url>https://www.wso2.com</submitted-url> <title>Test Share with Content</title> <description>content description</description> <submitted-image-url>https://www.example.com/img.jpg</submitted-image-url> </content> </share>`;
+    fullJsonPayload = `{ visibility: { code: anyone }, comment: 'json test full payload', content: { submitted-url: 'https://www.wso2.com', title: 'Test Share with Content', description: 'content description', submitted‐image-­url: 'https://www.example.com/img.jpg' } }`;
 
 	system:println(" ");
 	system:println("----------------");
@@ -236,52 +228,185 @@ function runPOSTSamples(Linkedin linkedInConnector, string company_id) (string) 
 
     system:println("Share Short Profile Post in XML format");
 
-    linkedInResponse = Linkedin.profileShare(linkedInConnector, short_xml_payload);
+    linkedInResponse = ClientConnector.profileShare(linkedInConnector, shortXmlPayload);
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Short Profile Post in JSON format");
-    linkedInResponse = Linkedin.profileShare(linkedInConnector, short_json_payload);
+    linkedInResponse = ClientConnector.profileShare(linkedInConnector, shortJsonPayload);
     printJsonResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Full Profile Post in XML format");
-    linkedInResponse = Linkedin.profileShare(linkedInConnector, full_xml_payload);
+    linkedInResponse = ClientConnector.profileShare(linkedInConnector, fullXmlPayload);
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Full Profile Post in JSON format");
-    linkedInResponse = Linkedin.profileShare(linkedInConnector, full_json_payload);
+    linkedInResponse = ClientConnector.profileShare(linkedInConnector, fullJsonPayload);
     printJsonResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Short Company Post in XML format");
-    linkedInResponse = Linkedin.companyShare(linkedInConnector, company_id, short_xml_payload);
+    linkedInResponse = ClientConnector.companyShare(linkedInConnector, companyId, shortXmlPayload);
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Short Company Post in JSON format");
-    linkedInResponse = Linkedin.companyShare(linkedInConnector, company_id, short_json_payload);
+    linkedInResponse = ClientConnector.companyShare(linkedInConnector, companyId, shortJsonPayload);
     printJsonResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Full Company Post in XML format");
-    linkedInResponse = Linkedin.companyShare(linkedInConnector, company_id, full_xml_payload);
+    linkedInResponse = ClientConnector.companyShare(linkedInConnector, companyId, fullXmlPayload);
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Full Company Post in JSON format");
-    linkedInResponse = Linkedin.companyShare(linkedInConnector, company_id, full_json_payload);
+    linkedInResponse = ClientConnector.companyShare(linkedInConnector, companyId, fullJsonPayload);
     printJsonResponse(linkedInResponse);
     system:println(" ");
 }
 
 function main (string[] args) {
 
-    Linkedin linkedInConnector = create Linkedin(args[0]);
-    string company_id;
-    company_id = args[1];
-    
-    runGETSamples(linkedInConnector, company_id);
-    runPOSTSamples(linkedInConnector, company_id);
+    ClientConnector linkedInConnector;
+    string companyId;
+    message linkedInResponse;
+	xml shortXmlPayload;
+	json shortJsonPayload;
+	xml fullXmlPayload;
+	json fullJsonPayload;
+
+	shortXmlPayload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test simple payload http://wso2.com</comment> </share>`;
+    shortJsonPayload = `{comment: 'json test simple payload http://wso2.com',visibility: {code: anyone}}`;
+    fullXmlPayload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test full payload</comment> <content> <submitted-url>https://www.wso2.com</submitted-url> <title>Test Share with Content</title> <description>content description</description> <submitted-image-url>https://www.example.com/img.jpg</submitted-image-url> </content> </share>`;
+    fullJsonPayload = `{ visibility: { code: anyone }, comment: 'json test full payload', content: { submitted-url: 'https://www.wso2.com', title: 'Test Share with Content', description: 'content description', submitted‐image-­url: 'https://www.example.com/img.jpg' } }`;
+
+
+    if (args[0]=="get") {
+        linkedInConnector = create ClientConnector(args[1]);
+        companyId = args[2];
+        runGETSamples(linkedInConnector, companyId);
+
+    } else if (args[0]=="post") {
+        linkedInConnector = create ClientConnector(args[1]);
+        companyId = args[2];
+        runPOSTSamples(linkedInConnector, companyId);
+
+    } else if (args[0]=="getProfileInfo") {
+        linkedInConnector = create ClientConnector(args[1]);
+
+        system:println(" ");
+        system:println("Get Profile Info in XML format");
+        linkedInResponse = ClientConnector.getProfileInfo(linkedInConnector, "xml");
+        printXmlResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Get Profile Info in JSON format");
+        linkedInResponse = ClientConnector.getProfileInfo(linkedInConnector, "json");
+        printJsonResponse(linkedInResponse);
+        system:println(" ");
+
+    } else if (args[0]=="getCompanyInfo") {
+        linkedInConnector = create ClientConnector(args[1]);
+        companyId = args[2];
+
+        system:println(" ");
+        system:println("Get Company Info in XML format");
+        linkedInResponse = ClientConnector.getCompanyInfo(linkedInConnector, companyId, "xml");
+        printXmlResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Get Company Info in JSON format");
+        linkedInResponse = ClientConnector.getCompanyInfo(linkedInConnector, companyId, "json");
+        printJsonResponse(linkedInResponse);
+        system:println(" ");
+
+    } else if (args[0]=="isCompanyShareEnabled") {
+        linkedInConnector = create ClientConnector(args[1]);
+        companyId = args[2];
+
+        system:println(" ");
+        system:println("Get IsCompanyShareEnabled in XML format");
+        linkedInResponse = ClientConnector.isCompanyShareEnabled(linkedInConnector, companyId, "xml");
+        printXmlResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Get IsCompanyShareEnabled in JSON format");
+        linkedInResponse = ClientConnector.isCompanyShareEnabled(linkedInConnector, companyId, "json");
+        printJsonResponse(linkedInResponse);
+        system:println(" ");
+
+    } else if (args[0]=="isMemberAdmin") {
+        linkedInConnector = create ClientConnector(args[1]);
+        companyId = args[2];
+
+        system:println(" ");
+        system:println("Get IsMemberAdmin in XML format");
+        linkedInResponse = ClientConnector.isMemberAdmin(linkedInConnector, companyId, "xml");
+        printXmlResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Get IsMemberAdmin in JSON format");
+        linkedInResponse = ClientConnector.isMemberAdmin(linkedInConnector, companyId, "json");
+        printJsonResponse(linkedInResponse);
+        system:println(" ");
+
+    } else if (args[0]=="profileShare") {
+        linkedInConnector = create ClientConnector(args[1]);
+
+    	system:println(" ");
+        system:println("Share Short Profile Post in XML format");
+        linkedInResponse = ClientConnector.profileShare(linkedInConnector, shortXmlPayload);
+        printXmlResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Share Short Profile Post in JSON format");
+        linkedInResponse = ClientConnector.profileShare(linkedInConnector, shortJsonPayload);
+        printJsonResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Share Full Profile Post in XML format");
+        linkedInResponse = ClientConnector.profileShare(linkedInConnector, fullXmlPayload);
+        printXmlResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Share Full Profile Post in JSON format");
+        linkedInResponse = ClientConnector.profileShare(linkedInConnector, fullJsonPayload);
+        printJsonResponse(linkedInResponse);
+        system:println(" ");
+
+    } else if (args[0]=="companyShare") {
+        linkedInConnector = create ClientConnector(args[1]);
+        companyId = args[2];
+
+        system:println(" ");
+        system:println("Share Short Company Post in XML format");
+        linkedInResponse = ClientConnector.companyShare(linkedInConnector, companyId, shortXmlPayload);
+        printXmlResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Share Short Company Post in JSON format");
+        linkedInResponse = ClientConnector.companyShare(linkedInConnector, companyId, shortJsonPayload);
+        printJsonResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Share Full Company Post in XML format");
+        linkedInResponse = ClientConnector.companyShare(linkedInConnector, companyId, fullXmlPayload);
+        printXmlResponse(linkedInResponse);
+        system:println(" ");
+
+        system:println("Share Full Company Post in JSON format");
+        linkedInResponse = ClientConnector.companyShare(linkedInConnector, companyId, fullJsonPayload);
+        printJsonResponse(linkedInResponse);
+        system:println(" ");
+
+    } else {
+        linkedInConnector = create ClientConnector(args[0]);
+        companyId = args[1];
+        runGETSamples(linkedInConnector, companyId);
+        runPOSTSamples(linkedInConnector, companyId);
+    }
+
 }
