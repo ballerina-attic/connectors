@@ -1,3 +1,5 @@
+package org.wso2.ballerina.connectors.medium;
+
 import ballerina.lang.json;
 import ballerina.lang.message;
 import ballerina.lang.system;
