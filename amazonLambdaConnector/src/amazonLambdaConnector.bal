@@ -211,16 +211,12 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     string payloadStrBuilder;
     string authHeader;
     string algorithm;
-
     string amzDate;
     string shortDate;
-
     string signedHeader;
     string canonicalHeaders;
-
     string signedHeaders;
     string requestPayload;
-
     string signingKey;
 
     algorithm = "SHA256";
@@ -232,7 +228,6 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
 
     canonicalRequest = httpMethod;
     canonicalRequest = canonicalRequest + "\n";
-
     canonicalRequest = canonicalRequest + string:replaceAll(uri:encode(requestURI), "%2F", "/");
     canonicalRequest = canonicalRequest + "\n";
 
@@ -242,7 +237,6 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     canonicalRequest = canonicalRequest + "\n";
 
     if(payload != ""){
-
             canonicalHeaders = canonicalHeaders + string:toLowerCase("Content-Type");
             canonicalHeaders = canonicalHeaders + ":";
             canonicalHeaders = canonicalHeaders + (message:getHeader(msg, string:toLowerCase("Content-Type")));
@@ -265,26 +259,19 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     signedHeader = signedHeader + string:toLowerCase("X-Amz-Date");
     signedHeader = signedHeader;
 
-
-
     canonicalRequest = canonicalRequest + canonicalHeaders;
     canonicalRequest = canonicalRequest + "\n";
-
 
     signedHeaders = "";
     signedHeaders = signedHeader;
 
-
     canonicalRequest = canonicalRequest + signedHeaders;
     canonicalRequest = canonicalRequest + "\n";
-
-
 
     payloadBuilder = payload;
 
     requestPayload = "";
     requestPayload = payloadBuilder;
-
 
     canonicalRequest = canonicalRequest + string:toLowerCase(util:getHash(requestPayload, algorithm));
 
@@ -306,11 +293,9 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     stringToSign = stringToSign + "\n";
     stringToSign = stringToSign + string:toLowerCase(util:getHash(canonicalRequest, algorithm));
 
-
     signingKey =  util:getHmacFromBase64( terminationString,util:getHmacFromBase64( serviceName,
     util:getHmacFromBase64( region,util:getHmacFromBase64(shortDate,util:base64encode("AWS4" + secretAccessKey),
     algorithm), algorithm), algorithm), algorithm);
-
 
     authHeader = authHeader + ("AWS4-HMAC-SHA256");
     authHeader = authHeader + (" ");
@@ -336,7 +321,6 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
 
     message:setHeader(msg, "Authorization", authHeader);
     return msg;
-
 }
 
 
