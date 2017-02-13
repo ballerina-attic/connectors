@@ -59,6 +59,20 @@
 
 ###### Run the Sample
 - Place the medium directory into {BALLERINA_HOME}/samples.
-- To run the following command to run the sample.
-
-  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal <accessToken> <user_id> <publication_id>`
+- Run the following commands to execute the relevant action.
+  1. run all actions:
+  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal <accessToken> <userId> <publicationId>`
+  2. run get actions:
+  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal get <accessToken> <userId> <publicationId>`
+  3. run post actions:
+  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal post <accessToken> <userId> <publicationId>`
+  4. get profile info:
+  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal getProfileInfo <accessToken>`
+  5. get contributors:
+  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal getContributors <accessToken> <publicationId>`
+  6. get publications:
+  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal getPublications <accessToken> <userId>`
+  7. create profile post:
+  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal createProfilePost <accessToken> <userId>`
+  8. create publication post:
+  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal createPublicationPost <accessToken> <publicationId>`
