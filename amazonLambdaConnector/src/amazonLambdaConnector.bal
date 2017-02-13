@@ -317,7 +317,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     authHeader = authHeader + (",");
     authHeader = authHeader + (" Signature");
     authHeader = authHeader + ("=");
-    authHeader = authHeader + string:toLowerCase(util:getHmacBase16(stringToSign, signingKey, algorithm));
+    authHeader = authHeader + string:toLowerCase(util:base64ToBase16Encode(util:getHmacFromBase64(stringToSign, signingKey, algorithm)));
 
     message:setHeader(msg, "Authorization", authHeader);
     return msg;
