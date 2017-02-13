@@ -1,82 +1,79 @@
-package org.wso2.ballerina.connectors;
+package org.wso2.ballerina.connectors.OAuth2;
 
 import ballerina.lang.json;
 import ballerina.lang.message;
-import ballerina.lang.string;
 import ballerina.lang.system;
 import ballerina.net.http;
-import ballerina.net.uri;
-import ballerina.util;
 
-connector OAuth2ClientConnector (string accessToken, string clientId, string clientSecret,
+connector ClientConnector (string accessToken, string clientId, string clientSecret,
                                  string refreshToken, string refreshTokenEP) {
 
-    http:HTTPConnector httpConnectorEP = new http:HTTPConnector("");
+    http:ClientConnector httpConnectorEP = create http:ClientConnector("");
 
     string accessTokenValue;
 
-    action get (OAuth2ClientConnector oAuth2ClientConnector, string path, message request) (message, string) {
+    action get (ClientConnector clientConnector, string url, message request) (message) {
 
         message response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
-        response = http:HTTPConnector.get(httpConnectorEP, path, request);
+        response = http:ClientConnector.get(httpConnectorEP, url, request);
 
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
-             response = http:HTTPConnector.get(httpConnectorEP, path, request);
+             response = http:ClientConnector.get(httpConnectorEP, url, request);
         }
 
-        return response, accessTokenValue ;
+        return response ;
     }
 
-    action post (OAuth2ClientConnector oAuth2ClientConnector, string path, message request) (message, string) {
+    action post (ClientConnector clientConnector, string url, message request) (message) {
 
         message response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
-        response = http:HTTPConnector.post(httpConnectorEP, path, request);
+        response = http:ClientConnector.post(httpConnectorEP, url, request);
 
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
              accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
-             response = http:HTTPConnector.post(httpConnectorEP, path, request);
+             response = http:ClientConnector.post(httpConnectorEP, url, request);
         }
 
-        return response, accessTokenValue ;
+        return response ;
     }
 
-    action put (OAuth2ClientConnector oAuth2ClientConnector, string path, message request) (message, string) {
+    action put (ClientConnector clientConnector, string url, message request) (message) {
 
         message response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
-        response = http:HTTPConnector.put(httpConnectorEP, path, request);
+        response = http:ClientConnector.put(httpConnectorEP, url, request);
 
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
-            response = http:HTTPConnector.put(httpConnectorEP, path, request);
+            response = http:ClientConnector.put(httpConnectorEP, url, request);
         }
 
-        return response, accessTokenValue ;
+        return response ;
     }
 
-    action delete (OAuth2ClientConnector oAuth2ClientConnector, string path, message request) (message, string) {
+    action delete (ClientConnector clientConnector, string url, message request) (message) {
 
         message response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
-        response = http:HTTPConnector.delete(httpConnectorEP, path, request);
+        response = http:ClientConnector.delete(httpConnectorEP, url, request);
 
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
-            response = http:HTTPConnector.delete(httpConnectorEP, path, request);
+            response = http:ClientConnector.delete(httpConnectorEP, url, request);
         }
 
-        return response, accessTokenValue ;
+        return response ;
     }
 }
 
@@ -94,8 +91,8 @@ function constructAuthHeader (message request, string accessTokenValue, string a
 function getAccessTokenFromRefreshToken (message request, string accessToken, string clientId, string clientSecret,
                                          string refreshToken, string refreshTokenEP) (string) {
 
-    http:HTTPConnector refreshTokenHTTPEP = new http:HTTPConnector("");
-    message refreshTokenRequest;
+    http:ClientConnector refreshTokenHTTPEP = create http:ClientConnector("");
+    message refreshTokenRequest = {};
     message refreshTokenResponse;
     string accessTokenFromRefreshTokenReq;
     json accessTokenFromRefreshTokenJSONResponse;
@@ -105,7 +102,7 @@ function getAccessTokenFromRefreshToken (message request, string accessToken, st
                                      + clientSecret + "&client_id=" + clientId;
 
     http:setContentLength(refreshTokenRequest, 0);
-    refreshTokenResponse = http:HTTPConnector.post(refreshTokenHTTPEP, accessTokenFromRefreshTokenReq,
+    refreshTokenResponse = http:ClientConnector.post(refreshTokenHTTPEP, accessTokenFromRefreshTokenReq,
                                                    refreshTokenRequest);
     accessTokenFromRefreshTokenJSONResponse = message:getJsonPayload(refreshTokenResponse);
     accessToken = json:getString(accessTokenFromRefreshTokenJSONResponse, "$.access_token");
@@ -118,17 +115,14 @@ function getAccessTokenFromRefreshToken (message request, string accessToken, st
 
 function main (string[] args) {
 
-    connectors:OAuth2ClientConnector oauth2Connector = new connectors:OAuth2ClientConnector (args[1], args[2], args[3],
-                                                                                            args[4], args[5]);
+    ClientConnector clientConnector = create ClientConnector (args[1], args[2], args[3], args[4], args[5]);
 
-    message request;
+    message request = {};
     message userProfileResponse;
     json userProfileJSONResponse;
     string accessToken;
 
-    request = new message ();
-    userProfileResponse, accessToken = connectors:OAuth2ClientConnector.get
-                          (oauth2Connector, args[0], request);
+    userProfileResponse = ClientConnector.get(clientConnector, args[0], request);
 
     userProfileJSONResponse = message:getJsonPayload(userProfileResponse);
     system:println(json:toString(userProfileJSONResponse));
