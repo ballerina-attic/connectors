@@ -8,8 +8,6 @@ import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.util;
 
-
-
 connector AmazonLambda(string accessKeyId, string secretAccessKey,string region, string serviceName,
                                         string terminationString) {
 
@@ -34,6 +32,7 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
 
         return response;
     }
+
     action deleteFunction(AmazonLambda amz, string arn) (message) throws exception {
 
         string signature;
@@ -54,6 +53,7 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
 
         return response;
     }
+
     action getAccountDetails(AmazonLambda amz) (message) throws exception {
 
         string signature;
@@ -74,6 +74,7 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
 
         return response;
     }
+
     action getFunction(AmazonLambda amz, string arn) (message) throws exception {
 
         string signature;
@@ -94,6 +95,7 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
 
         return response;
     }
+
     action listFunctions(AmazonLambda amz) (message) throws exception {
 
         string signature;
@@ -112,6 +114,7 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
 
         return response;
     }
+
     action getFunctionVersions(AmazonLambda amz, string arn) (message) throws exception {
 
         string signature;
@@ -135,7 +138,6 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
 connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
                 string region, string serviceName, string terminationString, string endpoint) {
 
-
     http:ClientConnector awsEP = create http:ClientConnector(endpoint);
 
     action req(AmazonAuthConnector amz, message requestMsg, string httpMethod, string requestURI, string payload) (message) throws exception {
@@ -155,11 +157,8 @@ connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
         }
 
         return response;
-
     }
-
 }
-
 
 function main (string[] args) {
 
@@ -198,8 +197,6 @@ function main (string[] args) {
         system:println(json:toString(lambdaJSONResponse));
     }
 }
-
-
 
 function generateSignature(message msg, string accessKeyId, string secretAccessKey, string region, string serviceName,
     string terminationString, string httpMethod, string requestURI, string payload) (message) throws exception {
