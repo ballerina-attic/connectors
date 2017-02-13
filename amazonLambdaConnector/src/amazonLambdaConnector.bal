@@ -1,4 +1,4 @@
-package samples.connectors.sample;
+package org.wso2.ballerina.connectors;
 
 import ballerina.lang.system;
 import ballerina.lang.json;
@@ -10,128 +10,125 @@ import ballerina.util;
 
 
 
-connector AmazonLambda(string accessKeyId, string secretAccessKey,
-                string region, string serviceName, string terminationString) {
+connector AmazonLambda(string accessKeyId, string secretAccessKey,string region, string serviceName,
+                                        string terminationString) {
 
-    AmazonAuthConnector amazonAuthConnector = create AmazonAuthConnector("AKIAIJ2IBQUCKKAL72IA", "AeUD3+Ic9BWH6ZEq+3K7zhxJ/zjzXkuicA883dPd", "us-east-1", "lambda", "aws4_request", "https://lambda.us-east-1.amazonaws.com");
+    string endpoint = "https://lambda." + region + ".amazonaws.com";
+    AmazonAuthConnector amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "lambda", "aws4_request", endpoint);
 
     action invokeFunction(AmazonLambda amz, string arn) (message) throws exception {
 
         string signature;
         string httpMethod;
         string requestURI;
-        string endpoint;
-        message requestMsg;
-        message response;
+    	string host;
+        message requestMsg = {};
+        message response = {};
+    	host = "lambda." + region + ".amazonaws.com";
 
         httpMethod = "POST";
         requestURI = "/2015-03-31/functions/" + arn + "/invocations";
-        endpoint = "https://lambda." + region + ".amazonaws.com";
 
-        message:setHeader(requestMsg, "Host", endpoint);
+        message:setHeader(requestMsg, "Host", host);
         response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
         return response;
     }
     action deleteFunction(AmazonLambda amz, string arn) (message) throws exception {
 
-            string signature;
-            string httpMethod;
-            string requestURI;
-            string host;
-            string endpoint;
-            message requestMsg;
-            message response;
+        string signature;
+        string httpMethod;
+        string requestURI;
+    	string host;
+        message requestMsg = {};
+        message response = {};
+    	host = "lambda." + region + ".amazonaws.com";
 
-            httpMethod = "DELETE";
-            requestURI = "/2015-03-31/functions/" + arn;
-            host = "lambda.us-east-1.amazonaws.com";
-            endpoint = "https://lambda." + region + ".amazonaws.com";
+        httpMethod = "DELETE";
+        requestURI = "/2015-03-31/functions/" + arn;
+        host = "lambda.us-east-1.amazonaws.com";
+        endpoint = "https://lambda." + region + ".amazonaws.com";
 
-            message:setHeader(requestMsg, "Host", host);
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        message:setHeader(requestMsg, "Host", host);
+        response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
-            return response;
+        return response;
     }
     action getAccountDetails(AmazonLambda amz) (message) throws exception {
 
-            string signature;
-            string httpMethod;
-            string requestURI;
-            string host;
-            string endpoint;
-            message requestMsg;
-            message response;
+        string signature;
+        string httpMethod;
+        string requestURI;
+    	string host;
+        message requestMsg = {};
+        message response = {};
+    	host = "lambda." + region + ".amazonaws.com";
 
-            httpMethod = "GET";
-            requestURI = "/2016-08-19/account-settings/";
-            host = "lambda.us-east-1.amazonaws.com";
-            endpoint = "https://lambda." + region + ".amazonaws.com";
+        httpMethod = "GET";
+        requestURI = "/2016-08-19/account-settings/";
+        host = "lambda.us-east-1.amazonaws.com";
+        endpoint = "https://lambda." + region + ".amazonaws.com";
 
-            message:setHeader(requestMsg, "Host", host);
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        message:setHeader(requestMsg, "Host", host);
+        response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
-            return response;
+        return response;
     }
     action getFunction(AmazonLambda amz, string arn) (message) throws exception {
 
-            string signature;
-            string httpMethod;
-            string requestURI;
-            string host;
-            string endpoint;
-            message requestMsg;
-            message response;
+        string signature;
+        string httpMethod;
+        string requestURI;
+    	string host;
+        message requestMsg = {};
+        message response = {};
+    	host = "lambda." + region + ".amazonaws.com";
 
-            httpMethod = "GET";
-            requestURI = "/2015-03-31/functions/" + arn;
-            host = "lambda.us-east-1.amazonaws.com";
-            endpoint = "https://lambda." + region + ".amazonaws.com";
+        httpMethod = "GET";
+        requestURI = "/2015-03-31/functions/" + arn;
+        host = "lambda.us-east-1.amazonaws.com";
+        endpoint = "https://lambda." + region + ".amazonaws.com";
 
-            message:setHeader(requestMsg, "Host", host);
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        message:setHeader(requestMsg, "Host", host);
+        response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
-            return response;
+        return response;
     }
     action listFunctions(AmazonLambda amz) (message) throws exception {
 
-            string signature;
-            string httpMethod;
-            string requestURI;
-            string host;
-            string endpoint;
-            message requestMsg;
-            message response;
+        string signature;
+        string httpMethod;
+        string requestURI;
+    	string host;
+        message requestMsg = {};
+        message response = {};
+    	host = "lambda." + region + ".amazonaws.com";
 
-            httpMethod = "GET";
-            requestURI = "/2015-03-31/functions/";
-            host = "lambda.us-east-1.amazonaws.com";
-            endpoint = "https://lambda." + region + ".amazonaws.com";
+        httpMethod = "GET";
+        requestURI = "/2015-03-31/functions/";
 
-            message:setHeader(requestMsg, "Host", host);
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        message:setHeader(requestMsg, "Host", host);
+        response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
-            return response;
+        return response;
     }
     action getFunctionVersions(AmazonLambda amz, string arn) (message) throws exception {
 
-            string signature;
-            string httpMethod;
-            string requestURI;
-            string host;
-            string endpoint;
-            message requestMsg;
-            message response;
+        string signature;
+        string httpMethod;
+        string requestURI;
+    	string host;
+        message requestMsg = {};
+        message response = {};
+    	host = "lambda." + region + ".amazonaws.com";
 
-            httpMethod = "GET";
-            requestURI = "/2015-03-31/functions/" + arn + "/versions";
-            host = "lambda.us-east-1.amazonaws.com";
-            endpoint = "https://lambda." + region + ".amazonaws.com";
+        httpMethod = "GET";
+        requestURI = "/2015-03-31/functions/" + arn + "/versions";
 
-            message:setHeader(requestMsg, "Host", host);
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        message:setHeader(requestMsg, "Host", host);
+        response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
-            return response;
+        return response;
     }
 }
 
@@ -139,7 +136,7 @@ connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
                 string region, string serviceName, string terminationString, string endpoint) {
 
 
-    http:ClientConnector awsEP = new http:ClientConnector(endpoint);
+    http:ClientConnector awsEP = create http:ClientConnector(endpoint);
 
     action req(AmazonAuthConnector amz, message requestMsg, string httpMethod, string requestURI, string payload) (message) throws exception {
 
@@ -181,7 +178,7 @@ function main (string[] args) {
             system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "listFunctions"){
-        lambdaResponse = AmazonLambda.listFunction(amzLamConnector);
+        lambdaResponse = AmazonLambda.listFunctions(amzLamConnector);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
@@ -290,7 +287,6 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
 
 
     canonicalRequest = canonicalRequest + string:toLowerCase(util:getHash(requestPayload, algorithm));
-
 
     //Start creating the string to sign
 
