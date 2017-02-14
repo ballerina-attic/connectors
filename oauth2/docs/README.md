@@ -43,7 +43,7 @@ The delete action allows to use http delete action with oauth2 authentication fl
     * Refresh Token Endpoint
 
 ###### Invoke the actions
-- Place the BasicAuth directory into {BALLERINA_HOME}/samples.
+- Place the oauth2 directory into {BALLERINA_HOME}/samples.
 - Run the following commands to execute the relevant action.
     1. get:
     `bin$ ./ballerina run ../samples/oauth2/src/ClientConnector.bal get <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
