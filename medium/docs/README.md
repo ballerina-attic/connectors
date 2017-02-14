@@ -61,18 +61,18 @@
 - Place the medium directory into {BALLERINA_HOME}/samples.
 - Run the following commands to execute the relevant action.
   1. run all actions:
-  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal <accessToken> <userId> <publicationId>`
+  `bin$ ./ballerina run ../samples/medium/src/ClientConnector.bal <accessToken> <clientId> <clientSecret> <refreshToken> <userId> <publicationId>`
   2. run get actions:
-  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal get <accessToken> <userId> <publicationId>`
+  `bin$ ./ballerina run ../samples/medium/src/ClientConnector.bal get <accessToken> <clientId> <clientSecret> <refreshToken> <userId> <publicationId>`
   3. run post actions:
-  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal post <accessToken> <userId> <publicationId>`
+  `bin$ ./ballerina run ../samples/medium/src/ClientConnector.bal post <accessToken> <clientId> <clientSecret> <refreshToken> <userId> <publicationId>`
   4. get profile info:
-  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal getProfileInfo <accessToken>`
+  `bin$ ./ballerina run ../samples/medium/src/ClientConnector.bal getProfileInfo <accessToken> <clientId> <clientSecret> <refreshToken>`
   5. get contributors:
-  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal getContributors <accessToken> <publicationId>`
+  `bin$ ./ballerina run ../samples/medium/src/ClientConnector.bal getContributors <accessToken> <clientId> <clientSecret> <refreshToken> <publicationId>`
   6. get publications:
-  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal getPublications <accessToken> <userId>`
+  `bin$ ./ballerina run ../samples/medium/src/ClientConnector.bal getPublications <accessToken> <clientId> <clientSecret> <refreshToken> <userId>`
   7. create profile post:
-  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal createProfilePost <accessToken> <userId>`
+  `bin$ ./ballerina run ../samples/medium/src/ClientConnector.bal createProfilePost <accessToken> <clientId> <clientSecret> <refreshToken> <userId>`
   8. create publication post:
-  `bin$ ./ballerina run ../samples/medium/src/mediumConnector.bal createPublicationPost <accessToken> <publicationId>`
+  `bin$ ./ballerina run ../samples/medium/src/ClientConnector.bal createPublicationPost <accessToken> <clientId> <clientSecret> <refreshToken> <publicationId>`

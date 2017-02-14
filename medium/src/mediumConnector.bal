@@ -5,10 +5,17 @@ import ballerina.lang.message;
 import ballerina.lang.system;
 import ballerina.net.http;
 
-connector ClientConnector (string accessToken) {
+@doc:Description("Medium client connector")
+@doc:Param("accessToken: The access token of the Medium Application")
+@doc:Param("clientId: Client Id of the Medium Application")
+@doc:Param("clientSecret: Client Secret of the Medium Application")
+@doc:Param("refreshToken: The refresh token of the Medium Application")
+connector ClientConnector (string accessToken, string clientId, string clientSecret, string refreshToken) {
 
     http:ClientConnector mediumEP = create http:ClientConnector("https://api.medium.com");
 
+    @doc:Description("Get Profile Information")
+    @doc:Return("response object")
     action getProfileInfo(ClientConnector t) (message) {
 
         string getProfileInfoPath;
@@ -21,6 +28,9 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Get List of Contributors for a Publication")
+    @doc:Param("publicationId: ID of relevant publication")
+    @doc:Return("response object")
     action getContributors(ClientConnector t, string publicationId) (message) {
 
         string getContributorsPath;
@@ -34,6 +44,9 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Get List of Publications the user have contributed")
+    @doc:Param("userId: ID of authenticated user")
+    @doc:Return("response object")
     action getPublications(ClientConnector t, string userId) (message) {
 
         string getPublicationsPath;
@@ -47,6 +60,10 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Create Post in authenticated User's profile")
+    @doc:Param("userId: ID of authenticated user")
+    @doc:Param("payload: json payload containing the post")
+    @doc:Return("response object")
     action createProfilePost(ClientConnector t, string userId, json payload) (message) {
 
         string createProfilePostPath;
@@ -62,6 +79,10 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Get List of Contributors for a Publication")
+    @doc:Param("publicationId: ID of relevant publication")
+    @doc:Param("payload: json payload containing the post")
+    @doc:Return("response object")
     action createPublicationPost(ClientConnector t, string publicationId, json payload) (message) {
 
         string createPublicationPostPath;
@@ -145,52 +166,52 @@ function main (string[] args) {
     json fullJsonPayload;
 
     if (args[0]=="get") {
-        mediumConnector = create ClientConnector(args[1]);
-        userId = args[2];
-        publicationId = args[3];
+        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
+        userId = args[5];
+        publicationId = args[6];
         runGETSamples(mediumConnector, publicationId, userId);
 
     } else if (args[0]=="post") {
-        mediumConnector = create ClientConnector(args[1]);
-        userId = args[2];
-        publicationId = args[3];
+        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
+        userId = args[5];
+        publicationId = args[6];
         runPOSTSamples(mediumConnector, publicationId, userId);
 
     } else if (args[0]=="getProfileInfo") {
-        mediumConnector = create ClientConnector(args[1]);
+        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
         mediumResponse = ClientConnector.getProfileInfo(mediumConnector);
         printJsonResponse(mediumResponse);
 
     } else if (args[0]=="getContributors") {
-        mediumConnector = create ClientConnector(args[1]);
-        publicationId = args[2];
+        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
+        publicationId = args[5];
         mediumResponse = ClientConnector.getContributors(mediumConnector, publicationId);
         printJsonResponse(mediumResponse);
 
     } else if (args[0]=="getPublications") {
-        mediumConnector = create ClientConnector(args[1]);
-        userId = args[2];
+        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
+        userId = args[5];
         mediumResponse = ClientConnector.getPublications(mediumConnector, userId);
         printJsonResponse(mediumResponse);
 
     } else if (args[0]=="createProfilePost") {
-        mediumConnector = create ClientConnector(args[1]);
-        userId = args[2];
+        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
+        userId = args[5];
         fullJsonPayload = `{title: 'Sample Payload',contentFormat: html,content: '<h1>Sample Payload</h1><p>This is a sample payload</p>',canonicalUrl: 'http://wso2.com',tags: [sample, test],publishStatus: public}`;
         mediumResponse = ClientConnector.createProfilePost(mediumConnector, userId, fullJsonPayload);
         printJsonResponse(mediumResponse);
 
     } else if (args[0]=="createPublicationPost") {
-        mediumConnector = create ClientConnector(args[1]);
-        publicationId = args[2];
+        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
+        publicationId = args[5];
         fullJsonPayload = `{title: 'Sample Payload',contentFormat: html,content: '<h1>Sample Payload</h1><p>This is a sample payload</p>',canonicalUrl: 'http://wso2.com',tags: [sample, test],publishStatus: public}`;
         mediumResponse = ClientConnector.createPublicationPost(mediumConnector, publicationId, fullJsonPayload);
         printJsonResponse(mediumResponse);
 
     } else {
-        mediumConnector = create ClientConnector(args[0]);
-        userId = args[1];
-        publicationId = args[2];
+        mediumConnector = create ClientConnector(args[0], args[1], args[2], args[3]);
+        userId = args[4];
+        publicationId = args[5];
         runGETSamples(mediumConnector, publicationId, userId);
         runPOSTSamples(mediumConnector, publicationId, userId);
     }
