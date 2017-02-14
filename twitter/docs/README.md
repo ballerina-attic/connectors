@@ -97,7 +97,7 @@ The getTopTrendsByPlace action allows to retrieve the top topics for a specified
 - Place the twitter directory into {BALLERINA_HOME}/samples.
 - To run the following commands to execute the relevant action.
   1. tweet:   
-  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal tweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <message>`
+  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal tweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <status>`
   2. search:    
   `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal search <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <query>`
   3. retweet: 
