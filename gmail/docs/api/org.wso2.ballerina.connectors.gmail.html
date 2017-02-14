@@ -1,0 +1,1246 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>$package.name</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+
+<body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo"><strong>Ballerina</strong> API Documentation</a>
+                </header>
+
+                <!-- Banner -->
+                <section id="banner">
+                    <div class="content">
+                        
+                        <!-- Functions -->
+                        <h2>Functions of org.wso2.ballerina.connectors.gmail package</h2>
+                         
+                        <div style="padding-bottom: 30px;">
+                            <h3 id="main">
+                                function main(<a href="#string[]">string[]</a> args) 
+                            </h3>
+                            <p></p>
+
+                            <p>
+                                <b>Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>args</td><td><a href="#string[]">string[]</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                        </div>
+                        
+                        <p></p>
+                        <br> 
+                        
+                        <!-- Connectors -->
+                        <h2>Connectors of org.wso2.ballerina.connectors.gmail package</h2>
+                        
+                             
+                        <h3 id="ClientConnector">
+                            connector ClientConnector (<a href="#string">string</a> userId, <a href="#string">string</a> accessToken, <a href="#string">string</a> refreshToken, <a href="#string">string</a> clientId, <a href="#string">string</a> clientSecret)
+                        </h3>
+                        <p>Gmail client connector</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>userId</td><td><a href="">string</a></td><td>The userId of the Gmail account which means the email id</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>accessToken</td><td><a href="">string</a></td><td>The accessToken of the Gmail account to access the gmail REST API</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>refreshToken</td><td><a href="">string</a></td><td>The refreshToken of the Gmail App to access the gmail REST API</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>clientId</td><td><a href="">string</a></td><td>The clientId of the App to access the gmail REST API</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>clientSecret</td><td><a href="">string</a></td><td>The clientSecret of the App to access the gmail REST API</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        <b>Actions:</b><br><br>  
+                        <h3 id="getUserProfileClientConnector">action getUserProfile()</h3>
+                        <p>Retrieve the user profile</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="createDraftClientConnector">action createDraft()</h3>
+                        <p>Create a draft</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>to</td><td><a href="#string">string</a></td><td>Receiver mail ID</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>subject</td><td><a href="#string">string</a></td><td>Subject of the message</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>from</td><td><a href="#string">string</a></td><td>Sender mail ID</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageBody</td><td><a href="#string">string</a></td><td>Entire message body</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>cc</td><td><a href="#string">string</a></td><td>To whom sender need to cc the mail</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>bcc</td><td><a href="#string">string</a></td><td>To whom sender need to bcc the mail</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>id</td><td><a href="#string">string</a></td><td>Id of the draft to create</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadId</td><td><a href="#string">string</a></td><td>thread Id of the draft to reply</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="updateDraftClientConnector">action updateDraft()</h3>
+                        <p>Update a draft</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>draftId</td><td><a href="#string">string</a></td><td>Id of the draft to update</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>to</td><td><a href="#string">string</a></td><td>Receiver mail ID</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>subject</td><td><a href="#string">string</a></td><td>Subject of the message</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>from</td><td><a href="#string">string</a></td><td>Sender mail ID</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageBody</td><td><a href="#string">string</a></td><td>Entire message body</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>cc</td><td><a href="#string">string</a></td><td>To whom sender need to cc the mail</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>bcc</td><td><a href="#string">string</a></td><td>To whom sender need to bcc the mail</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>id</td><td><a href="#string">string</a></td><td>Id of the draft to reply</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadId</td><td><a href="#string">string</a></td><td>thread Id of the draft to reply</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="readDraftClientConnector">action readDraft()</h3>
+                        <p>Retrieve a particular draft</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>draftId</td><td><a href="#string">string</a></td><td>Id of the draft to retrieve</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>format</td><td><a href="#string">string</a></td><td>The format to return the draft in</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="listDraftsClientConnector">action listDrafts()</h3>
+                        <p>Lists the drafts in the user&#x27;s mailbox</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>includeSpamTrash</td><td><a href="#string">string</a></td><td>Include messages from SPAM and TRASH in the results</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>maxResults</td><td><a href="#string">string</a></td><td>Maximum number of messages to return</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>pageToken</td><td><a href="#string">string</a></td><td>Page token to retrieve a specific page of results in the list</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>q</td><td><a href="#string">string</a></td><td>Only return messages matching the specified query. Supports the same query format as
+                   the Gmail search box</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="deleteDraftClientConnector">action deleteDraft()</h3>
+                        <p>Delete a particular draft</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>draftId</td><td><a href="#string">string</a></td><td>Id of the draft to delete</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="listHistoryClientConnector">action listHistory()</h3>
+                        <p>Lists the history to of all changes to the given mailbox</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelId</td><td><a href="#string">string</a></td><td>Only return messages with a label matching the ID</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>maxResults</td><td><a href="#string">string</a></td><td>Maximum number of messages to return</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>pageToken</td><td><a href="#string">string</a></td><td>Page token to retrieve a specific page of results in the list</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>startHistoryId</td><td><a href="#string">string</a></td><td>Returns history records after the specified startHistoryId</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="createLabelClientConnector">action createLabel()</h3>
+                        <p>Create a new label</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelName</td><td><a href="#string">string</a></td><td>The display name of the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageListVisibility</td><td><a href="#string">string</a></td><td>The visibility of messages with this label in the message list in the
+                                        Gmail web interface</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelListVisibility</td><td><a href="#string">string</a></td><td>The visibility of the label in the label list in the Gmail web interface</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>types</td><td><a href="#string">string</a></td><td>The owner type for the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messagesTotal</td><td><a href="#string">string</a></td><td>The total number of messages with the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messagesUnread</td><td><a href="#string">string</a></td><td>The number of unread messages with the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadsTotal</td><td><a href="#string">string</a></td><td>The total number of threads with the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadsUnread</td><td><a href="#string">string</a></td><td>The number of unread threads with the label</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="deleteLabelClientConnector">action deleteLabel()</h3>
+                        <p>Delete a particular label</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelId</td><td><a href="#string">string</a></td><td>Id of the label to delete</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="listLabelsClientConnector">action listLabels()</h3>
+                        <p>Lists all labels in the user&#x27;s mailbox</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="updateLabelClientConnector">action updateLabel()</h3>
+                        <p>Update a particular label</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelId</td><td><a href="#string">string</a></td><td>The Id of the label to update</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelName</td><td><a href="#string">string</a></td><td>The display name of the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageListVisibility</td><td><a href="#string">string</a></td><td>The visibility of messages with this label in the message list in the
+                                        Gmail web interface</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelListVisibility</td><td><a href="#string">string</a></td><td>The visibility of the label in the label list in the Gmail web interface</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>types</td><td><a href="#string">string</a></td><td>The owner type for the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messagesTotal</td><td><a href="#string">string</a></td><td>The total number of messages with the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messagesUnread</td><td><a href="#string">string</a></td><td>The number of unread messages with the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadsTotal</td><td><a href="#string">string</a></td><td>The total number of threads with the label</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadsUnread</td><td><a href="#string">string</a></td><td>The number of unread threads with the label</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="readLabelClientConnector">action readLabel()</h3>
+                        <p>Retrieve a particular label</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelId</td><td><a href="#string">string</a></td><td>Id of the label to retrieve</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="readThreadClientConnector">action readThread()</h3>
+                        <p>Retrieve a particular Thread</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadId</td><td><a href="#string">string</a></td><td>Id of the thread to retrieve</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>format</td><td><a href="#string">string</a></td><td>The format to return the thread in</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>metaDataHeaders</td><td><a href="#string">string</a></td><td>When given and format is METADATA, only include headers specified</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="listThreadsClientConnector">action listThreads()</h3>
+                        <p>Lists the threads in the user&#x27;s mailbox</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>includeSpamTrash</td><td><a href="#string">string</a></td><td>Include messages from SPAM and TRASH in the results</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelIds</td><td><a href="#string">string</a></td><td>Only return messages with labels that match all of the specified label IDs</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>maxResults</td><td><a href="#string">string</a></td><td>Maximum number of messages to return</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>pageToken</td><td><a href="#string">string</a></td><td>Page token to retrieve a specific page of results in the list</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>q</td><td><a href="#string">string</a></td><td>Only return messages matching the specified query. Supports the same query format as
+                   the Gmail search box</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="deleteThreadClientConnector">action deleteThread()</h3>
+                        <p>Delete a particular thread</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadId</td><td><a href="#string">string</a></td><td>Id of the thread to delete</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="trashThreadClientConnector">action trashThread()</h3>
+                        <p>Trash a particular thread</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadId</td><td><a href="#string">string</a></td><td>Id of the thread to Trash</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="unTrashThreadClientConnector">action unTrashThread()</h3>
+                        <p>UnTrash a particular thread</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadId</td><td><a href="#string">string</a></td><td>Id of the thread to unTrash</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="listMailsClientConnector">action listMails()</h3>
+                        <p>Lists the messages in the user&#x27;s mailbox</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>includeSpamTrash</td><td><a href="#string">string</a></td><td>Include messages from SPAM and TRASH in the results</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>labelIds</td><td><a href="#string">string</a></td><td>Only return messages with labels that match all of the specified label IDs</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>maxResults</td><td><a href="#string">string</a></td><td>Maximum number of messages to return</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>pageToken</td><td><a href="#string">string</a></td><td>Page token to retrieve a specific page of results in the list</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>q</td><td><a href="#string">string</a></td><td>Only return messages matching the specified query. Supports the same query format as
+                   the Gmail search box</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="sendMailClientConnector">action sendMail()</h3>
+                        <p>Send a mail</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>to</td><td><a href="#string">string</a></td><td>Receiver mail ID</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>subject</td><td><a href="#string">string</a></td><td>Subject of the message</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>from</td><td><a href="#string">string</a></td><td>Sender mail ID</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageBody</td><td><a href="#string">string</a></td><td>Entire message body</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>cc</td><td><a href="#string">string</a></td><td>To whom sender need to cc the mail</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>bcc</td><td><a href="#string">string</a></td><td>To whom sender need to bcc the mail</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>id</td><td><a href="#string">string</a></td><td>Id of the mail to send</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>threadId</td><td><a href="#string">string</a></td><td>thread Id of the mail to reply</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="modifyExistingMessageClientConnector">action modifyExistingMessage()</h3>
+                        <p>Modifies the labels on the specified message</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageId</td><td><a href="#string">string</a></td><td>The ID of the message to modifies the labels</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>addLabelIds</td><td><a href="#string">string</a></td><td>A list of IDs of labels to add to this message</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>removeLabelIds</td><td><a href="#string">string</a></td><td>A list IDs of labels to remove from this message</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="readMailClientConnector">action readMail()</h3>
+                        <p>Retrieve a particular Message</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageId</td><td><a href="#string">string</a></td><td>Id of the message to retrieve</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>format</td><td><a href="#string">string</a></td><td>The format to return the Message in</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>metaDataHeaders</td><td><a href="#string">string</a></td><td>When given and format is METADATA, only include headers specified</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="deleteMailClientConnector">action deleteMail()</h3>
+                        <p>Delete a particular message</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageId</td><td><a href="#string">string</a></td><td>Id of the message to delete</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="trashMailClientConnector">action trashMail()</h3>
+                        <p>Trash a particular message</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageId</td><td><a href="#string">string</a></td><td>Id of the message to Trash</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="unTrashMailClientConnector">action unTrashMail()</h3>
+                        <p>UnTrash a particular message</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>g</td><td><a href="../html/org.wso2.ballerina.connectors.gmail.html#ClientConnector">org.wso2.ballerina.connectors.gmail:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>messageId</td><td><a href="#string">string</a></td><td>Id of the message to unTrash</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                           
+                        <br> 
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        
+                        <li>
+                            <span class="opener">Functions</span>
+                            <ul>
+                                
+                                <li><a href="#main">main(string[] args) </a>
+                                </li>
+                            </ul>
+                        </li> 
+                        <li>
+                            <span class="opener">Connectors</span>
+                            <ul>
+                                
+                                <li><a href="#ClientConnector ">ClientConnector (string userId, string accessToken, string refreshToken, string clientId, string clientSecret)</a>
+                                    <ul>
+                                        
+                                        <li><a href="#getUserProfileClientConnector">getUserProfile(org.wso2.ballerina.connectors.gmail:ClientConnector g)</a></li>
+                                        
+                                        <li><a href="#createDraftClientConnector">createDraft(org.wso2.ballerina.connectors.gmail:ClientConnector g, string to, string subject, string from, string messageBody, string cc, string bcc, string id, string threadId)</a></li>
+                                        
+                                        <li><a href="#updateDraftClientConnector">updateDraft(org.wso2.ballerina.connectors.gmail:ClientConnector g, string draftId, string to, string subject, string from, string messageBody, string cc, string bcc, string id, string threadId)</a></li>
+                                        
+                                        <li><a href="#readDraftClientConnector">readDraft(org.wso2.ballerina.connectors.gmail:ClientConnector g, string draftId, string format)</a></li>
+                                        
+                                        <li><a href="#listDraftsClientConnector">listDrafts(org.wso2.ballerina.connectors.gmail:ClientConnector g, string includeSpamTrash, string maxResults, string pageToken, string q)</a></li>
+                                        
+                                        <li><a href="#deleteDraftClientConnector">deleteDraft(org.wso2.ballerina.connectors.gmail:ClientConnector g, string draftId)</a></li>
+                                        
+                                        <li><a href="#listHistoryClientConnector">listHistory(org.wso2.ballerina.connectors.gmail:ClientConnector g, string labelId, string maxResults, string pageToken, string startHistoryId)</a></li>
+                                        
+                                        <li><a href="#createLabelClientConnector">createLabel(org.wso2.ballerina.connectors.gmail:ClientConnector g, string labelName, string messageListVisibility, string labelListVisibility, string types, string messagesTotal, string messagesUnread, string threadsTotal, string threadsUnread)</a></li>
+                                        
+                                        <li><a href="#deleteLabelClientConnector">deleteLabel(org.wso2.ballerina.connectors.gmail:ClientConnector g, string labelId)</a></li>
+                                        
+                                        <li><a href="#listLabelsClientConnector">listLabels(org.wso2.ballerina.connectors.gmail:ClientConnector g)</a></li>
+                                        
+                                        <li><a href="#updateLabelClientConnector">updateLabel(org.wso2.ballerina.connectors.gmail:ClientConnector g, string labelId, string labelName, string messageListVisibility, string labelListVisibility, string types, string messagesTotal, string messagesUnread, string threadsTotal, string threadsUnread)</a></li>
+                                        
+                                        <li><a href="#readLabelClientConnector">readLabel(org.wso2.ballerina.connectors.gmail:ClientConnector g, string labelId)</a></li>
+                                        
+                                        <li><a href="#readThreadClientConnector">readThread(org.wso2.ballerina.connectors.gmail:ClientConnector g, string threadId, string format, string metaDataHeaders)</a></li>
+                                        
+                                        <li><a href="#listThreadsClientConnector">listThreads(org.wso2.ballerina.connectors.gmail:ClientConnector g, string includeSpamTrash, string labelIds, string maxResults, string pageToken, string q)</a></li>
+                                        
+                                        <li><a href="#deleteThreadClientConnector">deleteThread(org.wso2.ballerina.connectors.gmail:ClientConnector g, string threadId)</a></li>
+                                        
+                                        <li><a href="#trashThreadClientConnector">trashThread(org.wso2.ballerina.connectors.gmail:ClientConnector g, string threadId)</a></li>
+                                        
+                                        <li><a href="#unTrashThreadClientConnector">unTrashThread(org.wso2.ballerina.connectors.gmail:ClientConnector g, string threadId)</a></li>
+                                        
+                                        <li><a href="#listMailsClientConnector">listMails(org.wso2.ballerina.connectors.gmail:ClientConnector g, string includeSpamTrash, string labelIds, string maxResults, string pageToken, string q)</a></li>
+                                        
+                                        <li><a href="#sendMailClientConnector">sendMail(org.wso2.ballerina.connectors.gmail:ClientConnector g, string to, string subject, string from, string messageBody, string cc, string bcc, string id, string threadId)</a></li>
+                                        
+                                        <li><a href="#modifyExistingMessageClientConnector">modifyExistingMessage(org.wso2.ballerina.connectors.gmail:ClientConnector g, string messageId, string addLabelIds, string removeLabelIds)</a></li>
+                                        
+                                        <li><a href="#readMailClientConnector">readMail(org.wso2.ballerina.connectors.gmail:ClientConnector g, string messageId, string format, string metaDataHeaders)</a></li>
+                                        
+                                        <li><a href="#deleteMailClientConnector">deleteMail(org.wso2.ballerina.connectors.gmail:ClientConnector g, string messageId)</a></li>
+                                        
+                                        <li><a href="#trashMailClientConnector">trashMail(org.wso2.ballerina.connectors.gmail:ClientConnector g, string messageId)</a></li>
+                                        
+                                        <li><a href="#unTrashMailClientConnector">unTrashMail(org.wso2.ballerina.connectors.gmail:ClientConnector g, string messageId)</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li> 
+                    </ul>
+                </nav>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">Copyright 2017 Ballerina API Documentation</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
