@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>$package.name</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+
+<body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo"><strong>Ballerina</strong> API Documentation</a>
+                </header>
+
+                <!-- Banner -->
+                <section id="banner">
+                    <div class="content">
+                        
+                        <!-- Functions -->
+                        <h2>Functions of org.wso2.ballerina.connectors.etcd package</h2>
+                         
+                        <div style="padding-bottom: 30px;">
+                            <h3 id="main">
+                                function main(<a href="#string[]">string[]</a> args) 
+                            </h3>
+                            <p></p>
+
+                            <p>
+                                <b>Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>args</td><td><a href="#string[]">string[]</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                        </div>
+                        
+                        <p></p>
+                        <br> 
+                        
+                        <!-- Connectors -->
+                        <h2>Connectors of org.wso2.ballerina.connectors.etcd package</h2>
+                        
+                             
+                        <h3 id="ClientConnector">
+                            connector ClientConnector (<a href="#string">string</a> etcdURL, <a href="#string">string</a> username, <a href="#string">string</a> password, <a href="#string">string</a> apiVersion)
+                        </h3>
+                        <p>etcd client connector</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>etcdURL</td><td><a href="">string</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>username</td><td><a href="">string</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>password</td><td><a href="">string</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>apiVersion</td><td><a href="">string</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        <b>Actions:</b><br><br>  
+                        <h3 id="getValueClientConnector">action getValue()</h3>
+                        <p>Get the value for given key</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="../html/org.wso2.ballerina.connectors.etcd.html#ClientConnector">org.wso2.ballerina.connectors.etcd:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>key</td><td><a href="#string">string</a></td><td>key to get the value</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="setKeyValueClientConnector">action setKeyValue()</h3>
+                        <p>Set/Store key/value pair</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="../html/org.wso2.ballerina.connectors.etcd.html#ClientConnector">org.wso2.ballerina.connectors.etcd:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>key</td><td><a href="#string">string</a></td><td>key to set the value</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>value</td><td><a href="#string">string</a></td><td>value for the key</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="updateValueClientConnector">action updateValue()</h3>
+                        <p>Update the value for given key</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="../html/org.wso2.ballerina.connectors.etcd.html#ClientConnector">org.wso2.ballerina.connectors.etcd:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>key</td><td><a href="#string">string</a></td><td>key to update the value</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>value</td><td><a href="#string">string</a></td><td>value for the key</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="deleteKeyClientConnector">action deleteKey()</h3>
+                        <p>Delete the key</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="../html/org.wso2.ballerina.connectors.etcd.html#ClientConnector">org.wso2.ballerina.connectors.etcd:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>key</td><td><a href="#string">string</a></td><td>key to delete</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="createDirClientConnector">action createDir()</h3>
+                        <p>Create a directory</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="../html/org.wso2.ballerina.connectors.etcd.html#ClientConnector">org.wso2.ballerina.connectors.etcd:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>dir</td><td><a href="#string">string</a></td><td>name of the directory</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="listDirClientConnector">action listDir()</h3>
+                        <p>List directory</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="../html/org.wso2.ballerina.connectors.etcd.html#ClientConnector">org.wso2.ballerina.connectors.etcd:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>dir</td><td><a href="#string">string</a></td><td>name of the directory</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>recursive</td><td><a href="#string">string</a></td><td>recursive&#x3D;true OR recursive&#x3D;false</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="deleteDirClientConnector">action deleteDir()</h3>
+                        <p>Delete directory</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="../html/org.wso2.ballerina.connectors.etcd.html#ClientConnector">org.wso2.ballerina.connectors.etcd:ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>dir</td><td><a href="#string">string</a></td><td>name of the directory</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>recursive</td><td><a href="#string">string</a></td><td>recursive&#x3D;true OR recursive&#x3D;false</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                           
+                        <br> 
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        
+                        <li>
+                            <span class="opener">Functions</span>
+                            <ul>
+                                
+                                <li><a href="#main">main(string[] args) </a>
+                                </li>
+                            </ul>
+                        </li> 
+                        <li>
+                            <span class="opener">Connectors</span>
+                            <ul>
+                                
+                                <li><a href="#ClientConnector ">ClientConnector (string etcdURL, string username, string password, string apiVersion)</a>
+                                    <ul>
+                                        
+                                        <li><a href="#getValueClientConnector">getValue(org.wso2.ballerina.connectors.etcd:ClientConnector t, string key)</a></li>
+                                        
+                                        <li><a href="#setKeyValueClientConnector">setKeyValue(org.wso2.ballerina.connectors.etcd:ClientConnector t, string key, string value)</a></li>
+                                        
+                                        <li><a href="#updateValueClientConnector">updateValue(org.wso2.ballerina.connectors.etcd:ClientConnector t, string key, string value)</a></li>
+                                        
+                                        <li><a href="#deleteKeyClientConnector">deleteKey(org.wso2.ballerina.connectors.etcd:ClientConnector t, string key)</a></li>
+                                        
+                                        <li><a href="#createDirClientConnector">createDir(org.wso2.ballerina.connectors.etcd:ClientConnector t, string dir)</a></li>
+                                        
+                                        <li><a href="#listDirClientConnector">listDir(org.wso2.ballerina.connectors.etcd:ClientConnector t, string dir, string recursive)</a></li>
+                                        
+                                        <li><a href="#deleteDirClientConnector">deleteDir(org.wso2.ballerina.connectors.etcd:ClientConnector t, string dir, string recursive)</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li> 
+                    </ul>
+                </nav>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">Copyright 2017 Ballerina API Documentation</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
