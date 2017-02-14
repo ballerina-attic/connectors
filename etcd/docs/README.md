@@ -24,30 +24,33 @@ How to run this sample
 2. Update the main function with the relevant configuration given bellow with each action and run the command.
 
 connectors:etcd etcdConnector = new connectors:etcd("http://127.0.0.1:2379", "root", "test123", "v2");
-# etcd Server URL = "http://127.0.0.1:2379"
-# etcd user = "root"
-# etcd password = "test123"
-# etcd API version = "v2"
+ 
+
+`etcd Server URL = "http://127.0.0.1:2379"
+ etcd user = "root"
+ etcd password = "test123"
+ etcd API version = "v2"
+`
 
 Commands to trigger actions: 
 
-# setKeyValue	
-./bin/ballerina run connectors/etcd/src/etcd.bal setKeyValue <key> <value>
+setKeyValue	
+`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal setKeyValue <key> <value>`
 
-# getValue
-./bin/ballerina run connectors/etcd/src/etcd.bal getValue <key>
+getValue
+`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal getValue <key>`
 
-# updateValue
-./bin/ballerina run connectors/etcd/src/etcd.bal updateValue <key> <value>
+updateValue
+`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal updateValue <key> <value>`
 
-# deleteKey
-./bin/ballerina run connectors/etcd/src/etcd.bal deleteKey <key>
+deleteKey
+`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal deleteKey <key>`
 
-#createDir
-./bin/ballerina run connectors/etcd/src/etcd.bal createDir <dir>
+createDir
+`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal createDir <dir>`
 
-#listDir
-./bin/ballerina run connectors/etcd/src/etcd.bal listDir <dir> [recuresive=true]
+listDir
+`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal listDir <dir> [recuresive=true]`
 
-# deleteDir
-./bin/ballerina run connectors/etcd/src/etcd.bal deleteDir <dir> [recursive=true]
+deleteDir
+`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal deleteDir <dir> [recursive=true]`
