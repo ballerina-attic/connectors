@@ -5,6 +5,12 @@ import ballerina.lang.message;
 import ballerina.lang.system;
 import ballerina.net.http;
 
+@doc:Description("OAuth2 client connector")
+@doc:Param("accessToken: The access token of the account")
+@doc:Param("clientId: The client Id of the account")
+@doc:Param("clientSecret: The client secret of the account")
+@doc:Param("refreshToken: The refresh token of the account")
+@doc:Param("refreshTokenEP: The refresh token endpoint url")
 connector ClientConnector (string accessToken, string clientId, string clientSecret,
                                  string refreshToken, string refreshTokenEP) {
 
@@ -12,6 +18,10 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
 
     string accessTokenValue;
 
+    @doc:Description("Get with OAuth2 authentication")
+    @doc:Param("url: The endpoint url")
+    @doc:Param("request: The request of the method")
+    @doc:Return("response object")
     action get (ClientConnector clientConnector, string url, message request) (message) {
 
         message response;
@@ -25,9 +35,13 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
              response = http:ClientConnector.get(httpConnectorEP, url, request);
         }
 
-        return response ;
+        return response;
     }
 
+    @doc:Description("Post with OAuth2 authentication")
+    @doc:Param("url: The endpoint url")
+    @doc:Param("request: The request of the method")
+    @doc:Return("response object")
     action post (ClientConnector clientConnector, string url, message request) (message) {
 
         message response;
@@ -41,9 +55,13 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
              response = http:ClientConnector.post(httpConnectorEP, url, request);
         }
 
-        return response ;
+        return response;
     }
 
+    @doc:Description("Put with OAuth2 authentication")
+    @doc:Param("url: The endpoint url")
+    @doc:Param("request: The request of the method")
+    @doc:Return("response object")
     action put (ClientConnector clientConnector, string url, message request) (message) {
 
         message response;
@@ -57,9 +75,13 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
             response = http:ClientConnector.put(httpConnectorEP, url, request);
         }
 
-        return response ;
+        return response;
     }
 
+    @doc:Description("Delete with OAuth2 authentication")
+    @doc:Param("url: The endpoint url")
+    @doc:Param("request: The request of the method")
+    @doc:Return("response object")
     action delete (ClientConnector clientConnector, string url, message request) (message) {
 
         message response;
@@ -73,7 +95,7 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
             response = http:ClientConnector.delete(httpConnectorEP, url, request);
         }
 
-        return response ;
+        return response;
     }
 }
 
@@ -114,16 +136,15 @@ function getAccessTokenFromRefreshToken (message request, string accessToken, st
 
 function main (string[] args) {
 
-    ClientConnector clientConnector = create ClientConnector (args[1], args[2], args[3], args[4], args[5]);
-
     message request = {};
     message userProfileResponse;
     json userProfileJSONResponse;
-    string accessToken;
 
-    userProfileResponse = ClientConnector.get(clientConnector, args[0], request);
+    ClientConnector clientConnector = create ClientConnector (args[1], args[2], args[3], args[4], args[5]);
 
-    userProfileJSONResponse = message:getJsonPayload(userProfileResponse);
-    system:println(json:toString(userProfileJSONResponse));
-
+    if (args[0] == "get"){
+        userProfileResponse = ClientConnector.get(clientConnector, args[6], request);
+        userProfileJSONResponse = message:getJsonPayload(userProfileResponse);
+        system:println(json:toString(userProfileJSONResponse));
+    }
 }
