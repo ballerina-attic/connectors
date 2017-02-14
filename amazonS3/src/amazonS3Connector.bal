@@ -7,11 +7,18 @@ import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.util;
 
+@doc:Description("Amazon S3 client connector")
+@doc:Param("accessKeyId: The access key ID of the Amazon Account")
+@doc:Param("secretAccessKey: The secret access key of the Amazon Account")
+@doc:Param("region: The region to which the request is made")
+@doc:Param("terminationString: The termination string of the request")
 connector ClientConnector(string accessKeyId, string secretAccessKey,
-                string region, string serviceName, string terminationString) {
+                string region, string terminationString) {
 
     AmazonAuthConnector amazonAuthConnector;
 
+    @doc:Description("Get List of Buckets")
+    @doc:Return("response object")
 	action getBucketList(ClientConnector s3Connector) (message) throws exception {
 
             string signature;
@@ -34,6 +41,9 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             return response;
     	}
 
+    @doc:Description("Get List of Buckets")
+    @doc:Param("bucketName: The relevant bucket name")
+    @doc:Return("response object")
 	action getObjectList(ClientConnector s3Connector, string bucketName) (message) throws exception {
 
             string signature;
@@ -57,6 +67,9 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             return response;
     	}
 
+    @doc:Description("Create new Bucket")
+    @doc:Param("bucketName: The relevant bucket name")
+    @doc:Return("response object")
 	action createBucket(ClientConnector s3Connector, string bucketName) (message) throws exception {
 
             string signature;
@@ -79,6 +92,9 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             return response;
     	}
 
+    @doc:Description("Delete a Bucket")
+    @doc:Param("bucketName: The relevant bucket name")
+    @doc:Return("response object")
 	action deleteBucket(ClientConnector s3Connector, string bucketName) (message) throws exception {
 
             string signature;
@@ -101,6 +117,10 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             return response;
     	}
 
+    @doc:Description("Get an Object")
+    @doc:Param("bucketName: The relevant bucket name")
+    @doc:Param("objectName: The relevant object name")
+    @doc:Return("response object")
 	action getObject(ClientConnector s3Connector, string bucketName, string objectName) (message) throws exception {
 
             string signature;
@@ -123,7 +143,10 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             return response;
     	}
 
-
+    @doc:Description("Delete an Object")
+    @doc:Param("bucketName: The relevant bucket name")
+    @doc:Param("objectName: The relevant object name")
+    @doc:Return("response object")
 	action deleteObject(ClientConnector s3Connector, string bucketName, string objectName) (message) throws exception {
 
             string signature;
@@ -146,6 +169,11 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             return response;
     	}
 
+    @doc:Description("Put an Object")
+    @doc:Param("bucketName: The relevant bucket name")
+    @doc:Param("objectName: The relevant object name")
+    @doc:Param("payload: The file that needed to be uploaded")
+    @doc:Return("response object")
 	action putObject(ClientConnector s3Connector, string bucketName, string objectName, string payload) (message) throws exception {
 
             string signature;
@@ -168,10 +196,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
 
             return response;
     	}
-
 }
-
-
 
 connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
                 string region, string serviceName, string terminationString, string endpoint) {
@@ -192,14 +217,9 @@ connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
         }else if(string:equalsIgnoreCase(httpMethod,"DELETE")){
             response = http:ClientConnector.delete(awsEP, requestURI, requestMsg);
         }
-
         return response;
-
     }
-
 }
-
-
 
 function generateSignature(message msg, string accessKeyId, string secretAccessKey, string region, string serviceName, string terminationString, string httpMethod, string requestURI, string payload) (message) throws exception {
 
@@ -313,7 +333,6 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     return msg;
 }
 
-
 function main (string[] args) {
 
     ClientConnector s3Connector;
@@ -323,36 +342,36 @@ function main (string[] args) {
     string s3StringResponse;
 
     if (args[0]=="getBucketList") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "s3", "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
         s3Response = ClientConnector.getBucketList(s3Connector);
 
     } else if (args[0]=="getObjectList") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "s3", "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
         string bucketName = args[4];
         s3Response = ClientConnector.getObjectList(s3Connector, bucketName);
 
     } else if (args[0]=="createBucket") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "s3", "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
         string bucketName = args[4];
         s3Response = ClientConnector.createBucket(s3Connector, bucketName);
 
     } else if (args[0]=="deleteBucket") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "s3", "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
         string bucketName = args[4];
         s3Response = ClientConnector.deleteBucket(s3Connector, bucketName);
 
     } else if (args[0]=="getObject") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "s3", "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
         string bucketName = args[4];
         s3Response = ClientConnector.getObject(s3Connector, bucketName, "test.txt");
 
     } else if (args[0]=="deleteObject") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "s3", "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
         string bucketName = args[4];
         s3Response = ClientConnector.deleteObject(s3Connector, bucketName, "test.txt");
 
     } else if (args[0]=="putObject") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "s3", "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
         string bucketName = args[4];
         s3Response = ClientConnector.putObject(s3Connector, bucketName, "test.txt", "Sample Content");
 
