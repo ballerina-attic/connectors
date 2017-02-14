@@ -1,4 +1,4 @@
-package org.wso2.ballerina.connectors;
+package org.wso2.ballerina.connectors.amazonLambda;
 
 import ballerina.lang.system;
 import ballerina.lang.json;
@@ -8,13 +8,19 @@ import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.util;
 
-connector AmazonLambda(string accessKeyId, string secretAccessKey,string region, string serviceName,
-                                        string terminationString) {
+@Description("Twitter client connector")
+@Param("accessKeyId: The access key ID in amazon account security credentials")
+@Param("secretAccessKey: The secret access key in amazon account security credentials")
+@Param("region: The region of the the amazon account server.")
+connector ClientConnector(string accessKeyId, string secretAccessKey,string region) {
 
     string endpoint = "https://lambda." + region + ".amazonaws.com";
     AmazonAuthConnector amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "lambda", "aws4_request", endpoint);
 
-    action invokeFunction(AmazonLambda amz, string arn) (message) throws exception {
+    @Description("Invokes a amazon lambda function")
+    @Param("arn: The amazon resource name of the function to invoke")
+    @Return("response message")
+    action invokeFunction(Clientconnector amz, string arn) (message) throws exception {
 
         string signature;
         string httpMethod;
@@ -33,7 +39,10 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
         return response;
     }
 
-    action deleteFunction(AmazonLambda amz, string arn) (message) throws exception {
+    @Description("Deletes a lambda function")
+    @Param("arn: The amazon resource name of the function to invoke")
+    @Return("response message")
+    action deleteFunction(Clientconnector amz, string arn) (message) throws exception {
 
         string signature;
         string httpMethod;
@@ -54,7 +63,9 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
         return response;
     }
 
-    action getAccountDetails(AmazonLambda amz) (message) throws exception {
+    @Description("Returns the users' account information")
+    @Return("response message")
+    action getAccountDetails(Clientconnector amz) (message) throws exception {
 
         string signature;
         string httpMethod;
@@ -75,7 +86,10 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
         return response;
     }
 
-    action getFunction(AmazonLambda amz, string arn) (message) throws exception {
+    @Description("Gets the configuration information of a lambda function")
+    @Param("arn: The amazon resource name of the function to invoke")
+    @Return("response message")
+    action getFunction(Clientconnector amz, string arn) (message) throws exception {
 
         string signature;
         string httpMethod;
@@ -96,7 +110,10 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
         return response;
     }
 
-    action listFunctions(AmazonLambda amz) (message) throws exception {
+    @Description("Gets the list of functions and their configuration information")
+    @Param("arn: The amazon resource name of the function to invoke")
+    @Return("response message")
+    action listFunctions(Clientconnector amz) (message) throws exception {
 
         string signature;
         string httpMethod;
@@ -115,7 +132,9 @@ connector AmazonLambda(string accessKeyId, string secretAccessKey,string region,
         return response;
     }
 
-    action getFunctionVersions(AmazonLambda amz, string arn) (message) throws exception {
+    @Description("Lists all versions of a amazon lambda function")
+    @Return("response message")
+    action getFunctionVersions(Clientconnector amz, string arn) (message) throws exception {
 
         string signature;
         string httpMethod;
@@ -162,37 +181,37 @@ connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
 
 function main (string[] args) {
 
-    AmazonLambda amzLamConnector = create AmazonLambda(args[1], args[2], args[3], "lambda", "aws4_request");
+    Clientconnector amzLamConnector = create Clientconnector(args[1], args[2], args[3]);
     message lambdaResponse;
     json lambdaJSONResponse;
 
     if (args[0] == "invokeFunction"){
-        lambdaResponse = AmazonLambda.invokeFunction(amzLamConnector, args[4]);
+        lambdaResponse = Clientconnector.invokeFunction(amzLamConnector, args[4]);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "deleteFunction"){
-            lambdaResponse = AmazonLambda.deleteFunction(amzLamConnector, args[4]);
+            lambdaResponse = Clientconnector.deleteFunction(amzLamConnector, args[4]);
             lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
             system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "listFunctions"){
-        lambdaResponse = AmazonLambda.listFunctions(amzLamConnector);
+        lambdaResponse = Clientconnector.listFunctions(amzLamConnector);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "listFunctionVersions"){
-        lambdaResponse = AmazonLambda.getFunctionVersions(amzLamConnector, args[4]);
+        lambdaResponse = Clientconnector.getFunctionVersions(amzLamConnector, args[4]);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "getFunction"){
-        lambdaResponse = AmazonLambda.getFunction(amzLamConnector, args[4]);
+        lambdaResponse = Clientconnector.getFunction(amzLamConnector, args[4]);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "getAccountDetails"){
-        lambdaResponse = AmazonLambda.getAccountDetails(amzLamConnector);
+        lambdaResponse = Clientconnector.getAccountDetails(amzLamConnector);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
