@@ -26,10 +26,10 @@ How to run this sample
 connectors:etcd etcdConnector = new connectors:etcd("http://127.0.0.1:2379", "root", "test123", "v2");
  
 
-`etcd Server URL = "http://127.0.0.1:2379"
- etcd user = "root"
- etcd password = "test123"
- etcd API version = "v2"
+` * etcd Server URL = "http://127.0.0.1:2379"
+  * etcd user = "root"
+  * etcd password = "test123"
+  * etcd API version = "v2"
 `
 
 Commands to trigger actions: 
