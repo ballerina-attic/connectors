@@ -34,22 +34,28 @@ connectors:etcd etcdConnector = new connectors:etcd("http://127.0.0.1:2379", "ro
 
 Commands to trigger actions: 
 
-setKeyValue	
+###setKeyValue	
+
 `bin$ ./ballerina run ../connectors/etcd/src/etcd.bal setKeyValue <key> <value>`
 
-getValue
+###getValue
+
 `bin$ ./ballerina run ../connectors/etcd/src/etcd.bal getValue <key>`
 
-updateValue
+###updateValue
+
 `bin$ ./ballerina run ../connectors/etcd/src/etcd.bal updateValue <key> <value>`
 
-deleteKey
+###deleteKey
+
 `bin$ ./ballerina run ../connectors/etcd/src/etcd.bal deleteKey <key>`
 
-createDir
+###createDir
+
 `bin$ ./ballerina run ../connectors/etcd/src/etcd.bal createDir <dir>`
 
-listDir
+###listDir
+
 `bin$ ./ballerina run ../connectors/etcd/src/etcd.bal listDir <dir> [recuresive=true]`
 
 deleteDir
