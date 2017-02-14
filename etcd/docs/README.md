@@ -57,5 +57,6 @@ Commands to trigger actions:
 
 `bin$ ./ballerina run ../connectors/etcd/src/etcd.bal listDir <dir> [recuresive=true]`
 
-deleteDir
+###deleteDir
+
 `bin$ ./ballerina run ../connectors/etcd/src/etcd.bal deleteDir <dir> [recursive=true]`
