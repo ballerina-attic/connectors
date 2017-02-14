@@ -97,19 +97,19 @@ The getTopTrendsByPlace action allows to retrieve the top topics for a specified
 - Place the twitter directory into {BALLERINA_HOME}/samples.
 - To run the following commands to execute the relevant action.
   1. tweet:   
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal tweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <message>`
+  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal tweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <message>`
   2. search:    
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal search <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <query>`
+  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal search <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <query>`
   3. retweet: 
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal retweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
+  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal retweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   4. unretweet: 
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal unretweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
+  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal unretweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   5. showStatus: 
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal showStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
+  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal showStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   6. destroyStatus:
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal destroyStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
+  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal destroyStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   7. getClosestTrendLocations:
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal getClosestTrendLocations <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <latitude> <longitude>`
+  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal getClosestTrendLocations <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <latitude> <longitude>`
   8. getTopTrendsByPlace:
-  `bin$ ./ballerina run ../samples/twitter/src/twitterConnector.bal getTopTrendsByPlace <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <locationId>`
+  `bin$ ./ballerina run ../samples/twitter/src/ClientConnector.bal getTopTrendsByPlace <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <locationId>`
 
