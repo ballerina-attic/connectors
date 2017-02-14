@@ -7,10 +7,18 @@ import ballerina.lang.system;
 import ballerina.net.http;
 import ballerina.util;
 
+@Description("etcd client connector")
+@Param("etcdURL : etcd Server URL")
+@Param("username : etcd user")
+@Param("password : etcd user's password")
+@Param("apiVersion : etcd API version")
 connector ClientConnector (string etcdURL, string username, string password, string apiVersion) {
 
     http:ClientConnector etcdEP = create http:ClientConnector(etcdURL);
 
+    @Description("Get the value for given key")
+    @Param("key: key to get the value")
+    @Return("response object")
     action getValue(ClientConnector t, string key) (message) {
         
 	string encodedBasicAuthHeaderValue;
@@ -27,6 +35,10 @@ connector ClientConnector (string etcdURL, string username, string password, str
         return response;
     }
 
+    @Description("Set/Store key/value pair")
+    @Param("key: key to set the value")
+    @Param("value: value for the key")
+    @Return("response object")
     action setKeyValue(ClientConnector t, string key, string value) (message) {
 	
 	string encodedBasicAuthHeaderValue;
@@ -45,6 +57,10 @@ connector ClientConnector (string etcdURL, string username, string password, str
 	return response;
     }
 
+    @Description("Update the value for given key")
+    @Param("key: key to update the value")
+    @Param("value: value for the key")
+    @Return("response object")
     action updateValue(ClientConnector t, string key, string value) (message) {
 	
 	string encodedBasicAuthHeaderValue;
@@ -63,6 +79,9 @@ connector ClientConnector (string etcdURL, string username, string password, str
 	return response;
     }
 
+    @Description("Delete the key")
+    @Param("key: key to delete")
+    @Return("response object")
     action deleteKey(ClientConnector t, string key) (message) {
 	
 	string encodedBasicAuthHeaderValue;
@@ -79,6 +98,9 @@ connector ClientConnector (string etcdURL, string username, string password, str
 	return response;
      }
 
+    @Description("Create a directory")
+    @Param("dir: name of the directory")
+    @Return("response object")
     action createDir(ClientConnector t, string dir) (message) {
 	
 	string encodedBasicAuthHeaderValue;
@@ -95,6 +117,10 @@ connector ClientConnector (string etcdURL, string username, string password, str
 	return response;
     }
 
+    @Description("List directory")
+    @Param("dir: name of the directory")
+    @Param("recursive: recursive=true OR recursive=false")
+    @Return("response object")
     action listDir(ClientConnector t, string dir, string recursive) (message) {
 	
 	string encodedBasicAuthHeaderValue;
@@ -111,6 +137,10 @@ connector ClientConnector (string etcdURL, string username, string password, str
 	return response;
     }
     
+    @Description("Delete directory")
+    @Param("dir: name of the directory")
+    @Param("recursive: recursive=true OR recursive=false")
+    @Return("response object")
     action deleteDir(ClientConnector t, string dir, string recursive) (message) {
 	
 	string encodedBasicAuthHeaderValue;
@@ -132,10 +162,10 @@ function main (string[] args) {
 
 
     string etcdURL = "http://127.0.0.1:2379";
-    string user = "root";
+    string username = "root";
     string password = "test123";
     string apiVersion = "v2";
-    ClientConnector etcdConnector = create ClientConnector(etcdURL, user, password, apiVersion);
+    ClientConnector etcdConnector = create ClientConnector(etcdURL, username, password, apiVersion);
     message etcdResponse;
 
     // add key/value to the etcd
