@@ -6,10 +6,15 @@ import ballerina.lang.message;
 import ballerina.lang.system;
 import ballerina.net.http;
 
+@doc:Description("LinkedIn client connector")
+@doc:Param("accessToken: The access token of the LinkedIn Application")
 connector ClientConnector (string accessToken) {
 
     http:ClientConnector linkedInEP = create http:ClientConnector("https://api.linkedin.com");
 
+    @doc:Description("Get Profile Information")
+    @doc:Param("format: Format of the response expected (json/xml)")
+    @doc:Return("response object")
     action getProfileInfo(ClientConnector t, string format) (message) {
 
         string getProfileInfoPath;
@@ -24,6 +29,10 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Get Company Page Information")
+    @doc:Param("companyId: ID of the relevant company")
+    @doc:Param("format: Format of the response expected (json/xml)")
+    @doc:Return("response object")
     action getCompanyInfo(ClientConnector t, string companyId, string format) (message) {
 
         string getProfileInfoPath;
@@ -38,6 +47,10 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Check if Sharing is enabled for a company page")
+    @doc:Param("companyId: ID of the relevant company")
+    @doc:Param("format: Format of the response expected (json/xml)")
+    @doc:Return("response object")
     action isCompanyShareEnabled(ClientConnector t, string companyId, string format) (message) {
 
         string getProfileInfoPath;
@@ -52,6 +65,10 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Check if the user is an admin of Company Page")
+    @doc:Param("companyId: ID of the relevant company")
+    @doc:Param("format: Format of the response expected (json/xml)")
+    @doc:Return("response object")
     action isMemberAdmin(ClientConnector t, string companyId, string format) (message) {
 
         string getProfileInfoPath;
@@ -66,6 +83,9 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Post on the profile of the authenticated user")
+    @doc:Param("payload: json payload containing the post that needed to be shared")
+    @doc:Return("response object")
     action profileShare(ClientConnector t, json payload) (message) {
 
         string profileSharePath;
@@ -82,6 +102,9 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Post on the profile of the authenticated user")
+    @doc:Param("payload: xml payload containing the post that needed to be shared")
+    @doc:Return("response object")
     action profileShare(ClientConnector t, xml payload) (message) {
 
         string profileSharePath;
@@ -98,6 +121,10 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Post on a Company Page")
+    @doc:Param("companyId: ID of the relevant company")
+    @doc:Param("payload: json payload containing the post that needed to be shared")
+    @doc:Return("response object")
     action companyShare(ClientConnector t, string companyId, json payload) (message) {
 
         string companySharePath;
@@ -114,6 +141,10 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
+    @doc:Description("Post on a Company Page")
+    @doc:Param("companyId: ID of the relevant company")
+    @doc:Param("payload: xml payload containing the post that needed to be shared")
+    @doc:Return("response object")
     action companyShare(ClientConnector t, string companyId, xml payload) (message) {
 
         string companySharePath;
