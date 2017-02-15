@@ -129,7 +129,7 @@
                         
                              
                         <h3 id="ClientConnector">
-                            connector ClientConnector (<a href="#string">string</a> accessKeyId, <a href="#string">string</a> secretAccessKey, <a href="#string">string</a> region, <a href="#string">string</a> terminationString)
+                            connector ClientConnector (<a href="#string">string</a> accessKeyId, <a href="#string">string</a> secretAccessKey, <a href="#string">string</a> region)
                         </h3>
                         <p>Amazon S3 client connector</p>
                         <p>
@@ -149,10 +149,6 @@
                                 
                                 <tr>
                                     <td>region</td><td><a href="">string</a></td><td>The region to which the request is made</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td>terminationString</td><td><a href="">string</a></td><td>The termination string of the request</td>
                                 </tr>
                                 
                             </table>
@@ -189,7 +185,7 @@
                         </p>
                           
                         <h3 id="getObjectListClientConnector">action getObjectList()</h3>
-                        <p>Get List of Buckets</p>
+                        <p>Get List of Objects in a bucket</p>
                         <p>
                             <b>Parameters:</b>
                             <table>
@@ -524,7 +520,7 @@
                             <span class="opener">Connectors</span>
                             <ul>
                                 
-                                <li><a href="#ClientConnector ">ClientConnector (string accessKeyId, string secretAccessKey, string region, string terminationString)</a>
+                                <li><a href="#ClientConnector ">ClientConnector (string accessKeyId, string secretAccessKey, string region)</a>
                                     <ul>
                                         
                                         <li><a href="#getBucketListClientConnector">getBucketList(org.wso2.ballerina.connectors.amazonS3:ClientConnector s3Connector)</a></li>

@@ -11,9 +11,7 @@ import ballerina.util;
 @doc:Param("accessKeyId: The access key ID of the Amazon Account")
 @doc:Param("secretAccessKey: The secret access key of the Amazon Account")
 @doc:Param("region: The region to which the request is made")
-@doc:Param("terminationString: The termination string of the request")
-connector ClientConnector(string accessKeyId, string secretAccessKey,
-                string region, string terminationString) {
+connector ClientConnector(string accessKeyId, string secretAccessKey, string region) {
 
     AmazonAuthConnector amazonAuthConnector;
 
@@ -33,15 +31,17 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             requestURI = "/";
             host = "s3.amazonaws.com:443";
             endpoint = "https://"+host;
-            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request", endpoint);
+            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request",
+             endpoint);
             message:setHeader(requestMsg, "Host", host);
 	        message:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI,
+            "UNSIGNED-PAYLOAD");
 
             return response;
     	}
 
-    @doc:Description("Get List of Buckets")
+    @doc:Description("Get List of Objects in a bucket")
     @doc:Param("bucketName: The relevant bucket name")
     @doc:Return("response object")
 	action getObjectList(ClientConnector s3Connector, string bucketName) (message) throws exception {
@@ -58,11 +58,13 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             requestURI = "/";
             host = bucketName + ".s3.amazonaws.com:443";
             endpoint = "https://"+host;
-            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request", endpoint);
+            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request",
+             endpoint);
 
             message:setHeader(requestMsg, "Host", host);
             message:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI,
+             "UNSIGNED-PAYLOAD");
 
             return response;
     	}
@@ -84,10 +86,12 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             requestURI = "/";
             host = bucketName + ".s3.amazonaws.com:443";
             endpoint = "https://"+host;
-            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request", endpoint);
+            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request",
+             endpoint);
             message:setHeader(requestMsg, "Host", host);
             message:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI,
+             "UNSIGNED-PAYLOAD");
 
             return response;
     	}
@@ -109,10 +113,12 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             requestURI = "/";
             host = bucketName + ".s3.amazonaws.com:443";
             endpoint = "https://"+host;
-            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request", endpoint);
+            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request",
+             endpoint);
             message:setHeader(requestMsg, "Host", host);
             message:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI,
+             "UNSIGNED-PAYLOAD");
 
             return response;
     	}
@@ -135,10 +141,12 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             requestURI = "/" + objectName;
             host = bucketName + ".s3.amazonaws.com:443";
             endpoint = "https://"+host;
-            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request", endpoint);
+            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request",
+             endpoint);
             message:setHeader(requestMsg, "Host", host);
             message:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI,
+             "UNSIGNED-PAYLOAD");
 
             return response;
     	}
@@ -161,10 +169,12 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             requestURI = "/" + objectName;
             host = bucketName + ".s3.amazonaws.com:443";
             endpoint = "https://"+host;
-            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request", endpoint);
+            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request",
+             endpoint);
             message:setHeader(requestMsg, "Host", host);
             message:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI,
+             "UNSIGNED-PAYLOAD");
 
             return response;
     	}
@@ -174,9 +184,9 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
     @doc:Param("objectName: The relevant object name")
     @doc:Param("payload: The file that needed to be uploaded")
     @doc:Return("response object")
-	action putObject(ClientConnector s3Connector, string bucketName, string objectName, string payload) (message) throws exception {
+	action putObject(ClientConnector s3Connector, string bucketName, string objectName, string payload) (message)
+	 throws exception {
 
-            string signature;
             string httpMethod;
             string requestURI;
             string host;
@@ -187,12 +197,14 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
             httpMethod = "PUT";
             requestURI = "/" + objectName;
             host = bucketName + ".s3.amazonaws.com:443";
-            endpoint = "https://"+host;
-            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request", endpoint);
+            endpoint = "https://" + host;
+            amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "s3", "aws4_request",
+             endpoint);
             message:setStringPayload(requestMsg, payload);
             message:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
             message:setHeader(requestMsg, "Host", host);
-            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+            response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI,
+             "UNSIGNED-PAYLOAD");
 
             return response;
     	}
@@ -206,7 +218,7 @@ connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
 
         message response;
 
-        requestMsg = generateSignature(requestMsg, accessKeyId, secretAccessKey, region, serviceName, terminationString, httpMethod, requestURI, "");
+        requestMsg = generateSignature(requestMsg, accessKeyId, secretAccessKey, region, serviceName, terminationString, httpMethod, requestURI, payload);
 
         if(string:equalsIgnoreCase(httpMethod,"POST")){
             response = http:ClientConnector.post(awsEP, requestURI, requestMsg);
@@ -221,7 +233,8 @@ connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
     }
 }
 
-function generateSignature(message msg, string accessKeyId, string secretAccessKey, string region, string serviceName, string terminationString, string httpMethod, string requestURI, string payload) (message) throws exception {
+function generateSignature(message msg, string accessKeyId, string secretAccessKey, string region, string serviceName,
+    string terminationString, string httpMethod, string requestURI, string payload) (message) throws exception {
 
     string canonicalRequest;
     string canonicalQueryString;
@@ -237,12 +250,12 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     string signedHeaders;
     string requestPayload;
     string signingKey;
+
     algorithm = "SHA256";
 
     amzDate = system:getDateFormat("yyyyMMdd'T'HHmmss'Z'");
     shortDate = system:getDateFormat("yyyyMMdd");
     message:setHeader(msg, "X-Amz-Date", amzDate);
-    message:setHeader(msg, "Content-Type", "text/plain");
     canonicalRequest = httpMethod;
     canonicalRequest = canonicalRequest + "\n";
     canonicalRequest = canonicalRequest + string:replaceAll(uri:encode(requestURI), "%2F", "/");
@@ -250,7 +263,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     canonicalQueryString = "";
     canonicalRequest = canonicalRequest + canonicalQueryString;
     canonicalRequest = canonicalRequest + "\n";
-    if(payload != ""){
+    if(!(payload == "" || payload == "UNSIGNED-PAYLOAD")){
         canonicalHeaders = canonicalHeaders + string:toLowerCase("Content-Type");
         canonicalHeaders = canonicalHeaders + ":";
         canonicalHeaders = canonicalHeaders + (message:getHeader(msg, string:toLowerCase("Content-Type")));
@@ -285,9 +298,16 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     signedHeaders = signedHeader;
     canonicalRequest = canonicalRequest + signedHeaders;
     canonicalRequest = canonicalRequest + "\n";
-    payloadBuilder = "UNSIGNED-PAYLOAD";
+    payloadBuilder = payload;
     requestPayload = "";
     requestPayload = payloadBuilder;
+
+    if (payloadBuilder == "UNSIGNED-PAYLOAD") {
+        requestPayload = payloadBuilder;
+    } else {
+        requestPayload = string:toLowerCase(util:getHash(payloadBuilder, algorithm));
+    }
+
     canonicalRequest = canonicalRequest + requestPayload;
 
     //Start creating the string to sign
@@ -305,7 +325,10 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     stringToSign = stringToSign + terminationString;
     stringToSign = stringToSign + "\n";
     stringToSign = stringToSign + string:toLowerCase(util:getHash(canonicalRequest, algorithm));
-    signingKey =  util:getHmacFromBase64( terminationString,util:getHmacFromBase64( serviceName,util:getHmacFromBase64( region,util:getHmacFromBase64(shortDate,util:base64encode("AWS4" + secretAccessKey), algorithm), algorithm), algorithm), algorithm);
+
+    signingKey =  util:getHmacFromBase64( terminationString,util:getHmacFromBase64( serviceName,
+    util:getHmacFromBase64( region,util:getHmacFromBase64(shortDate,util:base64encode("AWS4" + secretAccessKey),
+    algorithm), algorithm), algorithm), algorithm);
 
     authHeader = authHeader + ("AWS4-HMAC-SHA256");
     authHeader = authHeader + (" ");
@@ -327,8 +350,8 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     authHeader = authHeader + (",");
     authHeader = authHeader + (" Signature");
     authHeader = authHeader + ("=");
-    authHeader = authHeader + string:toLowerCase(util:getHmacBase16(stringToSign, signingKey, algorithm));
-
+    authHeader = authHeader + string:toLowerCase(util:base64ToBase16Encode(util:getHmacFromBase64(stringToSign,
+     signingKey, algorithm)));
     message:setHeader(msg, "Authorization", authHeader);
     return msg;
 }
@@ -342,36 +365,36 @@ function main (string[] args) {
     string s3StringResponse;
 
     if (args[0]=="getBucketList") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3]);
         s3Response = ClientConnector.getBucketList(s3Connector);
 
     } else if (args[0]=="getObjectList") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3]);
         string bucketName = args[4];
         s3Response = ClientConnector.getObjectList(s3Connector, bucketName);
 
     } else if (args[0]=="createBucket") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3]);
         string bucketName = args[4];
         s3Response = ClientConnector.createBucket(s3Connector, bucketName);
 
     } else if (args[0]=="deleteBucket") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3]);
         string bucketName = args[4];
         s3Response = ClientConnector.deleteBucket(s3Connector, bucketName);
 
     } else if (args[0]=="getObject") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3]);
         string bucketName = args[4];
         s3Response = ClientConnector.getObject(s3Connector, bucketName, "test.txt");
 
     } else if (args[0]=="deleteObject") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3]);
         string bucketName = args[4];
         s3Response = ClientConnector.deleteObject(s3Connector, bucketName, "test.txt");
 
     } else if (args[0]=="putObject") {
-        s3Connector = create ClientConnector(args[1], args[2], args[3], "aws4_request");
+        s3Connector = create ClientConnector(args[1], args[2], args[3]);
         string bucketName = args[4];
         s3Response = ClientConnector.putObject(s3Connector, bucketName, "test.txt", "Sample Content");
 
