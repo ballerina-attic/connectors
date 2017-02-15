@@ -8,21 +8,21 @@ import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.util;
 
-@Description("Twitter client connector")
-@Param("accessKeyId: The access key ID in amazon account security credentials")
-@Param("secretAccessKey: The secret access key in amazon account security credentials")
-@Param("region: The region of the the amazon account server.")
+@doc:Description("Amazon Lambda client connector")
+@doc:Param("accessKeyId: The access key ID in amazon account security credentials")
+@doc:Param("secretAccessKey: The secret access key in amazon account security credentials")
+@doc:Param("region: The region of the the amazon account server.")
 connector ClientConnector(string accessKeyId, string secretAccessKey,string region) {
 
     string endpoint = "https://lambda." + region + ".amazonaws.com";
-    AmazonAuthConnector amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "lambda", "aws4_request", endpoint);
+    AmazonAuthConnector amazonAuthConnector = create AmazonAuthConnector(accessKeyId, secretAccessKey, region, "lambda",
+     "aws4_request", endpoint);
 
-    @Description("Invokes a amazon lambda function")
-    @Param("arn: The amazon resource name of the function to invoke")
-    @Return("response message")
-    action invokeFunction(Clientconnector amz, string arn) (message) throws exception {
+    @doc:Description("Invokes a amazon lambda function")
+    @doc:Param("arn: The amazon resource name of the function to invoke")
+    @doc:Return("response message")
+    action invokeFunction(ClientConnector amz, string arn) (message) throws exception {
 
-        string signature;
         string httpMethod;
         string requestURI;
     	string host;
@@ -39,12 +39,11 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         return response;
     }
 
-    @Description("Deletes a lambda function")
-    @Param("arn: The amazon resource name of the function to invoke")
-    @Return("response message")
-    action deleteFunction(Clientconnector amz, string arn) (message) throws exception {
+    @doc:Description("Deletes a lambda function")
+    @doc:Param("arn: The amazon resource name of the function to invoke")
+    @doc:Return("response message")
+    action deleteFunction(ClientConnector amz, string arn) (message) throws exception {
 
-        string signature;
         string httpMethod;
         string requestURI;
     	string host;
@@ -63,11 +62,10 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         return response;
     }
 
-    @Description("Returns the users' account information")
-    @Return("response message")
-    action getAccountDetails(Clientconnector amz) (message) throws exception {
+    @doc:Description("Returns the users' account information")
+    @doc:Return("response message")
+    action getAccountDetails(ClientConnector amz) (message) throws exception {
 
-        string signature;
         string httpMethod;
         string requestURI;
     	string host;
@@ -86,12 +84,11 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         return response;
     }
 
-    @Description("Gets the configuration information of a lambda function")
-    @Param("arn: The amazon resource name of the function to invoke")
-    @Return("response message")
-    action getFunction(Clientconnector amz, string arn) (message) throws exception {
+    @doc:Description("Gets the configuration information of a lambda function")
+    @doc:Param("arn: The amazon resource name of the function to invoke")
+    @doc:Return("response message")
+    action getFunction(ClientConnector amz, string arn) (message) throws exception {
 
-        string signature;
         string httpMethod;
         string requestURI;
     	string host;
@@ -110,12 +107,11 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         return response;
     }
 
-    @Description("Gets the list of functions and their configuration information")
-    @Param("arn: The amazon resource name of the function to invoke")
-    @Return("response message")
-    action listFunctions(Clientconnector amz) (message) throws exception {
+    @doc:Description("Gets the list of functions and their configuration information")
+    @doc:Param("arn: The amazon resource name of the function to invoke")
+    @doc:Return("response message")
+    action listFunctions(ClientConnector amz) (message) throws exception {
 
-        string signature;
         string httpMethod;
         string requestURI;
     	string host;
@@ -132,11 +128,10 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         return response;
     }
 
-    @Description("Lists all versions of a amazon lambda function")
-    @Return("response message")
-    action getFunctionVersions(Clientconnector amz, string arn) (message) throws exception {
+    @doc:Description("Lists all versions of a amazon lambda function")
+    @doc:Return("response message")
+    action getFunctionVersions(ClientConnector amz, string arn) (message) throws exception {
 
-        string signature;
         string httpMethod;
         string requestURI;
     	string host;
@@ -159,11 +154,13 @@ connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
 
     http:ClientConnector awsEP = create http:ClientConnector(endpoint);
 
-    action req(AmazonAuthConnector amz, message requestMsg, string httpMethod, string requestURI, string payload) (message) throws exception {
+    action req(AmazonAuthConnector amz, message requestMsg, string httpMethod, string requestURI, string payload)
+     (message) throws exception {
 
         message response;
 
-        requestMsg = generateSignature(requestMsg, accessKeyId, secretAccessKey, region, serviceName, terminationString, httpMethod, requestURI, "");
+        requestMsg = generateSignature(requestMsg, accessKeyId, secretAccessKey, region, serviceName, terminationString,
+         httpMethod, requestURI, "");
 
         if(string:equalsIgnoreCase(httpMethod,"POST")){
             response = http:ClientConnector.post(awsEP, requestURI, requestMsg);
@@ -333,7 +330,8 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     authHeader = authHeader + (",");
     authHeader = authHeader + (" Signature");
     authHeader = authHeader + ("=");
-    authHeader = authHeader + string:toLowerCase(util:base64ToBase16Encode(util:getHmacFromBase64(stringToSign, signingKey, algorithm)));
+    authHeader = authHeader + string:toLowerCase(util:base64ToBase16Encode(util:getHmacFromBase64(stringToSign,
+     signingKey, algorithm)));
 
     message:setHeader(msg, "Authorization", authHeader);
     return msg;
