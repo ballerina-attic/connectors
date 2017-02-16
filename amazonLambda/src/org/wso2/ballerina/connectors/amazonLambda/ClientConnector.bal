@@ -178,37 +178,37 @@ connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
 
 function main (string[] args) {
 
-    Clientconnector amzLamConnector = create Clientconnector(args[1], args[2], args[3]);
+    ClientConnector amzLamConnector = create ClientConnector(args[1], args[2], args[3]);
     message lambdaResponse;
     json lambdaJSONResponse;
 
     if (args[0] == "invokeFunction"){
-        lambdaResponse = Clientconnector.invokeFunction(amzLamConnector, args[4]);
+        lambdaResponse = ClientConnector.invokeFunction(amzLamConnector, args[4]);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "deleteFunction"){
-            lambdaResponse = Clientconnector.deleteFunction(amzLamConnector, args[4]);
+            lambdaResponse = ClientConnector.deleteFunction(amzLamConnector, args[4]);
             lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
             system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "listFunctions"){
-        lambdaResponse = Clientconnector.listFunctions(amzLamConnector);
+        lambdaResponse = ClientConnector.listFunctions(amzLamConnector);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "listFunctionVersions"){
-        lambdaResponse = Clientconnector.getFunctionVersions(amzLamConnector, args[4]);
+        lambdaResponse = ClientConnector.getFunctionVersions(amzLamConnector, args[4]);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "getFunction"){
-        lambdaResponse = Clientconnector.getFunction(amzLamConnector, args[4]);
+        lambdaResponse = ClientConnector.getFunction(amzLamConnector, args[4]);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
     if (args[0] == "getAccountDetails"){
-        lambdaResponse = Clientconnector.getAccountDetails(amzLamConnector);
+        lambdaResponse = ClientConnector.getAccountDetails(amzLamConnector);
         lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
         system:println(json:toString(lambdaJSONResponse));
     }
