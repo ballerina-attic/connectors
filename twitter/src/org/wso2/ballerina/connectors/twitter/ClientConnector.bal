@@ -1,12 +1,11 @@
 package org.wso2.ballerina.connectors.twitter;
 
-import ballerina.lang.array;
-import ballerina.lang.json;
-import ballerina.lang.map;
-import ballerina.lang.message;
-import ballerina.lang.string;
+import ballerina.lang.arrays;
+import ballerina.lang.maps;
+import ballerina.lang.messages;
+import ballerina.lang.strings;
 import ballerina.lang.system;
-import ballerina.net.http;
+import ballerina.net.http as http;
 import ballerina.net.uri;
 import ballerina.util;
 
@@ -144,7 +143,7 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         urlParams = urlParams + "&long=" + long;
         constructRequestHeaders(request, "GET", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
-        tweetPath = tweetPath + "?" + string:subString(urlParams, 1, string:length(urlParams));
+        tweetPath = tweetPath + "?" + strings:subString(urlParams, 1, strings:length(urlParams));
 
         message response = http:ClientConnector.get(tweeterEP, tweetPath, request);
 
@@ -179,7 +178,7 @@ function constructRequestHeaders(message request, string httpMethod, string serv
     string key;
     string value;
 
-    string timeStamp = string:valueOf(system:epochTime());
+    string timeStamp = strings:valueOf(system:epochTime());
     string nonceString = util:getRandomString();
     serviceEP = "https://api.twitter.com" + serviceEP;
 
@@ -190,15 +189,15 @@ function constructRequestHeaders(message request, string httpMethod, string serv
     parameters["oauth_token"] = accessToken;
     parameters["oauth_version"] = "1.0";
 
-    string[] parameterKeys = map:keys(parameters);
-    string[] sortedParameters = array:sort(parameterKeys);
-    while (index < array:length(sortedParameters)){
+    string[] parameterKeys = maps:keys(parameters);
+    string[] sortedParameters = arrays:sort(parameterKeys);
+    while (index < arrays:length(sortedParameters)){
         key =  sortedParameters[index];
         value = parameters[key];
         paramStr = paramStr + key + "=" + value + "&";
         index = index + 1;
     }
-    paramStr = string:subString(paramStr, 0, string:length(paramStr)-1);
+    paramStr = strings:subString(paramStr, 0, strings:length(paramStr)-1);
     string baseString = httpMethod + "&" + uri:encode(serviceEP) + "&" + uri:encode(paramStr);
     string keyStr = uri:encode(consumerSecret) + "&" + uri:encode(accessTokenSecret);
     string signature = util:getHmac(baseString, keyStr, "SHA1");
@@ -207,68 +206,5 @@ function constructRequestHeaders(message request, string httpMethod, string serv
                 "\",oauth_nonce=\"" + nonceString + "\",oauth_version=\"1.0\",oauth_signature=\"" +
                 uri:encode(signature) + "\",oauth_token=\"" + uri:encode(accessToken) + "\"";
 
-    message:setHeader(request, "Authorization", string:unescape(oauthHeaderString));
-}
-
-function main (string[] args) {
-
-    ClientConnector twitterConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
-    message tweetResponse;
-    json tweetJSONResponse;
-
-    if (args[0] == "tweet"){
-        tweetResponse = ClientConnector.tweet(twitterConnector, args[5]);
-
-        tweetJSONResponse = message:getJsonPayload(tweetResponse);
-        system:println(json:toString(tweetJSONResponse));
-    }
-
-    if (args[0] == "search"){
-        tweetResponse = ClientConnector.search(twitterConnector, args[5]);
-
-        tweetJSONResponse = message:getJsonPayload(tweetResponse);
-        system:println(json:toString(tweetJSONResponse));
-    }
-
-    if (args[0] == "retweet"){
-        tweetResponse = ClientConnector.retweet(twitterConnector, args[5]);
-
-        tweetJSONResponse = message:getJsonPayload(tweetResponse);
-        system:println(json:toString(tweetJSONResponse));
-    }
-
-    if (args[0] == "unretweet"){
-        tweetResponse = ClientConnector.unretweet(twitterConnector, args[5]);
-
-        tweetJSONResponse = message:getJsonPayload(tweetResponse);
-        system:println(json:toString(tweetJSONResponse));
-    }
-
-    if (args[0] == "showStatus"){
-        tweetResponse = ClientConnector.showStatus(twitterConnector, args[5]);
-
-        tweetJSONResponse = message:getJsonPayload(tweetResponse);
-        system:println(json:toString(tweetJSONResponse));
-    }
-
-    if (args[0] == "destroyStatus"){
-        tweetResponse = ClientConnector.destroyStatus(twitterConnector, args[5]);
-
-        tweetJSONResponse = message:getJsonPayload(tweetResponse);
-        system:println(json:toString(tweetJSONResponse));
-    }
-
-    if (args[0] == "getClosestTrendLocations"){
-        tweetResponse = ClientConnector.getClosestTrendLocations(twitterConnector, args[5], args[6]);
-
-        tweetJSONResponse = message:getJsonPayload(tweetResponse);
-        system:println(json:toString(tweetJSONResponse));
-    }
-
-    if (args[0] == "getTopTrendsByPlace"){
-        tweetResponse = ClientConnector.getTopTrendsByPlace(twitterConnector, args[5]);
-
-        tweetJSONResponse = message:getJsonPayload(tweetResponse);
-        system:println(json:toString(tweetJSONResponse));
-    }
+    messages:setHeader(request, "Authorization", strings:unescape(oauthHeaderString));
 }
