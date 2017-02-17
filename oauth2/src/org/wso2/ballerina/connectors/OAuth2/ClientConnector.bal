@@ -5,93 +5,94 @@ import ballerina.lang.messages;
 import ballerina.net.http;
 
 @doc:Description("OAuth2 client connector")
+@doc:Param("baseUrl: The endpoint base url")
 @doc:Param("accessToken: The access token of the account")
 @doc:Param("clientId: The client Id of the account")
 @doc:Param("clientSecret: The client secret of the account")
 @doc:Param("refreshToken: The refresh token of the account")
 @doc:Param("refreshTokenEP: The refresh token endpoint url")
-connector ClientConnector (string accessToken, string clientId, string clientSecret,
+connector ClientConnector (string baseUrl, string accessToken, string clientId, string clientSecret,
                                  string refreshToken, string refreshTokenEP) {
 
-    http:ClientConnector httpConnectorEP = create http:ClientConnector("");
+    http:ClientConnector httpConnectorEP = create http:ClientConnector(baseUrl);
 
     string accessTokenValue;
 
     @doc:Description("Get with OAuth2 authentication")
-    @doc:Param("url: The endpoint url")
+    @doc:Param("path: The endpoint path")
     @doc:Param("request: The request of the method")
     @doc:Return("response object")
-    action get (ClientConnector clientConnector, string url, message request) (message) {
+    action get (ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
-        response = http:ClientConnector.get(httpConnectorEP, url, request);
+        response = http:ClientConnector.get(httpConnectorEP, path, request);
 
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
-             response = http:ClientConnector.get(httpConnectorEP, url, request);
+             response = http:ClientConnector.get(httpConnectorEP, path, request);
         }
 
         return response;
     }
 
     @doc:Description("Post with OAuth2 authentication")
-    @doc:Param("url: The endpoint url")
+    @doc:Param("path: The endpoint path")
     @doc:Param("request: The request of the method")
     @doc:Return("response object")
-    action post (ClientConnector clientConnector, string url, message request) (message) {
+    action post (ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
-        response = http:ClientConnector.post(httpConnectorEP, url, request);
+        response = http:ClientConnector.post(httpConnectorEP, path, request);
 
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
              accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
-             response = http:ClientConnector.post(httpConnectorEP, url, request);
+             response = http:ClientConnector.post(httpConnectorEP, path, request);
         }
 
         return response;
     }
 
     @doc:Description("Put with OAuth2 authentication")
-    @doc:Param("url: The endpoint url")
+    @doc:Param("path: The endpoint path")
     @doc:Param("request: The request of the method")
     @doc:Return("response object")
-    action put (ClientConnector clientConnector, string url, message request) (message) {
+    action put (ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
-        response = http:ClientConnector.put(httpConnectorEP, url, request);
+        response = http:ClientConnector.put(httpConnectorEP, path, request);
 
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
-            response = http:ClientConnector.put(httpConnectorEP, url, request);
+            response = http:ClientConnector.put(httpConnectorEP, path, request);
         }
 
         return response;
     }
 
     @doc:Description("Delete with OAuth2 authentication")
-    @doc:Param("url: The endpoint url")
+    @doc:Param("path: The endpoint path")
     @doc:Param("request: The request of the method")
     @doc:Return("response object")
-    action delete (ClientConnector clientConnector, string url, message request) (message) {
+    action delete (ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
-        response = http:ClientConnector.delete(httpConnectorEP, url, request);
+        response = http:ClientConnector.delete(httpConnectorEP, path, request);
 
         if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
-            response = http:ClientConnector.delete(httpConnectorEP, url, request);
+            response = http:ClientConnector.delete(httpConnectorEP, path, request);
         }
 
         return response;
