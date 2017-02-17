@@ -2,7 +2,6 @@ package org.wso2.ballerina.connectors.soap;
 
 import ballerina.lang.message;
 import ballerina.net.http;
-import ballerina.lang.system;
 import ballerina.lang.xml;
 
 connector ClientConnector (string url) {

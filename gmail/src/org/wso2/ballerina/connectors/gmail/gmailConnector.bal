@@ -9,16 +9,16 @@ import ballerina.net.uri;
 import ballerina.util;
 
 @doc:Description("Gmail client connector")
-@doc:Param("baseURL: The base url of the Gmail API")
 @doc:Param("userId: The userId of the Gmail account which means the email id")
 @doc:Param("accessToken: The accessToken of the Gmail account to access the gmail REST API")
 @doc:Param("refreshToken: The refreshToken of the Gmail App to access the gmail REST API")
 @doc:Param("clientId: The clientId of the App to access the gmail REST API")
 @doc:Param("clientSecret: The clientSecret of the App to access the gmail REST API")
-connector ClientConnector (string baseURL, string userId, string accessToken, string refreshToken, string clientId,
+connector ClientConnector (string userId, string accessToken, string refreshToken, string clientId,
  string clientSecret) {
 
     string refreshTokenEP = "https://www.googleapis.com/oauth2/v3/token";
+    string baseURL = "https://www.googleapis.com/gmail";
 
     OAuth2:ClientConnector gmailEP = create OAuth2:ClientConnector(baseURL, accessToken, clientId, clientSecret,
     refreshToken, refreshTokenEP);

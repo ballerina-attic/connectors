@@ -1,4 +1,4 @@
-import org.wso2.ballerina.connectors.soap;
+package org.wso2.ballerina.connectors.soap;
 
 import ballerina.lang.xml;
 import ballerina.lang.system;

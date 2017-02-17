@@ -76,6 +76,11 @@
                 <directory>${connectors.doc.dir}</directory>
                 <targetPath>DOCS</targetPath>
             </resource>
+            <!-- copy the samples to the jar -->
+            <resource>
+                <directory>${connectors.samples.dir}</directory>
+                <targetPath>SAMPLES</targetPath>
+            </resource>
         </resources>
         <plugins>
             <!-- For creating the ballerina structure from connector structure -->
@@ -181,6 +186,55 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>copy-samples</id>
+
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${connectors.samples.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>basicAuth/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>etcd/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>facebook/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>gmail/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>linkedIn/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>medium/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>oauth2/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>soap/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>twitter/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <!-- For ballerina natives processing/validation -->
@@ -244,5 +298,6 @@
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
         <connectors.doc.dir>${basedir}/target/extra-docs</connectors.doc.dir>
+        <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
     </properties>
 </project>

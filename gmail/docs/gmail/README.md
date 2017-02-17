@@ -309,105 +309,105 @@ account's behalf. Do not share your access token, client  secret with anyone.
 If the template parameter is indicate as optional you must pass null as default value to run this
 action.
    1. getUserProfile  
-`bin$ ./ballerina run test.bal getUserProfile <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal getUserProfile <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>`
    2. createDraft  
-`bin$ ./ballerina run test.bal createDraft <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal createDraft  <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional>
 <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
    3. updateDraft  
-`bin$ ./ballerina run test.bal updateDraft <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal updateDraft <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <draftId:Required> <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional>
 <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
    4. readDraft  
-`bin$ ./ballerina run test.bal readDraft <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal readDraft <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> 
 <draftId:-Required> <format:-Optional>`
    5. listDrafts  
-`bin$ ./ballerina run test.bal listDrafts <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal listDrafts <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> 
 <includeSpamTrash> <maxResults> <pageToken> <q>`
    6. deleteDraft  
-`bin$ ./ballerina run test.bal deleteDraft <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal deleteDraft <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> 
 <draftId:-Required>`
    7. listHistory  
-`bin$ ./ballerina run test.bal listHistory <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal listHistory <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
  <labelId:-Optional> <maxResults:-Optional> <pageToken:-Optional>
 <startHistoryId:-Required>`
    8. createLabel  
-`bin$ ./ballerina run test.bal createLabel <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal createLabel <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <labelName:-Required> <messageListVisibility:-Required> <labelListVisibility:-Required>
 <types:-Optional> <messagesTotal:-Optional> <messagesUnread:-Optional>
 <threadsTotal:-Optional> <threadsUnread:-Optional>`
    9. deleteLabel  
-`bin$ ./ballerina run test.bal deleteLabel <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal deleteLabel <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <labelId:-Required>`
    10. listLabels  
-`bin$ ./ballerina run test.bal listLabels <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal listLabels <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>`
    11. updateLabel  
-`bin$ ./ballerina run test.bal updateLabel <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal updateLabel <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <labelId:-Required> <labelName:-Required> <messageListVisibility:-Required>
 <labelListVisibility:-Required> <types:-Optional> <messagesTotal:-Optional> <messagesUnread:-Optional>
 <threadsTotal:-Optional> <threadsUnread:-Optional>`
    12. readLabel  
-`bin$ ./ballerina run test.bal readLabel <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal readLabel <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <labelId:-Required>`
    13. readThread  
-`bin$ ./ballerina run test.bal readThread <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal readThread <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <threadId:-Required> <format> <metaDataHeaders>`
    14. listThreads  
-`bin$ ./ballerina run test.bal listThreads <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal listThreads <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <includeSpamTrash> <labelIds> <maxResults> <pageToken> <q>`
    15. deleteThread  
-`bin$ ./ballerina run test.bal deleteThread <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal deleteThread <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <threadId:-Required>`
    16. trashThread  
-`bin$ ./ballerina run test.bal trashThread <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal trashThread <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <threadId:-Required>`
    17. unTrashThread  
-`bin$ ./ballerina run test.bal unTrashThread <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal unTrashThread <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <threadId:-Required>`
    18. listMails  
-`bin$ ./ballerina run test.bal listMails <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal listMails <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <includeSpamTrash> <labelIds> <maxResults> <pageToken> <q>`
    19. sendMail  
-`bin$ ./ballerina run test.bal sendMail <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal sendMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional>
 <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
    20. modifyExistingMessage  
-`bin$ ./ballerina run test.bal modifyExistingMessage <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal modifyExistingMessage <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required> <addLabelIds:-Either addLabelIds or removeLabelIds is required>
 <removeLabelIds:- Either addLabelIds or removeLabelIds is required>`
    21. readMail  
-`bin$ ./ballerina run test.bal readMail <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal readMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required> <format> <metaDataHeaders>`
    22. deleteMail  
-`bin$ ./ballerina run test.bal deleteMail <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal deleteMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required>`
    23. trashMail  
-`bin$ ./ballerina run test.bal trashMail <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal trashMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required>`
    24. unTrashMail  
-`bin$ ./ballerina run test.bal unTrashMail <baseURL:-Required> <userId:-Required>
+`bin$ ./ballerina run test.bal unTrashMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required>`
