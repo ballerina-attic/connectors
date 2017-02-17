@@ -1,8 +1,7 @@
 package org.wso2.ballerina.connectors.OAuth2;
 
-import ballerina.lang.json;
-import ballerina.lang.message;
-import ballerina.lang.system;
+import ballerina.lang.jsonutils;
+import ballerina.lang.messages;
 import ballerina.net.http;
 
 @doc:Description("OAuth2 client connector")
@@ -105,7 +104,7 @@ function constructAuthHeader (message request, string accessTokenValue, string a
         accessTokenValue = accessToken;
     }
 
-    message:setHeader(request, "Authorization", "Bearer " + accessTokenValue);
+    messages:setHeader(request, "Authorization", "Bearer " + accessTokenValue);
 
     return accessTokenValue;
 }
@@ -126,25 +125,10 @@ function getAccessTokenFromRefreshToken (message request, string accessToken, st
     http:setContentLength(refreshTokenRequest, 0);
     refreshTokenResponse = http:ClientConnector.post(refreshTokenHTTPEP, accessTokenFromRefreshTokenReq,
                                                    refreshTokenRequest);
-    accessTokenFromRefreshTokenJSONResponse = message:getJsonPayload(refreshTokenResponse);
-    accessToken = json:getString(accessTokenFromRefreshTokenJSONResponse, "$.access_token");
+    accessTokenFromRefreshTokenJSONResponse = messages:getJsonPayload(refreshTokenResponse);
+    accessToken = jsonutils:getString(accessTokenFromRefreshTokenJSONResponse, "$.access_token");
 
-    message:setHeader(request, "Authorization", "Bearer " + accessToken);
+    messages:setHeader(request, "Authorization", "Bearer " + accessToken);
     return accessToken;
 
-}
-
-function main (string[] args) {
-
-    message request = {};
-    message userProfileResponse;
-    json userProfileJSONResponse;
-
-    ClientConnector clientConnector = create ClientConnector (args[1], args[2], args[3], args[4], args[5]);
-
-    if (args[0] == "get"){
-        userProfileResponse = ClientConnector.get(clientConnector, args[6], request);
-        userProfileJSONResponse = message:getJsonPayload(userProfileResponse);
-        system:println(json:toString(userProfileJSONResponse));
-    }
 }
