@@ -1,9 +1,9 @@
 package org.wso2.ballerina.connectors.amazonLambda;
 
 import ballerina.lang.system;
-import ballerina.lang.json;
-import ballerina.lang.message;
-import ballerina.lang.string;
+import ballerina.lang.jsonutils;
+import ballerina.lang.messages;
+import ballerina.lang.strings;
 import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.util;
@@ -33,7 +33,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         httpMethod = "POST";
         requestURI = "/2015-03-31/functions/" + arn + "/invocations";
 
-        message:setHeader(requestMsg, "Host", host);
+        messages:setHeader(requestMsg, "Host", host);
         response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
         return response;
@@ -56,7 +56,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         host = "lambda.us-east-1.amazonaws.com";
         endpoint = "https://lambda." + region + ".amazonaws.com";
 
-        message:setHeader(requestMsg, "Host", host);
+        messages:setHeader(requestMsg, "Host", host);
         response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
         return response;
@@ -78,7 +78,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         host = "lambda.us-east-1.amazonaws.com";
         endpoint = "https://lambda." + region + ".amazonaws.com";
 
-        message:setHeader(requestMsg, "Host", host);
+        messages:setHeader(requestMsg, "Host", host);
         response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
         return response;
@@ -101,7 +101,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         host = "lambda.us-east-1.amazonaws.com";
         endpoint = "https://lambda." + region + ".amazonaws.com";
 
-        message:setHeader(requestMsg, "Host", host);
+        messages:setHeader(requestMsg, "Host", host);
         response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
         return response;
@@ -122,7 +122,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         httpMethod = "GET";
         requestURI = "/2015-03-31/functions/";
 
-        message:setHeader(requestMsg, "Host", host);
+        messages:setHeader(requestMsg, "Host", host);
         response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
         return response;
@@ -142,7 +142,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         httpMethod = "GET";
         requestURI = "/2015-03-31/functions/" + arn + "/versions";
 
-        message:setHeader(requestMsg, "Host", host);
+        messages:setHeader(requestMsg, "Host", host);
         response = AmazonAuthConnector.req(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
 
         return response;
@@ -162,55 +162,17 @@ connector AmazonAuthConnector(string accessKeyId, string secretAccessKey,
         requestMsg = generateSignature(requestMsg, accessKeyId, secretAccessKey, region, serviceName, terminationString,
          httpMethod, requestURI, "");
 
-        if(string:equalsIgnoreCase(httpMethod,"POST")){
+        if(strings:equalsIgnoreCase(httpMethod,"POST")){
             response = http:ClientConnector.post(awsEP, requestURI, requestMsg);
-        }else if(string:equalsIgnoreCase(httpMethod,"GET")){
+        }else if(strings:equalsIgnoreCase(httpMethod,"GET")){
             response = http:ClientConnector.get(awsEP, requestURI, requestMsg);
-        }else if(string:equalsIgnoreCase(httpMethod,"PUT")){
+        }else if(strings:equalsIgnoreCase(httpMethod,"PUT")){
             response = http:ClientConnector.put(awsEP, requestURI, requestMsg);
-        }else if(string:equalsIgnoreCase(httpMethod,"DELETE")){
+        }else if(strings:equalsIgnoreCase(httpMethod,"DELETE")){
             response = http:ClientConnector.delete(awsEP, requestURI, requestMsg);
         }
 
         return response;
-    }
-}
-
-function main (string[] args) {
-
-    ClientConnector amzLamConnector = create ClientConnector(args[1], args[2], args[3]);
-    message lambdaResponse;
-    json lambdaJSONResponse;
-
-    if (args[0] == "invokeFunction"){
-        lambdaResponse = ClientConnector.invokeFunction(amzLamConnector, args[4]);
-        lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
-        system:println(json:toString(lambdaJSONResponse));
-    }
-    if (args[0] == "deleteFunction"){
-            lambdaResponse = ClientConnector.deleteFunction(amzLamConnector, args[4]);
-            lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
-            system:println(json:toString(lambdaJSONResponse));
-    }
-    if (args[0] == "listFunctions"){
-        lambdaResponse = ClientConnector.listFunctions(amzLamConnector);
-        lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
-        system:println(json:toString(lambdaJSONResponse));
-    }
-    if (args[0] == "listFunctionVersions"){
-        lambdaResponse = ClientConnector.getFunctionVersions(amzLamConnector, args[4]);
-        lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
-        system:println(json:toString(lambdaJSONResponse));
-    }
-    if (args[0] == "getFunction"){
-        lambdaResponse = ClientConnector.getFunction(amzLamConnector, args[4]);
-        lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
-        system:println(json:toString(lambdaJSONResponse));
-    }
-    if (args[0] == "getAccountDetails"){
-        lambdaResponse = ClientConnector.getAccountDetails(amzLamConnector);
-        lambdaJSONResponse = message:getJsonPayload(lambdaResponse);
-        system:println(json:toString(lambdaJSONResponse));
     }
 }
 
@@ -237,11 +199,11 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     amzDate = system:getDateFormat("yyyyMMdd'T'HHmmss'Z'");
     shortDate = system:getDateFormat("yyyyMMdd");
 
-    message:setHeader(msg, "X-Amz-Date", amzDate);
+    messages:setHeader(msg, "X-Amz-Date", amzDate);
 
     canonicalRequest = httpMethod;
     canonicalRequest = canonicalRequest + "\n";
-    canonicalRequest = canonicalRequest + string:replaceAll(uri:encode(requestURI), "%2F", "/");
+    canonicalRequest = canonicalRequest + strings:replaceAll(uri:encode(requestURI), "%2F", "/");
     canonicalRequest = canonicalRequest + "\n";
 
     canonicalQueryString = "";
@@ -250,26 +212,26 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     canonicalRequest = canonicalRequest + "\n";
 
     if(payload != ""){
-            canonicalHeaders = canonicalHeaders + string:toLowerCase("Content-Type");
+            canonicalHeaders = canonicalHeaders + strings:toLowerCase("Content-Type");
             canonicalHeaders = canonicalHeaders + ":";
-            canonicalHeaders = canonicalHeaders + (message:getHeader(msg, string:toLowerCase("Content-Type")));
+            canonicalHeaders = canonicalHeaders + (messages:getHeader(msg, strings:toLowerCase("Content-Type")));
             canonicalHeaders = canonicalHeaders + "\n";
-            signedHeader = signedHeader + string:toLowerCase("Content-Type");
+            signedHeader = signedHeader + strings:toLowerCase("Content-Type");
             signedHeader = signedHeader + ";";
     }
 
-    canonicalHeaders = canonicalHeaders + string:toLowerCase("Host");
+    canonicalHeaders = canonicalHeaders + strings:toLowerCase("Host");
     canonicalHeaders = canonicalHeaders + ":";
-    canonicalHeaders = canonicalHeaders + message:getHeader(msg, string:toLowerCase("Host"));
+    canonicalHeaders = canonicalHeaders + messages:getHeader(msg, strings:toLowerCase("Host"));
     canonicalHeaders = canonicalHeaders + "\n";
-    signedHeader = signedHeader + string:toLowerCase("Host");
+    signedHeader = signedHeader + strings:toLowerCase("Host");
     signedHeader = signedHeader + ";";
 
-    canonicalHeaders = canonicalHeaders + string:toLowerCase("X-Amz-Date");
+    canonicalHeaders = canonicalHeaders + strings:toLowerCase("X-Amz-Date");
     canonicalHeaders = canonicalHeaders + ":";
-    canonicalHeaders = canonicalHeaders + (message:getHeader(msg, string:toLowerCase("X-Amz-Date")));
+    canonicalHeaders = canonicalHeaders + (messages:getHeader(msg, strings:toLowerCase("X-Amz-Date")));
     canonicalHeaders = canonicalHeaders + "\n";
-    signedHeader = signedHeader + string:toLowerCase("X-Amz-Date");
+    signedHeader = signedHeader + strings:toLowerCase("X-Amz-Date");
     signedHeader = signedHeader;
 
     canonicalRequest = canonicalRequest + canonicalHeaders;
@@ -286,7 +248,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     requestPayload = "";
     requestPayload = payloadBuilder;
 
-    canonicalRequest = canonicalRequest + string:toLowerCase(util:getHash(requestPayload, algorithm));
+    canonicalRequest = canonicalRequest + strings:toLowerCase(util:getHash(requestPayload, algorithm));
 
     //Start creating the string to sign
 
@@ -304,7 +266,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     stringToSign = stringToSign + terminationString;
 
     stringToSign = stringToSign + "\n";
-    stringToSign = stringToSign + string:toLowerCase(util:getHash(canonicalRequest, algorithm));
+    stringToSign = stringToSign + strings:toLowerCase(util:getHash(canonicalRequest, algorithm));
 
     signingKey =  util:getHmacFromBase64( terminationString,util:getHmacFromBase64( serviceName,
     util:getHmacFromBase64( region,util:getHmacFromBase64(shortDate,util:base64encode("AWS4" + secretAccessKey),
@@ -330,10 +292,10 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     authHeader = authHeader + (",");
     authHeader = authHeader + (" Signature");
     authHeader = authHeader + ("=");
-    authHeader = authHeader + string:toLowerCase(util:base64ToBase16Encode(util:getHmacFromBase64(stringToSign,
+    authHeader = authHeader + strings:toLowerCase(util:base64ToBase16Encode(util:getHmacFromBase64(stringToSign,
      signingKey, algorithm)));
 
-    message:setHeader(msg, "Authorization", authHeader);
+    messages:setHeader(msg, "Authorization", authHeader);
     return msg;
 }
 
