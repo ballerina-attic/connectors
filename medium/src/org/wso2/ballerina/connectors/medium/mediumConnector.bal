@@ -1,9 +1,7 @@
 package org.wso2.ballerina.connectors.medium;
 
-import ballerina.lang.json;
-import ballerina.lang.message;
-import ballerina.lang.system;
-import ballerina.net.http;
+import org.wso2.ballerina.connectors.OAuth2;
+import ballerina.lang.messages;
 
 @doc:Description("Medium client connector")
 @doc:Param("accessToken: The access token of the Medium Application")
@@ -12,7 +10,10 @@ import ballerina.net.http;
 @doc:Param("refreshToken: The refresh token of the Medium Application")
 connector ClientConnector (string accessToken, string clientId, string clientSecret, string refreshToken) {
 
-    http:ClientConnector mediumEP = create http:ClientConnector("https://api.medium.com");
+    string refreshTokenEP = "https://api.medium.com/v1/tokens";
+    string baseURL = "https://api.medium.com";
+    OAuth2:ClientConnector mediumEP = create OAuth2:ClientConnector(baseURL, accessToken, clientId, clientSecret,
+        refreshToken, refreshTokenEP);
 
     @doc:Description("Get Profile Information")
     @doc:Return("response object")
@@ -22,8 +23,7 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
         message request = {};
         message response;
         getProfileInfoPath = "/v1/me";
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
-        response = http:ClientConnector.get(mediumEP, getProfileInfoPath, request);
+        response = OAuth2:ClientConnector.get(mediumEP, getProfileInfoPath, request);
 
         return response;
     }
@@ -38,8 +38,7 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
         message response;
 
         getContributorsPath = "/v1/publications/" + publicationId + "/contributors";
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
-        response = http:ClientConnector.get(mediumEP, getContributorsPath, request);
+        response = OAuth2:ClientConnector.get(mediumEP, getContributorsPath, request);
 
         return response;
     }
@@ -54,8 +53,7 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
         message response;
 
         getPublicationsPath = "/v1/users/" + userId + "/publications";
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
-        response = http:ClientConnector.get(mediumEP, getPublicationsPath, request);
+        response = OAuth2:ClientConnector.get(mediumEP, getPublicationsPath, request);
 
         return response;
     }
@@ -71,10 +69,9 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
         message response;
 
         createProfilePostPath = "/v1/users/" + userId + "/posts";
-        message:setHeader(request, "Content-Type", "application/json");
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
-        message:setJsonPayload(request, payload);
-        response = http:ClientConnector.post(mediumEP, createProfilePostPath, request);
+        messages:setHeader(request, "Content-Type", "application/json");
+        messages:setJsonPayload(request, payload);
+        response = OAuth2:ClientConnector.post(mediumEP, createProfilePostPath, request);
 
         return response;
     }
@@ -90,130 +87,11 @@ connector ClientConnector (string accessToken, string clientId, string clientSec
         message response;
 
         createPublicationPostPath = "/v1/publications/" + publicationId + "/posts";
-        message:setHeader(request, "Content-Type", "application/json");
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
-        message:setJsonPayload(request, payload);
-        response = http:ClientConnector.post(mediumEP, createPublicationPostPath, request);
+        messages:setHeader(request, "Content-Type", "application/json");
+        messages:setJsonPayload(request, payload);
+        response = OAuth2:ClientConnector.post(mediumEP, createPublicationPostPath, request);
 
         return response;
     }
 }
 
-
-function printJsonResponse(message mediumResponse) (string) {
-
-    json mediumJSONResponse;
-    mediumJSONResponse = message:getJsonPayload(mediumResponse);
-    system:println(json:toString(mediumJSONResponse));
-}
-
-function runGETSamples(ClientConnector mediumConnector, string publicationId, string userId) (string) {
-
-    message mediumResponse;
-
-    system:println("---------------");
-    system:println("  GET actions");
-    system:println("---------------");
-    system:println(" ");
-
-    system:println(" ");
-    system:println("Get Profile Info");
-    mediumResponse = ClientConnector.getProfileInfo(mediumConnector);
-    printJsonResponse(mediumResponse);
-    system:println(" ");
-
-    system:println("Get Contributors of a Publication");
-    mediumResponse = ClientConnector.getContributors(mediumConnector, publicationId);
-    printJsonResponse(mediumResponse);
-    system:println(" ");
-
-    system:println("Get List of Publications");
-    mediumResponse = ClientConnector.getPublications(mediumConnector, userId);
-    printJsonResponse(mediumResponse);
-    system:println(" ");
-}
-
-function runPOSTSamples(ClientConnector mediumConnector, string publicationId, string userId) (string) {
-
-    message mediumResponse;
-    json fullJsonPayload;
-
-    fullJsonPayload = `{title: 'Sample Payload',contentFormat: html,content: '<h1>Sample Payload</h1><p>This is a sample payload</p>',canonicalUrl: 'http://wso2.com',tags: [sample, test],publishStatus: public}`;
-
-    system:println(" ");
-    system:println("----------------");
-    system:println("  POST actions");
-    system:println("----------------");
-    system:println(" ");
-
-    system:println("Post in Profile");
-    mediumResponse = ClientConnector.createProfilePost(mediumConnector, userId, fullJsonPayload);
-    printJsonResponse(mediumResponse);
-    system:println(" ");
-
-    system:println("Post in publication");
-    mediumResponse = ClientConnector.createPublicationPost(mediumConnector, publicationId, fullJsonPayload);
-    printJsonResponse(mediumResponse);
-    system:println(" ");
-}
-
-function main (string[] args) {
-
-    ClientConnector mediumConnector;
-    string userId;
-    string publicationId;
-    message mediumResponse;
-    json fullJsonPayload;
-
-    if (args[0]=="get") {
-        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
-        userId = args[5];
-        publicationId = args[6];
-        runGETSamples(mediumConnector, publicationId, userId);
-
-    } else if (args[0]=="post") {
-        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
-        userId = args[5];
-        publicationId = args[6];
-        runPOSTSamples(mediumConnector, publicationId, userId);
-
-    } else if (args[0]=="getProfileInfo") {
-        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
-        mediumResponse = ClientConnector.getProfileInfo(mediumConnector);
-        printJsonResponse(mediumResponse);
-
-    } else if (args[0]=="getContributors") {
-        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
-        publicationId = args[5];
-        mediumResponse = ClientConnector.getContributors(mediumConnector, publicationId);
-        printJsonResponse(mediumResponse);
-
-    } else if (args[0]=="getPublications") {
-        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
-        userId = args[5];
-        mediumResponse = ClientConnector.getPublications(mediumConnector, userId);
-        printJsonResponse(mediumResponse);
-
-    } else if (args[0]=="createProfilePost") {
-        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
-        userId = args[5];
-        fullJsonPayload = `{title: 'Sample Payload',contentFormat: html,content: '<h1>Sample Payload</h1><p>This is a sample payload</p>',canonicalUrl: 'http://wso2.com',tags: [sample, test],publishStatus: public}`;
-        mediumResponse = ClientConnector.createProfilePost(mediumConnector, userId, fullJsonPayload);
-        printJsonResponse(mediumResponse);
-
-    } else if (args[0]=="createPublicationPost") {
-        mediumConnector = create ClientConnector(args[1], args[2], args[3], args[4]);
-        publicationId = args[5];
-        fullJsonPayload = `{title: 'Sample Payload',contentFormat: html,content: '<h1>Sample Payload</h1><p>This is a sample payload</p>',canonicalUrl: 'http://wso2.com',tags: [sample, test],publishStatus: public}`;
-        mediumResponse = ClientConnector.createPublicationPost(mediumConnector, publicationId, fullJsonPayload);
-        printJsonResponse(mediumResponse);
-
-    } else {
-        mediumConnector = create ClientConnector(args[0], args[1], args[2], args[3]);
-        userId = args[4];
-        publicationId = args[5];
-        runGETSamples(mediumConnector, publicationId, userId);
-        runPOSTSamples(mediumConnector, publicationId, userId);
-    }
-
-}
