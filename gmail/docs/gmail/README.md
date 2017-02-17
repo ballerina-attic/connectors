@@ -302,114 +302,112 @@ account's behalf. Do not share your access token, client  secret with anyone.
 
 ###### Invoke the actions
 
-- Place the gmailConnector into {BALLERINA_HOME}/samples.
-
 - To run the actions of the Gmail connector run the below command for relevant actions.
 
 ###### NOTE
 
 If the template parameter is indicate as optional you must pass null as default value to run this
 action.
-   1. getUserProfile
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal getUserProfile <userId:-Required>
+   1. getUserProfile  
+`bin$ ./ballerina run test.bal getUserProfile <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>`
-   2. createDraft
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal createDraft <userId:-Required>
+   2. createDraft  
+`bin$ ./ballerina run test.bal createDraft  <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional>
 <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
-   3. updateDraft
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal updateDraft <userId:-Required>
+   3. updateDraft  
+`bin$ ./ballerina run test.bal updateDraft <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <draftId:Required> <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional>
 <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
-   4. readDraft
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal readDraft <userId:-Required>
+   4. readDraft  
+`bin$ ./ballerina run test.bal readDraft <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> 
 <draftId:-Required> <format:-Optional>`
-   5. listDrafts
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal listDrafts <userId:-Required>
+   5. listDrafts  
+`bin$ ./ballerina run test.bal listDrafts <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> 
 <includeSpamTrash> <maxResults> <pageToken> <q>`
-   6. deleteDraft
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal deleteDraft <userId:-Required>
+   6. deleteDraft  
+`bin$ ./ballerina run test.bal deleteDraft <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> 
 <draftId:-Required>`
-   7. listHistory
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal listHistory <userId:-Required>
+   7. listHistory  
+`bin$ ./ballerina run test.bal listHistory <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
  <labelId:-Optional> <maxResults:-Optional> <pageToken:-Optional>
 <startHistoryId:-Required>`
-   8. createLabel
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal createLabel <userId:-Required>
+   8. createLabel  
+`bin$ ./ballerina run test.bal createLabel <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <labelName:-Required> <messageListVisibility:-Required> <labelListVisibility:-Required>
 <types:-Optional> <messagesTotal:-Optional> <messagesUnread:-Optional>
 <threadsTotal:-Optional> <threadsUnread:-Optional>`
-   9. deleteLabel
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal deleteLabel <userId:-Required>
+   9. deleteLabel  
+`bin$ ./ballerina run test.bal deleteLabel <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <labelId:-Required>`
-   10. listLabels
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal listLabels <userId:-Required>
+   10. listLabels  
+`bin$ ./ballerina run test.bal listLabels <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>`
-   11. updateLabel
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal updateLabel <userId:-Required>
+   11. updateLabel  
+`bin$ ./ballerina run test.bal updateLabel <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <labelId:-Required> <labelName:-Required> <messageListVisibility:-Required>
 <labelListVisibility:-Required> <types:-Optional> <messagesTotal:-Optional> <messagesUnread:-Optional>
 <threadsTotal:-Optional> <threadsUnread:-Optional>`
-   12. readLabel
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal readLabel <userId:-Required>
+   12. readLabel  
+`bin$ ./ballerina run test.bal readLabel <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <labelId:-Required>`
-   13. readThread
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal readThread <userId:-Required>
+   13. readThread  
+`bin$ ./ballerina run test.bal readThread <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <threadId:-Required> <format> <metaDataHeaders>`
-   14. listThreads
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal listThreads <userId:-Required>
+   14. listThreads  
+`bin$ ./ballerina run test.bal listThreads <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <includeSpamTrash> <labelIds> <maxResults> <pageToken> <q>`
-   15. deleteThread
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal deleteThread <userId:-Required>
+   15. deleteThread  
+`bin$ ./ballerina run test.bal deleteThread <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <threadId:-Required>`
-   16. trashThread
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal trashThread <userId:-Required>
+   16. trashThread  
+`bin$ ./ballerina run test.bal trashThread <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <threadId:-Required>`
-   17. unTrashThread
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal unTrashThread <userId:-Required>
+   17. unTrashThread  
+`bin$ ./ballerina run test.bal unTrashThread <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <threadId:-Required>`
-   18. listMails
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal listMails <userId:-Required>
+   18. listMails  
+`bin$ ./ballerina run test.bal listMails <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <includeSpamTrash> <labelIds> <maxResults> <pageToken> <q>`
-   19. sendMail
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal sendMail <userId:-Required>
+   19. sendMail  
+`bin$ ./ballerina run test.bal sendMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional>
 <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
-   20. modifyExistingMessage
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal modifyExistingMessage <userId:-Required>
+   20. modifyExistingMessage  
+`bin$ ./ballerina run test.bal modifyExistingMessage <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required> <addLabelIds:-Either addLabelIds or removeLabelIds is required>
 <removeLabelIds:- Either addLabelIds or removeLabelIds is required>`
-   21. readMail
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal readMail <userId:-Required>
+   21. readMail  
+`bin$ ./ballerina run test.bal readMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required> <format> <metaDataHeaders>`
-   22. deleteMail
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal deleteMail <userId:-Required>
+   22. deleteMail  
+`bin$ ./ballerina run test.bal deleteMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required>`
-   23. trashMail
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal trashMail <userId:-Required>
+   23. trashMail  
+`bin$ ./ballerina run test.bal trashMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required>`
-   24. unTrashMail
-`bin$ ./ballerina run ../samples/gmail/src/gmailConnector.bal unTrashMail <userId:-Required>
+   24. unTrashMail  
+`bin$ ./ballerina run test.bal unTrashMail <userId:-Required>
 <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>
 <messageId:-Required>`
