@@ -30,7 +30,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string getProfilePath = "/v1/users/" + userId + "/profile";
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, getProfilePath, request);
 
         return response;
@@ -90,7 +89,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         string createDraftPath = "/v1/users/" + userId + "/drafts";
         message:setJsonPayload(request, createDraftRequest);
         message:setHeader(request, "Content-Type", "Application/json");
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.post(gmailEP, createDraftPath, request);
 
         return response;
@@ -151,7 +149,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         string updateDraftPath = "/v1/users/" + userId + "/drafts/" +draftId;
         message:setJsonPayload(request, updateDraftRequest);
         message:setHeader(request, "Content-Type", "Application/json");
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.put(gmailEP, updateDraftPath, request);
 
         return response;
@@ -171,7 +168,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             readDraftPath = readDraftPath + "?format=" + format;
         }
 
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, readDraftPath, request);
 
         return response;
@@ -210,7 +206,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
 
         listDraftPath = listDraftPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
 
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, listDraftPath, request);
 
         return response;
@@ -224,7 +219,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string deleteDraftPath = "/v1/users/" + userId + "/drafts/" + draftId;
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.delete(gmailEP, deleteDraftPath, request);
 
         return response;
@@ -255,7 +249,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
              listHistoryPath = listHistoryPath + "&pageToken=" + pageToken;
         }
 
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, listHistoryPath, request);
 
         return response;
@@ -305,7 +298,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
 
         string createLabelPath = "/v1/users/" + userId + "/labels";
         message:setHeader(request, "Content-Type", "Application/json");
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message:setJsonPayload(request, createLabelRequest);
         message response = OAuth2:ClientConnector.post(gmailEP, createLabelPath, request);
 
@@ -320,7 +312,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string deleteLabelPath = "/v1/users/" + userId + "/labels/" + labelId;
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.delete(gmailEP, deleteLabelPath, request);
 
         return response;
@@ -333,7 +324,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string listLabelPath = "/v1/users/" + userId + "/labels/";
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, listLabelPath, request);
 
         return response;
@@ -385,7 +375,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
 
         string updateLabelPath = "/v1/users/" + userId + "/labels/" + labelId;
         message:setHeader(request, "Content-Type", "Application/json");
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message:setJsonPayload(request, updateLabelRequest);
         message response = OAuth2:ClientConnector.put(gmailEP, updateLabelPath, request);
 
@@ -400,7 +389,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string readLabelPath = "/v1/users/" + userId + "/labels/" + labelId;
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, readLabelPath, request);
 
         return response;
@@ -421,7 +409,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             readThreadPath = "/v1/users/" + userId + "/threads/" + threadId + "?format=" + format;
         }
 
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, readThreadPath, request);
 
         return response;
@@ -464,7 +451,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         }
 
         listThreadPath = listThreadPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, listThreadPath, request);
 
         return response;
@@ -478,7 +464,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string deleteThreadPath = "/v1/users/" + userId + "/threads/" + threadId;
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.delete(gmailEP, deleteThreadPath, request);
 
         return response;
@@ -492,7 +477,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string trashThreadPath = "/v1/users/" + userId + "/threads/" + threadId + "/trash";
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         http:setContentLength(request, 0);
         message response = OAuth2:ClientConnector.post(gmailEP, trashThreadPath, request);
 
@@ -507,7 +491,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string unTrashThreadPath = "/v1/users/" + userId + "/threads/" + threadId + "/untrash";
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         http:setContentLength(request, 0);
         message response = OAuth2:ClientConnector.post(gmailEP, unTrashThreadPath, request);
 
@@ -551,7 +534,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         }
 
         listMailPath = listMailPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, listMailPath, request);
 
         return response;
@@ -610,7 +592,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         string sendMailPath = "/v1/users/" + userId + "/messages/send";
         message:setJsonPayload(request, sendMailRequest);
         message:setHeader(request, "Content-Type", "Application/json");
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.post(gmailEP, sendMailPath, request);
 
         return response;
@@ -640,7 +621,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         string modifyExistingMessagePath = "/v1/users/" + userId + "/messages/" + messageId + "/modify";
         message:setJsonPayload(request, modifyExistingMessageRequest);
         message:setHeader(request, "Content-Type", "Application/json");
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.post(gmailEP, modifyExistingMessagePath, request);
 
         return response;
@@ -662,7 +642,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             readMailPath = "/v1/users/" + userId + "/messages/" + messageId + "?format=" + format;
         }
 
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.get(gmailEP, readMailPath, request);
 
         return response;
@@ -676,7 +655,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string deleteMailPath = "/v1/users/" + userId + "/messages/" + messageId;
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         message response = OAuth2:ClientConnector.delete(gmailEP, deleteMailPath, request);
 
         return response;
@@ -690,7 +668,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string trashMailPath = "/v1/users/" + userId + "/messages/" + messageId + "/trash";
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         http:setContentLength(request, 0);
         message response = OAuth2:ClientConnector.post(gmailEP, trashMailPath, request);
 
@@ -705,7 +682,6 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         message request = {};
 
         string unTrashMailPath = "/v1/users/" + userId + "/messages/" + messageId + "/untrash";
-        message:setHeader(request, "Authorization", "Bearer " + accessToken);
         http:setContentLength(request, 0);
         message response = OAuth2:ClientConnector.post(gmailEP, unTrashMailPath, request);
 
