@@ -20,8 +20,8 @@ extract the sessionId.
 Do not share those with anyone.
 
 ###### Invoke the actions
-- Place the soap directory into {BALLERINA_HOME}/samples.
-- To run the following commands to execute the relevant action.
 
-  1. send:
+- To run the following command to execute the action.
+
+  1. send:  
   `bin$ ./ballerina run ../samples/soap/src/soapConnector.bal <username> <password+securityToken>`

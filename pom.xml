@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~ WSO2 Inc. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>org.wso2</groupId>
+        <artifactId>wso2</artifactId>
+        <version>5</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.ballerinalang.connectors</groupId>
+    <artifactId>connectors</artifactId>
+    <version>0.8.0-SNAPSHOT</version>
+    <name>WSO2 Connectors - Parent</name>
+
+    <url>http://wso2.org</url>
+
+    <scm>
+        <url>https://github.com/ballerinalang/connectors.git</url>
+        <developerConnection>scm:git:https://github.com/ballerinalang/connectors.git</developerConnection>
+        <connection>scm:git:https://github.com/ballerinalang/connectors.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.wso2.ballerina</groupId>
+            <artifactId>ballerina-core</artifactId>
+            <version>${ballerina.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.ballerina</groupId>
+            <artifactId>ballerina-native</artifactId>
+            <version>${ballerina.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.ballerina</groupId>
+            <artifactId>annotation-processor</artifactId>
+            <version>${ballerina.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>ballerina/**</exclude>
+                </excludes>
+            </resource>
+            <!-- copy built-in ballerina sources to the jar -->
+            <resource>
+                <directory>${generated.connectors.source.directory}</directory>
+                <targetPath>META-INF/natives</targetPath>
+            </resource>
+            <!-- copy the connector docs to the jar -->
+            <resource>
+                <directory>${connectors.doc.dir}</directory>
+                <targetPath>DOCS</targetPath>
+            </resource>
+            <!-- copy the samples to the jar -->
+            <resource>
+                <directory>${connectors.samples.dir}</directory>
+                <targetPath>SAMPLES</targetPath>
+            </resource>
+        </resources>
+        <plugins>
+            <!-- For creating the ballerina structure from connector structure -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${mvn.resource.plugins.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${connectors.source.temp.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>basicAuth/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>etcd/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>facebook/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>gmail/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>linkedIn/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>medium/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>oauth2/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>soap/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>twitter/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-docs</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${connectors.doc.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>basicAuth/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>etcd/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>facebook/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>gmail/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>linkedIn/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>medium/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>oauth2/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>soap/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>twitter/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-samples</id>
+
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${connectors.samples.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>basicAuth/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>etcd/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>facebook/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>gmail/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>linkedIn/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>medium/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>oauth2/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>soap/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>twitter/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- For ballerina natives processing/validation -->
+            <plugin>
+                <groupId>org.bsc.maven</groupId>
+                <artifactId>maven-processor-plugin</artifactId>
+                <version>${mvn.processor.plugin.version}</version>
+                <configuration>
+                    <processors>
+                        <processor>org.wso2.ballerina.annotation.processor.BallerinaAnnotationProcessor</processor>
+                    </processors>
+                    <options>
+                        <packageName>${native.constructs.provider.package}</packageName>
+                        <className>${native.constructs.provider.class}</className>
+                        <srcDir>${connectors.source.directory}</srcDir>
+                        <targetDir>${generated.connectors.source.directory}</targetDir>
+                    </options>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>process</id>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- For ballerina natives processing/validation -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${mvn.exec.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>org.wso2.ballerina.annotation.processor.NativeValidator</mainClass>
+                            <arguments>
+                                <argument>${generated.connectors.source.directory}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <ballerina.version>0.8.0-SNAPSHOT</ballerina.version>
+        <mvn.exec.plugin.version>1.5.0</mvn.exec.plugin.version>
+        <mvn.processor.plugin.version>2.2.4</mvn.processor.plugin.version>
+        <mvn.resource.plugins.version>3.0.2</mvn.resource.plugins.version>
+
+        <!-- Path to the generated natives ballerina files temp directory -->
+        <native.constructs.provider.package>org.wso2.ballerina.connectors</native.constructs.provider.package>
+        <native.constructs.provider.class>BallerinaConnectorsProvider</native.constructs.provider.class>
+        <generated.connectors.source.directory>${project.build.directory}/natives</generated.connectors.source.directory>
+        <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
+        <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
+        <connectors.doc.dir>${basedir}/target/extra-docs</connectors.doc.dir>
+        <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
+    </properties>
+</project>
