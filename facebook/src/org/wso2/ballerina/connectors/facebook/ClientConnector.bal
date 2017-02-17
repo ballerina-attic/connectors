@@ -22,7 +22,7 @@ connector ClientConnector (string accessToken) {
     action createPost(ClientConnector f, string id, string msg, string link, string place) (message) {
         string uriParams;
         message request = {};
-        string facebookPath = baseURL + "/v2.8/" + id + "/feed";
+        string facebookPath = "/v2.8/" + id + "/feed";
 
         if(msg != "null"){
             uriParams = uriParams + "&message=" + uri:encode(msg);
@@ -46,7 +46,7 @@ connector ClientConnector (string accessToken) {
     @doc:Return("Response object.")
     action retrievePost(ClientConnector f, string postId, string fields) (message) {
         message request = {};
-        string facebookPath = baseURL + "/v2.8/" + postId;
+        string facebookPath = "/v2.8/" + postId;
 
         if(fields != "null"){
             facebookPath = facebookPath + "?fields=" + fields;
@@ -62,7 +62,7 @@ connector ClientConnector (string accessToken) {
     @doc:Return("Response object.")
     action deletePost(ClientConnector f, string postId) (message) {
         message request = {};
-        string facebookPath = baseURL + "/v2.8/" + postId;
+        string facebookPath = "/v2.8/" + postId;
 
         message response = OAuth2:ClientConnector.delete(facebookEP, facebookPath, request);
 
@@ -78,7 +78,7 @@ connector ClientConnector (string accessToken) {
     action updatePost(ClientConnector f, string postId, string msg, string tags, string privacy) (message) {
         string uriParams;
         message request = {};
-        string facebookPath = baseURL + "/v2.8/" + postId;
+        string facebookPath = "/v2.8/" + postId;
 
         if(msg != "null"){
             uriParams = uriParams + "&message=" + uri:encode(msg);
@@ -101,7 +101,7 @@ connector ClientConnector (string accessToken) {
     @doc:Return("Response object")
     action addLikes(ClientConnector f, string objectId) (message) {
         message request = {};
-        string facebookPath = baseURL + "/v2.8/" + objectId + "/likes";
+        string facebookPath = "/v2.8/" + objectId + "/likes";
 
         message response = OAuth2:ClientConnector.post(facebookEP, facebookPath, request);
 
@@ -115,7 +115,7 @@ connector ClientConnector (string accessToken) {
     @doc:Return("Response object.")
     action getLikesDetails(ClientConnector f, string objectId, string fields) (message) {
         message request = {};
-        string facebookPath = baseURL + "/v2.8/" + objectId + "/likes";
+        string facebookPath = "/v2.8/" + objectId + "/likes";
 
         if(fields != "null"){
             facebookPath = facebookPath + "?fields=" + fields;
@@ -131,7 +131,7 @@ connector ClientConnector (string accessToken) {
     @doc:Return("Response object.")
     action deleteLikes(ClientConnector f, string objectId) (message) {
         message request = {};
-        string facebookPath = baseURL + "/v2.8/" + objectId + "/likes";
+        string facebookPath = "/v2.8/" + objectId + "/likes";
 
         message response = OAuth2:ClientConnector.delete(facebookEP, facebookPath, request);
 
@@ -147,7 +147,7 @@ connector ClientConnector (string accessToken) {
     action addComments(ClientConnector f, string objectId, string msg, string attachmentId, string attachmentUrl) (message) {
         string uriParams;
         message request = {};
-        string facebookPath = baseURL + "/v2.8/" + objectId + "/comments";
+        string facebookPath = "/v2.8/" + objectId + "/comments";
 
         if(msg != "null"){
             uriParams = uriParams + "&message=" + msg;
@@ -171,7 +171,7 @@ connector ClientConnector (string accessToken) {
     @doc:Return("Response object.")
     action getComments(ClientConnector f, string objectId, string fields) (message) {
         message request = {};
-        string facebookPath = baseURL + "/v2.8/" + objectId + "/comments";
+        string facebookPath = "/v2.8/" + objectId + "/comments";
 
         if(fields != "null"){
             facebookPath = facebookPath + "?fields=" + fields;

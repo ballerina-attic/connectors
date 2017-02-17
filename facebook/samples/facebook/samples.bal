@@ -8,11 +8,10 @@ import ballerina.lang.system;
 
 function main (string[] args) {
 
-    facebook:ClientConnector facebookConnector = create facebook:ClientConnector(args[1], args[2], args[3], args[4]);
+    facebook:ClientConnector facebookConnector = create facebook:ClientConnector(args[1]);
     
     message facebookResponse = {};
     json facebookJSONResponse;
-    system:println("================================================");
     if (args[0] == "createPost"){
         facebookResponse = facebook:ClientConnector.createPost(facebookConnector, args[2], args[3], args[4], args[5]);
     
