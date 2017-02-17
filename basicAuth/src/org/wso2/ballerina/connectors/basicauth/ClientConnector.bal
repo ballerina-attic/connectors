@@ -1,8 +1,6 @@
 package org.wso2.ballerina.connectors.basicauth;
 
-import ballerina.lang.json;
-import ballerina.lang.message;
-import ballerina.lang.system;
+import ballerina.lang.messages;
 import ballerina.net.http;
 import ballerina.util;
 
@@ -78,32 +76,7 @@ function constructBasicAuthHeader(message request, string encodedBasicAuthValue,
         encodedBasicAuthValue = util:base64encode(userName + ":" + password);
     }
 
-    message:setHeader(request, "Authorization", "Basic "+ encodedBasicAuthValue);
+    messages:setHeader(request, "Authorization", "Basic "+ encodedBasicAuthValue);
 
     return encodedBasicAuthValue;
-}
-
-function main (string[] args) {
-
-    message request = {};
-    message basicAuthResponse;
-    json basicJSONResponse;
-
-    json sampleJsonRequest = `{"ticket_field":{ "type": "text", "title": "SampleTicket"}}`;
-
-    ClientConnector basicAuthConnector = create ClientConnector(args[1], args[2]);
-
-    if (args[0] == "get"){
-        basicAuthResponse = ClientConnector.get(basicAuthConnector, args[3], request);
-        basicJSONResponse = message:getJsonPayload(basicAuthResponse);
-        system:println(json:toString(basicJSONResponse));
-    }
-
-    if (args[0] == "post"){
-        message:setHeader(request, "Content-Type", "application/json");
-        message:setJsonPayload(request, sampleJsonRequest);
-        basicAuthResponse = ClientConnector.post(basicAuthConnector, args[3], request);
-        basicJSONResponse = message:getJsonPayload(basicAuthResponse);
-        system:println(json:toString(basicJSONResponse));
-    }
 }
