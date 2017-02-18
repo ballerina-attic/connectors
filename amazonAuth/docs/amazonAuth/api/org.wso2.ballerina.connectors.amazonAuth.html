@@ -1,0 +1,249 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>$package.name</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+
+<body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo"><strong>Ballerina</strong> API Documentation</a>
+                </header>
+
+                <!-- Banner -->
+                <section id="banner">
+                    <div class="content">
+                        
+                        <!-- Functions -->
+                        <h2>Functions of org.wso2.ballerina.connectors.amazonAuth package</h2>
+                         
+                        <div style="padding-bottom: 30px;">
+                            <h3 id="generateSignature">
+                                function generateSignature(<a href="#message">message</a> msg, <a href="#string">string</a> accessKeyId, <a href="#string">string</a> secretAccessKey, <a href="#string">string</a> region, <a href="#string">string</a> serviceName, <a href="#string">string</a> terminationString, <a href="#string">string</a> httpVerb, <a href="#string">string</a> requestURI, <a href="#string">string</a> payload) (message )
+                            </h3>
+                            <p></p>
+
+                            <p>
+                                <b>Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>msg</td><td><a href="#message">message</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>accessKeyId</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>secretAccessKey</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>region</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>serviceName</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>terminationString</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>httpVerb</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>requestURI</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>payload</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                            <p>
+                                <b>Return Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td></td><td><a href="#message">message</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                        </div>
+                        
+                        <p></p>
+                        <br> 
+                        
+                        <!-- Connectors -->
+                        <h2>Connectors of org.wso2.ballerina.connectors.amazonAuth package</h2>
+                         
+                        <h3 id="ClientConnector">
+                            connector ClientConnector (<a href="#string">string</a> accessKeyId, <a href="#string">string</a> secretAccessKey, <a href="#string">string</a> region, <a href="#string">string</a> serviceName, <a href="#string">string</a> terminationString, <a href="#string">string</a> endpoint)
+                        </h3>
+                        <p>Amazon Auth connector</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>accessKeyId</td><td><a href="#string">string</a></td><td>The access key ID of the Amazon Account</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>secretAccessKey</td><td><a href="#string">string</a></td><td>The secret access key of the Amazon Account</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>region</td><td><a href="#string">string</a></td><td>The region to which the request is made</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>serviceName</td><td><a href="#string">string</a></td><td>The Amazon service that should be invoked</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>terminationString</td><td><a href="#string">string</a></td><td>The termination string for the request</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>endpoint</td><td><a href="#string">string</a></td><td>The Endpoint of the amazon service</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        <b>Actions:</b><br><br>  
+                        <h3 id="requestClientConnector">action request()</h3>
+                        <p>Get List of Objects in a bucket</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>amazonAuthConnector</td><td><a href="org.wso2.ballerina.connectors.amazonAuth.html#ClientConnector" title="org.wso2.ballerina.connectors.amazonAuth:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>requestMsg</td><td><a href="#message">message</a></td><td>The request message object</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>httpVerb</td><td><a href="#string">string</a></td><td>The HTTP verb</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>requestURI</td><td><a href="#string">string</a></td><td>The URI of the service to be invoked</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>payload</td><td><a href="#string">string</a></td><td>The payload to be sent</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <br> 
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        
+                        <li>
+                            <span class="opener">Functions</span>
+                            <ul>
+                            
+                                <li><a href="#generateSignature">generateSignature(message msg, string accessKeyId, string secretAccessKey, string region, string serviceName, string terminationString, string httpVerb, string requestURI, string payload) (message )</a>
+                                </li>
+                            </ul>
+                        </li> 
+                        <li>
+                            <span class="opener">Connectors</span>
+                            <ul>
+                                
+                                <li><a href="#ClientConnector ">ClientConnector (string accessKeyId, string secretAccessKey, string region, string serviceName, string terminationString, string endpoint)</a>
+                                    <ul>
+                                        
+                                        <li><a href="#requestClientConnector">request(ClientConnector amazonAuthConnector, message requestMsg, string httpVerb, string requestURI, string payload)</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li> 
+                    </ul>
+                </nav>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">Copyright 2017 Ballerina API Documentation</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
