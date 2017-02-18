@@ -5,7 +5,6 @@
     <title>$package.name</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="assets/css/main.css" />
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
@@ -30,6 +29,50 @@
                         
                         <!-- Functions -->
                         <h2>Functions of org.wso2.ballerina.connectors.OAuth2 package</h2>
+                         
+                        <div style="padding-bottom: 30px;">
+                            <h3 id="constructAuthHeader">
+                                function constructAuthHeader(<a href="#message">message</a> request, <a href="#string">string</a> accessTokenValue, <a href="#string">string</a> accessToken) (string )
+                            </h3>
+                            <p></p>
+
+                            <p>
+                                <b>Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>request</td><td><a href="#message">message</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>accessTokenValue</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>accessToken</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                            <p>
+                                <b>Return Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td></td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                        </div>
                          
                         <div style="padding-bottom: 30px;">
                             <h3 id="getAccessTokenFromRefreshToken">
@@ -86,82 +129,15 @@
                             </p>
                             
                         </div>
-                         
-                        <div style="padding-bottom: 30px;">
-                            <h3 id="constructAuthHeader">
-                                function constructAuthHeader(<a href="#message">message</a> request, <a href="#string">string</a> accessTokenValue, <a href="#string">string</a> accessToken) (string )
-                            </h3>
-                            <p></p>
-
-                            <p>
-                                <b>Parameters:</b>
-                                <table>
-                                    <tr>
-                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>request</td><td><a href="#message">message</a></td><td></td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>accessTokenValue</td><td><a href="#string">string</a></td><td></td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>accessToken</td><td><a href="#string">string</a></td><td></td>
-                                    </tr>
-                                    
-                                </table>
-                            </p>
-                            
-                            <p>
-                                <b>Return Parameters:</b>
-                                <table>
-                                    <tr>
-                                        <th>Return Variable</th><th>Data Type</th><th>Description</th>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td></td><td><a href="#string">string</a></td><td></td>
-                                    </tr>
-                                    
-                                </table>
-                            </p>
-                            
-                        </div>
-                         
-                        <div style="padding-bottom: 30px;">
-                            <h3 id="main">
-                                function main(<a href="#string[]">string[]</a> args) 
-                            </h3>
-                            <p></p>
-
-                            <p>
-                                <b>Parameters:</b>
-                                <table>
-                                    <tr>
-                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>args</td><td><a href="#string[]">string[]</a></td><td></td>
-                                    </tr>
-                                    
-                                </table>
-                            </p>
-                            
-                        </div>
                         
                         <p></p>
                         <br> 
                         
                         <!-- Connectors -->
                         <h2>Connectors of org.wso2.ballerina.connectors.OAuth2 package</h2>
-                        
-                             
+                         
                         <h3 id="ClientConnector">
-                            connector ClientConnector (<a href="#string">string</a> accessToken, <a href="#string">string</a> clientId, <a href="#string">string</a> clientSecret, <a href="#string">string</a> refreshToken, <a href="#string">string</a> refreshTokenEP)
+                            connector ClientConnector (<a href="#string">string</a> baseUrl, <a href="#string">string</a> accessToken, <a href="#string">string</a> clientId, <a href="#string">string</a> clientSecret, <a href="#string">string</a> refreshToken, <a href="#string">string</a> refreshTokenEP)
                         </h3>
                         <p>OAuth2 client connector</p>
                         <p>
@@ -172,23 +148,27 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>accessToken</td><td><a href="">string</a></td><td>The access token of the account</td>
+                                    <td>baseUrl</td><td><a href="#string">string</a></td><td>The endpoint base url</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientId</td><td><a href="">string</a></td><td>The client Id of the account</td>
+                                    <td>accessToken</td><td><a href="#string">string</a></td><td>The access token of the account</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientSecret</td><td><a href="">string</a></td><td>The client secret of the account</td>
+                                    <td>clientId</td><td><a href="#string">string</a></td><td>The client Id of the account</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>refreshToken</td><td><a href="">string</a></td><td>The refresh token of the account</td>
+                                    <td>clientSecret</td><td><a href="#string">string</a></td><td>The client secret of the account</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>refreshTokenEP</td><td><a href="">string</a></td><td>The refresh token endpoint url</td>
+                                    <td>refreshToken</td><td><a href="#string">string</a></td><td>The refresh token of the account</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>refreshTokenEP</td><td><a href="#string">string</a></td><td>The refresh token endpoint url</td>
                                 </tr>
                                 
                             </table>
@@ -204,11 +184,11 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientConnector</td><td><a href="../html/org.wso2.ballerina.connectors.OAuth2.html#ClientConnector">org.wso2.ballerina.connectors.OAuth2:ClientConnector</a></td><td></td>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.OAuth2.html#ClientConnector" title="org.wso2.ballerina.connectors.OAuth2:ClientConnector">ClientConnector</a></td><td></td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>url</td><td><a href="#string">string</a></td><td>The endpoint url</td>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
                                 </tr>
                                 
                                 <tr>
@@ -242,11 +222,11 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientConnector</td><td><a href="../html/org.wso2.ballerina.connectors.OAuth2.html#ClientConnector">org.wso2.ballerina.connectors.OAuth2:ClientConnector</a></td><td></td>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.OAuth2.html#ClientConnector" title="org.wso2.ballerina.connectors.OAuth2:ClientConnector">ClientConnector</a></td><td></td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>url</td><td><a href="#string">string</a></td><td>The endpoint url</td>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
                                 </tr>
                                 
                                 <tr>
@@ -280,11 +260,11 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientConnector</td><td><a href="../html/org.wso2.ballerina.connectors.OAuth2.html#ClientConnector">org.wso2.ballerina.connectors.OAuth2:ClientConnector</a></td><td></td>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.OAuth2.html#ClientConnector" title="org.wso2.ballerina.connectors.OAuth2:ClientConnector">ClientConnector</a></td><td></td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>url</td><td><a href="#string">string</a></td><td>The endpoint url</td>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
                                 </tr>
                                 
                                 <tr>
@@ -318,11 +298,11 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientConnector</td><td><a href="../html/org.wso2.ballerina.connectors.OAuth2.html#ClientConnector">org.wso2.ballerina.connectors.OAuth2:ClientConnector</a></td><td></td>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.OAuth2.html#ClientConnector" title="org.wso2.ballerina.connectors.OAuth2:ClientConnector">ClientConnector</a></td><td></td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>url</td><td><a href="#string">string</a></td><td>The endpoint url</td>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
                                 </tr>
                                 
                                 <tr>
@@ -345,7 +325,7 @@
                                 
                             </table>
                         </p>
-                           
+                          
                         <br> 
                         
                     </div>
@@ -367,12 +347,10 @@
                         <li>
                             <span class="opener">Functions</span>
                             <ul>
-                                
-                                <li><a href="#getAccessTokenFromRefreshToken">getAccessTokenFromRefreshToken(message request, string accessToken, string clientId, string clientSecret, string refreshToken, string refreshTokenEP) (string )</a>
-                                </li>
+                            
                                 <li><a href="#constructAuthHeader">constructAuthHeader(message request, string accessTokenValue, string accessToken) (string )</a>
                                 </li>
-                                <li><a href="#main">main(string[] args) </a>
+                                <li><a href="#getAccessTokenFromRefreshToken">getAccessTokenFromRefreshToken(message request, string accessToken, string clientId, string clientSecret, string refreshToken, string refreshTokenEP) (string )</a>
                                 </li>
                             </ul>
                         </li> 
@@ -380,16 +358,16 @@
                             <span class="opener">Connectors</span>
                             <ul>
                                 
-                                <li><a href="#ClientConnector ">ClientConnector (string accessToken, string clientId, string clientSecret, string refreshToken, string refreshTokenEP)</a>
+                                <li><a href="#ClientConnector ">ClientConnector (string baseUrl, string accessToken, string clientId, string clientSecret, string refreshToken, string refreshTokenEP)</a>
                                     <ul>
                                         
-                                        <li><a href="#getClientConnector">get(org.wso2.ballerina.connectors.OAuth2:ClientConnector clientConnector, string url, message request)</a></li>
+                                        <li><a href="#getClientConnector">get(ClientConnector clientConnector, string path, message request)</a></li>
                                         
-                                        <li><a href="#postClientConnector">post(org.wso2.ballerina.connectors.OAuth2:ClientConnector clientConnector, string url, message request)</a></li>
+                                        <li><a href="#postClientConnector">post(ClientConnector clientConnector, string path, message request)</a></li>
                                         
-                                        <li><a href="#putClientConnector">put(org.wso2.ballerina.connectors.OAuth2:ClientConnector clientConnector, string url, message request)</a></li>
+                                        <li><a href="#putClientConnector">put(ClientConnector clientConnector, string path, message request)</a></li>
                                         
-                                        <li><a href="#deleteClientConnector">delete(org.wso2.ballerina.connectors.OAuth2:ClientConnector clientConnector, string url, message request)</a></li>
+                                        <li><a href="#deleteClientConnector">delete(ClientConnector clientConnector, string path, message request)</a></li>
                                         
                                     </ul>
                                 </li>
