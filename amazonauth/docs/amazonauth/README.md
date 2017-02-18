@@ -25,7 +25,7 @@ The request action gives the ability to add authentication header and send the r
     * Endpoint
 
 ###### Invoke action
-- Place the amazonAuth directory into {BALLERINA_HOME}/samples.
+- Place the amazonauth directory into {BALLERINA_HOME}/samples.
 - Run the following commands to execute the relevant action.
     1. request:
     `bin$ ./ballerina run ../samples/oauth2/src/ClientConnector.bal get <accessKeyId> <secretAccessKey> <region>
