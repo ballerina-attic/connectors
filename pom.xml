@@ -103,10 +103,10 @@
                                     <directory>basicAuth/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
-                                <!--<resource>-->
-                                    <!--<directory>etcd/src</directory>-->
-                                    <!--<filtering>true</filtering>-->
-                                <!--</resource>-->
+                                <resource>
+				    <directory>etcd/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
                                 <resource>
                                     <directory>facebook/src</directory>
                                     <filtering>true</filtering>
