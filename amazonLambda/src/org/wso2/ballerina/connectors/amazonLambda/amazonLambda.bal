@@ -11,27 +11,22 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
 
     string endpoint = "https://lambda." + region + ".amazonaws.com";
     amazonAuth:ClientConnector amazonAuthConnector = create amazonAuth:ClientConnector(accessKeyId, secretAccessKey,
-     region, "lambda",
-     "aws4_request", endpoint);
+     region, "lambda", "aws4_request", endpoint);
 
     @doc:Description("Invokes a amazon lambda function")
     @doc:Param("arn: The amazon resource name of the function to invoke")
     @doc:Return("response message")
     action invokeFunction(ClientConnector amz, string arn) (message) throws exception {
-
         string httpMethod;
         string requestURI;
     	string host;
         message requestMsg = {};
         message response = {};
     	host = "lambda." + region + ".amazonaws.com";
-
         httpMethod = "POST";
         requestURI = "/2015-03-31/functions/" + arn + "/invocations";
-
         messages:setHeader(requestMsg, "Host", host);
         response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
-
         return response;
     }
 
@@ -39,44 +34,36 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Param("arn: The amazon resource name of the function to invoke")
     @doc:Return("response message")
     action deleteFunction(ClientConnector amz, string arn) (message) throws exception {
-
         string httpMethod;
         string requestURI;
     	string host;
         message requestMsg = {};
         message response = {};
     	host = "lambda." + region + ".amazonaws.com";
-
         httpMethod = "DELETE";
         requestURI = "/2015-03-31/functions/" + arn;
         host = "lambda.us-east-1.amazonaws.com";
         endpoint = "https://lambda." + region + ".amazonaws.com";
-
         messages:setHeader(requestMsg, "Host", host);
         response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
-
         return response;
     }
 
     @doc:Description("Returns the users' account information")
     @doc:Return("response message")
     action getAccountDetails(ClientConnector amz) (message) throws exception {
-
         string httpMethod;
         string requestURI;
     	string host;
         message requestMsg = {};
         message response = {};
     	host = "lambda." + region + ".amazonaws.com";
-
         httpMethod = "GET";
         requestURI = "/2016-08-19/account-settings/";
         host = "lambda.us-east-1.amazonaws.com";
         endpoint = "https://lambda." + region + ".amazonaws.com";
-
         messages:setHeader(requestMsg, "Host", host);
         response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
-
         return response;
     }
 
@@ -84,22 +71,18 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Param("arn: The amazon resource name of the function to invoke")
     @doc:Return("response message")
     action getFunction(ClientConnector amz, string arn) (message) throws exception {
-
         string httpMethod;
         string requestURI;
     	string host;
         message requestMsg = {};
         message response = {};
     	host = "lambda." + region + ".amazonaws.com";
-
         httpMethod = "GET";
         requestURI = "/2015-03-31/functions/" + arn;
         host = "lambda.us-east-1.amazonaws.com";
         endpoint = "https://lambda." + region + ".amazonaws.com";
-
         messages:setHeader(requestMsg, "Host", host);
         response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
-
         return response;
     }
 
@@ -107,40 +90,32 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Param("arn: The amazon resource name of the function to invoke")
     @doc:Return("response message")
     action listFunctions(ClientConnector amz) (message) throws exception {
-
         string httpMethod;
         string requestURI;
     	string host;
         message requestMsg = {};
         message response = {};
     	host = "lambda." + region + ".amazonaws.com";
-
         httpMethod = "GET";
         requestURI = "/2015-03-31/functions/";
-
         messages:setHeader(requestMsg, "Host", host);
         response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
-
         return response;
     }
 
     @doc:Description("Lists all versions of a amazon lambda function")
     @doc:Return("response message")
     action getFunctionVersions(ClientConnector amz, string arn) (message) throws exception {
-
         string httpMethod;
         string requestURI;
     	string host;
         message requestMsg = {};
         message response = {};
     	host = "lambda." + region + ".amazonaws.com";
-
         httpMethod = "GET";
         requestURI = "/2015-03-31/functions/" + arn + "/versions";
-
         messages:setHeader(requestMsg, "Host", host);
         response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
-
         return response;
     }
 }
