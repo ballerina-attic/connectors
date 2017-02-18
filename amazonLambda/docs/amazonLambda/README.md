@@ -58,7 +58,7 @@ Returns the users' account information.
 ## How to use
 
 ###### Prerequisites
-1. Create a amazon lambda account by visiting https://aws.amazon.com/lambda/
+1. Create a amazon lambda account by visiting [Amazon Lambda](https://aws.amazon.com/lambda/)
 2. Obtain the following parameters:
   * Security Credentials (Access key ID, Secret access key).
   * Server region.
@@ -67,28 +67,22 @@ Returns the users' account information.
  Do not share your security credentials with anyone.
 
 ###### Invoke the actions
-- Place the amazonLambda directory into {BALLERINA_HOME}/samples.
+- copy amazonLambda/samples/amazonLambda/samples.bal into `<ballerina_home>`/bin$ folder
 - To run the following commands to execute the relevant action.
   1. invokeFunction:
-  `bin$ ./ballerina run ../samples/amazonLambdaConnector/amazonLambdaConnector.bal invokeFunction <accessKeyId>
-   <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run samples.bal <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   2. deleteFunction:
-  `bin$ ./ballerina run ../samples/amazonLambdaConnector/amazonLambdaConnector.bal deleteFunction <accessKeyId>
-   <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run samples.bal <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   3. listFunctions:
-  `bin$ ./ballerina run ../samples/amazonLambdaConnector/amazonLambdaConnector.bal listFunctions <accessKeyId>
-   <secretAccessKey> <region>`
+  `bin$ ./ballerina run samples.bal listFunctions <accessKeyId> <secretAccessKey> <region>`
 
   4. listFunctionVersions:
-  `bin$ ./ballerina run ../samples/amazonLambdaConnector/amazonLambdaConnector.bal listFunctionVersions <accessKeyId>
-   <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run samples.bal listFunctionVersions <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   5. getFunction:
-  `bin$ ./ballerina run ../samples/amazonLambdaConnector/amazonLambdaConnector.bal getFunction <accessKeyId>
-   <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run samples.bal getFunction <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   6. getAccountDetails:
-  `bin$ ./ballerina run ../samples/amazonLambdaConnector/amazonLambdaConnector.bal getAccountDetails <accessKeyId>
-   <secretAccessKey> <region>`
+  `bin$ ./ballerina run samples.bal getAccountDetails <accessKeyId> <secretAccessKey> <region>`

@@ -119,9 +119,3 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         return response;
     }
 }
-
-
-
-
-
-
