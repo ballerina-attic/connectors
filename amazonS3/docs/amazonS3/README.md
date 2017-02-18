@@ -7,7 +7,7 @@
 
 ###### Properties
 
-###### Related Medium documentation
+###### Related Amazon S3 documentation
   * <http://docs.aws.amazon.com/AmazonS3/latest/API/RESTServiceGET.html>
 
 ## Get list of Objects
@@ -16,7 +16,7 @@
 ###### Properties
   * bucketName - The relevant Bucket name
 
-###### Related Medium documentation
+###### Related Amazon S3 documentation
   * <http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html>
 
 ## Create Bucket
@@ -25,7 +25,7 @@
 ###### Properties
   * bucketName - The relevant Bucket name
 
-###### Related Medium documentation
+###### Related Amazon S3 documentation
   * <http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUT.html>
 
 ## Delete Bucket
@@ -34,7 +34,7 @@
 ###### Properties
   * bucketName - The relevant Bucket name
 
-###### Related Medium documentation
+###### Related Amazon S3 documentation
   * <http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketDELETE.html>
 
 ## Get Object
@@ -44,7 +44,7 @@
   * bucketName - The relevant Bucket name
   * objectName - The relevant Object name
 
-###### Related Medium documentation
+###### Related Amazon S3 documentation
   * <http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html>
 
 ## Delete Object
@@ -54,7 +54,7 @@
   * bucketName - The relevant Bucket name
   * objectName - The relevant Object name
 
-###### Related Medium documentation
+###### Related Amazon S3 documentation
   * <http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html>
 
 ## Put Object
@@ -65,7 +65,7 @@
   * objectName - The relevant Object name
   * payload - The file that needed to be added to the bucket
 
-###### Related Medium documentation
+###### Related Amazon S3 documentation
   * <http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html>
 
 
