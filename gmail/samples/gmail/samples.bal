@@ -49,7 +49,7 @@ function main (string[] args) {
         gmailJSONResponse = messages:getJsonPayload(gmailResponse);
         deleteResponse = jsonutils:toString(gmailJSONResponse);
         if(deleteResponse == "null"){
-            system:println("Draft with id: " + args[3] + " deleted successfully.");
+            system:println("Draft with id: " + args[6] + " deleted successfully.");
         }
     }
 
@@ -71,7 +71,7 @@ function main (string[] args) {
         gmailJSONResponse = messages:getJsonPayload(gmailResponse);
         deleteResponse = jsonutils:toString(gmailJSONResponse);
         if(deleteResponse == "null"){
-            system:println("Label with id: " + args[3] + " deleted successfully.");
+            system:println("Label with id: " + args[6] + " deleted successfully.");
         }
     }
 
@@ -111,7 +111,7 @@ function main (string[] args) {
         gmailJSONResponse = messages:getJsonPayload(gmailResponse);
         deleteResponse = jsonutils:toString(gmailJSONResponse);
         if(deleteResponse == "null"){
-            system:println("Thread with id: " + args[3] + " deleted successfully.");
+            system:println("Thread with id: " + args[6] + " deleted successfully.");
         }
     }
 
@@ -157,7 +157,7 @@ function main (string[] args) {
         gmailJSONResponse = messages:getJsonPayload(gmailResponse);
         deleteResponse = jsonutils:toString(gmailJSONResponse);
         if(deleteResponse == "null"){
-            system:println("Mail with id: " + args[3] + " deleted successfully.");
+            system:println("Mail with id: " + args[6] + " deleted successfully.");
         }
     }
 

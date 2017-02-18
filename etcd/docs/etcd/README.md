@@ -20,9 +20,8 @@ docker run -p 2379:2379 --name etcd quay.io/coreos/etcd:v3.0.0 /usr/local/bin/et
 How to run this sample
 ======================
 
-1. Place the etcd connector in  {BALLERINA_HOME}/connectors.
-2. Update the main function with the relevant configuration given bellow with each action and run the command.
-
+1. copy etcd/sample/etcd/samples.bal into bin$
+2. Update the main function in sample.bal with the relevant configuration given bellow with each action and run the command.
 connectors:etcd etcdConnector = new connectors:etcd("http://127.0.0.1:2379", "root", "test123", "v2");
  
 
@@ -35,28 +34,28 @@ Commands to trigger actions:
 
 ###setKeyValue	
 
-`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal setKeyValue <key> <value>`
+`bin$ ./ballerina run main samples.bal setKeyValue <key> <value>`
 
 ###getValue
 
-`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal getValue <key>`
+`bin$ ./ballerina run main samples.bal getValue <key>`
 
 ###updateValue
 
-`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal updateValue <key> <value>`
+`bin$ ./ballerina run main samples.bal updateValue <key> <value>`
 
 ###deleteKey
 
-`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal deleteKey <key>`
+`bin$ ./ballerina run main samples.bal deleteKey <key>`
 
 ###createDir
 
-`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal createDir <dir>`
+`bin$ ./ballerina run main samples.bal createDir <dir>`
 
 ###listDir
 
-`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal listDir <dir> [recuresive=true]`
+`bin$ ./ballerina run samples.bal listDir <dir> [recuresive=true]`
 
 ###deleteDir
 
-`bin$ ./ballerina run ../connectors/etcd/src/etcd.bal deleteDir <dir> [recursive=true]`
+`bin$ ./ballerina run samples.bal deleteDir <dir> [recursive=true]`

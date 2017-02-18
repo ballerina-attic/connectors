@@ -71,23 +71,23 @@
    **IMPORTANT:** This access token can be used to make API requests on your own account's behalf. Do not share your access token with anyone.
 
 ###### Run the Sample
-- Place the linkedIn directory into {BALLERINA_HOME}/samples.
+- copy linkedIn/sample/linkedIn/samples.bal into <ballerina_home>/bin$ folder
 - Run the following commands to execute the relevant action.
   1. run all actions:
-  `bin$ ./ballerina run ../samples/linkedIn/src/ClientConnector.bal <accessToken> <companyId>`
+  `bin$ ./ballerina run main samples.bal <accessToken> <companyId>`
   2. run get actions:
-  `bin$ ./ballerina run ../samples/linkedIn/src/ClientConnector.bal get <accessToken> <companyId>`
+  `bin$ ./ballerina run main samples.bal get <accessToken> <companyId>`
   3. run post actions:
-  `bin$ ./ballerina run ../samples/linkedIn/src/ClientConnector.bal post <accessToken> <companyId>`
+  `bin$ ./ballerina run main samples.bal post <accessToken> <companyId>`
   4. get profile info:
-  `bin$ ./ballerina run ../samples/linkedIn/src/ClientConnector.bal getProfileInfo <accessToken>`
+  `bin$ ./ballerina run main samples.bal getProfileInfo <accessToken>`
   5. get company info:
-  `bin$ ./ballerina run ../samples/linkedIn/src/ClientConnector.bal getCompanyInfo <accessToken> <companyId>`
+  `bin$ ./ballerina run main samples.bal getCompanyInfo <accessToken> <companyId>`
   6. get is company share enabled:
-  `bin$ ./ballerina run ../samples/linkedIn/src/ClientConnector.bal isCompanyShareEnabled <accessToken> <companyId>`
+  `bin$ ./ballerina run main samples.bal isCompanyShareEnabled <accessToken> <companyId>`
   7. get is member a company admin:
-  `bin$ ./ballerina run ../samples/linkedIn/src/ClientConnector.bal isCompanyShareEnabled <accessToken> <companyId>`
+  `bin$ ./ballerina run main samples.bal isCompanyShareEnabled <accessToken> <companyId>`
   8. create profile share:
-  `bin$ ./ballerina run ../samples/linkedIn/src/ClientConnector.bal profileShare <accessToken>`
+  `bin$ ./ballerina run main samples.bal profileShare <accessToken>`
   9. create company share:
-  `bin$ ./ballerina run ../samples/linkedIn/src/ClientConnector.bal companyShare <accessToken> <companyId>`
+  `bin$ ./ballerina run main samples.bal companyShare <accessToken> <companyId>`
