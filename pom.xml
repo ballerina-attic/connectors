@@ -108,7 +108,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-				    <directory>etcd/src</directory>
+				                            <directory>etcd/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
