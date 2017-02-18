@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>$package.name</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+
+<body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo"><strong>Ballerina</strong> API Documentation</a>
+                </header>
+
+                <!-- Banner -->
+                <section id="banner">
+                    <div class="content">
+                        
+                        <!-- Functions -->
+                        <h2>Functions of org.wso2.ballerina.connectors.twitter package</h2>
+                         
+                        <div style="padding-bottom: 30px;">
+                            <h3 id="constructRequestHeaders">
+                                function constructRequestHeaders(<a href="#message">message</a> request, <a href="#string">string</a> httpMethod, <a href="#string">string</a> serviceEP, <a href="#string">string</a> consumerKey, <a href="#string">string</a> consumerSecret, <a href="#string">string</a> accessToken, <a href="#string">string</a> accessTokenSecret, <a href="#map">map</a> parameters) 
+                            </h3>
+                            <p></p>
+
+                            <p>
+                                <b>Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>request</td><td><a href="#message">message</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>httpMethod</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>serviceEP</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>consumerKey</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>consumerSecret</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>accessToken</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>accessTokenSecret</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>parameters</td><td><a href="#map">map</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                        </div>
+                        
+                        <p></p>
+                        <br> 
+                        
+                        <!-- Connectors -->
+                        <h2>Connectors of org.wso2.ballerina.connectors.twitter package</h2>
+                         
+                        <h3 id="ClientConnector">
+                            connector ClientConnector (<a href="#string">string</a> consumerKey, <a href="#string">string</a> consumerSecret, <a href="#string">string</a> accessToken, <a href="#string">string</a> accessTokenSecret)
+                        </h3>
+                        <p>Twitter client connector.</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>consumerKey</td><td><a href="#string">string</a></td><td>The consumer key of the Twitter account.</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>consumerSecret</td><td><a href="#string">string</a></td><td>The consumer secret of the Twitter account.</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>accessToken</td><td><a href="#string">string</a></td><td>The access token of the Twitter account.</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>accessTokenSecret</td><td><a href="#string">string</a></td><td>The access token secret of the Twitter account.</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        <b>Actions:</b><br><br>  
+                        <h3 id="tweetClientConnector">action tweet()</h3>
+                        <p>Update the authenticated user&#x27;s current status.</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="org.wso2.ballerina.connectors.twitter.html#ClientConnector" title="org.wso2.ballerina.connectors.twitter:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>status</td><td><a href="#string">string</a></td><td>The text of status update</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="retweetClientConnector">action retweet()</h3>
+                        <p>Retweet a tweet.</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="org.wso2.ballerina.connectors.twitter.html#ClientConnector" title="org.wso2.ballerina.connectors.twitter:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>id</td><td><a href="#string">string</a></td><td>The numerical ID of the desired status.</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="unretweetClientConnector">action unretweet()</h3>
+                        <p>Untweet a retweeted status.</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="org.wso2.ballerina.connectors.twitter.html#ClientConnector" title="org.wso2.ballerina.connectors.twitter:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>id</td><td><a href="#string">string</a></td><td>The numerical ID of the desired status.</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="searchClientConnector">action search()</h3>
+                        <p>Search for tweets.</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="org.wso2.ballerina.connectors.twitter.html#ClientConnector" title="org.wso2.ballerina.connectors.twitter:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>query</td><td><a href="#string">string</a></td><td>Query string to retrieve the related tweets.</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="showStatusClientConnector">action showStatus()</h3>
+                        <p>Retrive a single status.</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="org.wso2.ballerina.connectors.twitter.html#ClientConnector" title="org.wso2.ballerina.connectors.twitter:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>id</td><td><a href="#string">string</a></td><td>The numerical ID of the desired status.</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="destroyStatusClientConnector">action destroyStatus()</h3>
+                        <p>Distroy a status.</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="org.wso2.ballerina.connectors.twitter.html#ClientConnector" title="org.wso2.ballerina.connectors.twitter:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>id</td><td><a href="#string">string</a></td><td>The numerical ID of the desired status.</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="getClosestTrendLocationsClientConnector">action getClosestTrendLocations()</h3>
+                        <p>Retrive closest trend locations.</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="org.wso2.ballerina.connectors.twitter.html#ClientConnector" title="org.wso2.ballerina.connectors.twitter:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>lat</td><td><a href="#string">string</a></td><td>Latitude of the location.</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>long</td><td><a href="#string">string</a></td><td>Longitude of the location</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="getTopTrendsByPlaceClientConnector">action getTopTrendsByPlace()</h3>
+                        <p>Retrive top trends by place.</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>t</td><td><a href="org.wso2.ballerina.connectors.twitter.html#ClientConnector" title="org.wso2.ballerina.connectors.twitter:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>locationId</td><td><a href="#string">string</a></td><td>The Yahoo! Where On Earth ID of the location to return trending information for.</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <br> 
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        
+                        <li>
+                            <span class="opener">Functions</span>
+                            <ul>
+                            
+                                <li><a href="#constructRequestHeaders">constructRequestHeaders(message request, string httpMethod, string serviceEP, string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret, map parameters) </a>
+                                </li>
+                            </ul>
+                        </li> 
+                        <li>
+                            <span class="opener">Connectors</span>
+                            <ul>
+                                
+                                <li><a href="#ClientConnector ">ClientConnector (string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret)</a>
+                                    <ul>
+                                        
+                                        <li><a href="#tweetClientConnector">tweet(ClientConnector t, string status)</a></li>
+                                        
+                                        <li><a href="#retweetClientConnector">retweet(ClientConnector t, string id)</a></li>
+                                        
+                                        <li><a href="#unretweetClientConnector">unretweet(ClientConnector t, string id)</a></li>
+                                        
+                                        <li><a href="#searchClientConnector">search(ClientConnector t, string query)</a></li>
+                                        
+                                        <li><a href="#showStatusClientConnector">showStatus(ClientConnector t, string id)</a></li>
+                                        
+                                        <li><a href="#destroyStatusClientConnector">destroyStatus(ClientConnector t, string id)</a></li>
+                                        
+                                        <li><a href="#getClosestTrendLocationsClientConnector">getClosestTrendLocations(ClientConnector t, string lat, string long)</a></li>
+                                        
+                                        <li><a href="#getTopTrendsByPlaceClientConnector">getTopTrendsByPlace(ClientConnector t, string locationId)</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li> 
+                    </ul>
+                </nav>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">Copyright 2017 Ballerina API Documentation</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
