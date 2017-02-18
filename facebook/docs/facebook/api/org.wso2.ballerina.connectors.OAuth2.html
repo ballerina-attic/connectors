@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>$package.name</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+
+<body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo"><strong>Ballerina</strong> API Documentation</a>
+                </header>
+
+                <!-- Banner -->
+                <section id="banner">
+                    <div class="content">
+                        
+                        <!-- Functions -->
+                        <h2>Functions of org.wso2.ballerina.connectors.oauth2 package</h2>
+                        
+                        <div style="padding-bottom: 30px;">
+                            <h3 id="constructAuthHeader">
+                                function constructAuthHeader(<a href="#message">message</a> request, <a href="#string">string</a> accessTokenValue, <a href="#string">string</a> accessToken) (string )
+                            </h3>
+                            <p></p>
+
+                            <p>
+                                <b>Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>request</td><td><a href="#message">message</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>accessTokenValue</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>accessToken</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                            <p>
+                                <b>Return Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td></td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                        </div>
+                        
+                        <div style="padding-bottom: 30px;">
+                            <h3 id="getAccessTokenFromRefreshToken">
+                                function getAccessTokenFromRefreshToken(<a href="#message">message</a> request, <a href="#string">string</a> accessToken, <a href="#string">string</a> clientId, <a href="#string">string</a> clientSecret, <a href="#string">string</a> refreshToken, <a href="#string">string</a> refreshTokenEP) (string )
+                            </h3>
+                            <p></p>
+
+                            <p>
+                                <b>Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>request</td><td><a href="#message">message</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>accessToken</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>clientId</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>clientSecret</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>refreshToken</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>refreshTokenEP</td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                            <p>
+                                <b>Return Parameters:</b>
+                                <table>
+                                    <tr>
+                                        <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td></td><td><a href="#string">string</a></td><td></td>
+                                    </tr>
+                                    
+                                </table>
+                            </p>
+                            
+                        </div>
+                        
+                        
+                        <p></p>
+                        <br> 
+                        
+                        <!-- Connectors -->
+                        <h2>Connectors of org.wso2.ballerina.connectors.oauth2 package</h2>
+                        
+                             
+                        <h3 id="ClientConnector">
+                            connector ClientConnector (<a href="#string">string</a> baseUrl, <a href="#string">string</a> accessToken, <a href="#string">string</a> clientId, <a href="#string">string</a> clientSecret, <a href="#string">string</a> refreshToken, <a href="#string">string</a> refreshTokenEP)
+                        </h3>
+                        <p>OAuth2 client connector</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>baseUrl</td><td><a href="#string">string</a></td><td>The endpoint base url</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>accessToken</td><td><a href="#string">string</a></td><td>The access token of the account</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>clientId</td><td><a href="#string">string</a></td><td>The client Id of the account</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>clientSecret</td><td><a href="#string">string</a></td><td>The client secret of the account</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>refreshToken</td><td><a href="#string">string</a></td><td>The refresh token of the account</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>refreshTokenEP</td><td><a href="#string">string</a></td><td>The refresh token endpoint url</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        <b>Actions:</b><br><br>  
+                        <h3 id="getClientConnector">action get()</h3>
+                        <p>Get with OAuth2 authentication</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.oauth2.html#ClientConnector" title="org.wso2.ballerina.connectors.oauth2:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>request</td><td><a href="#message">message</a></td><td>The request of the method</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="postClientConnector">action post()</h3>
+                        <p>Post with OAuth2 authentication</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.oauth2.html#ClientConnector" title="org.wso2.ballerina.connectors.oauth2:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>request</td><td><a href="#message">message</a></td><td>The request of the method</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="putClientConnector">action put()</h3>
+                        <p>Put with OAuth2 authentication</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.oauth2.html#ClientConnector" title="org.wso2.ballerina.connectors.oauth2:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>request</td><td><a href="#message">message</a></td><td>The request of the method</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
+                        <h3 id="deleteClientConnector">action delete()</h3>
+                        <p>Delete with OAuth2 authentication</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.oauth2.html#ClientConnector" title="org.wso2.ballerina.connectors.oauth2:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>request</td><td><a href="#message">message</a></td><td>The request of the method</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                           
+                        <br> 
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        
+                        <li>
+                            <span class="opener">Functions</span>
+                            <ul>
+                                
+                                <li><a href="#constructAuthHeader">constructAuthHeader(message request, string accessTokenValue, string accessToken) (string )</a>
+                                </li>
+                                <li><a href="#getAccessTokenFromRefreshToken">getAccessTokenFromRefreshToken(message request, string accessToken, string clientId, string clientSecret, string refreshToken, string refreshTokenEP) (string )</a>
+                                </li>
+                            </ul>
+                        </li> 
+                        <li>
+                            <span class="opener">Connectors</span>
+                            <ul>
+                                
+                                <li><a href="#ClientConnector ">ClientConnector (string baseUrl, string accessToken, string clientId, string clientSecret, string refreshToken, string refreshTokenEP)</a>
+                                    <ul>
+                                        
+                                        <li><a href="#getClientConnector">get(ClientConnector clientConnector, string path, message request)</a></li>
+                                        
+                                        <li><a href="#postClientConnector">post(ClientConnector clientConnector, string path, message request)</a></li>
+                                        
+                                        <li><a href="#putClientConnector">put(ClientConnector clientConnector, string path, message request)</a></li>
+                                        
+                                        <li><a href="#deleteClientConnector">delete(ClientConnector clientConnector, string path, message request)</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li> 
+                    </ul>
+                </nav>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">Copyright 2017 Ballerina API Documentation</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
