@@ -8,6 +8,7 @@ Invokes a amazon lambda function.
 
 ###### Properties
   * arn - Amazon resource name of function to be invoked.
+  * payload (Optional) - The json payload containing key values of parameters to amazon lambda function.
 
 ###### Related Amazon documentation
 <http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html>
@@ -70,19 +71,19 @@ Returns the users' account information.
 - copy amazonLambda/samples/amazonLambda/samples.bal into `<ballerina_home>`/bin$ folder
 - To run the following commands to execute the relevant action.
   1. invokeFunction:
-  `bin$ ./ballerina run samples.bal <accessKeyId> <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run main samples.bal <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   2. deleteFunction:
-  `bin$ ./ballerina run samples.bal <accessKeyId> <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run main samples.bal <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   3. listFunctions:
-  `bin$ ./ballerina run samples.bal listFunctions <accessKeyId> <secretAccessKey> <region>`
+  `bin$ ./ballerina run main samples.bal listFunctions <accessKeyId> <secretAccessKey> <region>`
 
   4. listFunctionVersions:
-  `bin$ ./ballerina run samples.bal listFunctionVersions <accessKeyId> <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run main samples.bal listFunctionVersions <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   5. getFunction:
-  `bin$ ./ballerina run samples.bal getFunction <accessKeyId> <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run main samples.bal getFunction <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   6. getAccountDetails:
-  `bin$ ./ballerina run samples.bal getAccountDetails <accessKeyId> <secretAccessKey> <region>`
+  `bin$ ./ballerina run main samples.bal getAccountDetails <accessKeyId> <secretAccessKey> <region>`

@@ -91,6 +91,44 @@
                             </table>
                         </p>
                           
+                        <h3 id="invokeFunctionClientConnector">action invokeFunction()</h3>
+                        <p>Invokes a amazon lambda function by sending parameters</p>
+                        <p>
+                            <b>Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Parameter Name</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>amz</td><td><a href="org.wso2.ballerina.connectors.amazonlambda.html#ClientConnector" title="org.wso2.ballerina.connectors.amazonlambda:ClientConnector">ClientConnector</a></td><td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>arn</td><td><a href="#string">string</a></td><td>The amazon resource name of the function to invoke</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>payload</td><td><a href="#json">json</a></td><td>The json payload containing key values of parameters to amazon lambda function</td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                        
+                        <p>
+                            <b>Return Parameters:</b>
+                            <table>
+                                <tr>
+                                    <th>Return Variable</th><th>Data Type</th><th>Description</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td></td><td><a href="#message">message</a></td><td></td>
+                                </tr>
+                                
+                            </table>
+                        </p>
+                          
                         <h3 id="deleteFunctionClientConnector">action deleteFunction()</h3>
                         <p>Deletes a lambda function</p>
                         <p>
@@ -279,6 +317,8 @@
                                     <ul>
                                         
                                         <li><a href="#invokeFunctionClientConnector">invokeFunction(ClientConnector amz, string arn)</a></li>
+                                        
+                                        <li><a href="#invokeFunctionClientConnector">invokeFunction(ClientConnector amz, string arn, json payload)</a></li>
                                         
                                         <li><a href="#deleteFunctionClientConnector">deleteFunction(ClientConnector amz, string arn)</a></li>
                                         

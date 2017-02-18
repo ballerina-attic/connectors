@@ -1,6 +1,7 @@
 package org.wso2.ballerina.connectors.amazonlambda;
 
 import org.wso2.ballerina.connectors.amazonauth;
+import ballerina.lang.jsonutils;
 import ballerina.lang.messages;
 
 @doc:Description("Amazon Lambda client connector")
@@ -27,6 +28,26 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         requestURI = "/2015-03-31/functions/" + arn + "/invocations";
         messages:setHeader(requestMsg, "Host", host);
         response = amazonauth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        return response;
+    }
+
+    @doc:Description("Invokes a amazon lambda function by sending parameters")
+    @doc:Param("arn: The amazon resource name of the function to invoke")
+    @doc:Param("payload: The json payload containing key values of parameters to amazon lambda function")
+    @doc:Return("response message")
+    action invokeFunction(ClientConnector amz, string arn, json payload) (message) throws exception {
+        string httpMethod;
+        string requestURI;
+      	string host;
+        message requestMsg = {};
+        message response = {};
+      	host = "lambda." + region + ".amazonaws.com";
+        httpMethod = "POST";
+        requestURI = "/2015-03-31/functions/" + arn + "/invocations";
+        messages:setHeader(requestMsg, "Host", host);
+        messages:setJsonPayload(requestMsg, payload);
+        response = amazonauth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI,
+         jsonutils:toString(payload));
         return response;
     }
 

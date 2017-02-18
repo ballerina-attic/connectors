@@ -15,6 +15,12 @@ function main (string[] args) {
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
         system:println(jsonutils:toString(lambdaJSONResponse));
     }
+    if (args[0] == "invokeFunctionWithParam"){
+        json payload = `{'name':'Ballerina'}`;
+        lambdaResponse = amazonlambda:ClientConnector.invokeFunction(amzLamConnector, args[4], payload);
+        lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
+        system:println(jsonutils:toString(lambdaJSONResponse));
+    }
     if (args[0] == "deleteFunction"){
         lambdaResponse = amazonlambda:ClientConnector.deleteFunction(amzLamConnector, args[4]);
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);

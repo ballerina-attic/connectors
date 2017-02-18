@@ -92,7 +92,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     signedHeader = signedHeader + strings:toLowerCase("Host");
     signedHeader = signedHeader + ";";
 
-    if(payload != ""){
+    if(payload == "UNSIGNED-PAYLOAD"){
         canonicalHeaders = canonicalHeaders + strings:toLowerCase("X-Amz-Content-Sha256");
         canonicalHeaders = canonicalHeaders + ":";
         canonicalHeaders = canonicalHeaders + messages:getHeader(msg, strings:toLowerCase("X-Amz-Content-Sha256"));
