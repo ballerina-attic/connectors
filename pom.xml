@@ -104,7 +104,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonS3/src</directory>
+                                    <directory>amazons3/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -120,7 +120,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>linkedIn/src</directory>
+                                    <directory>linkedin/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -164,7 +164,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonS3/docs</directory>
+                                    <directory>amazons3/docs</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -180,7 +180,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>linkedIn/docs</directory>
+                                    <directory>linkedin/docs</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -225,7 +225,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonS3/samples</directory>
+                                    <directory>amazons3/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -241,7 +241,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>linkedIn/samples</directory>
+                                    <directory>linkedin/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
