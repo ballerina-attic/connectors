@@ -1,6 +1,6 @@
 package org.wso2.ballerina.connectors.linkedIn;
 
-import org.wso2.ballerina.connectors.OAuth2;
+import org.wso2.ballerina.connectors.oauth2;
 import ballerina.lang.messages;
 
 @doc:Description("LinkedIn client connector")
@@ -8,7 +8,7 @@ import ballerina.lang.messages;
 connector ClientConnector (string accessToken) {
 
     string baseURL = "https://api.linkedin.com";
-    OAuth2:ClientConnector linkedInEP = create OAuth2:ClientConnector(baseURL, accessToken, "null", "null",
+    oauth2:ClientConnector linkedInEP = create oauth2:ClientConnector(baseURL, accessToken, "null", "null",
             "null", "null");
 
     @doc:Description("Get Profile Information")
@@ -22,7 +22,7 @@ connector ClientConnector (string accessToken) {
 
         format = validateFormat(format);
         getProfileInfoPath = "/v1/people/~?format=" + format;
-        response = OAuth2:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
+        response = oauth2:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
 
         return response;
     }
@@ -39,7 +39,7 @@ connector ClientConnector (string accessToken) {
 
         format = validateFormat(format);
         getProfileInfoPath = "/v1/companies/" + companyId + "?format=" + format;
-        response = OAuth2:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
+        response = oauth2:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
 
         return response;
     }
@@ -56,7 +56,7 @@ connector ClientConnector (string accessToken) {
 
         format = validateFormat(format);
         getProfileInfoPath = "/v1/companies/" + companyId + "/is-company-share-enabled?format=" + format;
-        response = OAuth2:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
+        response = oauth2:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
 
         return response;
     }
@@ -73,7 +73,7 @@ connector ClientConnector (string accessToken) {
 
         format = validateFormat(format);
         getProfileInfoPath = "/v1/companies/" + companyId + "/relation-to-viewer/is-company-share-enabled?format=" + format;
-        response = OAuth2:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
+        response = oauth2:ClientConnector.get(linkedInEP, getProfileInfoPath, request);
 
         return response;
     }
@@ -91,7 +91,7 @@ connector ClientConnector (string accessToken) {
         messages:setHeader(request, "Content-Type", "application/json");
         messages:setHeader(request, "x-li-format", "json");
         messages:setJsonPayload(request, payload);
-        response = OAuth2:ClientConnector.post(linkedInEP, profileSharePath, request);
+        response = oauth2:ClientConnector.post(linkedInEP, profileSharePath, request);
 
         return response;
     }
@@ -109,7 +109,7 @@ connector ClientConnector (string accessToken) {
         messages:setHeader(request, "Content-Type", "application/xml");
         messages:setHeader(request, "x-li-format", "xml");
         messages:setXmlPayload(request, payload);
-        response = OAuth2:ClientConnector.post(linkedInEP, profileSharePath, request);
+        response = oauth2:ClientConnector.post(linkedInEP, profileSharePath, request);
 
         return response;
     }
@@ -128,7 +128,7 @@ connector ClientConnector (string accessToken) {
         messages:setHeader(request, "Content-Type", "application/json");
         messages:setHeader(request, "x-li-format", "json");
         messages:setJsonPayload(request, payload);
-        response = OAuth2:ClientConnector.post(linkedInEP, companySharePath, request);
+        response = oauth2:ClientConnector.post(linkedInEP, companySharePath, request);
 
         return response;
     }
@@ -147,7 +147,7 @@ connector ClientConnector (string accessToken) {
         messages:setHeader(request, "Content-Type", "application/xml");
         messages:setHeader(request, "x-li-format", "xml");
         messages:setXmlPayload(request, payload);
-        response = OAuth2:ClientConnector.post(linkedInEP, companySharePath, request);
+        response = oauth2:ClientConnector.post(linkedInEP, companySharePath, request);
 
         return response;
     }
