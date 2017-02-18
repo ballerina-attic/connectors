@@ -13,8 +13,7 @@ file to <ballerina_home>/bre/lib and test.
 To test a connector action written in Ballerina language use the run 
 command as follows.
 
-Create a main function that import connector packages and call the connector 
-actions in test.bal file with four args. Then can run the main function as 
-follows
+Copy the `<Connector>`/samples/`<Connector>`/samples.bal into `<ballerina_home>`/bin folder 
+and run the command like in below,
 
-$ bin ./ballerina run main test.bal args[0] args[1] args[3] args[4]
+$ bin ./ballerina run main samples.bal
