@@ -103,10 +103,10 @@
                                     <directory>basicAuth/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
-                                <!--<resource>-->
-                                    <!--<directory>etcd/src</directory>-->
-                                    <!--<filtering>true</filtering>-->
-                                <!--</resource>-->
+                                <resource>
+				                    <directory>etcd/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
                                 <resource>
                                     <directory>facebook/src</directory>
                                     <filtering>true</filtering>
@@ -136,6 +136,10 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
+                                    <directory>amazonAuth/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                              <resource>
                                     <directory>amazonLambda/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
@@ -188,6 +192,10 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
+                                    <directory>amazonAuth/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                              <resource>
                                     <directory>amazonLambda/docs</directory>
                                     <filtering>true</filtering>
                                 </resource>

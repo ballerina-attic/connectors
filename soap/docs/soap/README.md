@@ -21,7 +21,8 @@ Do not share those with anyone.
 
 ###### Invoke the actions
 
+- copy soap/sample/soap/samples.bal into `<ballerina_home>`/bin$ folder
 - To run the following command to execute the action.
 
   1. send:  
-  `bin$ ./ballerina run ../samples/soap/src/soapConnector.bal <username> <password+securityToken>`
+  `bin$ ./ballerina run main samples.bal <username> <password+securityToken>`
