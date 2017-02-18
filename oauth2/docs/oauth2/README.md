@@ -43,15 +43,15 @@ The delete action allows to use http delete action with oauth2 authentication fl
     * Refresh Token Endpoint
 
 ###### Invoke the actions
-- Place the oauth2 directory into {BALLERINA_HOME}/samples.
+- copy oauth2/sample/oauth2/samples.bal into `<ballerina_home>`/bin$ folder
 - Run the following commands to execute the relevant action.
     1. get:
-    `bin$ ./ballerina run ../samples/oauth2/src/ClientConnector.bal get <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
+    `bin$ ./ballerina run main samples.bal get <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
     2. post:
-    `bin$ ./ballerina run ../samples/oauth2/src/ClientConnector.bal post <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
+    `bin$ ./ballerina run main samples.bal post <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
     3. put:
-    `bin$ ./ballerina run ../samples/oauth2/src/ClientConnector.bal put <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
+    `bin$ ./ballerina run main samples.bal put <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
     4. delete:
-    `bin$ ./ballerina run ../samples/oauth2/src/ClientConnector.bal delete <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
+    `bin$ ./ballerina run main samples.bal delete <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
 
 Note: If you are not passing refresh token in the request, access token won't be refreshed.
