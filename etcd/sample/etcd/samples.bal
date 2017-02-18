@@ -15,12 +15,12 @@ function main (string[] args) {
 
     // add key/value to the etcd
     if (args[0] == "setKeyValue"){
-    if (arrays:length(args) > 2){
+    	if (arrays:length(args) > 2){
             etcdResponse = etcd:ClientConnector.setKeyValue(etcdConnector,args[1],args[2]);
             system:println(messages:getStringPayload(etcdResponse));
-    }else{
-        system:println("Usage: setKeyValue <key> <value>");
-    }
+    	}else{
+            system:println("Usage: setKeyValue <key> <value>");
+    	}
     }
  
     // get value from the etcd for given key
@@ -28,9 +28,9 @@ function main (string[] args) {
        if (arrays:length(args) > 1){ 
             etcdResponse = etcd:ClientConnector.getValue(etcdConnector,args[1]);
             system:println(messages:getStringPayload(etcdResponse));
-    }else{
-        system:println("Usage: getValue <key>");
-    }
+    	}else{
+            system:println("Usage: getValue <key>");
+    	}
     }
     
     // update a value for given key
@@ -38,9 +38,9 @@ function main (string[] args) {
        if (arrays:length(args) > 2){ 
             etcdResponse = etcd:ClientConnector.updateValue(etcdConnector,args[1],args[2]);
             system:println(messages:getStringPayload(etcdResponse));
-    }else{
-        system:println("Usage: updateValue <key> <value>");
-    }
+    	}else{
+            system:println("Usage: updateValue <key> <value>");
+    	}
     }
 
     // delete a key from etcd
@@ -48,46 +48,46 @@ function main (string[] args) {
        if (arrays:length(args) > 1){ 
             etcdResponse = etcd:ClientConnector.deleteKey(etcdConnector,args[1]);
             system:println(messages:getStringPayload(etcdResponse));
-    }else{
-        system:println("Usage: deleteKey <key>");
-    }
+    	}else{
+            system:println("Usage: deleteKey <key>");
+    	}
     }
 
     // create directory
     if (args[0] == "createDir"){
-    if (arrays:length(args) > 1){
+	if (arrays:length(args) > 1){
             etcdResponse = etcd:ClientConnector.createDir(etcdConnector,args[1]);
             system:println(messages:getStringPayload(etcdResponse));
-    }else{
-        system:println("Usage: createDir <dir>");
-    }
+    	}else{
+            system:println("Usage: createDir <dir>");
+	}
     }
     
     // list directory
     if (args[0] == "listDir"){
-    if (arrays:length(args) > 1){
-        if (arrays:length(args) < 3 ){
+    	if (arrays:length(args) > 1){
+            if (arrays:length(args) < 3 ){
                 etcdResponse = etcd:ClientConnector.listDir(etcdConnector,args[1],"recursive=false");
-        }else{
+            }else{
                 etcdResponse = etcd:ClientConnector.listDir(etcdConnector,args[1],args[2]);
-        }
+            }
             system:println(messages:getStringPayload(etcdResponse));
-    }else{
-        system:println("Usage: listDir <dir> [recuresive=true]");
-    }
+   	}else{
+            system:println("Usage: listDir <dir> [recuresive=true]");
+    	}
     }
     
     // delete directory
     if (args[0] == "deleteDir"){
-     if (arrays:length(args) > 1){
-        if (arrays:length(args) < 3 ){
-        etcdResponse = etcd:ClientConnector.deleteDir(etcdConnector,args[1],"recursive=false");
-        }else{
-        etcdResponse = etcd:ClientConnector.deleteDir(etcdConnector,args[1],args[2]);
-        }
+	if (arrays:length(args) > 1){
+            if (arrays:length(args) < 3 ){
+            	etcdResponse = etcd:ClientConnector.deleteDir(etcdConnector,args[1],"recursive=false");
+            }else{
+        	etcdResponse = etcd:ClientConnector.deleteDir(etcdConnector,args[1],args[2]);
+            }
             system:println(messages:getStringPayload(etcdResponse));
-    }else{
-        system:println("Usage: deleteDir <dir> [recuresive=true]");
-    }
+    	}else{
+            system:println("Usage: deleteDir <dir> [recuresive=true]");
+    	}
     }
 }

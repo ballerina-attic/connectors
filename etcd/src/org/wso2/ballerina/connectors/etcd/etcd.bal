@@ -19,16 +19,16 @@ connector ClientConnector (string etcdURL, string username, string password, str
     @doc:Return("response object")
     action getValue(ClientConnector t, string key) (message) {
 
-    string encodedBasicAuthHeaderValue;
-    string path;
-    message request= {};
-    message response;
+	string encodedBasicAuthHeaderValue;
+	string path;
+    	message request= {};
+    	message response;
 
-    if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-        encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
-        messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
-    }
-    path = "/" + apiVersion + "/keys/" + key;
+    	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
+            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
+    	}
+        path = "/" + apiVersion + "/keys/" + key;
         response = http:ClientConnector.get(etcdEP, path, request);
         return response;
     }
@@ -39,20 +39,20 @@ connector ClientConnector (string etcdURL, string username, string password, str
     @doc:Return("response object")
     action setKeyValue(ClientConnector t, string key, string value) (message) {
 
-    string encodedBasicAuthHeaderValue;
-    string path;
-    message request= {};
-    message response;
+    	string encodedBasicAuthHeaderValue;
+    	string path;
+    	message request= {};
+    	message response;
 
-    if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-        encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
-        messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
-    }
-    messages:setStringPayload(request, "value=" + value);
-    messages:setHeader(request, "Content-Type", "application/x-www-form-urlencoded");
-    path = "/" + apiVersion + "/keys/" + key;
-    response = http:ClientConnector.put(etcdEP, path, request);
-    return response;
+    	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
+            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
+    	}
+    	messages:setStringPayload(request, "value=" + value);
+    	messages:setHeader(request, "Content-Type", "application/x-www-form-urlencoded");
+    	path = "/" + apiVersion + "/keys/" + key;
+    	response = http:ClientConnector.put(etcdEP, path, request);
+    	return response;
     }
 
     @doc:Description("Update the value for given key")
@@ -61,20 +61,20 @@ connector ClientConnector (string etcdURL, string username, string password, str
     @doc:Return("response object")
     action updateValue(ClientConnector t, string key, string value) (message) {
 
-    string encodedBasicAuthHeaderValue;
-    string path;
-    message request= {};
-    message response;
+    	string encodedBasicAuthHeaderValue;
+    	string path;
+    	message request= {};
+    	message response;
 
-    if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-        encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
-        messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
-    }
-    messages:setStringPayload(request, "value=" + value);
-    messages:setHeader(request, "Content-Type", "application/x-www-form-urlencoded");
-    path = "/" + apiVersion + "/keys/" + key;
-    response = http:ClientConnector.put(etcdEP, path, request);
-    return response;
+    	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
+            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
+    	}
+    	messages:setStringPayload(request, "value=" + value);
+    	messages:setHeader(request, "Content-Type", "application/x-www-form-urlencoded");
+    	path = "/" + apiVersion + "/keys/" + key;
+    	response = http:ClientConnector.put(etcdEP, path, request);
+    	return response;
     }
 
     @doc:Description("Delete the key")
@@ -82,18 +82,18 @@ connector ClientConnector (string etcdURL, string username, string password, str
     @doc:Return("response object")
     action deleteKey(ClientConnector t, string key) (message) {
 
-    string encodedBasicAuthHeaderValue;
-    string path;
-    message request= {};
-    message response;
+    	string encodedBasicAuthHeaderValue;
+    	string path;
+    	message request= {};
+    	message response;
 
-    if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-        encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
-        messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
-    }
-    path = "/" + apiVersion + "/keys/" + key;
-    response = http:ClientConnector.delete(etcdEP, path, request);
-    return response;
+    	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
+            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
+    	}
+    	path = "/" + apiVersion + "/keys/" + key;
+    	response = http:ClientConnector.delete(etcdEP, path, request);
+    	return response;
      }
 
     @doc:Description("Create a directory")
@@ -101,18 +101,18 @@ connector ClientConnector (string etcdURL, string username, string password, str
     @doc:Return("response object")
     action createDir(ClientConnector t, string dir) (message) {
 
-    string encodedBasicAuthHeaderValue;
-    string path;
-    message request= {};
-    message response;
+    	string encodedBasicAuthHeaderValue;
+    	string path;
+    	message request= {};
+    	message response;
 
-    if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-        encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
-        messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
-    }
-    path = "/" + apiVersion + "/keys/" + dir;
-    response = http:ClientConnector.put(etcdEP, path, request);
-    return response;
+    	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
+            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
+    	}
+    	path = "/" + apiVersion + "/keys/" + dir;
+    	response = http:ClientConnector.put(etcdEP, path, request);
+    	return response;
     }
 
     @doc:Description("List directory")
@@ -121,18 +121,18 @@ connector ClientConnector (string etcdURL, string username, string password, str
     @doc:Return("response object")
     action listDir(ClientConnector t, string dir, string recursive) (message) {
 
-    string encodedBasicAuthHeaderValue;
-    string path;
-    message request= {};
-    message response;
+    	string encodedBasicAuthHeaderValue;
+    	string path;
+    	message request= {};
+    	message response;
 
-    if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-        encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
-        messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
-    }
-    path = "/" + apiVersion + "/keys" + dir + "?" + recursive;
+    	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
+            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
+    	}
+	path = "/" + apiVersion + "/keys" + dir + "?" + recursive;
         response = http:ClientConnector.get(etcdEP, path, request);
-    return response;
+    	return response;
     }
 
     @doc:Description("Delete directory")
@@ -141,17 +141,17 @@ connector ClientConnector (string etcdURL, string username, string password, str
     @doc:Return("response object")
     action deleteDir(ClientConnector t, string dir, string recursive) (message) {
 
-    string encodedBasicAuthHeaderValue;
-    string path;
-    message request= {};
-    message response;
+    	string encodedBasicAuthHeaderValue;
+    	string path;
+    	message request= {};
+    	message response;
 
-    if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-        encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
-        messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
-    }
-    path = "/" + apiVersion + "/keys" + dir + "?" + recursive;
+    	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
+            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
+    	}
+    	path = "/" + apiVersion + "/keys" + dir + "?" + recursive;
         response = http:ClientConnector.delete(etcdEP, path, request);
-    return response;
+    	return response;
     }
 }
