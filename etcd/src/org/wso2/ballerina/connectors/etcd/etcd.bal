@@ -20,9 +20,9 @@ connector ClientConnector (string etcdURL, string username, string password, str
     action getValue(ClientConnector t, string key) (message) {
 
     string encodedBasicAuthHeaderValue;
-        string path;
-        message request= {};
-        message response;
+    string path;
+    message request= {};
+    message response;
 
     if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
         encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
@@ -40,9 +40,9 @@ connector ClientConnector (string etcdURL, string username, string password, str
     action setKeyValue(ClientConnector t, string key, string value) (message) {
 
     string encodedBasicAuthHeaderValue;
-        string path;
-        message request= {};
-        message response;
+    string path;
+    message request= {};
+    message response;
 
     if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
         encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
@@ -62,9 +62,9 @@ connector ClientConnector (string etcdURL, string username, string password, str
     action updateValue(ClientConnector t, string key, string value) (message) {
 
     string encodedBasicAuthHeaderValue;
-        string path;
-        message request= {};
-        message response;
+    string path;
+    message request= {};
+    message response;
 
     if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
         encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
@@ -83,9 +83,9 @@ connector ClientConnector (string etcdURL, string username, string password, str
     action deleteKey(ClientConnector t, string key) (message) {
 
     string encodedBasicAuthHeaderValue;
-        string path;
-        message request= {};
-        message response;
+    string path;
+    message request= {};
+    message response;
 
     if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
         encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
@@ -102,9 +102,9 @@ connector ClientConnector (string etcdURL, string username, string password, str
     action createDir(ClientConnector t, string dir) (message) {
 
     string encodedBasicAuthHeaderValue;
-        string path;
-        message request= {};
-        message response;
+    string path;
+    message request= {};
+    message response;
 
     if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
         encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
@@ -122,9 +122,9 @@ connector ClientConnector (string etcdURL, string username, string password, str
     action listDir(ClientConnector t, string dir, string recursive) (message) {
 
     string encodedBasicAuthHeaderValue;
-        string path;
-        message request= {};
-        message response;
+    string path;
+    message request= {};
+    message response;
 
     if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
         encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
@@ -142,9 +142,9 @@ connector ClientConnector (string etcdURL, string username, string password, str
     action deleteDir(ClientConnector t, string dir, string recursive) (message) {
 
     string encodedBasicAuthHeaderValue;
-        string path;
-        message request= {};
-        message response;
+    string path;
+    message request= {};
+    message response;
 
     if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
         encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
