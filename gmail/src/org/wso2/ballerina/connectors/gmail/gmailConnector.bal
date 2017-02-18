@@ -84,7 +84,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         }
 
         string encodedRequest = util:base64encode(concatRequest);
-        json createDraftRequest = `{"message":{"raw": "${encodedRequest}"}}`;
+        json createDraftRequest = `{"message":{"raw": ${encodedRequest}}}`;
 
         string createDraftPath = "/v1/users/" + userId + "/drafts";
         messages:setJsonPayload(request, createDraftRequest);
@@ -144,7 +144,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         }
 
         string encodedRequest = util:base64encode(concatRequest);
-        json updateDraftRequest = `{"message":{"raw": "${encodedRequest}"}}`;
+        json updateDraftRequest = `{"message":{"raw": ${encodedRequest}}}`;
 
         string updateDraftPath = "/v1/users/" + userId + "/drafts/" +draftId;
         messages:setJsonPayload(request, updateDraftRequest);
@@ -271,10 +271,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
 
         message request = {};
 
-        json createLabelRequest = `{"name": "${labelName}", "messageListVisibility":
-        "${messageListVisibility}", "labelListVisibility": "${labelListVisibility}",
-        "type": "${types}","messagesTotal": "${messagesTotal}", "messagesUnread": "${messagesUnread}",
-        "threadsTotal": "${threadsTotal}", "threadsUnread": "${threadsUnread}"}`;
+        json createLabelRequest = `{"name": ${labelName}, "messageListVisibility":
+        ${messageListVisibility}, "labelListVisibility": ${labelListVisibility},
+        "type": ${types},"messagesTotal": ${messagesTotal}, "messagesUnread": ${messagesUnread},
+        "threadsTotal": ${threadsTotal}, "threadsUnread": ${threadsUnread}}`;
 
         if (types == "null") {
             jsonutils:remove(createLabelRequest, "$.type");
@@ -347,11 +347,11 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
 
         message request = {};
 
-        json updateLabelRequest = `{"id": "${labelId}", "name": "${labelName}",
-        "messageListVisibility": "${messageListVisibility}",
-        "labelListVisibility": "${labelListVisibility}", "type": "${types}","messagesTotal":
-        "${messagesTotal}", "messagesUnread": "${messagesUnread}", "threadsTotal": "${threadsTotal}",
-        "threadsUnread": "${threadsUnread}"}`;
+        json updateLabelRequest = `{"id": ${labelId}, "name": ${labelName},
+        "messageListVisibility": ${messageListVisibility},
+        "labelListVisibility": ${labelListVisibility}, "type": ${types},"messagesTotal":
+        ${messagesTotal}, "messagesUnread": ${messagesUnread}, "threadsTotal": ${threadsTotal},
+        "threadsUnread": ${threadsUnread}}`;
 
         if (types == "null") {
             jsonutils:remove(updateLabelRequest, "$.type");
@@ -588,7 +588,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         }
 
         string encodedRequest = util:base64encode(concatRequest);
-        json sendMailRequest = `{"raw": "${encodedRequest}"}`;
+        json sendMailRequest = `{"raw": ${encodedRequest}}`;
         string sendMailPath = "/v1/users/" + userId + "/messages/send";
         messages:setJsonPayload(request, sendMailRequest);
         messages:setHeader(request, "Content-Type", "Application/json");
@@ -607,8 +607,8 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
 
         message request = {};
 
-        json modifyExistingMessageRequest = `{"addLabelIds":["${addLabelIds}"],
-        "removeLabelIds":["${removeLabelIds}"]}`;
+        json modifyExistingMessageRequest = `{"addLabelIds":[${addLabelIds}],
+        "removeLabelIds":[${removeLabelIds}]}`;
 
         if(addLabelIds == "null") {
             jsonutils:remove(modifyExistingMessageRequest, "$.addLabelIds");
