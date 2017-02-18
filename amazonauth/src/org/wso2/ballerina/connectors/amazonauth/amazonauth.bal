@@ -1,4 +1,4 @@
-package org.wso2.ballerina.connectors.amazonAuth;
+package org.wso2.ballerina.connectors.amazonauth;
 
 import ballerina.net.http;
 import ballerina.lang.strings;

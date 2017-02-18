@@ -136,11 +136,11 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonAuth/src</directory>
+                                    <directory>amazonauth/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonLambda/src</directory>
+                                    <directory>amazonlambda/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
@@ -192,11 +192,11 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonAuth/docs</directory>
+                                    <directory>amazonauth/docs</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonLambda/docs</directory>
+                                    <directory>amazonlambda/docs</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
@@ -249,7 +249,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonLambda/samples</directory>
+                                    <directory>amazonlambda/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>

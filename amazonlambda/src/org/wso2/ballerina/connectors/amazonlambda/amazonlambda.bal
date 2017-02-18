@@ -1,6 +1,6 @@
-package org.wso2.ballerina.connectors.amazonLambda;
+package org.wso2.ballerina.connectors.amazonlambda;
 
-import org.wso2.ballerina.connectors.amazonAuth;
+import org.wso2.ballerina.connectors.amazonauth;
 import ballerina.lang.messages;
 
 @doc:Description("Amazon Lambda client connector")
@@ -10,7 +10,7 @@ import ballerina.lang.messages;
 connector ClientConnector(string accessKeyId, string secretAccessKey,string region) {
 
     string endpoint = "https://lambda." + region + ".amazonaws.com";
-    amazonAuth:ClientConnector amazonAuthConnector = create amazonAuth:ClientConnector(accessKeyId, secretAccessKey,
+    amazonauth:ClientConnector amazonAuthConnector = create amazonauth:ClientConnector(accessKeyId, secretAccessKey,
      region, "lambda", "aws4_request", endpoint);
 
     @doc:Description("Invokes a amazon lambda function")
@@ -26,7 +26,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         httpMethod = "POST";
         requestURI = "/2015-03-31/functions/" + arn + "/invocations";
         messages:setHeader(requestMsg, "Host", host);
-        response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        response = amazonauth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
         return response;
     }
 
@@ -45,7 +45,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         host = "lambda.us-east-1.amazonaws.com";
         endpoint = "https://lambda." + region + ".amazonaws.com";
         messages:setHeader(requestMsg, "Host", host);
-        response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        response = amazonauth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
         return response;
     }
 
@@ -63,7 +63,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         host = "lambda.us-east-1.amazonaws.com";
         endpoint = "https://lambda." + region + ".amazonaws.com";
         messages:setHeader(requestMsg, "Host", host);
-        response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        response = amazonauth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
         return response;
     }
 
@@ -82,7 +82,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         host = "lambda.us-east-1.amazonaws.com";
         endpoint = "https://lambda." + region + ".amazonaws.com";
         messages:setHeader(requestMsg, "Host", host);
-        response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        response = amazonauth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
         return response;
     }
 
@@ -99,7 +99,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         httpMethod = "GET";
         requestURI = "/2015-03-31/functions/";
         messages:setHeader(requestMsg, "Host", host);
-        response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        response = amazonauth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
         return response;
     }
 
@@ -115,7 +115,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
         httpMethod = "GET";
         requestURI = "/2015-03-31/functions/" + arn + "/versions";
         messages:setHeader(requestMsg, "Host", host);
-        response = amazonAuth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
+        response = amazonauth:ClientConnector.request(amazonAuthConnector, requestMsg, httpMethod, requestURI, "");
         return response;
     }
 }
