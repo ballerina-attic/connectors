@@ -5,7 +5,6 @@
     <title>$package.name</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="assets/css/main.css" />
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
@@ -78,38 +77,15 @@
                             </p>
                             
                         </div>
-                         
-                        <div style="padding-bottom: 30px;">
-                            <h3 id="main">
-                                function main(<a href="#string[]">string[]</a> args) 
-                            </h3>
-                            <p></p>
-
-                            <p>
-                                <b>Parameters:</b>
-                                <table>
-                                    <tr>
-                                        <th>Parameter Name</th><th>Data Type</th><th>Description</th>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>args</td><td><a href="#string[]">string[]</a></td><td></td>
-                                    </tr>
-                                    
-                                </table>
-                            </p>
-                            
-                        </div>
                         
                         <p></p>
                         <br> 
                         
                         <!-- Connectors -->
                         <h2>Connectors of org.wso2.ballerina.connectors.basicauth package</h2>
-                        
-                             
+                         
                         <h3 id="ClientConnector">
-                            connector ClientConnector (<a href="#string">string</a> userName, <a href="#string">string</a> password)
+                            connector ClientConnector (<a href="#string">string</a> baseUrl, <a href="#string">string</a> userName, <a href="#string">string</a> password)
                         </h3>
                         <p>Basic Auth client connector</p>
                         <p>
@@ -120,11 +96,15 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>userName</td><td><a href="">string</a></td><td>The user name of the account</td>
+                                    <td>baseUrl</td><td><a href="#string">string</a></td><td>The endpoint base url</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>password</td><td><a href="">string</a></td><td>The password of the account</td>
+                                    <td>userName</td><td><a href="#string">string</a></td><td>The user name of the account</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>password</td><td><a href="#string">string</a></td><td>The password of the account</td>
                                 </tr>
                                 
                             </table>
@@ -140,11 +120,11 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientConnector</td><td><a href="../html/org.wso2.ballerina.connectors.basicauth.html#ClientConnector">org.wso2.ballerina.connectors.basicauth:ClientConnector</a></td><td></td>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.basicauth.html#ClientConnector" title="org.wso2.ballerina.connectors.basicauth:ClientConnector">ClientConnector</a></td><td></td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>url</td><td><a href="#string">string</a></td><td>The endpoint url</td>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
                                 </tr>
                                 
                                 <tr>
@@ -178,11 +158,11 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientConnector</td><td><a href="../html/org.wso2.ballerina.connectors.basicauth.html#ClientConnector">org.wso2.ballerina.connectors.basicauth:ClientConnector</a></td><td></td>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.basicauth.html#ClientConnector" title="org.wso2.ballerina.connectors.basicauth:ClientConnector">ClientConnector</a></td><td></td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>url</td><td><a href="#string">string</a></td><td>The endpoint url</td>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
                                 </tr>
                                 
                                 <tr>
@@ -216,11 +196,11 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientConnector</td><td><a href="../html/org.wso2.ballerina.connectors.basicauth.html#ClientConnector">org.wso2.ballerina.connectors.basicauth:ClientConnector</a></td><td></td>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.basicauth.html#ClientConnector" title="org.wso2.ballerina.connectors.basicauth:ClientConnector">ClientConnector</a></td><td></td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>url</td><td><a href="#string">string</a></td><td>The endpoint url</td>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
                                 </tr>
                                 
                                 <tr>
@@ -254,11 +234,11 @@
                                 </tr>
                                 
                                 <tr>
-                                    <td>clientConnector</td><td><a href="../html/org.wso2.ballerina.connectors.basicauth.html#ClientConnector">org.wso2.ballerina.connectors.basicauth:ClientConnector</a></td><td></td>
+                                    <td>clientConnector</td><td><a href="org.wso2.ballerina.connectors.basicauth.html#ClientConnector" title="org.wso2.ballerina.connectors.basicauth:ClientConnector">ClientConnector</a></td><td></td>
                                 </tr>
                                 
                                 <tr>
-                                    <td>url</td><td><a href="#string">string</a></td><td>The endpoint url</td>
+                                    <td>path</td><td><a href="#string">string</a></td><td>The endpoint path</td>
                                 </tr>
                                 
                                 <tr>
@@ -281,7 +261,7 @@
                                 
                             </table>
                         </p>
-                           
+                          
                         <br> 
                         
                     </div>
@@ -303,10 +283,8 @@
                         <li>
                             <span class="opener">Functions</span>
                             <ul>
-                                
+                            
                                 <li><a href="#constructBasicAuthHeader">constructBasicAuthHeader(message request, string encodedBasicAuthValue, string userName, string password) (string )</a>
-                                </li>
-                                <li><a href="#main">main(string[] args) </a>
                                 </li>
                             </ul>
                         </li> 
@@ -314,16 +292,16 @@
                             <span class="opener">Connectors</span>
                             <ul>
                                 
-                                <li><a href="#ClientConnector ">ClientConnector (string userName, string password)</a>
+                                <li><a href="#ClientConnector ">ClientConnector (string baseUrl, string userName, string password)</a>
                                     <ul>
                                         
-                                        <li><a href="#getClientConnector">get(org.wso2.ballerina.connectors.basicauth:ClientConnector clientConnector, string url, message request)</a></li>
+                                        <li><a href="#getClientConnector">get(ClientConnector clientConnector, string path, message request)</a></li>
                                         
-                                        <li><a href="#postClientConnector">post(org.wso2.ballerina.connectors.basicauth:ClientConnector clientConnector, string url, message request)</a></li>
+                                        <li><a href="#postClientConnector">post(ClientConnector clientConnector, string path, message request)</a></li>
                                         
-                                        <li><a href="#putClientConnector">put(org.wso2.ballerina.connectors.basicauth:ClientConnector clientConnector, string url, message request)</a></li>
+                                        <li><a href="#putClientConnector">put(ClientConnector clientConnector, string path, message request)</a></li>
                                         
-                                        <li><a href="#deleteClientConnector">delete(org.wso2.ballerina.connectors.basicauth:ClientConnector clientConnector, string url, message request)</a></li>
+                                        <li><a href="#deleteClientConnector">delete(ClientConnector clientConnector, string path, message request)</a></li>
                                         
                                     </ul>
                                 </li>
