@@ -1,5 +1,3 @@
-import org.wso2.ballerina.core.nativeimpl.annotations.BallerinaConnector;
-
 /*
  * Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
@@ -16,6 +14,8 @@ import org.wso2.ballerina.core.nativeimpl.annotations.BallerinaConnector;
  * specific language governing permissions and limitations
  * under the License.
  */
+
+import org.ballerinalang.natives.annotations.BallerinaConnector;
 
 /**
  * This is a dummy class needed for annotation processor plugin.

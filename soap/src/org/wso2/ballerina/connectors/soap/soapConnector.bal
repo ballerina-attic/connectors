@@ -1,8 +1,8 @@
 package org.wso2.ballerina.connectors.soap;
 
-import ballerina.lang.message;
+import ballerina.lang.messages;
 import ballerina.net.http;
-import ballerina.lang.xml;
+import ballerina.lang.xmlutils;
 
 connector ClientConnector (string url) {
 
@@ -21,17 +21,17 @@ connector ClientConnector (string url) {
         }
 
         xml soapPayload = addSoapBody (payload, namespaceMap[soapVersion]);
-        message:setXmlPayload(backendServiceReq, soapPayload);
-        message:setHeader(backendServiceReq, "Content-Type", reqType);
+        messages:setXmlPayload(backendServiceReq, soapPayload);
+        messages:setHeader(backendServiceReq, "Content-Type", reqType);
 
         if (soapAction != "null") {
-            message:setHeader(backendServiceReq, "SOAPAction", soapAction);
+            messages:setHeader(backendServiceReq, "SOAPAction", soapAction);
         }
 
         message response = http:ClientConnector.post(httpConnector, url, backendServiceReq);
-        xml resp = message:getXmlPayload(response);
+        xml resp = messages:getXmlPayload(response);
         map m = {"soapenv" : namespaceMap[soapVersion]};
-        xml soapBody = xml:getXml(resp, "/soapenv:Envelope/soapenv:Body/*", m);
+        xml soapBody = xmlutils:getXml(resp, "/soapenv:Envelope/soapenv:Body/*", m);
 
         return soapBody;
     }

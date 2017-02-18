@@ -1,9 +1,9 @@
 package org.wso2.ballerina.connectors.gmail;
 
 import org.wso2.ballerina.connectors.OAuth2;
-import ballerina.lang.json;
-import ballerina.lang.message;
-import ballerina.lang.string;
+import ballerina.lang.jsonutils;
+import ballerina.lang.messages;
+import ballerina.lang.strings;
 import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.util;
@@ -87,8 +87,8 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         json createDraftRequest = `{"message":{"raw": "${encodedRequest}"}}`;
 
         string createDraftPath = "/v1/users/" + userId + "/drafts";
-        message:setJsonPayload(request, createDraftRequest);
-        message:setHeader(request, "Content-Type", "Application/json");
+        messages:setJsonPayload(request, createDraftRequest);
+        messages:setHeader(request, "Content-Type", "Application/json");
         message response = OAuth2:ClientConnector.post(gmailEP, createDraftPath, request);
 
         return response;
@@ -147,8 +147,8 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         json updateDraftRequest = `{"message":{"raw": "${encodedRequest}"}}`;
 
         string updateDraftPath = "/v1/users/" + userId + "/drafts/" +draftId;
-        message:setJsonPayload(request, updateDraftRequest);
-        message:setHeader(request, "Content-Type", "Application/json");
+        messages:setJsonPayload(request, updateDraftRequest);
+        messages:setHeader(request, "Content-Type", "Application/json");
         message response = OAuth2:ClientConnector.put(gmailEP, updateDraftPath, request);
 
         return response;
@@ -204,7 +204,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             uriParams = uriParams + "&q=" + q;
         }
 
-        listDraftPath = listDraftPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
+        listDraftPath = listDraftPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
 
         message response = OAuth2:ClientConnector.get(gmailEP, listDraftPath, request);
 
@@ -277,28 +277,28 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         "threadsTotal": "${threadsTotal}", "threadsUnread": "${threadsUnread}"}`;
 
         if (types == "null") {
-            json:remove(createLabelRequest, "$.type");
+            jsonutils:remove(createLabelRequest, "$.type");
         }
 
         if (messagesTotal == "null") {
-            json:remove(createLabelRequest, "$.messagesTotal");
+            jsonutils:remove(createLabelRequest, "$.messagesTotal");
         }
 
         if (messagesUnread == "null") {
-            json:remove(createLabelRequest, "$.messagesUnread");
+            jsonutils:remove(createLabelRequest, "$.messagesUnread");
         }
 
         if (threadsTotal == "null") {
-            json:remove(createLabelRequest, "$.threadsTotal");
+            jsonutils:remove(createLabelRequest, "$.threadsTotal");
         }
 
         if (threadsUnread == "null") {
-            json:remove(createLabelRequest, "$.threadsUnread");
+            jsonutils:remove(createLabelRequest, "$.threadsUnread");
         }
 
         string createLabelPath = "/v1/users/" + userId + "/labels";
-        message:setHeader(request, "Content-Type", "Application/json");
-        message:setJsonPayload(request, createLabelRequest);
+        messages:setHeader(request, "Content-Type", "Application/json");
+        messages:setJsonPayload(request, createLabelRequest);
         message response = OAuth2:ClientConnector.post(gmailEP, createLabelPath, request);
 
         return response;
@@ -354,28 +354,28 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         "threadsUnread": "${threadsUnread}"}`;
 
         if (types == "null") {
-            json:remove(updateLabelRequest, "$.type");
+            jsonutils:remove(updateLabelRequest, "$.type");
         }
 
         if (messagesTotal == "null") {
-            json:remove(updateLabelRequest, "$.messagesTotal");
+            jsonutils:remove(updateLabelRequest, "$.messagesTotal");
         }
 
         if (messagesUnread == "null") {
-            json:remove(updateLabelRequest, "$.messagesUnread");
+            jsonutils:remove(updateLabelRequest, "$.messagesUnread");
         }
 
         if (threadsTotal == "null") {
-            json:remove(updateLabelRequest, "$.threadsTotal");
+            jsonutils:remove(updateLabelRequest, "$.threadsTotal");
         }
 
         if (threadsUnread == "null") {
-            json:remove(updateLabelRequest, "$.threadsUnread");
+            jsonutils:remove(updateLabelRequest, "$.threadsUnread");
         }
 
         string updateLabelPath = "/v1/users/" + userId + "/labels/" + labelId;
-        message:setHeader(request, "Content-Type", "Application/json");
-        message:setJsonPayload(request, updateLabelRequest);
+        messages:setHeader(request, "Content-Type", "Application/json");
+        messages:setJsonPayload(request, updateLabelRequest);
         message response = OAuth2:ClientConnector.put(gmailEP, updateLabelPath, request);
 
         return response;
@@ -450,7 +450,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             uriParams = uriParams + "&q=" + q;
         }
 
-        listThreadPath = listThreadPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
+        listThreadPath = listThreadPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
         message response = OAuth2:ClientConnector.get(gmailEP, listThreadPath, request);
 
         return response;
@@ -533,7 +533,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             uriParams = uriParams + "&q=" + q;
         }
 
-        listMailPath = listMailPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
+        listMailPath = listMailPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
         message response = OAuth2:ClientConnector.get(gmailEP, listMailPath, request);
 
         return response;
@@ -590,8 +590,8 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         string encodedRequest = util:base64encode(concatRequest);
         json sendMailRequest = `{"raw": "${encodedRequest}"}`;
         string sendMailPath = "/v1/users/" + userId + "/messages/send";
-        message:setJsonPayload(request, sendMailRequest);
-        message:setHeader(request, "Content-Type", "Application/json");
+        messages:setJsonPayload(request, sendMailRequest);
+        messages:setHeader(request, "Content-Type", "Application/json");
         message response = OAuth2:ClientConnector.post(gmailEP, sendMailPath, request);
 
         return response;
@@ -611,16 +611,16 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         "removeLabelIds":["${removeLabelIds}"]}`;
 
         if(addLabelIds == "null") {
-            json:remove(modifyExistingMessageRequest, "$.addLabelIds");
+            jsonutils:remove(modifyExistingMessageRequest, "$.addLabelIds");
         }
 
         if(removeLabelIds == "null") {
-            json:remove(modifyExistingMessageRequest, "$.removeLabelIds");
+            jsonutils:remove(modifyExistingMessageRequest, "$.removeLabelIds");
         }
 
         string modifyExistingMessagePath = "/v1/users/" + userId + "/messages/" + messageId + "/modify";
-        message:setJsonPayload(request, modifyExistingMessageRequest);
-        message:setHeader(request, "Content-Type", "Application/json");
+        messages:setJsonPayload(request, modifyExistingMessageRequest);
+        messages:setHeader(request, "Content-Type", "Application/json");
         message response = OAuth2:ClientConnector.post(gmailEP, modifyExistingMessagePath, request);
 
         return response;

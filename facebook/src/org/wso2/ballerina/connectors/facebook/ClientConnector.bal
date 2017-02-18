@@ -1,18 +1,18 @@
 package org.wso2.ballerina.connectors.facebook;
 
-import ballerina.lang.json;
-import ballerina.lang.message;
-import ballerina.lang.string;
-import ballerina.lang.system;
-import ballerina.net.http;
+import ballerina.lang.strings;
 import ballerina.net.uri;
 
+import org.wso2.ballerina.connectors.OAuth2;
+
 @doc:Description("Facebook client connector.")
-@doc:Param("token: Value of the valid access_token.")
-connector ClientConnector (string token) {
+@doc:Param("accessToken: Value of the valid access_token.")
+connector ClientConnector (string accessToken) {
 
-    http:ClientConnector facebookEP = create http:ClientConnector("https://graph.facebook.com");
+    string baseURL = "https://graph.facebook.com";
 
+    OAuth2:ClientConnector facebookEP = create OAuth2:ClientConnector(baseURL, accessToken, "null", "null",
+                                        "null", "null");
     @doc:Description("Create a post for user, page, event or group. ")
     @doc:Param("id: The identifier.")
     @doc:Param("msg: The main body of the post.")
@@ -33,11 +33,9 @@ connector ClientConnector (string token) {
         if(place != "null"){
             uriParams = uriParams + "&place=" + uri:encode(place);
         }
-        facebookPath = facebookPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
-
-        message:setHeader(request, "Authorization", "Bearer " + token);
-
-        message response = http:ClientConnector.post(facebookEP, facebookPath, request);
+        facebookPath = facebookPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
+                                                                                                  
+        message response = OAuth2:ClientConnector.post(facebookEP, facebookPath, request);
 
         return response;
     }
@@ -54,9 +52,7 @@ connector ClientConnector (string token) {
             facebookPath = facebookPath + "?fields=" + fields;
         }
 
-        message:setHeader(request, "Authorization", "Bearer " + token);
-
-        message response = http:ClientConnector.get(facebookEP, facebookPath, request);
+        message response = OAuth2:ClientConnector.get(facebookEP, facebookPath, request);
 
         return response;
     }
@@ -68,9 +64,7 @@ connector ClientConnector (string token) {
         message request = {};
         string facebookPath = "/v2.8/" + postId;
 
-        message:setHeader(request, "Authorization", "Bearer " + token);
-
-        message response = http:ClientConnector.delete(facebookEP, facebookPath, request);
+        message response = OAuth2:ClientConnector.delete(facebookEP, facebookPath, request);
 
         return response;
     }
@@ -95,11 +89,9 @@ connector ClientConnector (string token) {
         if(privacy != "null"){
             uriParams = uriParams + "&privacy=" + uri:encode(privacy);
         }
-        facebookPath = facebookPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
+        facebookPath = facebookPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
 
-        message:setHeader(request, "Authorization", "Bearer " + token);
-
-        message response = http:ClientConnector.post(facebookEP, facebookPath, request);
+        message response = OAuth2:ClientConnector.post(facebookEP, facebookPath, request);
 
         return response;
     }
@@ -111,9 +103,7 @@ connector ClientConnector (string token) {
         message request = {};
         string facebookPath = "/v2.8/" + objectId + "/likes";
 
-        message:setHeader(request, "Authorization", "Bearer " + token);
-
-        message response = http:ClientConnector.post(facebookEP, facebookPath, request);
+        message response = OAuth2:ClientConnector.post(facebookEP, facebookPath, request);
 
         return response;
 
@@ -131,9 +121,7 @@ connector ClientConnector (string token) {
             facebookPath = facebookPath + "?fields=" + fields;
         }
 
-        message:setHeader(request, "Authorization", "Bearer " + token);
-
-        message response = http:ClientConnector.get(facebookEP, facebookPath, request);
+        message response = OAuth2:ClientConnector.get(facebookEP, facebookPath, request);
 
         return response;
     }
@@ -145,9 +133,7 @@ connector ClientConnector (string token) {
         message request = {};
         string facebookPath = "/v2.8/" + objectId + "/likes";
 
-        message:setHeader(request, "Authorization", "Bearer " + token);
-
-        message response = http:ClientConnector.delete(facebookEP, facebookPath, request);
+        message response = OAuth2:ClientConnector.delete(facebookEP, facebookPath, request);
 
         return response;
     }
@@ -172,10 +158,9 @@ connector ClientConnector (string token) {
         if(attachmentUrl != "null"){
             uriParams = uriParams + "&attachment_url=" + attachmentUrl;
         }
-        facebookPath = facebookPath + "?" + string:subString(uriParams, 1, string:length(uriParams));
-        message:setHeader(request, "Authorization", "Bearer " + token);
+        facebookPath = facebookPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
 
-        message response = http:ClientConnector.post(facebookEP, facebookPath, request);
+        message response = OAuth2:ClientConnector.post(facebookEP, facebookPath, request);
 
         return response;
     }
@@ -191,80 +176,10 @@ connector ClientConnector (string token) {
         if(fields != "null"){
             facebookPath = facebookPath + "?fields=" + fields;
         }
-        message:setHeader(request, "Authorization", "Bearer " + token);
 
-        message response = http:ClientConnector.get(facebookEP, facebookPath, request);
+        message response = OAuth2:ClientConnector.get(facebookEP, facebookPath, request);
 
         return response;
     }
 
-}
-
-function main (string[] args) {
-    ClientConnector facebookConnector = create ClientConnector(args[1]);
-    message facebookResponse = {};
-    json facebookJSONResponse;
-
-    if (args[0] == "createPost"){
-        facebookResponse = ClientConnector.createPost(facebookConnector, args[2], args[3], args[4], args[5]);
-
-        facebookJSONResponse = message:getJsonPayload(facebookResponse);
-        system:println(json:toString(facebookJSONResponse));
-    }
-
-    if (args[0] == "retrievePost"){
-        facebookResponse = ClientConnector.retrievePost(facebookConnector, args[2], args[3]);
-
-        facebookJSONResponse = message:getJsonPayload(facebookResponse);
-        system:println(json:toString(facebookJSONResponse));
-    }
-
-    if (args[0] == "deletePost"){
-        facebookResponse = ClientConnector.deletePost(facebookConnector, args[2]);
-
-        facebookJSONResponse = message:getJsonPayload(facebookResponse);
-        system:println(json:toString(facebookJSONResponse));
-    }
-
-    if (args[0] == "updatePost"){
-        facebookResponse = ClientConnector.updatePost(facebookConnector, args[2], args[3], args[4], args[5]);
-
-        facebookJSONResponse = message:getJsonPayload(facebookResponse);
-        system:println(json:toString(facebookJSONResponse));
-    }
-
-    if (args[0] == "addLikes"){
-        facebookResponse = ClientConnector.addLikes(facebookConnector, args[2]);
-
-        facebookJSONResponse = message:getJsonPayload(facebookResponse);
-        system:println(json:toString(facebookJSONResponse));
-    }
-
-    if (args[0] == "getLikesDetails"){
-        facebookResponse = ClientConnector.getLikesDetails(facebookConnector, args[2], args[3]);
-
-        facebookJSONResponse = message:getJsonPayload(facebookResponse);
-        system:println(json:toString(facebookJSONResponse));
-    }
-
-    if (args[0] == "deleteLikes"){
-        facebookResponse = ClientConnector.deleteLikes(facebookConnector, args[2]);
-
-        facebookJSONResponse = message:getJsonPayload(facebookResponse);
-        system:println(json:toString(facebookJSONResponse));
-    }
-
-    if (args[0] == "addComments"){
-        facebookResponse = ClientConnector.addComments(facebookConnector, args[2], args[3], args[4], args[5]);
-
-        facebookJSONResponse = message:getJsonPayload(facebookResponse);
-        system:println(json:toString(facebookJSONResponse));
-    }
-
-    if (args[0] == "getComments"){
-        facebookResponse = ClientConnector.getComments(facebookConnector, args[2], args[3]);
-
-        facebookJSONResponse = message:getJsonPayload(facebookResponse);
-        system:println(json:toString(facebookJSONResponse));
-    }
 }
