@@ -34,28 +34,28 @@ Commands to trigger actions:
 
 ###setKeyValue	
 
-`bin$ ./ballerina run main sample.bal setKeyValue <key> <value>`
+`bin$ ./ballerina run main samples.bal setKeyValue <key> <value>`
 
 ###getValue
 
-`bin$ ./ballerina run main sample.bal getValue <key>`
+`bin$ ./ballerina run main samples.bal getValue <key>`
 
 ###updateValue
 
-`bin$ ./ballerina run main sample.bal updateValue <key> <value>`
+`bin$ ./ballerina run main samples.bal updateValue <key> <value>`
 
 ###deleteKey
 
-`bin$ ./ballerina run main sample.bal deleteKey <key>`
+`bin$ ./ballerina run main samples.bal deleteKey <key>`
 
 ###createDir
 
-`bin$ ./ballerina run main sample.bal createDir <dir>`
+`bin$ ./ballerina run main samples.bal createDir <dir>`
 
 ###listDir
 
-`bin$ ./ballerina run sample.bal listDir <dir> [recuresive=true]`
+`bin$ ./ballerina run samples.bal listDir <dir> [recuresive=true]`
 
 ###deleteDir
 
-`bin$ ./ballerina run sample.bal deleteDir <dir> [recursive=true]`
+`bin$ ./ballerina run samples.bal deleteDir <dir> [recursive=true]`
