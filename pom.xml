@@ -135,6 +135,10 @@
                                     <directory>twitter/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
+                                <resource>
+                                    <directory>amazonLambda/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
                             </resources>
                         </configuration>
                     </execution>
@@ -181,6 +185,10 @@
                                 </resource>
                                 <resource>
                                     <directory>twitter/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>amazonLambda/docs</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
@@ -230,6 +238,10 @@
                                 </resource>
                                 <resource>
                                     <directory>twitter/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>amazonLambda/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>

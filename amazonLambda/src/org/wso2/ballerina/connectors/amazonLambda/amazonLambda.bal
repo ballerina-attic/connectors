@@ -1,7 +1,6 @@
 package org.wso2.ballerina.connectors.amazonLambda;
 
 import ballerina.lang.system;
-import ballerina.lang.jsonutils;
 import ballerina.lang.messages;
 import ballerina.lang.strings;
 import ballerina.net.http;
