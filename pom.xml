@@ -104,6 +104,10 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
+                                    <directory>amazonS3/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
 				    <directory>etcd/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
@@ -149,6 +153,10 @@
                             <resources>
                                 <resource>
                                     <directory>basicAuth/docs</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>amazonS3/docs</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -198,6 +206,10 @@
                             <resources>
                                 <resource>
                                     <directory>basicAuth/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>amazonS3/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
