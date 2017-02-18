@@ -79,19 +79,19 @@
    * Server region.
 
 ###### Run the Sample
-- Place the amazonS3 directory into {BALLERINA_HOME}/samples.
+- copy amazonS3/sample/amazonS3/samples.bal into <ballerina_home>/bin$ folder
 - Run the following commands to execute the relevant action.
   1. get bucket list:
-  `bin$ ./ballerina run ../samples/amazonS3/src/amazonS3Connector.bal getBucketList <accessKeyId> <secretAccessKey> <region>`
+  `bin$ ./ballerina run main samples.bal getBucketList <accessKeyId> <secretAccessKey> <region>`
   2. get object list:
-  `bin$ ./ballerina run ../samples/amazonS3/src/amazonS3Connector.bal getObjectList <accessKeyId> <secretAccessKey> <region> <bucketName>`
+  `bin$ ./ballerina run main samples.bal getObjectList <accessKeyId> <secretAccessKey> <region> <bucketName>`
   3. create bucket:
-  `bin$ ./ballerina run ../samples/amazonS3/src/amazonS3Connector.bal createBucket <accessKeyId> <secretAccessKey> <region> <bucketName>`
+  `bin$ ./ballerina run main samples.bal createBucket <accessKeyId> <secretAccessKey> <region> <bucketName>`
   4. delete bucket:
-  `bin$ ./ballerina run ../samples/amazonS3/src/amazonS3Connector.bal deleteBucket <accessKeyId> <secretAccessKey> <region> <bucketName>`
+  `bin$ ./ballerina run main samples.bal deleteBucket <accessKeyId> <secretAccessKey> <region> <bucketName>`
   5. get object:
-  `bin$ ./ballerina run ../samples/amazonS3/src/amazonS3Connector.bal getObject <accessKeyId> <secretAccessKey> <region> <bucketName>`
+  `bin$ ./ballerina run main samples.bal getObject <accessKeyId> <secretAccessKey> <region> <bucketName>`
   6. delete object:
-  `bin$ ./ballerina run ../samples/amazonS3/src/amazonS3Connector.bal deleteObject <accessKeyId> <secretAccessKey> <region> <bucketName>`
+  `bin$ ./ballerina run main samples.bal deleteObject <accessKeyId> <secretAccessKey> <region> <bucketName>`
   7. put object:
-  `bin$ ./ballerina run ../samples/amazonS3/src/amazonS3Connector.bal putObject <accessKeyId> <secretAccessKey> <region> <bucketName>`
+  `bin$ ./ballerina run main samples.bal putObject <accessKeyId> <secretAccessKey> <region> <bucketName>`
