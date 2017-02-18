@@ -20,7 +20,7 @@ docker run -p 2379:2379 --name etcd quay.io/coreos/etcd:v3.0.0 /usr/local/bin/et
 How to run this sample
 ======================
 
-1. copy sample etcd/sample/etcd/samples.bal into bin$
+1. copy etcd/sample/etcd/samples.bal into bin$
 2. Update the main function in sample.bal with the relevant configuration given bellow with each action and run the command.
 connectors:etcd etcdConnector = new connectors:etcd("http://127.0.0.1:2379", "root", "test123", "v2");
  
