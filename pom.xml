@@ -73,7 +73,7 @@
             </resource>
             <!-- copy the connector docs to the jar -->
             <resource>
-                <directory>${connectors.doc.dir}</directory>
+                <directory>${project.build.directory}/docs</directory>
                 <targetPath>DOCS</targetPath>
             </resource>
             <!-- copy the samples to the jar -->
@@ -104,7 +104,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazons3/src</directory>
+                                    <directory>amazonS3/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -120,7 +120,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>linkedin/src</directory>
+                                    <directory>linkedIn/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -140,71 +140,11 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonauth/src</directory>
+                                    <directory>amazonAuth/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonlambda/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-docs</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${connectors.doc.dir}</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>basicAuth/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>amazons3/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>etcd/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>facebook/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>gmail/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>linkedin/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>medium/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>oauth2/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>soap/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>twitter/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>amazonauth/docs</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>amazonlambda/docs</directory>
+                                    <directory>amazonLambda/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
@@ -225,7 +165,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazons3/samples</directory>
+                                    <directory>amazonS3/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -241,7 +181,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>linkedin/samples</directory>
+                                    <directory>linkedIn/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -261,10 +201,28 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonlambda/samples</directory>
+                                    <directory>amazonLambda/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Generate api doc -->
+            <plugin>
+                <groupId>org.ballerinalang</groupId>
+                <artifactId>docerina-maven-plugin</artifactId>
+                <version>${docerina.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>docerina</goal>
+                        </goals>
+                        <configuration>
+                            <outputDir>${project.build.directory}/docs</outputDir>
+                            <sourceDir>${connectors.source.temp.dir}</sourceDir>
                         </configuration>
                     </execution>
                 </executions>
@@ -315,6 +273,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
     <properties>
@@ -331,5 +290,6 @@
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
         <connectors.doc.dir>${basedir}/target/extra-docs</connectors.doc.dir>
         <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
+        <docerina.maven.plugin.version>0.8.0-SNAPSHOT</docerina.maven.plugin.version>
     </properties>
 </project>
