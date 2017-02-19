@@ -26,7 +26,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.ballerinalang.connectors</groupId>
+    <groupId>org.ballerinalang</groupId>
     <artifactId>connectors</artifactId>
     <version>0.8.0-SNAPSHOT</version>
     <name>Ballerina Connectors - Parent</name>
