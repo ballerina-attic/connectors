@@ -78,9 +78,9 @@ function runPOSTSamples(linkedin:ClientConnector linkedInConnector, string compa
 	json fullJsonPayload;
 
 	shortXmlPayload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test simple payload http://wso2.com</comment> </share>`;
-    shortJsonPayload = `{'comment': 'json test simple payload http://wso2.com','visibility': {'code': 'anyone'}}`;
+    shortJsonPayload = `{"comment": "json test simple payload http://wso2.com","visibility": {"code": "anyone"}}`;
     fullXmlPayload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test full payload</comment> <content> <submitted-url>https://www.wso2.com</submitted-url> <title>Test Share with Content</title> <description>content description</description> <submitted-image-url>https://www.example.com/img.jpg</submitted-image-url> </content> </share>`;
-    fullJsonPayload = `{ 'visibility': { 'code': 'anyone' }, 'comment': 'json test full payload', 'content': { 'submitted-url': 'https://www.wso2.com', 'title': 'Test Share with Content', 'description': 'content description', 'submitted‐image-­url': 'https://www.example.com/img.jpg' } }`;
+    fullJsonPayload = `{ "visibility": { "code": "anyone" }, "comment": "json test full payload", "content": { "submitted-url": "https://www.wso2.com", "title": "Test Share with Content", "description": "content description", "submitted‐image-­url": "https://www.example.com/img.jpg" } }`;
 
 	system:println(" ");
 	system:println("----------------");
@@ -141,9 +141,9 @@ function main (string[] args) {
 	json fullJsonPayload;
 
 	shortXmlPayload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test simple payload http://wso2.com</comment> </share>`;
-    shortJsonPayload = `{'comment': 'json test simple payload http://wso2.com','visibility': {'code': 'anyone'}}`;
+    shortJsonPayload = `{"comment": "json test simple payload http://wso2.com","visibility": {"code": "anyone"}}`;
     fullXmlPayload = `<share> <visibility> <code>anyone</code> </visibility> <comment>xml test full payload</comment> <content> <submitted-url>https://www.wso2.com</submitted-url> <title>Test Share with Content</title> <description>content description</description> <submitted-image-url>https://www.example.com/img.jpg</submitted-image-url> </content> </share>`;
-    fullJsonPayload = `{ 'visibility': { 'code': 'anyone' }, 'comment': 'json test full payload', 'content': { 'submitted-url': 'https://www.wso2.com', 'title': 'Test Share with Content', 'description': 'content description', 'submitted‐image-­url': 'https://www.example.com/img.jpg' } }`;
+    fullJsonPayload = `{ "visibility": { "code": "anyone" }, "comment": "json test full payload", "content": { "submitted-url": "https://www.wso2.com", "title": "Test Share with Content", "description": "content description", "submitted‐image-­url": "https://www.example.com/img.jpg" } }`;
 
 
     if (args[0]=="get") {
