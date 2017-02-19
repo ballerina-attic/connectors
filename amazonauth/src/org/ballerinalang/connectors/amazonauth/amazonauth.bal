@@ -3,7 +3,7 @@ package org.ballerinalang.connectors.amazonauth;
 import ballerina.net.http;
 import ballerina.lang.strings;
 import ballerina.lang.system;
-import ballerina.util;
+import ballerina.utils;
 import ballerina.net.uri;
 import ballerina.lang.messages;
 
@@ -121,7 +121,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     if (payloadBuilder == "UNSIGNED-PAYLOAD") {
         requestPayload = payloadBuilder;
     } else {
-        requestPayload = strings:toLowerCase(util:getHash(payloadBuilder, algorithm));
+        requestPayload = strings:toLowerCase(utils:getHash(payloadBuilder, algorithm));
     }
 
     canonicalRequest = canonicalRequest + requestPayload;
@@ -140,10 +140,10 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     stringToSign = stringToSign + "/";
     stringToSign = stringToSign + terminationString;
     stringToSign = stringToSign + "\n";
-    stringToSign = stringToSign + strings:toLowerCase(util:getHash(canonicalRequest, algorithm));
+    stringToSign = stringToSign + strings:toLowerCase(utils:getHash(canonicalRequest, algorithm));
 
-    signingKey =  util:getHmacFromBase64( terminationString,util:getHmacFromBase64( serviceName,
-    util:getHmacFromBase64( region,util:getHmacFromBase64(shortDate,util:base64encode("AWS4" + secretAccessKey),
+    signingKey =  utils:getHmacFromBase64( terminationString,utils:getHmacFromBase64( serviceName,
+    utils:getHmacFromBase64( region,utils:getHmacFromBase64(shortDate,utils:base64encode("AWS4" + secretAccessKey),
     algorithm), algorithm), algorithm), algorithm);
 
     authHeader = authHeader + ("AWS4-HMAC-SHA256");
@@ -166,7 +166,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     authHeader = authHeader + (",");
     authHeader = authHeader + (" Signature");
     authHeader = authHeader + ("=");
-    authHeader = authHeader + strings:toLowerCase(util:base64ToBase16Encode(util:getHmacFromBase64(stringToSign,
+    authHeader = authHeader + strings:toLowerCase(utils:base64ToBase16Encode(utils:getHmacFromBase64(stringToSign,
      signingKey, algorithm)));
     messages:setHeader(msg, "Authorization", authHeader);
     return msg;

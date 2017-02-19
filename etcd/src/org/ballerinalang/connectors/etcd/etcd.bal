@@ -3,7 +3,7 @@ package org.ballerinalang.connectors.etcd;
 import ballerina.lang.messages;
 import ballerina.lang.strings;
 import ballerina.net.http;
-import ballerina.util;
+import ballerina.utils;
 
 @doc:Description("etcd client connector")
 @doc:Param("etcdURL : etcd Server URL")
@@ -25,7 +25,7 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	message response;
 
     	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            encodedBasicAuthHeaderValue = utils:base64encode(username + ":" + password);
             messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
     	}
         path = "/" + apiVersion + "/keys/" + key;
@@ -45,7 +45,7 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	message response;
 
     	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            encodedBasicAuthHeaderValue = utils:base64encode(username + ":" + password);
             messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
     	}
     	messages:setStringPayload(request, "value=" + value);
@@ -67,7 +67,7 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	message response;
 
     	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            encodedBasicAuthHeaderValue = utils:base64encode(username + ":" + password);
             messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
     	}
     	messages:setStringPayload(request, "value=" + value);
@@ -88,7 +88,7 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	message response;
 
     	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            encodedBasicAuthHeaderValue = utils:base64encode(username + ":" + password);
             messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
     	}
     	path = "/" + apiVersion + "/keys/" + key;
@@ -107,7 +107,7 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	message response;
 
     	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            encodedBasicAuthHeaderValue = utils:base64encode(username + ":" + password);
             messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
     	}
     	path = "/" + apiVersion + "/keys/" + dir;
@@ -127,7 +127,7 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	message response;
 
     	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            encodedBasicAuthHeaderValue = utils:base64encode(username + ":" + password);
             messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
     	}
 	path = "/" + apiVersion + "/keys" + dir + "?" + recursive;
@@ -147,7 +147,7 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	message response;
 
     	if ((strings:length(username) > 0) && (strings:length(password) > 0) ){
-            encodedBasicAuthHeaderValue = util:base64encode(username + ":" + password);
+            encodedBasicAuthHeaderValue = utils:base64encode(username + ":" + password);
             messages:setHeader(request, "Authorization", "Basic " + encodedBasicAuthHeaderValue);
     	}
     	path = "/" + apiVersion + "/keys" + dir + "?" + recursive;

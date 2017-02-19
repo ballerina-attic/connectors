@@ -6,7 +6,7 @@ import ballerina.lang.messages;
 import ballerina.lang.strings;
 import ballerina.net.http;
 import ballerina.net.uri;
-import ballerina.util;
+import ballerina.utils;
 
 @doc:Description("Gmail client connector")
 @doc:Param("userId: The userId of the Gmail account which means the email id")
@@ -83,7 +83,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             concatRequest = concatRequest + "\n" + messageBody + "\n";
         }
 
-        string encodedRequest = util:base64encode(concatRequest);
+        string encodedRequest = utils:base64encode(concatRequest);
         json createDraftRequest = `{"message":{"raw": ${encodedRequest}}}`;
 
         string createDraftPath = "/v1/users/" + userId + "/drafts";
@@ -143,7 +143,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             concatRequest = concatRequest + "\n" + messageBody + "\n";
         }
 
-        string encodedRequest = util:base64encode(concatRequest);
+        string encodedRequest = utils:base64encode(concatRequest);
         json updateDraftRequest = `{"message":{"raw": ${encodedRequest}}}`;
 
         string updateDraftPath = "/v1/users/" + userId + "/drafts/" +draftId;
@@ -587,7 +587,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             concatRequest = concatRequest + "\n" + messageBody + "\n";
         }
 
-        string encodedRequest = util:base64encode(concatRequest);
+        string encodedRequest = utils:base64encode(concatRequest);
         json sendMailRequest = `{"raw": ${encodedRequest}}`;
         string sendMailPath = "/v1/users/" + userId + "/messages/send";
         messages:setJsonPayload(request, sendMailRequest);

@@ -6,9 +6,7 @@ Gmail, and Facebook.
 
 # How to run
 
-This will be a part of Ballerina distribution.
-For the time being, you can copy the built connectors-0.8.0-SNAPSHOT.jar
-file to <ballerina_home>/bre/lib and test. 
+This will be a part of ballerina-tools-0.8.0.zip distribution [1].
 
 To test a connector action written in Ballerina language use the run 
 command as follows.
@@ -17,3 +15,7 @@ Copy the `<Connector>`/samples/`<Connector>`/samples.bal into `<ballerina_home>`
 and run the command like in below,
 
 $ bin ./ballerina run main samples.bal
+
+Reference:
+
+[1] https://github.com/ballerinalang/distribution
