@@ -104,23 +104,23 @@ The getComments action allows to get comments for an object such as video, posts
 **IMPORTANT:** This access token can be used to make API requests on your own account's behalf. Do not share your access token with anyone.
 
 ###### Invoke the actions
-- Place the faacebook directory into {BALLERINA_HOME}/samples.
+- Place facebook/sample/facebook/samples.bal into <ballerina_home>/bin$ folder 
 - To run the following commands to execute the relevant action.
   1. createPost:   
-  `bin$ ./ballerina run ../samples/facebook/src/ClientConnector createPost <token> <message> <link> <place>`
+  `bin$ ./ballerina run main samples.bal createPost <token> <message> <link> <place>`
   2. retrievePost:    
-  `bin$ ./ballerina run ../samples/facebook/src/ClientConnector retrievePost <token> <postId> <fields>`
+  `bin$ ./ballerina run main samples.bal retrievePost <token> <postId> <fields>`
   3. deletePost:    
-  `bin$ ./ballerina run ../samples/facebook/src/ClientConnector deletePost <token> <postId>`
+  `bin$ ./ballerina run main samples.bal deletePost <token> <postId>`
   4. updatePost:    
-  `bin$ ./ballerina run ../samples/facebook/src/ClientConnector updatePost <token> <postId> <message> <tags> <privacy>`
+  `bin$ ./ballerina run main samples.bal updatePost <token> <postId> <message> <tags> <privacy>`
   5. addLikes:    
-  `bin$ ./ballerina run ../samples/facebook/src/ClientConnector addLikes <token> <objectId>`
+  `bin$ ./ballerina run main samples.bal addLikes <token> <objectId>`
   6. getLikesDetails:    
-  `bin$ ./ballerina run ../samples/facebook/src/ClientConnector getLikesDetails <token> <objectId> <fields>`
+  `bin$ ./ballerina run main samples.bal getLikesDetails <token> <objectId> <fields>`
   7. deleteLikes:    
-  `bin$ ./ballerina run ../samples/facebook/src/ClientConnector deleteLikes <token> <objectId> <fields>`
+  `bin$ ./ballerina run main samples.bal deleteLikes <token> <objectId> <fields>`
   8. addComments:    
-  `bin$ ./ballerina run ../samples/facebook/src/ClientConnector addComments <token> <objectId> <message> <attachmentId> <attachmentUrl>`
+  `bin$ ./ballerina run main samples.bal addComments <token> <objectId> <message> <attachmentId> <attachmentUrl>`
   9. getComments:    
-  `bin$ ./ballerina run ../samples/facebook/src/ClientConnector getComments <token> <objectId> <fields>`
+  `bin$ ./ballerina run main samples.bal getComments <token> <objectId> <fields>`
