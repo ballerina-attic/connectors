@@ -1,57 +1,78 @@
-# OAuth2 Client Connector
+# Medium Connector
+  The Medium connector allows you to access the Medium REST API through ballerina. And the actions are being invoked
+  with a ballerina main function. The following section provide you the details on connector operations.
 
-The OAuth2 connector allows you to handle the authentication flow with oauth2 authentication.
-This can be used in other client connectors which use oauth2 authentication.
-
-## get
-The get action allows to use http get action with oauth2 authentication flow.
-
-###### Properties
-  * url
-  * request
-
-## post
-The post action allows to use http post action with oauth2 authentication flow.
+## Get Profile Info
+  This Medium action allows to obtain profile information of the authenticated user.
 
 ###### Properties
-  * url
-  * request
 
-## put
-The put action allows to use http put action with oauth2 authentication flow.
+###### Related Medium documentation
+  * <https://github.com/Medium/medium-api-docs#31-users>
 
-###### Properties
-  * url
-  * request
-
-## delete
-The delete action allows to use http delete action with oauth2 authentication flow.
+## Get Contributors
+ This Medium action returns a list of contributors for a given publication.
 
 ###### Properties
-  * url
-  * request
+  * publicationId - The relevant publication ID
+
+###### Related Medium documentation
+  * <https://github.com/Medium/medium-api-docs#32-publications>
+
+## Get Publications
+  This Medium action Returns a full list of publications that the user is related to in some way: (This includes all publications the user is subscribed to, writes to, or edits.)
+
+###### Properties
+  * userId - The relevant user ID
+
+###### Related Medium documentation
+  * <https://github.com/Medium/medium-api-docs#32-publications>
+
+## Post on Profile
+ This Medium action creates a post on the authenticated user’s profile.
+
+###### Properties
+  * userId - The relevant user ID
+  * payload - The payload containing the information of the post that should be shared. (Should be given in _json_)
+
+###### Related Medium documentation
+  * <https://github.com/Medium/medium-api-docs#33-posts>
+
+## Post on a Publication
+  This Medium action Creates a post associated with a Medium publication.
+
+###### Properties
+  * publicationId - The relevant publication ID
+  * payload - The payload containing the information of the post that should be shared. (Should be given in _json_)
+
+###### Related Medium documentation
+  * <https://github.com/Medium/medium-api-docs#33-posts>
 
 ## How to use
 
 ###### Prerequisites
-1. Use this OAuth2 client connector instead of http client authenticator in other client connectors.
-2. Obtain the following parameters:
-    * Access Token
-    * Client Id
-    * Client Secret
-    * Refresh Token
-    * Refresh Token Endpoint
+1. Create a Medium application by visiting the Settings page of your Medium profile.
+2. Obtain the following parameters  (For more Details on obtaining access token: <https://github.com/Medium/medium-api-docs#2-authentication>)
+  * Access Token
 
-###### Invoke the actions
-- copy oauth2/sample/oauth2/samples.bal into `<ballerina_home>`/bin$ folder
+   **IMPORTANT:** This access token can be used to make API requests on your own account's behalf. Do not share your access token with anyone.
+
+###### Run the Sample
+- copy medium/sample/medium/samples.bal into <ballerina_home>/bin$ folder
 - Run the following commands to execute the relevant action.
-    1. get:
-    `bin$ ./ballerina run main samples.bal get <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
-    2. post:
-    `bin$ ./ballerina run main samples.bal post <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
-    3. put:
-    `bin$ ./ballerina run main samples.bal put <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
-    4. delete:
-    `bin$ ./ballerina run main samples.bal delete <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <url>`
-
-Note: If you are not passing refresh token in the request, access token won't be refreshed.
+  1. run all actions:
+  `bin$ ./ballerina run main samples.bal <accessToken> <clientId> <clientSecret> <refreshToken> <userId> <publicationId>`
+  2. run get actions:
+  `bin$ ./ballerina run main samples.bal get <accessToken> <clientId> <clientSecret> <refreshToken> <userId> <publicationId>`
+  3. run post actions:
+  `bin$ ./ballerina run main samples.bal post <accessToken> <clientId> <clientSecret> <refreshToken> <userId> <publicationId>`
+  4. get profile info:
+  `bin$ ./ballerina run main samples.bal getProfileInfo <accessToken> <clientId> <clientSecret> <refreshToken>`
+  5. get contributors:
+  `bin$ ./ballerina run main samples.bal getContributors <accessToken> <clientId> <clientSecret> <refreshToken> <publicationId>`
+  6. get publications:
+  `bin$ ./ballerina run main samples.bal getPublications <accessToken> <clientId> <clientSecret> <refreshToken> <userId>`
+  7. create profile post:
+  `bin$ ./ballerina run main samples.bal createProfilePost <accessToken> <clientId> <clientSecret> <refreshToken> <userId>`
+  8. create publication post:
+  `bin$ ./ballerina run main samples.bal createPublicationPost <accessToken> <clientId> <clientSecret> <refreshToken> <publicationId>`

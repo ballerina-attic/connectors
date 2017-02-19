@@ -100,7 +100,7 @@
                             <outputDirectory>${connectors.source.temp.dir}</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>basicAuth/src</directory>
+                                    <directory>basicauth/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -161,7 +161,7 @@
                             <outputDirectory>${connectors.samples.dir}</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>basicAuth/samples</directory>
+                                    <directory>basicauth/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
