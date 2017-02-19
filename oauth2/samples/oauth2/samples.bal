@@ -1,6 +1,6 @@
-import org.wso2.ballerina.connectors.oauth2;
+import org.ballerinalang.connectors.oauth2;
 
-import ballerina.lang.jsonutils;
+import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.lang.system;
 
@@ -15,6 +15,6 @@ function main (string[] args) {
     if (args[0] == "get"){
         userProfileResponse = oauth2:ClientConnector.get(clientConnector, args[7], request);
         userProfileJSONResponse = messages:getJsonPayload(userProfileResponse);
-        system:println(jsonutils:toString(userProfileJSONResponse));
+        system:println(jsons:toString(userProfileJSONResponse));
     }
 }

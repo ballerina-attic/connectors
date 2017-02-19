@@ -1,6 +1,6 @@
-package org.wso2.ballerina.connectors.soap;
+package org.ballerinalang.connectors.soap;
 
-import ballerina.lang.xmlutils;
+import ballerina.lang.xmls;
 import ballerina.lang.system;
 
 function main (string[] args) {
@@ -18,9 +18,9 @@ function main (string[] args) {
     "https://login.salesforce.com/services/Soap/u/27.0", "1.1");
 
     map n = {"ns":"urn:partner.soap.sforce.com"};
-    string sessionId = xmlutils:getString(soapResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
+    string sessionId = xmls:getString(soapResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
     system:println("================The Soap Body is===============");
-    system:println(xmlutils:toString(soapResponse));
+    system:println(xmls:toString(soapResponse));
     system:println("================The Session Id is===============");
     system:println(sessionId);
 }

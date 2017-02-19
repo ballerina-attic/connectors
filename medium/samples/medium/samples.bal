@@ -1,5 +1,5 @@
-import org.wso2.ballerina.connectors.medium;
-import ballerina.lang.jsonutils;
+import org.ballerinalang.connectors.medium;
+import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.lang.system;
 
@@ -7,7 +7,7 @@ function printJsonResponse(message mediumResponse) (string) {
 
     json mediumJSONResponse;
     mediumJSONResponse = messages:getJsonPayload(mediumResponse);
-    system:println(jsonutils:toString(mediumJSONResponse));
+    system:println(jsons:toString(mediumJSONResponse));
 }
 
 function runGETSamples(medium:ClientConnector mediumConnector, string publicationId, string userId) (string) {
