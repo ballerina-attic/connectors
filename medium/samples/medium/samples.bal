@@ -100,14 +100,14 @@ function main (string[] args) {
     } else if (args[0]=="createProfilePost") {
         mediumConnector = create medium:ClientConnector(args[1], args[2], args[3], args[4]);
         userId = args[5];
-        fullJsonPayload = `{title: 'Sample Payload',contentFormat: html,content: '<h1>Sample Payload</h1><p>This is a sample payload</p>',canonicalUrl: 'http://wso2.com',tags: [sample, test],publishStatus: public}`;
+        fullJsonPayload = `{'title': 'Sample Payload','contentFormat': 'html','content': '<h1>Sample Payload</h1><p>This is a sample payload</p>','canonicalUrl': 'http://wso2.com','tags': ['sample', 'test'],'publishStatus': 'public'}`;
         mediumResponse = medium:ClientConnector.createProfilePost(mediumConnector, userId, fullJsonPayload);
         printJsonResponse(mediumResponse);
 
     } else if (args[0]=="createPublicationPost") {
         mediumConnector = create medium:ClientConnector(args[1], args[2], args[3], args[4]);
         publicationId = args[5];
-        fullJsonPayload = `{title: 'Sample Payload',contentFormat: html,content: '<h1>Sample Payload</h1><p>This is a sample payload</p>',canonicalUrl: 'http://wso2.com',tags: [sample, test],publishStatus: public}`;
+        fullJsonPayload = `{'title': 'Sample Payload','contentFormat': 'html','content': '<h1>Sample Payload</h1><p>This is a sample payload</p>','canonicalUrl': 'http://wso2.com','tags': ['sample', 'test'],'publishStatus': 'public'}`;
         mediumResponse = medium:ClientConnector.createPublicationPost(mediumConnector, publicationId, fullJsonPayload);
         printJsonResponse(mediumResponse);
 
