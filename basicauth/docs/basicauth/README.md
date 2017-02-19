@@ -7,29 +7,29 @@ This can be used in other client connectors which use basic authentication.
 The get action allows to use http get action with basic authentication flow.
 
 ###### Properties
-  * url
-  * request
+  * path - The path of the endpoint.
+  * request - The request.
 
 ## post
 The post action allows to use http post action with basic authentication flow.
 
 ###### Properties
-  * url
-  * request
+  * path -  The path of the endpoint.
+  * request -  The request message.
 
 ## put
 The put action allows to use http put action with basic authentication flow.
 
 ###### Properties
-  * url
-  * request
+  * path - The path of the endpoint.
+  * request - The request message.
 
 ## delete
 The delete action allows to use http delete action with basic authentication flow.
 
 ###### Properties
-  * url
-  * request
+  * path - The path of the endpoint.
+  * request - The request message.
 
 ## How to use
 
@@ -40,13 +40,13 @@ The delete action allows to use http delete action with basic authentication flo
     * Password
 
 ###### Invoke the actions
-- copy basicAuth/sample/basicauth/samples.bal into `<ballerina_home>`/bin$ folder
+- Place the basicauth directory into {BALLERINA_HOME}/samples.
 - Run the following commands to execute the relevant action.
   1. get:
-  `bin$ ./ballerina run main samples.bal get <username> <password> <url>`
+  `bin$ ./ballerina run main samples.bal get <baseUrl> <username> <password> <path>`
   2. post:
-  `bin$ ./ballerina run main samples.bal post <username> <password> <url>`
+  `bin$ ./ballerina run main samples.bal post <baseUrl> <username> <password> <path>`
   3. put:
-  `bin$ ./ballerina run main samples.bal put <username> <password> <url>`
+  `bin$ ./ballerina run main samples.bal put <baseUrl> <username> <password> <path>`
   4. delete:
-  `bin$ ./ballerina run main samples.bal delete <username> <password> <url>`
+  `bin$ ./ballerina run main samples.bal delete <baseUrl> <username> <password> <path>`
