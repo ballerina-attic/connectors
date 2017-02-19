@@ -104,7 +104,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonS3/src</directory>
+                                    <directory>amazons3/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -120,7 +120,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>linkedIn/src</directory>
+                                    <directory>linkedin/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -140,11 +140,11 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonAuth/src</directory>
+                                    <directory>amazonauth/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonLambda/src</directory>
+                                    <directory>amazonlambda/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
@@ -165,7 +165,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonS3/samples</directory>
+                                    <directory>amazons3/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -181,7 +181,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>linkedIn/samples</directory>
+                                    <directory>linkedin/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
@@ -201,7 +201,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonLambda/samples</directory>
+                                    <directory>amazonlambda/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
@@ -288,7 +288,6 @@
         <generated.connectors.source.directory>${project.build.directory}/natives</generated.connectors.source.directory>
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
-        <connectors.doc.dir>${basedir}/target/extra-docs</connectors.doc.dir>
         <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
         <docerina.maven.plugin.version>0.8.0-SNAPSHOT</docerina.maven.plugin.version>
     </properties>
