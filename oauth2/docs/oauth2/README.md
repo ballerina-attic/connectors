@@ -45,7 +45,7 @@ The delete action allows to use http delete action with oauth2 authentication fl
 **IMPORTANT:** This access token can be used to make API requests on your own account's behalf. Do not share your access token with anyone.
 
 ###### Invoke the actions
-- Place the oauth2 directory into {BALLERINA_HOME}/samples.
+- copy oauth2/sample/oauth2/samples.bal into `<ballerina_home>`/bin$ folder
 - Run the following commands to execute the relevant action.
     1. get:
     `bin$ ./ballerina run main samples.bal get <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`

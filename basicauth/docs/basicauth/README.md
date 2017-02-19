@@ -40,7 +40,7 @@ The delete action allows to use http delete action with basic authentication flo
     * Password
 
 ###### Invoke the actions
-- Place the basicauth directory into {BALLERINA_HOME}/samples.
+- copy basicauth/sample/basicauth/samples.bal into `<ballerina_home>`/bin$ folder
 - Run the following commands to execute the relevant action.
   1. get:
   `bin$ ./ballerina run main samples.bal get <baseUrl> <username> <password> <path>`
