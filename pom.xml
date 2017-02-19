@@ -17,7 +17,8 @@
   ~ under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.wso2</groupId>
         <artifactId>wso2</artifactId>
@@ -28,7 +29,7 @@
     <groupId>org.ballerinalang.connectors</groupId>
     <artifactId>connectors</artifactId>
     <version>0.8.0-SNAPSHOT</version>
-    <name>WSO2 Connectors - Parent</name>
+    <name>Ballerina Connectors - Parent</name>
 
     <url>http://wso2.org</url>
 
@@ -41,17 +42,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wso2.ballerina</groupId>
+            <groupId>org.ballerinalang</groupId>
             <artifactId>ballerina-core</artifactId>
             <version>${ballerina.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.ballerina</groupId>
+            <groupId>org.ballerinalang</groupId>
             <artifactId>ballerina-native</artifactId>
             <version>${ballerina.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.ballerina</groupId>
+            <groupId>org.ballerinalang</groupId>
             <artifactId>annotation-processor</artifactId>
             <version>${ballerina.version}</version>
         </dependency>
@@ -275,18 +276,18 @@
         </plugins>
     </build>
     <properties>
-        <ballerina.version>0.8.0-ALPHA</ballerina.version>
+        <ballerina.version>0.8.0-SNAPSHOT</ballerina.version>
         <mvn.exec.plugin.version>1.5.0</mvn.exec.plugin.version>
         <mvn.processor.plugin.version>2.2.4</mvn.processor.plugin.version>
         <mvn.resource.plugins.version>3.0.2</mvn.resource.plugins.version>
 
         <!-- Path to the generated natives ballerina files temp directory -->
-        <native.constructs.provider.package>org.wso2.ballerina.connectors</native.constructs.provider.package>
+        <native.constructs.provider.package>org.ballerinalang.connectors</native.constructs.provider.package>
         <native.constructs.provider.class>BallerinaConnectorsProvider</native.constructs.provider.class>
         <generated.connectors.source.directory>${project.build.directory}/natives</generated.connectors.source.directory>
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
         <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
-        <docerina.maven.plugin.version>0.8.0-ALPHA</docerina.maven.plugin.version>
+        <docerina.maven.plugin.version>0.8.0-SNAPSHOT</docerina.maven.plugin.version>
     </properties>
 </project>

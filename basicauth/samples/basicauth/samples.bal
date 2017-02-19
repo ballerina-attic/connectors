@@ -1,6 +1,6 @@
-import org.wso2.ballerina.connectors.basicauth;
+import org.ballerinalang.connectors.basicauth;
 
-import ballerina.lang.jsonutils;
+import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.lang.system;
 
@@ -17,7 +17,7 @@ function main (string[] args) {
     if (args[0] == "get"){
         basicAuthResponse = basicauth:ClientConnector.get(basicAuthConnector, args[4], request);
         basicJSONResponse = messages:getJsonPayload(basicAuthResponse);
-        system:println(jsonutils:toString(basicJSONResponse));
+        system:println(jsons:toString(basicJSONResponse));
     }
 
     if (args[0] == "post"){
@@ -25,6 +25,6 @@ function main (string[] args) {
         messages:setJsonPayload(request, sampleJsonRequest);
         basicAuthResponse = basicauth:ClientConnector.post(basicAuthConnector, args[4], request);
         basicJSONResponse = messages:getJsonPayload(basicAuthResponse);
-        system:println(jsonutils:toString(basicJSONResponse));
+        system:println(jsons:toString(basicJSONResponse));
     }
 }

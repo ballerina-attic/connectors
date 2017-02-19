@@ -1,6 +1,6 @@
-import org.wso2.ballerina.connectors.linkedin;
-import ballerina.lang.jsonutils;
-import ballerina.lang.xmlutils;
+import org.ballerinalang.connectors.linkedin;
+import ballerina.lang.jsons;
+import ballerina.lang.xmls;
 import ballerina.lang.messages;
 import ballerina.lang.system;
 
@@ -8,14 +8,14 @@ function printJsonResponse(message linkedInResponse) (string) {
 
     json linkedInJSONResponse;
     linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
-    system:println(jsonutils:toString(linkedInJSONResponse));
+    system:println(jsons:toString(linkedInJSONResponse));
 }
 
 function printXmlResponse(message linkedInResponse) (string) {
 
     xml linkedInXMLResponse;
     linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
-    system:println(xmlutils:toString(linkedInXMLResponse));
+    system:println(xmls:toString(linkedInXMLResponse));
 }
 
 function runGETSamples(linkedin:ClientConnector linkedInConnector, string companyId) (string) {
