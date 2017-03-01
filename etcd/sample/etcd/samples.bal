@@ -1,4 +1,4 @@
-import org.ballerinalang.connectors.etcd;
+import org.wso2.ballerina.connectors.etcd;
 
 import ballerina.lang.arrays;
 import ballerina.lang.messages;

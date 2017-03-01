@@ -1,4 +1,4 @@
-import org.ballerinalang.connectors.amazonlambda;
+import org.wso2.ballerina.connectors.amazonlambda;
 
 import ballerina.lang.jsons;
 import ballerina.lang.messages;

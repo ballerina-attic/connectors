@@ -1,6 +1,6 @@
 package samples.facebook;
 
-import org.ballerinalang.connectors.facebook;
+import org.wso2.ballerina.connectors.facebook;
 
 import ballerina.lang.jsons;
 import ballerina.lang.messages;

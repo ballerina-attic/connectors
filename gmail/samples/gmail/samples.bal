@@ -1,4 +1,4 @@
-import org.ballerinalang.connectors.gmail;
+import org.wso2.ballerina.connectors.gmail;
 
 import ballerina.lang.jsons;
 import ballerina.lang.messages;

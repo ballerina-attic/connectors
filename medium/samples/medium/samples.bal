@@ -1,4 +1,4 @@
-import org.ballerinalang.connectors.medium;
+import org.wso2.ballerina.connectors.medium;
 import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.lang.system;
