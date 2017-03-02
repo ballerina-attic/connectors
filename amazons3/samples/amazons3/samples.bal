@@ -1,7 +1,7 @@
 import ballerina.lang.system;
 import ballerina.lang.messages;
 import ballerina.net.http;
-import org.ballerinalang.connectors.amazons3;
+import org.wso2.ballerina.connectors.amazons3;
 
 function main (string[] args) {
 

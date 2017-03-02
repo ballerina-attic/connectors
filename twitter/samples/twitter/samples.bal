@@ -1,6 +1,6 @@
 package samples.twitter;
 
-import org.ballerinalang.connectors.twitter;
+import org.wso2.ballerina.connectors.twitter;
 
 import ballerina.lang.jsons;
 import ballerina.lang.messages;

@@ -1,4 +1,4 @@
-import org.ballerinalang.connectors.linkedin;
+import org.wso2.ballerina.connectors.linkedin;
 import ballerina.lang.jsons;
 import ballerina.lang.xmls;
 import ballerina.lang.messages;

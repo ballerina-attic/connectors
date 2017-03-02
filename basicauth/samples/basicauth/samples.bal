@@ -1,4 +1,4 @@
-import org.ballerinalang.connectors.basicauth;
+import org.wso2.ballerina.connectors.basicauth;
 
 import ballerina.lang.jsons;
 import ballerina.lang.messages;

@@ -17,7 +17,9 @@
   ~ under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.wso2</groupId>
         <artifactId>wso2</artifactId>
@@ -25,7 +27,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.ballerinalang</groupId>
+    <groupId>org.wso2.ballerina.connectors</groupId>
     <artifactId>connectors</artifactId>
     <version>0.8.1-SNAPSHOT</version>
     <name>Ballerina Connectors - Parent</name>
@@ -34,7 +36,8 @@
 
     <scm>
         <url>https://github.com/ballerinalang/connectors.git</url>
-        <developerConnection>scm:git:https://github.com/ballerinalang/connectors.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/ballerinalang/connectors.git
+        </developerConnection>
         <connection>scm:git:https://github.com/ballerinalang/connectors.git</connection>
         <tag>HEAD</tag>
     </scm>
@@ -232,7 +235,9 @@
                 <version>${mvn.processor.plugin.version}</version>
                 <configuration>
                     <processors>
-                        <processor>org.ballerinalang.natives.annotation.processor.BallerinaAnnotationProcessor</processor>
+                        <processor>
+                            org.ballerinalang.natives.annotation.processor.BallerinaAnnotationProcessor
+                        </processor>
                     </processors>
                     <options>
                         <packageName>${native.constructs.provider.package}</packageName>
@@ -263,7 +268,9 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>org.ballerinalang.natives.annotation.processor.NativeValidator</mainClass>
+                            <mainClass>
+                                org.ballerinalang.natives.annotation.processor.NativeValidator
+                            </mainClass>
                             <arguments>
                                 <argument>${generated.connectors.source.directory}</argument>
                             </arguments>
@@ -281,9 +288,12 @@
         <mvn.resource.plugins.version>3.0.2</mvn.resource.plugins.version>
 
         <!-- Path to the generated natives ballerina files temp directory -->
-        <native.constructs.provider.package>org.ballerinalang.connectors</native.constructs.provider.package>
-        <native.constructs.provider.class>BallerinaConnectorsProvider</native.constructs.provider.class>
-        <generated.connectors.source.directory>${project.build.directory}/natives</generated.connectors.source.directory>
+        <native.constructs.provider.package>org.ballerinalang.connectors
+        </native.constructs.provider.package>
+        <native.constructs.provider.class>BallerinaConnectorsProvider
+        </native.constructs.provider.class>
+        <generated.connectors.source.directory>${project.build.directory}/natives
+        </generated.connectors.source.directory>
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
         <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
