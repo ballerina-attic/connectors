@@ -256,6 +256,7 @@ If record exists, update it else inserts it
 * Client Secret
 * Access Token
 * Refresh Token
+* Api Instance
 
 **IMPORTANT** This access token and refresh token can be used to make API requests on your own
 account's behalf. Do not share your access token, client  secret with anyone.
@@ -272,76 +273,76 @@ If the template parameter is indicate as optional you must pass null as default 
 action.
 
 1. describeGlobal:
-`bin$ ./ballerina run main samples.bal describeGlobal <accessToken> <clientID> <clientSecret> <refreshToken>`
+`bin$ ./ballerina run main samples.bal describeGlobal <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <apiInstance>`
 
 2. sObjectDescribe:
-`bin$ ./ballerina run main samples.bal sObjectDescribe <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName>`
+`bin$ ./ballerina run main samples.bal sObjectDescribe <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <apiInstance> <sobjectName>`
 
 3. listAvailableApiVersion:
-`bin$ ./ballerina run main samples.bal listAvailableApiVersion <accessToken> <clientID> <clientSecret> <refreshToken>`
+`bin$ ./ballerina run main samples.bal listAvailableApiVersion <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance>`
 
 4. listOrganizationLimits:
-`bin$ ./ballerina run main samples.bal listOrganizationLimits <accessToken> <clientID> <clientSecret> <refreshToken>`
+`bin$ ./ballerina run main samples.bal listOrganizationLimits <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance>`
 
 5. listResourcesByApiVersion:
- `bin$ ./ballerina run main samples.bal listResourcesByApiVersion <accessToken> <clientID> <clientSecret> <refreshToken> <apiVersion>`
+ `bin$ ./ballerina run main samples.bal listResourcesByApiVersion <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <apiVersion>`
 
 6. sObjectBasicInfo:
-`bin$ ./ballerina run main samples.bal sObjectBasicInfo <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName>`
+`bin$ ./ballerina run main samples.bal sObjectBasicInfo <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName>`
 
 7. sObjectGetDeleted:
-`bin$ ./ballerina run main samples.bal sObjectGetDeleted <accessToken> <clientID> <clientSecret> <refreshToken> <startTime> <endTime>`
+`bin$ ./ballerina run main samples.bal sObjectGetDeleted <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <startTime> <endTime>`
 
 8. sObjectGetUpdated:
-`bin$ ./ballerina run main samples.bal sObjectGetUpdated <accessToken> <clientID> <clientSecret> <refreshToken> <startTime> <endTime>`
+`bin$ ./ballerina run main samples.bal sObjectGetUpdated <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <startTime> <endTime>`
 
 9. sObjectPlatformAction:
-`bin$ ./ballerina run main samples.bal sObjectPlatformAction <accessToken> <clientID> <clientSecret> <refreshToken>`
+`bin$ ./ballerina run main samples.bal sObjectPlatformAction <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance>`
 
 10. sObjectRows:
-`bin$ ./ballerina run main samples.bal sObjectRows <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName> <rowId>`
+`bin$ ./ballerina run main samples.bal sObjectRows <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName> <rowId>`
 
 11. sObjectRowsByExternalId:
-`bin$ ./ballerina run main samples.bal sObjectRowsByExternalId <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName> <fieldId> <fieldValue>`
+`bin$ ./ballerina run main samples.bal sObjectRowsByExternalId <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName> <fieldId> <fieldValue>`
 
 12. listviewQueryPerformanceFeedback:
-`bin$ ./ballerina run main samples.bal listviewQueryPerformanceFeedback <accessToken> <clientID> <clientSecret> <refreshToken> <listViewId>`
+`bin$ ./ballerina run main samples.bal listviewQueryPerformanceFeedback <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <listViewId>`
 
 13. query:
-`bin$ ./ballerina run main samples.bal query <accessToken> <clientID> <clientSecret> <refreshToken> <queryString>`
+`bin$ ./ballerina run main samples.bal query <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <queryString>`
 
 14. queryAll:
-`bin$ ./ballerina run main samples.bal queryAll <accessToken> <clientID> <clientSecret> <refreshToken> <queryString>`
+`bin$ ./ballerina run main samples.bal queryAll <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <queryString>`
 
 15. queryAllMore:
 `bin$ ./ballerina run main samples.bal queryAllMore <accessToken> <clientID> <clientSecret> <refreshToken <nextRecordsUrl>`
 
 16. queryMore:
-`bin$ ./ballerina run main samples.bal queryMore <accessToken> <clientID> <clientSecret> <refreshToken> <nextRecordsUrl>`
+`bin$ ./ballerina run main samples.bal queryMore <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <nextRecordsUrl>`
 
 17. queryPerformanceFeedback:
-`bin$ ./ballerina run main samples.bal queryPerformanceFeedback <accessToken> <clientID> <clientSecret> <refreshToken> <queryString>`
+`bin$ ./ballerina run main samples.bal queryPerformanceFeedback <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <queryString>`
 
 18. createRecord:
-`bin$ ./ballerina run main samples.bal createRecord <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName> <jsonPayload>`
+`bin$ ./ballerina run main samples.bal createRecord <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName> <jsonPayload>`
 
 19. createMultipleRecords:
-`bin$ ./ballerina run main samples.bal createMultipleRecords <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName> <jsonPayload>`
+`bin$ ./ballerina run main samples.bal createMultipleRecords <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName> <jsonPayload>`
 
 20. delete:
-`bin$ ./ballerina run main samples.bal delete <accessToken> <clientID> <clientSecret> <refreshToken>  <sobjectName> <deleteId>`
+`bin$ ./ballerina run main samples.bal delete <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance>  <sobjectName> <deleteId>`
 
 21. retrieveFieldValues:
-`bin$ ./ballerina run main samples.bal retrieveFieldValues <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName> <rowId> <fields>`
+`bin$ ./ballerina run main samples.bal retrieveFieldValues <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName> <rowId> <fields>`
 
 22. retrieveFieldValuesFromExternalObject:
-`bin$ ./ballerina run main samples.bal retrieveFieldValuesFromExternalObject <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName> <rowId> <fields>`
+`bin$ ./ballerina run main samples.bal retrieveFieldValuesFromExternalObject <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName> <rowId> <fields>`
 
 23. retrieveStandardFieldValuesFromExternalObjectWithExternalId:
-`bin$ ./ballerina run main samples.bal retrieveStandardFieldValuesFromExternalObjectWithExternalId <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName> <externalId> <fields>`
+`bin$ ./ballerina run main samples.bal retrieveStandardFieldValuesFromExternalObjectWithExternalId <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName> <externalId> <fields>`
 
 24. update:
-`bin$ ./ballerina run main samples.bal update <accessToken> <clientID> <clientSecret> <refreshToken> <sobjectName> <recordId> <jsonPayload>`
+`bin$ ./ballerina run main samples.bal update <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName> <recordId> <jsonPayload>`
 
 25. delete:
-`bin$ ./ballerina run main samples.bal delete <accessToken> <clientID> <clientSecret> <refreshToken>  <sobjectName> <externalField> <fieldValueId> <jsonPayload>`
+`bin$ ./ballerina run main samples.bal delete <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <sobjectName> <externalField> <fieldValueId> <jsonPayload>`
