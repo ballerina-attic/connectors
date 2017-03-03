@@ -18,7 +18,6 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     oauth2:ClientConnector oauth2Connector = create oauth2:ClientConnector(baseEndpoint, accessToken, clientID,
      clientSecret, refreshToken, refreshEndpoint);
 
-
     @doc:Description("Lists the available objects and their metadata for your organization’s data")
     @doc:Param("amz: The salesforcerest connector instance")
     @doc:Return("response message")
