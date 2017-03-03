@@ -71,10 +71,10 @@ Returns the users' account information.
 - copy amazonLambda/samples/amazonLambda/samples.bal into `<ballerina_home>`/bin$ folder
 - To run the following commands to execute the relevant action.
   1. invokeFunction:
-  `bin$ ./ballerina run main samples.bal <accessKeyId> <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run main samples.bal invokeFunction <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   2. deleteFunction:
-  `bin$ ./ballerina run main samples.bal <accessKeyId> <secretAccessKey> <region> <functionARN>`
+  `bin$ ./ballerina run main samples.bal deleteFunction <accessKeyId> <secretAccessKey> <region> <functionARN>`
 
   3. listFunctions:
   `bin$ ./ballerina run main samples.bal listFunctions <accessKeyId> <secretAccessKey> <region>`
