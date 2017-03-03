@@ -278,6 +278,23 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin><!-- Overridden from parent pom to exclude generated sources -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <!--Exclude generated sources-->
+                            <excludes>**/${native.constructs.provider.class}.java</excludes>
+                        </configuration>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>
@@ -290,8 +307,7 @@
         <!-- Path to the generated natives ballerina files temp directory -->
         <native.constructs.provider.package>org.wso2.ballerina.connectors
         </native.constructs.provider.package>
-        <native.constructs.provider.class>BallerinaConnectorsProvider
-        </native.constructs.provider.class>
+        <native.constructs.provider.class>BallerinaConnectorsProvider</native.constructs.provider.class>
         <generated.connectors.source.directory>${project.build.directory}/natives
         </generated.connectors.source.directory>
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
