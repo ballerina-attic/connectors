@@ -288,7 +288,7 @@
         <mvn.resource.plugins.version>3.0.2</mvn.resource.plugins.version>
 
         <!-- Path to the generated natives ballerina files temp directory -->
-        <native.constructs.provider.package>org.ballerinalang.connectors
+        <native.constructs.provider.package>org.wso2.ballerina.connectors
         </native.constructs.provider.package>
         <native.constructs.provider.class>BallerinaConnectorsProvider
         </native.constructs.provider.class>
@@ -297,6 +297,6 @@
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
         <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
-        <docerina.maven.plugin.version>0.8.0</docerina.maven.plugin.version>
+        <docerina.maven.plugin.version>0.8.1</docerina.maven.plugin.version>
     </properties>
 </project>
