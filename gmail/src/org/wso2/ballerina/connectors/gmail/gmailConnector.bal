@@ -209,7 +209,9 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             uriParams = uriParams + "&q=" + q;
         }
 
-        listDraftPath = listDraftPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
+        if(uriParams != "") {
+            listDraftPath = listDraftPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
+        }
 
         message response = oauth2:ClientConnector.get(gmailEP, listDraftPath, request);
 
@@ -464,7 +466,9 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             uriParams = uriParams + "&q=" + q;
         }
 
-        listThreadPath = listThreadPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
+        if(uriParams != "") {
+            listThreadPath = listThreadPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
+        }
         message response = oauth2:ClientConnector.get(gmailEP, listThreadPath, request);
 
         return response;
@@ -551,7 +555,9 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             uriParams = uriParams + "&q=" + q;
         }
 
-        listMailPath = listMailPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
+        if(uriParams != "") {
+            listMailPath = listMailPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
+        }
         message response = oauth2:ClientConnector.get(gmailEP, listMailPath, request);
 
         return response;
