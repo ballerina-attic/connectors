@@ -4,7 +4,6 @@ import ballerina.lang.messages;
 import ballerina.net.uri;
 import org.wso2.ballerina.connectors.oauth2;
 
-
 @doc:Description("Salesforcerest client connector")
 @doc:Param("accessToken: The accessToken of the salesforce connected app to access the salesforce REST API")
 @doc:Param("clientId: The clientId of the salesforce connected app to access the salesforce REST API")
@@ -12,11 +11,11 @@ import org.wso2.ballerina.connectors.oauth2;
 @doc:Param("refreshToken: The refreshToken of the salesforce connected app to access the salesforce REST API")
 connector ClientConnector(string accessToken, string clientId, string clientSecret, string refreshToken) {
 
-    string RefreshEndpoint = "https://login.salesforce.com/services/oauth2/token";
-    string BaseEndpoint = "https://ap4.salesforce.com";
+    string refreshEndpoint = "https://login.salesforce.com/services/oauth2/token";
+    string baseEndpoint = "https://ap4.salesforce.com";
 
-    oauth2:ClientConnector oauth2Connector = create oauth2:ClientConnector(BaseEndpoint, AccessToken, ClientID,
-     ClientSecret, RefreshToken, RefreshEndpoint);
+    oauth2:ClientConnector oauth2Connector = create oauth2:ClientConnector(baseEndpoint, accessToken, clientID,
+     clientSecret, refreshToken, refreshEndpoint);
 
 
     @doc:Description("Lists the available objects and their metadata for your organization’s data")
