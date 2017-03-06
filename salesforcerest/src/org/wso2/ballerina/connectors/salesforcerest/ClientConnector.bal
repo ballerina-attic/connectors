@@ -15,7 +15,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     string refreshEndpoint = "https://login.salesforce.com/services/oauth2/token";
     string baseEndpoint = "https://" + apiInstance + ".salesforce.com";
 
-    oauth2:ClientConnector oauth2Connector = create oauth2:ClientConnector(baseEndpoint, accessToken, clientID,
+    oauth2:ClientConnector oauth2Connector = create oauth2:ClientConnector(baseEndpoint, accessToken, clientId,
      clientSecret, refreshToken, refreshEndpoint);
 
     @doc:Description("Lists the available objects and their metadata for your organization’s data")
@@ -27,9 +27,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects";
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -44,9 +42,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -60,9 +56,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data";
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -76,9 +70,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/limits";
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -93,9 +85,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/" + apiVersion;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -110,9 +100,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -131,10 +119,8 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName + "/deleted/?start=" + uri:encode(startTime)
         + "&end=" + uri:encode(endTime);
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -153,10 +139,8 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName + "/deleted/?start=" + uri:encode(startTime)
         + "&end=" + uri:encode(endTime);
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -170,9 +154,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/PlatformAction";
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -187,9 +169,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName + "/" + rowId;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -208,9 +188,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName + "/" + fieldId + "/" + fieldValue;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -225,9 +203,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/query/?explain=" + listViewId;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -242,9 +218,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/query/?q=" + queryString;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -260,9 +234,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/queryAll/?q=" + queryString;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -276,9 +248,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/queryAll/" + nextRecordsUrl;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -293,9 +263,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/queryMore/" + nextRecordsUrl;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -310,9 +278,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/query/?explain=" + "queryString";
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -328,9 +294,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName;
-        messages:setHeader(requestMsg, "Host", host);
 	    messages:setJsonPayload(requestMsg, payload);
         response = oauth2:ClientConnector.post(oauth2Connector, requestURI, requestMsg);
         return response;
@@ -347,9 +311,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/composite/tree/" + sobjectName;
-        messages:setHeader(requestMsg, "Host", host);
 	    messages:setJsonPayload(requestMsg, payload);
         response = oauth2:ClientConnector.post(oauth2Connector, requestURI, requestMsg);
         return response;
@@ -365,9 +327,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName + "/" + deleteId;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -385,9 +345,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName + "/" + rowId + "?fields=" + fields;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -405,9 +363,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName + "/" + rowId + "?fields=" + fields;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -425,9 +381,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName + "/" + externalId + "?fields=" + fields;
-        messages:setHeader(requestMsg, "Host", host);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -443,9 +397,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
         requestURI = "/services/data/v39.0/sobjects/" + sobjectName + "/" + recordId;
-        messages:setHeader(requestMsg, "Host", host);
 	    messages:setJsonPayload(requestMsg, payload);
         response = oauth2:ClientConnector.post(oauth2Connector, requestURI, requestMsg);
         return response;
@@ -458,16 +410,14 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param("fieldValueId: The external field value")
     @doc:Param("payload: json payload containing record data")
     @doc:Return("response message")
-    action upsert(ClientConnector sf, string sobjectName, string externalField, string fieldValueId, json payload)
+    action upsert(ClientConnector sf, string sobject, string externalField, string fieldValueId, json payload)
      (message) throws exception {
         string httpMethod;
         string requestURI;
         string host;
         message requestMsg = {};
         message response = {};
-        host = "ap4.salesforce.com";
-        requestURI = "/services/data/v39.0/sobjects/" + sobject + "/" + externalField + "/" + "fieldValueId";
-        messages:setHeader(requestMsg, "Host", host);
+        requestURI = "/services/data/v39.0/sobjects/" + sobject + "/" + externalField + "/" + fieldValueId;
 	    messages:setJsonPayload(requestMsg, payload);
         response = oauth2:ClientConnector.post(oauth2Connector, requestURI, requestMsg);
         return response;
