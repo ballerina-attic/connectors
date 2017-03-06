@@ -107,7 +107,7 @@ The getComments action allows to get comments for an object such as video, posts
 - Place facebook/sample/facebook/samples.bal into <ballerina_home>/bin$ folder 
 - To run the following commands to execute the relevant action.
   1. createPost:   
-  `bin$ ./ballerina run main samples.bal createPost <token> <message> <link> <place>`
+  `bin$ ./ballerina run main samples.bal createPost <token> <id> <message> <link> <place>`
   2. retrievePost:    
   `bin$ ./ballerina run main samples.bal retrievePost <token> <postId> <fields>`
   3. deletePost:    
