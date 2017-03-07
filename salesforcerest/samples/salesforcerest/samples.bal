@@ -14,17 +14,18 @@ function main (string[] args) {
     string clientSecret = args[3];
     string refreshToken = args[4];
     string apiInstance = args[5];
+    string refreshToken = args[6];
 
     salesforcerest:ClientConnector salesforceClient = create salesforcerest:ClientConnector(accessToken, clientID, clientSecret, refreshToken, apiInstance);
 
     if (args[0] == "describeGlobal"){
-        response = salesforcerest:ClientConnector.describeGlobal(salesforceClient);
+        response = salesforcerest:ClientConnector.describeGlobal(salesforceClient, args[7]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
     
     if (args[0] == "sObjectDescribe"){
-        response = salesforcerest:ClientConnector.sObjectDescribe(salesforceClient, args[6]);
+        response = salesforcerest:ClientConnector.sObjectDescribe(salesforceClient, args[7], args[8]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
@@ -36,134 +37,134 @@ function main (string[] args) {
     }
     
     if (args[0] == "listOrganizationLimits"){
-        response = salesforcerest:ClientConnector.listOrganizationLimits(salesforceClient);
+        response = salesforcerest:ClientConnector.listOrganizationLimits(salesforceClient, args[7]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
     
     if (args[0] == "listResourcesByApiVersion"){
-        response = salesforcerest:ClientConnector.listResourcesByApiVersion(salesforceClient, args[6]);
+        response = salesforcerest:ClientConnector.listResourcesByApiVersion(salesforceClient, args[8]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "sObjectBasicInfo"){
-        response = salesforcerest:ClientConnector.sObjectBasicInfo(salesforceClient, args[6]);
+        response = salesforcerest:ClientConnector.sObjectBasicInfo(salesforceClient, args[7], args[8]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "sObjectGetDeleted"){
-        response = salesforcerest:ClientConnector.sObjectGetDeleted(salesforceClient, args[6], args[7], args[8]);
+        response = salesforcerest:ClientConnector.sObjectGetDeleted(salesforceClient, args[7], args[8], args[9], args[10]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "sObjectGetUpdated"){
-        response = salesforcerest:ClientConnector.sObjectGetUpdated(salesforceClient, args[6], args[7], args[8]);
+        response = salesforcerest:ClientConnector.sObjectGetUpdated(salesforceClient, args[7], args[8], args[9], args[10]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "sObjectPlatformAction"){
-        response = salesforcerest:ClientConnector.sObjectPlatformAction(salesforceClient);
+        response = salesforcerest:ClientConnector.sObjectPlatformAction(salesforceClient, args[7]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "sObjectRows"){
-        response = salesforcerest:ClientConnector.sObjectRows(salesforceClient, args[6], args[7]);
+        response = salesforcerest:ClientConnector.sObjectRows(salesforceClient, args[7], args[8], args[9]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "sObjectRowsByExternalId"){
-        response = salesforcerest:ClientConnector.sObjectRowsByExternalId(salesforceClient, args[6], args[7], args[8]);
+        response = salesforcerest:ClientConnector.sObjectRowsByExternalId(salesforceClient, args[7], args[8], args[9], args[10]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "listviewQueryPerformanceFeedback"){
-        response = salesforcerest:ClientConnector.listviewQueryPerformanceFeedback(salesforceClient, args[6]);
+        response = salesforcerest:ClientConnector.listviewQueryPerformanceFeedback(salesforceClient, args[7], args[8]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "query"){
-        response = salesforcerest:ClientConnector.query(salesforceClient, args[6]);
+        response = salesforcerest:ClientConnector.query(salesforceClient, args[7], args[8]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "queryAll"){
-        response = salesforcerest:ClientConnector.queryAll(salesforceClient, args[6]);
+        response = salesforcerest:ClientConnector.queryAll(salesforceClient, args[7], args[8]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "queryAllMore"){
-        response = salesforcerest:ClientConnector.queryAllMore(salesforceClient, args[6]);
+        response = salesforcerest:ClientConnector.queryAllMore(salesforceClient, args[7], args[8]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "queryMore"){
-        response = salesforcerest:ClientConnector.queryMore(salesforceClient, args[6]);
+        response = salesforcerest:ClientConnector.queryMore(salesforceClient, args[7], args[8]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "queryPerformanceFeedback"){
-        response = salesforcerest:ClientConnector.queryPerformanceFeedback(salesforceClient, args[6]);
+        response = salesforcerest:ClientConnector.queryPerformanceFeedback(salesforceClient, args[7], args[8]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "createRecord"){
-        response = salesforcerest:ClientConnector.createRecord(salesforceClient, args[6], (json)args[7]);
+        response = salesforcerest:ClientConnector.createRecord(salesforceClient, args[7], args[8], (json)args[9]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "createMultipleRecords"){
-        response = salesforcerest:ClientConnector.createMultipleRecords(salesforceClient, args[6], (json)args[7]);
+        response = salesforcerest:ClientConnector.createMultipleRecords(salesforceClient, args[7], args[8], (json)args[9]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
     if (args[0] == "delete"){
-        response = salesforcerest:ClientConnector.delete(salesforceClient, args[6], args[7]);
+        response = salesforcerest:ClientConnector.delete(salesforceClient, args[7], args[8], args[9]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "retrieveFieldValues"){
-        response = salesforcerest:ClientConnector.retrieveFieldValues(salesforceClient, args[6], args[7], args[8]);
+        response = salesforcerest:ClientConnector.retrieveFieldValues(salesforceClient, args[7], args[8], args[9], args[10]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "retrieveFieldValuesFromExternalObject"){
-        response = salesforcerest:ClientConnector.retrieveFieldValuesFromExternalObject(salesforceClient, args[6],
-         args[7], args[8]);
+        response = salesforcerest:ClientConnector.retrieveFieldValuesFromExternalObject(salesforceClient, args[7], args[8],
+         args[9], args[10]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "retrieveStandardFieldValuesFromExternalObjectWithExternalId"){
         response = salesforcerest:ClientConnector.retrieveStandardFieldValuesFromExternalObjectWithExternalId(
-        salesforceClient, args[6], args[7], args[8]);
+        salesforceClient, args[7], args[8], args[9], args[10]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "update"){
-        response = salesforcerest:ClientConnector.update(salesforceClient, args[6], args[7], (json)args[8]);
+        response = salesforcerest:ClientConnector.update(salesforceClient, args[7], args[8], args[9], (json)args[10]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "upsert"){
-        response = salesforcerest:ClientConnector.upsert(salesforceClient, args[6], args[7], args[8], (json)args[9]);
+        response = salesforcerest:ClientConnector.upsert(salesforceClient, args[7], args[8], args[9], args[10], (json)args[11]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
