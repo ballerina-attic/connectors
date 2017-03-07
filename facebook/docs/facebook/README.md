@@ -1,126 +1,131 @@
 # Facebook Connector
 
-The Facebook connector allows you to access the Facebook Graph API through ballerina. And the actions are being invoked
-with a ballerina main function. The following section provide you the details on connector operations.
+The Facebook connector allows you to access the [Facebook Graph API](https://developers.facebook.com/docs/graph-api) through Ballerina. You can invoke this connector's actions within a Ballerina `main()` function. The following sections provide details on the connector actions and the sample you can use to invoke them.
 
 ## Create post
-The createPost action allows to create a post for user, page, event or group.
+The createPost action creates a post for a user, page, event, or group.
 
-###### Properties
-  * id    - The identifier of the user or page or event or group for which to create the post.
-  * msg   - The main body of the post.
-  * link  - The URL of a link to attach to the post.
-  * place - Page ID of a location associated with this post.
+#### Properties
 
-###### Related Facebook documentation
+  * id    - The identifier of the user, page, event, or group for which you are creating the post
+  * msg   - The main body of the post
+  * link  - The URL of a link to attach to the post
+  * place - Page ID of a location associated with this post
+
+#### Related Facebook documentation
 <https://developers.facebook.com/docs/graph-api/reference/v2.8/page/feed#publish>
 
 ## Retrieve a post
-The retrievePost action allows to retrieve the post specified by the id.
+The retrievePost action retrieves the post specified by the ID.
 
-###### Properties
-  * postId - The post ID.
-  * fields - The fields to retrieve which belongs to an object.
+#### Properties
 
-###### Related Facebook documentation
+  * postId - The post ID
+  * fields - The fields to retrieve
+
+#### Related Facebook documentation
 <https://developers.facebook.com/docs/graph-api/reference/v2.8/post#read>
 
 ## Delete a post
-The deletePost action allows to delete a post specified by the id.
+The deletePost action deletes the post specified by the ID.
 
-###### Properties
-  * postId - The post ID.
+#### Properties
 
-###### Related Facebook documentation
+* postId - The post ID
+
+#### Related Facebook documentation
 <https://developers.facebook.com/docs/graph-api/reference/v2.8/post#deleting>
 
 ## Update a post
-The updatePost action allows to update the post specified by the id.
+The updatePost action updates the post specified by the ID.
 
-###### Properties
-   * postId  - The post ID.
-   * msg - The main body of the post.
-   * tags    - Comma-separated list of user IDs of people tagged in this post. 
-   * privacy - Privacy settings of the post.
+#### Properties
 
-###### Related Facebook documentation
+* postId  - The post ID
+* msg     - The main body of the post
+* tags    - Comma-separated list of user IDs of people tagged in this post
+* privacy - Privacy settings of the post
+
+#### Related Facebook documentation
 <https://developers.facebook.com/docs/graph-api/reference/v2.8/post#updating>
 
 ## Add likes
-The addLikes action allows to add a like for a video, posts, status, note, photo, album or comment.
+The addLikes action adds a like for a video, post, status, note, photo, album, or comment.
 
-###### Properties
-  * objectId - The object ID to add like.
+#### Properties
 
-###### Related Facebook documentation
+* objectId - The object ID to like
+
+#### Related Facebook documentation
 <https://developers.facebook.com/docs/graph-api/reference/v2.8/object/likes>
 
-## Get like details
-The getLikesDetails action allows to retrieve the like details for a specified object.
+## Get likes
+The getLikesDetails action retrieves details of the likes for a specified object.
 
-###### Properties
-   * objectId - The object ID to retrieve the like details.
-   * fields   - The fields to retrieve.
+#### Properties
 
-###### Related Facebook documentation
+ * objectId - The ID of the object whose likes you want to retrieve
+ * fields   - The details to retrieve
+
+#### Related Facebook documentation
 <https://developers.facebook.com/docs/graph-api/reference/v2.8/object/likes>
 
 ## Delete likes
-The deleteLikes action allows to delete a like for a video, posts, status, note, photo, album or comment.
+The deleteLikes action deletes a like for a video, post, status, note, photo, album, or comment.
 
-###### Properties
-  * objectId - The object ID to delete the like.
+#### Properties
+
+  * objectId - The ID of the object whose like you want to delete.
   
-###### Related Facebook documentation
+#### Related Facebook documentation
 <https://developers.facebook.com/docs/graph-api/reference/v2.8/object/likes>
 
 ## Add comments
-The addComments action allows to add new comments for a photo, picture etc.
+The addComments action adds new comments for a photo, picture, etc.
 
-###### Properties
-  * objectId      - The ID of the object such as a page, video, etc.
-  * msg       - The comment text.
-  * attachmentId  - An ID of an unpublished photo.
-  * attachmentUrl - The URL of an image to include as a photo comment.
+#### Properties
 
-###### Related Facebook documentation
+  * objectId      - The ID of the object, such as a page, video, etc.
+  * msg           - The comment text
+  * attachmentId  - An ID of an unpublished photo
+  * attachmentUrl - The URL of an image to include as a photo comment
+
+#### Related Facebook documentation
 <https://developers.facebook.com/docs/graph-api/reference/v2.8/object/comments>
 
 ## Get comments
-The getComments action allows to get comments for an object such as video, posts, status, note, photo, and album.
+The getComments action retrieves comments for an object such as a video, post, status, note, photo, or album.
 
-###### Properties
-  * objectId      - The ID of the object such as a page, video, etc.
-  * fields   - The fields to retrieve.
+#### Properties
+
+  * objectId - The ID of the object such as a page, video, etc.
+  * fields   - The fields to retrieve
   
-###### Related Facebook documentation
+#### Related Facebook documentation
 <https://developers.facebook.com/docs/graph-api/reference/v2.8/object/comments>
 
-## How to use
+## Sample
+1. Get the access_token from: <https://developers.facebook.com/tools/explorer/>
 
-###### Prerequisites
-1.  Get the access_token from <https://developers.facebook.com/tools/explorer/>
+ > **IMPORTANT:** This access token can be used to make API requests on your own account's behalf. Do not share your access token with anyone.
 
-**IMPORTANT:** This access token can be used to make API requests on your own account's behalf. Do not share your access token with anyone.
-
-###### Invoke the actions
-- Place facebook/sample/facebook/samples.bal into <ballerina_home>/bin$ folder 
-- To run the following commands to execute the relevant action.
-  1. createPost:   
+1. Copy the `facebook/sample/facebook/samples.bal` file into the `<ballerina_home>/bin` folder. 
+1. Run the following commands to execute the relevant actions:
+  *  createPost:   
   `bin$ ./ballerina run main samples.bal createPost <token> <id> <message> <link> <place>`
-  2. retrievePost:    
+  *  retrievePost:    
   `bin$ ./ballerina run main samples.bal retrievePost <token> <postId> <fields>`
-  3. deletePost:    
+  * deletePost:    
   `bin$ ./ballerina run main samples.bal deletePost <token> <postId>`
-  4. updatePost:    
+  * updatePost:    
   `bin$ ./ballerina run main samples.bal updatePost <token> <postId> <message> <tags> <privacy>`
-  5. addLikes:    
+  * addLikes:    
   `bin$ ./ballerina run main samples.bal addLikes <token> <objectId>`
-  6. getLikesDetails:    
+  * getLikesDetails:    
   `bin$ ./ballerina run main samples.bal getLikesDetails <token> <objectId> <fields>`
-  7. deleteLikes:    
-  `bin$ ./ballerina run main samples.bal deleteLikes <token> <objectId> <fields>`
-  8. addComments:    
+  * deleteLikes:    
+  `bin$ ./ballerina run main samples.bal deleteLikes <token> <objectId>`
+  * addComments:    
   `bin$ ./ballerina run main samples.bal addComments <token> <objectId> <message> <attachmentId> <attachmentUrl>`
-  9. getComments:    
+  * getComments:    
   `bin$ ./ballerina run main samples.bal getComments <token> <objectId> <fields>`
