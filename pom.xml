@@ -146,6 +146,10 @@
                                     <directory>amazonlambda/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
+                                <resource>
+                                    <directory>salesforcesoap/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
                             </resources>
                         </configuration>
                     </execution>
@@ -201,6 +205,10 @@
                                 </resource>
                                 <resource>
                                     <directory>amazonlambda/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>salesforcesoap/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
