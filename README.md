@@ -1,4 +1,4 @@
-# ballerina-connectors
+# Ballerina Connectors
 
 A connector allows you to interact with a third-party product's functionality 
 and data and enabling you to connect to and interact with the APIs of services such as Twitter, 
