@@ -59,10 +59,10 @@ The patch action allows to use http patch action with oauth2 authentication flow
     2. post:
     `bin$ ./ballerina run main samples.bal post <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
     3. put:
-    `bin$ ./ballerina run main samples.ba put <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
+    `bin$ ./ballerina run main samples.bal put <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
     4. delete:
-    `bin$ ./ballerina run main samples.ba delete <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
-    5. delete:
-    `bin$ ./ballerina run main samples.ba patch <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
+    `bin$ ./ballerina run main samples.bal delete <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
+    5. patch:
+    `bin$ ./ballerina run main samples.bal patch <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
 
 Note: If you are not passing refresh token in the request, access token won't be refreshed.
