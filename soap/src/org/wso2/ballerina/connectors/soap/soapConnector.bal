@@ -48,19 +48,16 @@ connector ClientConnector (string url) {
 
 function constructSoapRequest (xml payload, string namespace, xml[] headers) (xml) {
 
-    map n = { "soapenv" : namespace};
-
+    int headerCount = arrays:length(headers);
+    map n = {"soapenv" : namespace};
     xml soapRequest = `<soapenv:Envelope xmlns:soapenv="${namespace}">
     	               </soapenv:Envelope>`;
-
-    if (arrays:length(headers) != 0) {
-
-        xml value = `<soapenv:Header  xmlns:soapenv="${namespace}">
+    if (headerCount != 0) {
+        xml value = `<soapenv:Header xmlns:soapenv="${namespace}">
                      </soapenv:Header>`;
         xmls:addElement(soapRequest, "/soapenv:Envelope", value, n);
         int i = 0;
-        int j = arrays:length(headers);
-        while (i < j){
+        while (i < headerCount){
             value = headers[i];
             xmls:addElement(soapRequest, "/soapenv:Envelope/soapenv:Header", value, n);
             i = i+1;
