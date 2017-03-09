@@ -101,6 +101,27 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
 
         return response;
     }
+
+    @doc:Description("Patch with OAuth2 authentication")
+    @doc:Param("clientConnector: The oauth2 Connector instance")
+    @doc:Param("path: The endpoint path")
+    @doc:Param("request: The request of the method")
+    @doc:Return("response object")
+    action patch (ClientConnector clientConnector, string path, message request) (message) {
+
+        message response;
+
+        accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
+        response = http:ClientConnector.patch(httpConnectorEP, path, request);
+
+        if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
+            accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
+                                                              refreshTokenEP);
+            response = http:ClientConnector.patch(httpConnectorEP, path, request);
+        }
+
+        return response;
+    }
 }
 
 function constructAuthHeader (message request, string accessTokenValue, string accessToken) (string) {
