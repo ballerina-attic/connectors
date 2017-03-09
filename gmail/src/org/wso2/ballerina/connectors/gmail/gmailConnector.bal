@@ -15,13 +15,13 @@ import ballerina.utils;
 @doc:Param("clientId: The clientId of the App to access the gmail REST API")
 @doc:Param("clientSecret: The clientSecret of the App to access the gmail REST API")
 connector ClientConnector (string userId, string accessToken, string refreshToken, string clientId,
- string clientSecret) {
+                           string clientSecret) {
 
     string refreshTokenEP = "https://www.googleapis.com/oauth2/v3/token";
     string baseURL = "https://www.googleapis.com/gmail";
 
     oauth2:ClientConnector gmailEP = create oauth2:ClientConnector(baseURL, accessToken, clientId, clientSecret,
-    refreshToken, refreshTokenEP);
+                                                                   refreshToken, refreshTokenEP);
 
     @doc:Description("Retrieve the user profile")
     @doc:Param("g: The gmail Connector instance")
@@ -48,7 +48,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     @doc:Param("threadId: thread Id of the draft to reply")
     @doc:Return("response object")
     action createDraft(ClientConnector g, string to, string subject, string from, string messageBody,
-    string cc , string bcc, string id, string threadId) (message) {
+                       string cc , string bcc, string id, string threadId) (message) {
 
         message request = {};
         string concatRequest = "";
@@ -109,7 +109,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     @doc:Param("threadId: thread Id of the draft to reply")
     @doc:Return("response object")
     action updateDraft(ClientConnector g, string draftId, string to, string subject, string from,
-    string messageBody, string cc , string bcc, string id, string threadId) (message) {
+                       string messageBody, string cc , string bcc, string id, string threadId) (message) {
 
         message request = {};
         string concatRequest = "";
@@ -186,7 +186,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
                    the Gmail search box")
     @doc:Return("response object")
     action listDrafts(ClientConnector g, string includeSpamTrash, string maxResults, string pageToken,
-    string q) (message) {
+                      string q) (message) {
 
         message request = {};
         string uriParams;
@@ -240,7 +240,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     @doc:Param("startHistoryId: Returns history records after the specified startHistoryId")
     @doc:Return("response object")
     action listHistory(ClientConnector g, string labelId, string maxResults, string pageToken,
-    string startHistoryId) (message){
+                       string startHistoryId) (message){
 
         message request = {};
 
@@ -255,7 +255,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         }
 
         if(pageToken != "null") {
-             listHistoryPath = listHistoryPath + "&pageToken=" + pageToken;
+            listHistoryPath = listHistoryPath + "&pageToken=" + pageToken;
         }
 
         message response = oauth2:ClientConnector.get(gmailEP, listHistoryPath, request);
@@ -276,8 +276,8 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     @doc:Param("threadsUnread: The number of unread threads with the label")
     @doc:Return("response object")
     action createLabel(ClientConnector g, string labelName, string messageListVisibility,
-    string labelListVisibility, string types, string messagesTotal, string messagesUnread,
-    string threadsTotal, string threadsUnread) (message) {
+                       string labelListVisibility, string types, string messagesTotal, string messagesUnread,
+                       string threadsTotal, string threadsUnread) (message) {
 
         message request = {};
 
@@ -355,8 +355,8 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     @doc:Param("threadsUnread: The number of unread threads with the label")
     @doc:Return("response object")
     action updateLabel(ClientConnector g, string labelId, string labelName, string messageListVisibility,
-    string labelListVisibility, string types, string messagesTotal, string messagesUnread,
-    string threadsTotal, string threadsUnread) (message) {
+                       string labelListVisibility, string types, string messagesTotal, string messagesUnread,
+                       string threadsTotal, string threadsUnread) (message) {
 
         message request = {};
 
@@ -417,11 +417,21 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     action readThread(ClientConnector g, string threadId, string format, string metaDataHeaders) (message) {
 
         message request = {};
-        string readThreadPath;
         string encodedHeaders = uri:encode(metaDataHeaders);
+        string uriParams;
 
-        if(metaDataHeaders == "null") {
-            readThreadPath = "/v1/users/" + userId + "/threads/" + threadId + "?format=" + format;
+        string readThreadPath = "/v1/users/" + userId + "/threads/" + threadId;
+
+        if(format != "null") {
+            uriParams = uriParams + "&format=" + format;
+        }
+
+        if(metaDataHeaders != "null") {
+            uriParams = uriParams + "&metaDataHeaders=" + metaDataHeaders;
+        }
+
+        if(uriParams != "null") {
+            readThreadPath = readThreadPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
         }
 
         message response = oauth2:ClientConnector.get(gmailEP, readThreadPath, request);
@@ -439,7 +449,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
                    the Gmail search box")
     @doc:Return("response object")
     action listThreads(ClientConnector g, string includeSpamTrash, string labelIds, string maxResults,
-    string pageToken, string q) (message) {
+                       string pageToken, string q) (message) {
 
         message request = {};
         string uriParams;
@@ -528,7 +538,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
                    the Gmail search box")
     @doc:Return("response object")
     action listMails(ClientConnector g, string includeSpamTrash, string labelIds, string maxResults,
-    string pageToken, string q) (message) {
+                     string pageToken, string q) (message) {
 
         message request = {};
         string uriParams;
@@ -575,7 +585,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     @doc:Param("threadId: thread Id of the mail to reply")
     @doc:Return("response object")
     action sendMail(ClientConnector g, string to, string subject, string from, string messageBody,
-    string cc , string bcc, string id, string threadId) (message) {
+                    string cc , string bcc, string id, string threadId) (message) {
 
         message request = {};
         string concatRequest = "";
@@ -629,7 +639,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     @doc:Param("removeLabelIds: A list IDs of labels to remove from this message")
     @doc:Return("response object")
     action modifyExistingMessage(ClientConnector g, string messageId, string addLabelIds,
-    string removeLabelIds) (message) {
+                                 string removeLabelIds) (message) {
 
         message request = {};
 
@@ -661,12 +671,21 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     action readMail(ClientConnector g, string messageId, string format, string metaDataHeaders) (message) {
 
         message request = {};
-        string readMailPath;
+        string uriParams;
+        string readMailPath = "/v1/users/" + userId + "/messages/" + messageId;
 
         string encodedHeaders = uri:encode(metaDataHeaders);
 
-        if(metaDataHeaders == "null") {
-            readMailPath = "/v1/users/" + userId + "/messages/" + messageId + "?format=" + format;
+        if(format != "null") {
+            uriParams = uriParams + "&format=" + format;
+        }
+
+        if(metaDataHeaders != "null") {
+            uriParams = uriParams + "&metaDataHeaders=" + metaDataHeaders;
+        }
+
+        if(uriParams != "") {
+            readMailPath = readMailPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
         }
 
         message response = oauth2:ClientConnector.get(gmailEP, readMailPath, request);
