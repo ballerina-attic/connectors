@@ -307,16 +307,13 @@ The unTrashMail action helps to Removes the specified message from the trash.
 * Access Token
 * Refresh Token
    
->**IMPORTANT** This access token and refresh token can be used to make API requests on your own
-account's behalf. Do not share your access token, client  secret with anyone.
+>**IMPORTANT** This access token and refresh token can be used to make API requests on your own account's behalf. Do not share your access token, client  secret with anyone.
 
 1. copy gmail/sample/gmail/samples.bal into `<ballerina_home>`/bin$ folder
 
 1. Run the following commands to execute the relevant actions:
 
->**NOTE**
-
-If the template parameter is indicate as optional you must pass null as default value to run this action.
+>**NOTE** If the template parameter is indicate as optional you must pass null as default value to run this action.
 
 * getUserProfile  
 `bin$ ./ballerina run main samples.bal getUserProfile <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>`
