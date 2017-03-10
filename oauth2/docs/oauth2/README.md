@@ -31,6 +31,13 @@ The delete action allows to use http delete action with oauth2 authentication fl
   * path -  The path of the endpoint.
   * request -  The request message.
 
+## patch
+The patch action allows to use http patch action with oauth2 authentication flow.
+
+###### Properties
+* path -  The path of the endpoint.
+* request -  The request message.
+
 ## How to use
 
 ###### Prerequisites
@@ -52,8 +59,10 @@ The delete action allows to use http delete action with oauth2 authentication fl
     2. post:
     `bin$ ./ballerina run main samples.bal post <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
     3. put:
-    `bin$ ./ballerina run main samples.ba put <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
+    `bin$ ./ballerina run main samples.bal put <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
     4. delete:
-    `bin$ ./ballerina run main samples.ba delete <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
+    `bin$ ./ballerina run main samples.bal delete <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
+    5. patch:
+    `bin$ ./ballerina run main samples.bal patch <baseUrl> <accessToken> <clientId> <clientSecret> <refreshToken> <refreshTokenEP> <path>`
 
 Note: If you are not passing refresh token in the request, access token won't be refreshed.

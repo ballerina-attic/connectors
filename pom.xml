@@ -147,6 +147,10 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
+                                    <directory>salesforcerest/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
                                     <directory>salesforcesoap/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
@@ -205,6 +209,10 @@
                                 </resource>
                                 <resource>
                                     <directory>amazonlambda/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>salesforcerest/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
