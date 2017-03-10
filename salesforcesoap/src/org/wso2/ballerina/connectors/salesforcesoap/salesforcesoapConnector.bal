@@ -3,6 +3,7 @@ package org.wso2.ballerina.connectors.salesforcesoap;
 import org.wso2.ballerina.connectors.soap;
 import ballerina.lang.xmls;
 import ballerina.lang.strings;
+import ballerina.lang.maps;
 import ballerina.lang.arrays;
 
 @doc:Description("Salesforcesoap client connector")
@@ -128,10 +129,9 @@ connector ClientConnector (string username, string password, string loginUrl, st
     @doc:Description("Adds one or more new records to your organization’s data")
     @doc:Param("s: The salesforcesoap connector instance")
     @doc:Param("headers: Soap header values")
-    @doc:Param("type: Name of SObject")
-    @doc:Param("name: Name of record")
+    @doc:Param("fields: Map of fields of records")
     @doc:Return("response message")
-    action createRecord (ClientConnector s, xml[] headers, string type, string name) (xml) {
+    action createRecord (ClientConnector s, xml[] headers, map fields) (xml) {
 
         int headerCount = arrays:length(headers);
         if (serverUrl == ""){
@@ -145,10 +145,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
         headers[headerCount] = session;
         xml payload = `<urn:create xmlns:urn="urn:partner.soap.sforce.com" xmlns:urn1="urn:sobject.partner.soap.sforce.com">
                            <urn:sObjects>
-                               <urn1:type>${type}</urn1:type>
-                               <urn1:Name>${name}</urn1:Name>
                            </urn:sObjects>
                        </urn:create>`;
+
+        addFields(payload, fields, "/urn:create/urn:sObjects");
+
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
          serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -169,11 +170,9 @@ connector ClientConnector (string username, string password, string loginUrl, st
     @doc:Description("Updates one or more existing records in your organization’s data")
     @doc:Param("s: The salesforcesoap connector instance")
     @doc:Param("headers: Soap header values")
-    @doc:Param("recordId: Id of Record")
-    @doc:Param("newName: New name of record")
-    @doc:Param("type: Name of SObject")
+    @doc:Param("fields: Map of fields of records")
     @doc:Return("response message")
-    action updateRecord (ClientConnector s, xml[] headers, string recordId, string newName, string type) (xml) {
+    action updateRecord (ClientConnector s, xml[] headers, map fields) (xml) {
 
         int headerCount = arrays:length(headers);
         if (serverUrl == ""){
@@ -187,11 +186,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
         headers[headerCount] = session;
         xml payload = `<urn:update xmlns:urn="urn:partner.soap.sforce.com" xmlns:urn1="urn:sobject.partner.soap.sforce.com">
                            <urn:sObjects>
-                               <urn1:Id>${recordId}</urn1:Id>
-                               <urn1:type>${type}</urn1:type>
-                                   <urn1:Name>${newName}</urn1:Name>
-                                </urn:sObjects>
-                             </urn:update>`;
+                           </urn:sObjects>
+                       </urn:update>`;
+
+        addFields(payload, fields, "/urn:update/urn:sObjects");
+
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
          serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -213,10 +212,9 @@ connector ClientConnector (string username, string password, string loginUrl, st
     @doc:Param("s: The salesforcesoap connector instance")
     @doc:Param("headers: Soap header values")
     @doc:Param("externalId: External Id")
-    @doc:Param("newName: New name of record")
-    @doc:Param("type: Name of SObject")
+    @doc:Param("fields: Map of fields of records")
     @doc:Return("response message")
-    action upsertRecord (ClientConnector s, xml[] headers, string externalId, string newName, string type) (xml) {
+    action upsertRecord (ClientConnector s, xml[] headers, string externalId, map fields) (xml) {
 
         int headerCount = arrays:length(headers);
         if (serverUrl == ""){
@@ -230,11 +228,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
         headers[headerCount] = session;
         xml payload = `<urn:upsert xmlns:urn="urn:partner.soap.sforce.com" xmlns:urn1="urn:sobject.partner.soap.sforce.com">
                             <urn:externalIDFieldName>${externalId}</urn:externalIDFieldName>
-                                <urn:sObjects>
-                                   <urn1:type>${type}</urn1:type>
-                                   <urn1:Name>${newName}</urn1:Name>
-                                </urn:sObjects>
-                             </urn:upsert>`;
+                            <urn:sObjects>
+                            </urn:sObjects>
+                       </urn:upsert>`;
+
+        addFields(payload, fields, "/urn:upsert/urn:sObjects");
+
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
          serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -489,14 +488,32 @@ function login (string username, string password, string loginUrl, string soapVe
         	               <urn:password>${password}</urn:password>
         	           </urn:login>`;
     xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", loginUrl, soapVersion);
-
     return soapResponse;
 }
 
-function isSessionExpired ( xml soapResponse) (boolean) {
-    map n = {"ns":"http://schemas.xmlsoap.org/soap/envelope/"};
+function isSessionExpired (xml soapResponse) (boolean) {
+
     string response = xmls:toString(soapResponse);
     boolean isValid = strings:contains(response, "INVALID_SESSION_ID");
     return isValid;
 }
 
+function addFields (xml payload, map fields, string xpath) (boolean) {
+
+    string[] fieldKeys = maps:keys(fields);
+    int fieldKeyCount = arrays:length(fieldKeys);
+    if (fieldKeyCount != 0) {
+        int i = 0;
+        string key;
+        string stringValue;
+        xml xmlValue;
+        map n = {"urn":"urn:partner.soap.sforce.com", "urn1" : "urn1:sobject.partner.soap.sforce.com"};
+        while (i < fieldKeyCount){
+            key = fieldKeys[i];
+            stringValue = fields[key];
+            xmlValue = `<urn1:${key} xmlns:urn="urn:partner.soap.sforce.com" xmlns:urn1="urn:sobject.partner.soap.sforce.com">${stringValue}</urn1:${key}>`;
+            xmls:addElement(payload, xpath, xmlValue, n);
+            i = i+1;
+        }
+    }
+}

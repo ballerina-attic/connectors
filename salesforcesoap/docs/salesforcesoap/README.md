@@ -26,8 +26,7 @@
 
 ###### Properties
   * headers - SOAP headers
-  * type - SObject Name
-  * name - Name of Record
+  * fields - Map of fields of records
 
 ###### Related Salesforce documentation
   * <https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_calls_create.htm>
@@ -99,9 +98,7 @@
 
 ###### Properties
   * headers - SOAP headers
-  * id - Id of Record
-  * newName - New name of Record
-  * type - SObject Name
+  * fields - Map of fields of records
   
 ###### Related Salesforce documentation
   * <https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_calls_update.htm>
@@ -112,8 +109,7 @@
 ###### Properties
   * headers - SOAP headers
   * id - External Id
-  * newName - New name of Record
-  * type - SObject Name
+  * fields - Map of fields of records
   
 ###### Related Salesforce documentation
   * <https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_calls_upsert.htm>
