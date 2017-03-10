@@ -1,8 +1,9 @@
 # Google Spreadsheet Connector
 
-   The Google Spreadsheet connector allows you to access the Google Spreadsheet API Version v4 through WSO2 ESB. 
+   The Google Spreadsheet connector allows you to access the Google Spreadsheet API Version v4 through Ballerina. 
    Google Sheets is an online spreadsheet that lets users create and format spreadsheets and simultaneously work with other people.
-
+   The following section provide you the details on connector operations.
+   
 ## createSpreadsheet
    The createSpreadsheet action allows you to creates a new spreadsheet.
 

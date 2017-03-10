@@ -28,7 +28,6 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return ("response object")
     action getSheetMetaData (ClientConnector spreadsheet, string spreadsheetId, string includeGridData, string fields,
                              string ranges) (message) {
-
         message request = {};
         string uriParams;
         string getSheetMetaDataPath = "/v4/spreadsheets/" + spreadsheetId;
@@ -69,9 +68,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action copyTo(ClientConnector spreadsheet, string spreadsheetId, string sheetId,
                   json payload, string fields) (message) {
-
         message request = {};
-        string uriParams;
         string copyToPath = "/v4/spreadsheets/" + spreadsheetId + "/sheets/" + sheetId + ":copyTo";
 
         if(fields != "null") {
@@ -95,7 +92,6 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action getCellData(ClientConnector spreadsheet, string spreadsheetId, string range, string dateTimeRenderOption,
                        string valueRenderOption, string fields, string majorDimension) (message) {
-
         message request = {};
         string uriParams;
         string getCellDataPath = "/v4/spreadsheets/" + spreadsheetId + "/values/" + range;
@@ -137,7 +133,6 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     action getMultipleCellData(ClientConnector spreadsheet, string spreadsheetId, string ranges,
                                string dateTimeRenderOption, string valueRenderOption,
                                string fields, string majorDimension) (message) {
-
         message request = {};
         string uriParams;
         string getMultipleCellDataPath = "/v4/spreadsheets/" + spreadsheetId + "/values:batchGet";
@@ -189,9 +184,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action editCell(ClientConnector spreadsheet, string spreadsheetId, string range, string valueInputOption,
                     json payload, string fields) (message) {
-
         message request = {};
-        string uriParams;
         string editCellPath = "/v4/spreadsheets/" + spreadsheetId + "/values/" + range + "?valueInputOption="
                               + valueInputOption;
 
@@ -213,9 +206,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Param("fields: Specifying which fields to include in a partial response")
     @doc:Return("response object")
     action editMultipleCell(ClientConnector spreadsheet, string spreadsheetId, json payload, string fields) (message) {
-
         message request = {};
-        string uriParams;
         string editMultipleCellPath = "/v4/spreadsheets/" + spreadsheetId + "/values:batchUpdate";
 
         if(fields != "null") {
@@ -234,9 +225,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Param("fields: Specifying which fields to include in a partial response")
     @doc:Return("response object")
     action createSpreadsheet(ClientConnector spreadsheet, json payload, string fields) (message) {
-
         message request = {};
-        string uriParams;
         string createSpreadsheetPath = "/v4/spreadsheets";
 
         if(fields != "null") {
@@ -257,9 +246,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action addSheetBatchRequest(ClientConnector spreadsheet, string spreadsheetId,
                                 json payload, string fields) (message) {
-
         message request = {};
-        string uriParams;
         string addSheetBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -280,9 +267,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action deleteSheetBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                    string fields) (message) {
-
         message request = {};
-        string uriParams;
         string deleteSheetBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -303,9 +288,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action updateSheetPropertiesBatchRequest(ClientConnector spreadsheet, string spreadsheetId,
                                                  json payload, string fields) (message) {
-
         message request = {};
-        string uriParams;
         string updateSheetPropertiesBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -327,9 +310,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action deleteDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                        string fields) (message) {
-
         message request = {};
-        string uriParams;
         string deleteDimensionBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -350,9 +331,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action updateCellsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                        string fields) (message) {
-
         message request = {};
-        string uriParams;
         string updateCellsBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -373,9 +352,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action appendDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                            string fields) (message) {
-
         message request = {};
-        string uriParams;
         string appendDimensionBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -396,9 +373,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action updateBordersBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                          string fields) (message) {
-
         message request = {};
-        string uriParams;
         string updateBordersBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -419,9 +394,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action repeatCellsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                        string fields) (message) {
-
         message request = {};
-        string uriParams;
         string repeatCellsBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -442,9 +415,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action mergeCellsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                       string fields) (message) {
-
         message request = {};
-        string uriParams;
         string mergeCellsBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -465,9 +436,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action setDataValidationBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                          string fields) (message) {
-
         message request = {};
-        string uriParams;
         string setDataValidationBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -488,9 +457,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action copyPasteBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                      string fields) (message) {
-
         message request = {};
-        string uriParams;
         string copyPasteBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -512,9 +479,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action cutPasteBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                     string fields) (message) {
-
         message request = {};
-        string uriParams;
         string cutPasteBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -535,9 +500,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action updateConditionalFormatRuleBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                                    string fields) (message) {
-
         message request = {};
-        string uriParams;
         string updateConditionalFormatRuleBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -560,7 +523,6 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action addConditionalFormatRuleBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                                 string fields) (message) {
-
         message request = {};
         string uriParams;
         string addConditionalFormatRuleBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
@@ -588,9 +550,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action deleteConditionalFormatRuleBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                                    string fields) (message) {
-
         message request = {};
-        string uriParams;
         string deleteConditionalFormatRuleBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -613,9 +573,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action updateDimensionPropertiesBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                                  string fields) (message) {
-
         message request = {};
-        string uriParams;
         string updateDimensionPropertiesBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -638,9 +596,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action autoResizeDimensionsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                             string fields) (message) {
-
         message request = {};
-        string uriParams;
         string autoResizeDimensionsBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -662,9 +618,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action insertDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                            string fields) (message) {
-
         message request = {};
-        string uriParams;
         string insertDimensionBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -685,9 +639,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action moveDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                          string fields) (message) {
-
         message request = {};
-        string uriParams;
         string moveDimensionBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -708,9 +660,7 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action sortRangeBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                      string fields) (message) {
-
         message request = {};
-        string uriParams;
         string sortRangeBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
@@ -734,7 +684,6 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Return("response object")
     action addRowsColumnsData(ClientConnector spreadsheet, string spreadsheetId, string range, string insertDataOption,
                               string valueInputOption, string fields, json payload) (message) {
-
         message request = {};
         string uriParams;
         string addRowsColumnsDataPath = "/v4/spreadsheets/" + spreadsheetId + "/values/" + range
