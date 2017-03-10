@@ -6,7 +6,8 @@ import ballerina.lang.system;
 
 function main (string[] args) {
 
-    googlespreadsheet:ClientConnector googlespreadsheetConnector = create googlespreadsheet:ClientConnector(args[1], args[2], args[3], args[4]);
+    googlespreadsheet:ClientConnector googlespreadsheetConnector = create googlespreadsheet:ClientConnector(args[1],
+                                                                          args[2], args[3], args[4]);
 
     message googlespreadsheetResponse;
     json googlespreadsheetJSONResponse;
@@ -59,7 +60,8 @@ function main (string[] args) {
 
     if( args[0] == "createSpreadsheet") {
         json arg5 = (json) args[5];
-        googlespreadsheetResponse = googlespreadsheet:ClientConnector.createSpreadsheet(googlespreadsheetConnector, arg5, args[6]);
+        googlespreadsheetResponse = googlespreadsheet:ClientConnector.createSpreadsheet(googlespreadsheetConnector,
+                                                                                        arg5, args[6]);
         googlespreadsheetJSONResponse = messages:getJsonPayload(googlespreadsheetResponse);
         system:println(jsons:toString(googlespreadsheetJSONResponse));
     }

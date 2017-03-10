@@ -75,14 +75,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string copyToPath = "/v4/spreadsheets/" + spreadsheetId + "/sheets/" + sheetId + ":copyTo";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            copyToPath = copyToPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            copyToPath = copyToPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, copyToPath, request);
 
@@ -125,7 +120,6 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
             getCellDataPath = getCellDataPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
         }
 
-        messages:setHeader(request, "Content-Type", "Application/json");
         message response = oauth2:ClientConnector.get(googlespreadsheetEP, getCellDataPath, request);
 
         return response;
@@ -179,7 +173,6 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
                                                                              uriParams, 1, strings:length(uriParams));
         }
 
-        messages:setHeader(request, "Content-Type", "Application/json");
         message response = oauth2:ClientConnector.get(googlespreadsheetEP, getMultipleCellDataPath, request);
 
         return response;
@@ -203,14 +196,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
                               + valueInputOption;
 
         if(fields != "null") {
-            uriParams = uriParams + "&fields=" + fields;
+            editCellPath = editCellPath + "&" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            editCellPath = editCellPath + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.put(googlespreadsheetEP, editCellPath, request);
 
@@ -231,14 +219,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string editMultipleCellPath = "/v4/spreadsheets/" + spreadsheetId + "/values:batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            editMultipleCellPath = editMultipleCellPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            editMultipleCellPath = editMultipleCellPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, editMultipleCellPath, request);
 
@@ -257,14 +240,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string createSpreadsheetPath = "/v4/spreadsheets";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            createSpreadsheetPath = createSpreadsheetPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            createSpreadsheetPath = createSpreadsheetPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, createSpreadsheetPath, request);
 
@@ -285,14 +263,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string addSheetBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            addSheetBatchRequestPath = addSheetBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            addSheetBatchRequestPath = addSheetBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, addSheetBatchRequestPath, request);
 
@@ -313,14 +286,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string deleteSheetBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            deleteSheetBatchRequestPath = deleteSheetBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            deleteSheetBatchRequestPath = deleteSheetBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, deleteSheetBatchRequestPath, request);
 
@@ -341,14 +309,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string updateSheetPropertiesBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            updateSheetPropertiesBatchRequestPath = updateSheetPropertiesBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            updateSheetPropertiesBatchRequestPath = updateSheetPropertiesBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, updateSheetPropertiesBatchRequestPath,
                                                        request);
@@ -370,14 +333,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string deleteDimensionBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            deleteDimensionBatchRequestPath = deleteDimensionBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            deleteDimensionBatchRequestPath = deleteDimensionBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, deleteDimensionBatchRequestPath, request);
 
@@ -398,14 +356,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string updateCellsBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            updateCellsBatchRequestPath = updateCellsBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            updateCellsBatchRequestPath = updateCellsBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, updateCellsBatchRequestPath, request);
 
@@ -426,14 +379,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string appendDimensionBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            appendDimensionBatchRequestPath = appendDimensionBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            appendDimensionBatchRequestPath = appendDimensionBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, appendDimensionBatchRequestPath, request);
 
@@ -454,14 +402,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string updateBordersBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            updateBordersBatchRequestPath = updateBordersBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            updateBordersBatchRequestPath = updateBordersBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, updateBordersBatchRequestPath, request);
 
@@ -482,14 +425,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string repeatCellsBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            repeatCellsBatchRequestPath = repeatCellsBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            repeatCellsBatchRequestPath = repeatCellsBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, repeatCellsBatchRequestPath, request);
 
@@ -510,14 +448,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string mergeCellsBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            mergeCellsBatchRequestPath = mergeCellsBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            mergeCellsBatchRequestPath = mergeCellsBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, mergeCellsBatchRequestPath, request);
 
@@ -538,14 +471,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string setDataValidationBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            setDataValidationBatchRequestPath = setDataValidationBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            setDataValidationBatchRequestPath = setDataValidationBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, setDataValidationBatchRequestPath, request);
 
@@ -566,14 +494,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string copyPasteBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            copyPasteBatchRequestPath = copyPasteBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            copyPasteBatchRequestPath = copyPasteBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, copyPasteBatchRequestPath, request);
 
@@ -595,14 +518,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string cutPasteBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            cutPasteBatchRequestPath = cutPasteBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            cutPasteBatchRequestPath = cutPasteBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, cutPasteBatchRequestPath, request);
 
@@ -623,14 +541,10 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         string updateConditionalFormatRuleBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            updateConditionalFormatRuleBatchRequestPath = updateConditionalFormatRuleBatchRequestPath + "?" + "fields="
+                                                          + fields;
         }
 
-        if(uriParams != "") {
-            updateConditionalFormatRuleBatchRequestPath = updateConditionalFormatRuleBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, updateConditionalFormatRuleBatchRequestPath,
                                                        request);
@@ -659,9 +573,9 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
             addConditionalFormatRuleBatchRequestPath = addConditionalFormatRuleBatchRequestPath + "?" + uriParams;
         }
 
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
-        message response = oauth2:ClientConnector.post(googlespreadsheetEP, addConditionalFormatRuleBatchRequestPath, request);
+        message response = oauth2:ClientConnector.post(googlespreadsheetEP, addConditionalFormatRuleBatchRequestPath
+                                                       , request);
 
         return response;
     }
@@ -672,23 +586,21 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
     @doc:Param("fields: Specifying which fields to include in a partial response")
     @doc:Return("response object")
-    action deleteConditionalFormatRuleBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload, string fields) (message) {
+    action deleteConditionalFormatRuleBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
+                                                   string fields) (message) {
 
         message request = {};
         string uriParams;
         string deleteConditionalFormatRuleBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            deleteConditionalFormatRuleBatchRequestPath = deleteConditionalFormatRuleBatchRequestPath + "?" + "fields="
+                                                          + fields;
         }
 
-        if(uriParams != "") {
-            deleteConditionalFormatRuleBatchRequestPath = deleteConditionalFormatRuleBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
-        message response = oauth2:ClientConnector.post(googlespreadsheetEP, deleteConditionalFormatRuleBatchRequestPath, request);
+        message response = oauth2:ClientConnector.post(googlespreadsheetEP, deleteConditionalFormatRuleBatchRequestPath,
+                                                       request);
 
         return response;
     }
@@ -699,23 +611,21 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
     @doc:Param("fields: Specifying which fields to include in a partial response")
     @doc:Return("response object")
-    action updateDimensionPropertiesBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload, string fields) (message) {
+    action updateDimensionPropertiesBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
+                                                 string fields) (message) {
 
         message request = {};
         string uriParams;
         string updateDimensionPropertiesBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            updateDimensionPropertiesBatchRequestPath = updateDimensionPropertiesBatchRequestPath + "?" + "fields="
+                                                        + fields;
         }
 
-        if(uriParams != "") {
-            updateDimensionPropertiesBatchRequestPath = updateDimensionPropertiesBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
-        message response = oauth2:ClientConnector.post(googlespreadsheetEP, updateDimensionPropertiesBatchRequestPath, request);
+        message response = oauth2:ClientConnector.post(googlespreadsheetEP, updateDimensionPropertiesBatchRequestPath,
+                                                       request);
 
         return response;
     }
@@ -726,23 +636,20 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
     @doc:Param("fields: Specifying which fields to include in a partial response")
     @doc:Return("response object")
-    action autoResizeDimensionsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload, string fields) (message) {
+    action autoResizeDimensionsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
+                                            string fields) (message) {
 
         message request = {};
         string uriParams;
         string autoResizeDimensionsBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            autoResizeDimensionsBatchRequestPath = autoResizeDimensionsBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            autoResizeDimensionsBatchRequestPath = autoResizeDimensionsBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
-        message response = oauth2:ClientConnector.post(googlespreadsheetEP, autoResizeDimensionsBatchRequestPath, request);
+        message response = oauth2:ClientConnector.post(googlespreadsheetEP, autoResizeDimensionsBatchRequestPath,
+                                                       request);
 
         return response;
     }
@@ -753,21 +660,17 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
     @doc:Param("fields: Specifying which fields to include in a partial response")
     @doc:Return("response object")
-    action insertDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload, string fields) (message) {
+    action insertDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
+                                           string fields) (message) {
 
         message request = {};
         string uriParams;
         string insertDimensionBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            insertDimensionBatchRequestPath = insertDimensionBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            insertDimensionBatchRequestPath = insertDimensionBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, insertDimensionBatchRequestPath, request);
 
@@ -780,21 +683,17 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
     @doc:Param("fields: Specifying which fields to include in a partial response")
     @doc:Return("response object")
-    action moveDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload, string fields) (message) {
+    action moveDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
+                                         string fields) (message) {
 
         message request = {};
         string uriParams;
         string moveDimensionBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            moveDimensionBatchRequestPath = moveDimensionBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            moveDimensionBatchRequestPath = moveDimensionBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, moveDimensionBatchRequestPath, request);
 
@@ -807,21 +706,17 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
     @doc:Param("fields: Specifying which fields to include in a partial response")
     @doc:Return("response object")
-    action sortRangeBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload, string fields) (message) {
+    action sortRangeBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
+                                     string fields) (message) {
 
         message request = {};
         string uriParams;
         string sortRangeBatchRequestPath = "/v4/spreadsheets/" + spreadsheetId + ":batchUpdate";
 
         if(fields != "null") {
-            uriParams = uriParams + "fields=" + fields;
+            sortRangeBatchRequestPath = sortRangeBatchRequestPath + "?" + "fields=" + fields;
         }
 
-        if(uriParams != "") {
-            sortRangeBatchRequestPath = sortRangeBatchRequestPath + "?" + uriParams;
-        }
-
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, sortRangeBatchRequestPath, request);
 
@@ -837,12 +732,13 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     @doc:Param("fields: Specifying which fields to include in a partial response")
     @doc:Param("payload: It contains the major dimension that results should use and the data that was to be written(values)")
     @doc:Return("response object")
-    action addRowsColumnsData(ClientConnector spreadsheet, string spreadsheetId, string range, string insertDataOption, string valueInputOption,
-                              string fields, json payload) (message) {
+    action addRowsColumnsData(ClientConnector spreadsheet, string spreadsheetId, string range, string insertDataOption,
+                              string valueInputOption, string fields, json payload) (message) {
 
         message request = {};
         string uriParams;
-        string addRowsColumnsDataPath = "/v4/spreadsheets/" + spreadsheetId + "/values/" + range + ":append?valueInputOption=" + valueInputOption;
+        string addRowsColumnsDataPath = "/v4/spreadsheets/" + spreadsheetId + "/values/" + range
+                                        + ":append?valueInputOption=" + valueInputOption;
 
         if(insertDataOption != "null") {
             uriParams = uriParams + "&insertDataOption=" + insertDataOption;
@@ -856,7 +752,6 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
             addRowsColumnsDataPath = addRowsColumnsDataPath + uriParams;
         }
 
-        messages:setHeader(request, "Content-Type", "Application/json");
         messages:setJsonPayload(request, payload);
         message response = oauth2:ClientConnector.post(googlespreadsheetEP, addRowsColumnsDataPath, request);
 
