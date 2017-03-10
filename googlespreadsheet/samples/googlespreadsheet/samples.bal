@@ -11,7 +11,6 @@ function main (string[] args) {
 
     message googlespreadsheetResponse;
     json googlespreadsheetJSONResponse;
-    string deleteResponse;
 
     if( args[0] == "getSheetMetaData") {
         googlespreadsheetResponse = googlespreadsheet:ClientConnector.getSheetMetaData(googlespreadsheetConnector,
