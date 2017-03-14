@@ -37,6 +37,14 @@ with a ballerina main function or a service. The following section provide you t
    issueID: Issue ID
    user: Name of the user who will be the assignee
 
+## createIssue
+   The Jira action allows to create a new issue
+
+##### Parameters:
+   projectKey: key of the project where user creates the issue
+   summary: issue summary
+   description: issue description
+   issueType: issue type
 
 # How to run the sample
 

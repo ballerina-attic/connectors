@@ -126,13 +126,5 @@ connector JiraClient(string encodedBasicAuthValue, string jiraAPI){
         return req;
     }
 
-    function setJsonMsg(json js)(message){
-      message m;
-      messages:addHeader(m, "User-Agent", "Ballerina-1.0");
-      messages:addHeader(m, "Content-Type", "application/json");
-      messages:setJsonPayload(m, js);
-      return m;
-
-    }
 
 
