@@ -95,6 +95,29 @@ connector JiraClient(string encodedBasicAuthValue, string jiraAPI){
         return response;
      }
 
+    @doc:Description("create a jira issue")
+    @doc:Param("projectKey: key of the project where user creates the issue")
+    @doc:Param("summary: issue summary")
+    @doc:Param("description: issue description")
+    @doc:Param("issueType: issue type")
+    @doc:Return("response object")
+    action createIssue(JiraClient jcl, string projectKey, string summary, string description, string issueType) (message){
+
+        message request = {};
+        string jiraPath = "/issue";
+        json data = `{"fields":
+                            {"project":
+                                {"key": ${projectKey}},
+                                "summary": ${summary},"description": ${description},"issuetype":
+                                {"name": ${issueType}}
+                            }
+                        }`;
+        message requestH = authHeader(request, encodedBasicAuthValue);
+        messages:setJsonPayload(requestH,data);
+        message response = http:ClientConnector.post(jiraEP, jiraPath, requestH);
+        return response;
+    }	
+
 }
 
     function authHeader(message req, string base64EncodedCredentials)(message){
