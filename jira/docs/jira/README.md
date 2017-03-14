@@ -34,7 +34,7 @@ with a ballerina main function or a service. The following section provide you t
    The Jira action allows to assign an issue to an existing user.
 
 ##### Parameters:
-   issueID: Issue ID")
+   issueID: Issue ID
    user: Name of the user who will be the assignee
 
 
@@ -46,7 +46,7 @@ command as follows.
 Copy the `<Connector>`/samples/`<Connector>`/samples.bal into `<ballerina_home>`/bin folder 
 and run the command like in below,
 
-$ bin ./ballerina run main samples.bal
+$ bin ./ballerina run main samples.bal <JIRA_REST_API_URI> <Base64encoded username:password>
 
 References:
 [1] https://github.com/ballerinalang/distribution
