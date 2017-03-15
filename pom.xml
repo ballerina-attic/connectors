@@ -119,6 +119,10 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
+                                    <directory>googlespreadsheet/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
                                     <directory>linkedin/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
@@ -144,6 +148,14 @@
                                 </resource>
                                 <resource>
                                     <directory>amazonlambda/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>salesforcerest/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>salesforcesoap/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
@@ -180,6 +192,10 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
+                                    <directory>googlespreadsheet/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
                                     <directory>linkedin/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
@@ -201,6 +217,14 @@
                                 </resource>
                                 <resource>
                                     <directory>amazonlambda/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>salesforcerest/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>salesforcesoap/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>

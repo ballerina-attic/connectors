@@ -6,7 +6,7 @@ import ballerina.lang.system;
 function main (string[] args) {
 
     soap:ClientConnector soapConnector = create soap:ClientConnector("");
-
+    xml[] headers = [];
     string username = args[0];
     string password = args[1];
     xml payload = `<urn:login xmlns:urn="urn:partner.soap.sforce.com">
@@ -14,7 +14,7 @@ function main (string[] args) {
 	<urn:password>${password}</urn:password>
 	</urn:login>`;
 
-    xml soapResponse = soap:ClientConnector.send(soapConnector, payload, "''",
+    xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
     "https://login.salesforce.com/services/Soap/u/27.0", "1.1");
 
     map n = {"ns":"urn:partner.soap.sforce.com"};
