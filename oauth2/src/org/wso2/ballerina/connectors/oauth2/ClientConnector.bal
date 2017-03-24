@@ -1,16 +1,17 @@
 package org.wso2.ballerina.connectors.oauth2;
 
+import ballerina.doc;
 import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.net.http;
 
-@doc:Description("OAuth2 client connector")
-@doc:Param("baseUrl: The endpoint base url")
-@doc:Param("accessToken: The access token of the account")
-@doc:Param("clientId: The client Id of the account")
-@doc:Param("clientSecret: The client secret of the account")
-@doc:Param("refreshToken: The refresh token of the account")
-@doc:Param("refreshTokenEP: The refresh token endpoint url")
+@doc:Description{ value : "OAuth2 client connector"}
+@doc:Param{ value : "baseUrl: The endpoint base url"}
+@doc:Param{ value : "accessToken: The access token of the account"}
+@doc:Param{ value : "clientId: The client Id of the account"}
+@doc:Param{ value : "clientSecret: The client secret of the account"}
+@doc:Param{ value : "refreshToken: The refresh token of the account"}
+@doc:Param{ value : "refreshTokenEP: The refresh token endpoint url"}
 connector ClientConnector (string baseUrl, string accessToken, string clientId, string clientSecret,
                                  string refreshToken, string refreshTokenEP) {
 
@@ -18,11 +19,11 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
 
     string accessTokenValue;
 
-    @doc:Description("Get with OAuth2 authentication")
-    @doc:Param("clientConnector: The oauth2 Connector instance")
-    @doc:Param("path: The endpoint path")
-    @doc:Param("request: The request of the method")
-    @doc:Return("response object")
+    @doc:Description{ value : "Get with OAuth2 authentication"}
+    @doc:Param{ value : "clientConnector: The oauth2 Connector instance"}
+    @doc:Param{ value : "path: The endpoint path"}
+    @doc:Param{ value : "request: The request of the method"}
+    @doc:Return{ value : "response object"}
     action get (ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
@@ -39,11 +40,11 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
         return response;
     }
 
-    @doc:Description("Post with OAuth2 authentication")
-    @doc:Param("clientConnector: The oauth2 Connector instance")
-    @doc:Param("path: The endpoint path")
-    @doc:Param("request: The request of the method")
-    @doc:Return("response object")
+    @doc:Description{ value : "Post with OAuth2 authentication"}
+    @doc:Param{ value : "clientConnector: The oauth2 Connector instance"}
+    @doc:Param{ value : "path: The endpoint path"}
+    @doc:Param{ value : "request: The request of the method"}
+    @doc:Return{ value : "response object"}
     action post (ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
@@ -60,11 +61,11 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
         return response;
     }
 
-    @doc:Description("Put with OAuth2 authentication")
-    @doc:Param("clientConnector: The oauth2 Connector instance")
-    @doc:Param("path: The endpoint path")
-    @doc:Param("request: The request of the method")
-    @doc:Return("response object")
+    @doc:Description{ value : "Put with OAuth2 authentication"}
+    @doc:Param{ value : "clientConnector: The oauth2 Connector instance"}
+    @doc:Param{ value : "path: The endpoint path"}
+    @doc:Param{ value : "request: The request of the method"}
+    @doc:Return{ value : "response object"}
     action put (ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
@@ -81,11 +82,11 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
         return response;
     }
 
-    @doc:Description("Delete with OAuth2 authentication")
-    @doc:Param("clientConnector: The oauth2 Connector instance")
-    @doc:Param("path: The endpoint path")
-    @doc:Param("request: The request of the method")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete with OAuth2 authentication"}
+    @doc:Param{ value : "clientConnector: The oauth2 Connector instance"}
+    @doc:Param{ value : "path: The endpoint path"}
+    @doc:Param{ value : "request: The request of the method"}
+    @doc:Return{ value : "response object"}
     action delete (ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
@@ -102,11 +103,11 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
         return response;
     }
 
-    @doc:Description("Patch with OAuth2 authentication")
-    @doc:Param("clientConnector: The oauth2 Connector instance")
-    @doc:Param("path: The endpoint path")
-    @doc:Param("request: The request of the method")
-    @doc:Return("response object")
+    @doc:Description{ value : "Patch with OAuth2 authentication"}
+    @doc:Param{ value : "clientConnector: The oauth2 Connector instance"}
+    @doc:Param{ value : "path: The endpoint path"}
+    @doc:Param{ value : "request: The request of the method"}
+    @doc:Return{ value : "response object"}
     action patch (ClientConnector clientConnector, string path, message request) (message) {
 
         message response;

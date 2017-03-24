@@ -1,16 +1,17 @@
 package org.wso2.ballerina.connectors.salesforcesoap;
 
 import org.wso2.ballerina.connectors.soap;
+import ballerina.doc;
 import ballerina.lang.xmls;
 import ballerina.lang.strings;
 import ballerina.lang.maps;
 import ballerina.lang.arrays;
 
-@doc:Description("Salesforcesoap client connector")
-@doc:Param("username: Salesforce Username")
-@doc:Param("password: Salesforce Password + Security Token")
-@doc:Param("loginUrl: Login Url of Salesforce")
-@doc:Param("soapVersion: Soap version")
+@doc:Description{ value : "Salesforcesoap client connector"}
+@doc:Param{ value : "username: Salesforce Username"}
+@doc:Param{ value : "password: Salesforce Password + Security Token"}
+@doc:Param{ value : "loginUrl: Login Url of Salesforce"}
+@doc:Param{ value : "soapVersion: Soap version"}
 connector ClientConnector (string username, string password, string loginUrl, string soapVersion) {
 
     soap:ClientConnector soapConnector = create soap:ClientConnector("");
@@ -18,10 +19,10 @@ connector ClientConnector (string username, string password, string loginUrl, st
     xml session;
     string serverUrl;
 
-    @doc:Description("Lists the available objects and their metadata for your organization’s data")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Return("response message")
+    @doc:Description{ value : "Lists the available objects and their metadata for your organization’s data"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Return{ value : "response message"}
     action describeGlobal (ClientConnector s, xml[] headers) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -52,11 +53,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
         return soapResponse;
     }
 
-    @doc:Description("Retrieves metadata (field list and object properties) for the specified object type")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("type: Name of SObject")
-    @doc:Return("response message")
+    @doc:Description{ value : "Retrieves metadata (field list and object properties) for the specified object type"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "type: Name of SObject"}
+    @doc:Return{ value : "response message"}
     action describeSObject (ClientConnector s, xml[] headers, string type) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -89,11 +90,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
          return soapResponse;
     }
 
-    @doc:Description("An array-based version of describeSObject")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("type: Name of SObject")
-    @doc:Return("response message")
+    @doc:Description{ value : "An array-based version of describeSObject"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "type: Name of SObject"}
+    @doc:Return{ value : "response message"}
     action describeSObjects (ClientConnector s, xml[] headers, string type) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -126,11 +127,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
          return soapResponse;
     }
 
-    @doc:Description("Adds one or more new records to your organization’s data")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("fields: Map of fields of records")
-    @doc:Return("response message")
+    @doc:Description{ value : "Adds one or more new records to your organization’s data"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "fields: Map of fields of records"}
+    @doc:Return{ value : "response message"}
     action createRecord (ClientConnector s, xml[] headers, map fields) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -167,11 +168,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
         return soapResponse;
     }
 
-    @doc:Description("Updates one or more existing records in your organization’s data")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("fields: Map of fields of records")
-    @doc:Return("response message")
+    @doc:Description{ value : "Updates one or more existing records in your organization’s data"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "fields: Map of fields of records"}
+    @doc:Return{ value : "response message"}
     action updateRecord (ClientConnector s, xml[] headers, map fields) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -208,12 +209,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
          return soapResponse;
     }
 
-    @doc:Description("Creates new records and updates existing records")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("externalId: External Id")
-    @doc:Param("fields: Map of fields of records")
-    @doc:Return("response message")
+    @doc:Description{ value : "Creates new records and updates existing records"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "externalId: External Id"}
+    @doc:Param{ value : "fields: Map of fields of records"}
+    @doc:Return{ value : "response message"}
     action upsertRecord (ClientConnector s, xml[] headers, string externalId, map fields) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -251,11 +252,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
          return soapResponse;
     }
 
-    @doc:Description("Executes a query against the specified object and returns data that matches the specified criteria")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("query: Query String")
-    @doc:Return("response message")
+    @doc:Description{ value : "Executes a query against the specified object and returns data that matches the specified criteria"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "query: Query String"}
+    @doc:Return{ value : "response message"}
     action query (ClientConnector s, xml[] headers, string query) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -288,11 +289,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
         return soapResponse;
     }
 
-    @doc:Description("Retrieves data from specified objects, whether or not they have been deleted")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("query: Query String")
-    @doc:Return("response message")
+    @doc:Description{ value : "Retrieves data from specified objects, whether or not they have been deleted"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "query: Query String"}
+    @doc:Return{ value : "response message"}
     action queryAll (ClientConnector s, xml[] headers, string query) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -325,11 +326,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
         return soapResponse;
     }
 
-    @doc:Description("Retrieves the next batch of objects from a query")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("queryLocator: Url to retrieve the balance query results")
-    @doc:Return("response message")
+    @doc:Description{ value : "Retrieves the next batch of objects from a query"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "queryLocator: Url to retrieve the balance query results"}
+    @doc:Return{ value : "response message"}
     action queryMore (ClientConnector s, xml[] headers, string queryLocator) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -361,11 +362,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
         return soapResponse;
     }
-    @doc:Description("Deletes one or more records from your organization’s data")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("recordId: Id of Record to be deleted")
-    @doc:Return("response message")
+    @doc:Description{ value : "Deletes one or more records from your organization’s data"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "recordId: Id of Record to be deleted"}
+    @doc:Return{ value : "response message"}
     action deleteRecord (ClientConnector s, xml[] headers, string recordId) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -398,13 +399,13 @@ connector ClientConnector (string username, string password, string loginUrl, st
         return soapResponse;
     }
 
-    @doc:Description("Retrieves one or more records based on the specified IDs")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("fieldList: List of fields that needs to be retrieved")
-    @doc:Param("type: Name of SObject")
-    @doc:Param("recordId: Id of Record")
-    @doc:Return("response message")
+    @doc:Description{ value : "Retrieves one or more records based on the specified IDs"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "fieldList: List of fields that needs to be retrieved"}
+    @doc:Param{ value : "type: Name of SObject"}
+    @doc:Param{ value : "recordId: Id of Record"}
+    @doc:Return{ value : "response message"}
     action retrieve (ClientConnector s, xml[] headers, string fieldList, string type, string recordId) (xml) {
 
         int headerCount = arrays:length(headers);
@@ -441,11 +442,11 @@ connector ClientConnector (string username, string password, string loginUrl, st
         return soapResponse;
     }
 
-    @doc:Description("Executes a text search in your organization’s data")
-    @doc:Param("s: The salesforcesoap connector instance")
-    @doc:Param("headers: Soap header values")
-    @doc:Param("query: Search String")
-    @doc:Return("response message")
+    @doc:Description{ value : "Executes a text search in your organization’s data"}
+    @doc:Param{ value : "s: The salesforcesoap connector instance"}
+    @doc:Param{ value : "headers: Soap header values"}
+    @doc:Param{ value : "query: Search String"}
+    @doc:Return{ value : "response message"}
     action search (ClientConnector s, xml[] headers, string query) (xml) {
 
         int headerCount = arrays:length(headers);

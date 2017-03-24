@@ -1,25 +1,26 @@
 package org.wso2.ballerina.connectors.soap;
 
+import ballerina.doc;
 import ballerina.lang.messages;
 import ballerina.net.http;
 import ballerina.lang.xmls;
 import ballerina.lang.arrays;
 
-@doc:Description("The SOAP client connector")
-@doc:Param("url: The url")
+@doc:Description{ value : "The SOAP client connector"}
+@doc:Param{ value : "url: The url"}
 connector ClientConnector (string url) {
 
     http:ClientConnector httpConnector = create http:ClientConnector("");
     map namespaceMap = {"1.2":"http://www.w3.org/2003/05/soap-envelope","1.1":"http://schemas.xmlsoap.org/soap/envelope/"};
 
-    @doc:Description("Call a soap endpoint")
-    @doc:Param("s: The soap Connector instance")
-    @doc:Param("headers: Headers of the SOAP request")
-    @doc:Param("payload: The payload to request")
-    @doc:Param("soapAction: The soap action")
-    @doc:Param("url: The soap endpoint url")
-    @doc:Param("soapVersion: The soap version")
-    @doc:Return("response xml")
+    @doc:Description{ value : "Call a soap endpoint"}
+    @doc:Param{ value : "s: The soap Connector instance"}
+    @doc:Param{ value : "headers: Headers of the SOAP request"}
+    @doc:Param{ value : "payload: The payload to request"}
+    @doc:Param{ value : "soapAction: The soap action"}
+    @doc:Param{ value : "url: The soap endpoint url"}
+    @doc:Param{ value : "soapVersion: The soap version"}
+    @doc:Return{ value : "response xml"}
     action send (ClientConnector s, xml[] headers, xml payload, string soapAction, string url, string soapVersion) (xml) {
 
         message backendServiceReq ={};

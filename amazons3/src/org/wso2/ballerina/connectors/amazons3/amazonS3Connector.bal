@@ -1,19 +1,20 @@
 package org.wso2.ballerina.connectors.amazons3;
 
 import org.wso2.ballerina.connectors.amazonauth;
+import ballerina.doc;
 import ballerina.lang.messages;
 
-@doc:Description("Amazon S3 client connector")
-@doc:Param("accessKeyId: The access key ID of the Amazon Account")
-@doc:Param("secretAccessKey: The secret access key of the Amazon Account")
-@doc:Param("region: The region to which the request is made")
+@doc:Description{ value : "Amazon S3 client connector"}
+@doc:Param{ value : "accessKeyId: The access key ID of the Amazon Account"}
+@doc:Param{ value : "secretAccessKey: The secret access key of the Amazon Account"}
+@doc:Param{ value : "region: The region to which the request is made"}
 connector ClientConnector(string accessKeyId, string secretAccessKey, string region) {
 
     amazonauth:ClientConnector amazonAuthConnector;
 
-    @doc:Description("Get List of Buckets")
-    @doc:Param("s3Connector: The amazonS3 Connector instance")
-    @doc:Return("response object")
+    @doc:Description{ value : "Get List of Buckets"}
+    @doc:Param{ value : "s3Connector: The amazonS3 Connector instance"}
+    @doc:Return{ value : "response object"}
     action getBucketList(ClientConnector s3Connector) (message) throws exception {
 
             string signature;
@@ -38,10 +39,10 @@ connector ClientConnector(string accessKeyId, string secretAccessKey, string reg
             return response;
     }
 
-    @doc:Description("Get List of Objects in a bucket")
-    @doc:Param("s3Connector: The amazonS3 Connector instance")
-    @doc:Param("bucketName: The relevant bucket name")
-    @doc:Return("response object")
+    @doc:Description{ value : "Get List of Objects in a bucket"}
+    @doc:Param{ value : "s3Connector: The amazonS3 Connector instance"}
+    @doc:Param{ value : "bucketName: The relevant bucket name"}
+    @doc:Return{ value : "response object"}
     action getObjectList(ClientConnector s3Connector, string bucketName) (message) throws exception {
 
             string signature;
@@ -67,10 +68,10 @@ connector ClientConnector(string accessKeyId, string secretAccessKey, string reg
             return response;
     }
 
-    @doc:Description("Create new Bucket")
-    @doc:Param("s3Connector: The amazonS3 Connector instance")
-    @doc:Param("bucketName: The relevant bucket name")
-    @doc:Return("response object")
+    @doc:Description{ value : "Create new Bucket"}
+    @doc:Param{ value : "s3Connector: The amazonS3 Connector instance"}
+    @doc:Param{ value : "bucketName: The relevant bucket name"}
+    @doc:Return{ value : "response object"}
     action createBucket(ClientConnector s3Connector, string bucketName) (message) throws exception {
 
             string signature;
@@ -95,10 +96,10 @@ connector ClientConnector(string accessKeyId, string secretAccessKey, string reg
             return response;
     }
 
-    @doc:Description("Delete a Bucket")
-    @doc:Param("s3Connector: The amazonS3 Connector instance")
-    @doc:Param("bucketName: The relevant bucket name")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete a Bucket"}
+    @doc:Param{ value : "s3Connector: The amazonS3 Connector instance"}
+    @doc:Param{ value : "bucketName: The relevant bucket name"}
+    @doc:Return{ value : "response object"}
     action deleteBucket(ClientConnector s3Connector, string bucketName) (message) throws exception {
 
             string signature;
@@ -123,11 +124,11 @@ connector ClientConnector(string accessKeyId, string secretAccessKey, string reg
             return response;
     }
 
-    @doc:Description("Get an Object")
-    @doc:Param("s3Connector: The amazonS3 Connector instance")
-    @doc:Param("bucketName: The relevant bucket name")
-    @doc:Param("objectName: The relevant object name")
-    @doc:Return("response object")
+    @doc:Description{ value : "Get an Object"}
+    @doc:Param{ value : "s3Connector: The amazonS3 Connector instance"}
+    @doc:Param{ value : "bucketName: The relevant bucket name"}
+    @doc:Param{ value : "objectName: The relevant object name"}
+    @doc:Return{ value : "response object"}
     action getObject(ClientConnector s3Connector, string bucketName, string objectName) (message) throws exception {
 
             string signature;
@@ -152,11 +153,11 @@ connector ClientConnector(string accessKeyId, string secretAccessKey, string reg
             return response;
     }
 
-    @doc:Description("Delete an Object")
-    @doc:Param("s3Connector: The amazonS3 Connector instance")
-    @doc:Param("bucketName: The relevant bucket name")
-    @doc:Param("objectName: The relevant object name")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete an Object"}
+    @doc:Param{ value : "s3Connector: The amazonS3 Connector instance"}
+    @doc:Param{ value : "bucketName: The relevant bucket name"}
+    @doc:Param{ value : "objectName: The relevant object name"}
+    @doc:Return{ value : "response object"}
     action deleteObject(ClientConnector s3Connector, string bucketName, string objectName) (message) throws exception {
 
             string signature;
@@ -181,12 +182,12 @@ connector ClientConnector(string accessKeyId, string secretAccessKey, string reg
             return response;
     }
 
-    @doc:Description("Put an Object")
-    @doc:Param("s3Connector: The amazonS3 Connector instance")
-    @doc:Param("bucketName: The relevant bucket name")
-    @doc:Param("objectName: The relevant object name")
-    @doc:Param("payload: The file that needed to be uploaded")
-    @doc:Return("response object")
+    @doc:Description{ value : "Put an Object"}
+    @doc:Param{ value : "s3Connector: The amazonS3 Connector instance"}
+    @doc:Param{ value : "bucketName: The relevant bucket name"}
+    @doc:Param{ value : "objectName: The relevant object name"}
+    @doc:Param{ value : "payload: The file that needed to be uploaded"}
+    @doc:Return{ value : "response object"}
     action putObject(ClientConnector s3Connector, string bucketName, string objectName, string payload) (message)
      throws exception {
 

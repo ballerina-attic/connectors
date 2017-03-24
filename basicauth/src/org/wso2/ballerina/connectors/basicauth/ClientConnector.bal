@@ -1,24 +1,25 @@
 package org.wso2.ballerina.connectors.basicauth;
 
+import ballerina.doc;
 import ballerina.lang.messages;
 import ballerina.net.http;
 import ballerina.utils;
 
-@doc:Description("Basic Auth client connector")
-@doc:Param("baseUrl: The endpoint base url")
-@doc:Param("userName: The user name of the account")
-@doc:Param("password: The password of the account")
+@doc:Description{ value : "Basic Auth client connector"}
+@doc:Param{ value : "baseUrl: The endpoint base url"}
+@doc:Param{ value : "userName: The user name of the account"}
+@doc:Param{ value : "password: The password of the account"}
 connector ClientConnector (string baseUrl, string userName, string password) {
 
     http:ClientConnector httpConnectorEP = create http:ClientConnector(baseUrl);
 
     string encodedBasicAuthValue;
 
-    @doc:Description("Get with basic authentication")
-    @doc:Param("clientConnector: The basicauth Connector instance")
-    @doc:Param("path: The endpoint path")
-    @doc:Param("request: The request of the method")
-    @doc:Return("response object")
+    @doc:Description{ value : "Get with basic authentication"}
+    @doc:Param{ value : "clientConnector: The basicauth Connector instance"}
+    @doc:Param{ value : "path: The endpoint path"}
+    @doc:Param{ value : "request: The request of the method"}
+    @doc:Return{ value : "response object"}
     action get(ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
@@ -29,11 +30,11 @@ connector ClientConnector (string baseUrl, string userName, string password) {
         return response;
     }
 
-    @doc:Description("Post with basic authentication")
-    @doc:Param("clientConnector: The basicauth Connector instance")
-    @doc:Param("path: The endpoint path")
-    @doc:Param("request: The request of the method")
-    @doc:Return("response object")
+    @doc:Description{ value : "Post with basic authentication"}
+    @doc:Param{ value : "clientConnector: The basicauth Connector instance"}
+    @doc:Param{ value : "path: The endpoint path"}
+    @doc:Param{ value : "request: The request of the method"}
+    @doc:Return{ value : "response object"}
     action post(ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
@@ -44,11 +45,11 @@ connector ClientConnector (string baseUrl, string userName, string password) {
         return response;
     }
 
-    @doc:Description("Put with basic authentication")
-    @doc:Param("clientConnector: The basicauth Connector instance")
-    @doc:Param("path: The endpoint path")
-    @doc:Param("request: The request of the method")
-    @doc:Return("response object")
+    @doc:Description{ value : "Put with basic authentication"}
+    @doc:Param{ value : "clientConnector: The basicauth Connector instance"}
+    @doc:Param{ value : "path: The endpoint path"}
+    @doc:Param{ value : "request: The request of the method"}
+    @doc:Return{ value : "response object"}
     action put(ClientConnector clientConnector, string path, message request) (message) {
 
         message response;
@@ -59,11 +60,11 @@ connector ClientConnector (string baseUrl, string userName, string password) {
         return response;
     }
 
-    @doc:Description("Delete with basic authentication")
-    @doc:Param("clientConnector: The basicauth Connector instance")
-    @doc:Param("path: The endpoint path")
-    @doc:Param("request: The request of the method")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete with basic authentication"}
+    @doc:Param{ value : "clientConnector: The basicauth Connector instance"}
+    @doc:Param{ value : "path: The endpoint path"}
+    @doc:Param{ value : "request: The request of the method"}
+    @doc:Return{ value : "response object"}
     action delete(ClientConnector clientConnector, string path, message request)(message) {
 
         message response;

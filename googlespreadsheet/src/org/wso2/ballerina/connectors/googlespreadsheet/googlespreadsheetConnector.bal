@@ -1,14 +1,15 @@
 package org.wso2.ballerina.connectors.googlespreadsheet;
 
 import org.wso2.ballerina.connectors.oauth2;
+import ballerina.doc;
 import ballerina.lang.messages;
 import ballerina.lang.strings;
 
-@doc:Description("Google Spreadsheet client connector")
-@doc:Param("accessToken: The accessToken of the Google Spreadsheet account to access the Google Spreadsheet REST API")
-@doc:Param("refreshToken: The refreshToken of the Google Spreadsheet App to access the Google Spreadsheet REST API")
-@doc:Param("clientId: The clientId of the App to access the Google Spreadsheet REST API")
-@doc:Param("clientSecret: The clientSecret of the App to access the Google Spreadsheet REST API")
+@doc:Description{ value : "Google Spreadsheet client connector"}
+@doc:Param{ value : "accessToken: The accessToken of the Google Spreadsheet account to access the Google Spreadsheet REST API"}
+@doc:Param{ value : "refreshToken: The refreshToken of the Google Spreadsheet App to access the Google Spreadsheet REST API"}
+@doc:Param{ value : "clientId: The clientId of the App to access the Google Spreadsheet REST API"}
+@doc:Param{ value : "clientSecret: The clientSecret of the App to access the Google Spreadsheet REST API"}
 connector ClientConnector (string accessToken, string refreshToken, string clientId,
                            string clientSecret) {
 
@@ -18,14 +19,14 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
     oauth2:ClientConnector googlespreadsheetEP = create oauth2:ClientConnector(baseURL, accessToken, clientId,
                                                                clientSecret, refreshToken, refreshTokenEP);
 
-    @doc:Description ("Retrieve Sheet properties and other metadata")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("includeGridData: True if grid data should be returned. This parameter is ignored
-                                    if a field mask was set in the request")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Param("ranges: The ranges to retrieve from the spreadsheet")
-    @doc:Return ("response object")
+    @doc:Description{ value : "Retrieve Sheet properties and other metadata"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "includeGridData: True if grid data should be returned. This parameter is ignored
+                                    if a field mask was set in the request"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Param{ value : "ranges: The ranges to retrieve from the spreadsheet"}
+    @doc:Return{ value : "response object"}
     action getSheetMetaData (ClientConnector spreadsheet, string spreadsheetId, string includeGridData, string fields,
                              string ranges) (message) {
         message request = {};
@@ -59,13 +60,13 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Copies a single sheet from a spreadsheet to another spreadsheet")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("sheetId: The ID of the sheet to copy")
-    @doc:Param("payload: It contains the ID of the spreadsheet to copy the sheet to")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Copies a single sheet from a spreadsheet to another spreadsheet"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "sheetId: The ID of the sheet to copy"}
+    @doc:Param{ value : "payload: It contains the ID of the spreadsheet to copy the sheet to"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action copyTo(ClientConnector spreadsheet, string spreadsheetId, string sheetId,
                   json payload, string fields) (message) {
         message request = {};
@@ -81,15 +82,15 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Retrieve any set of cell data from a sheet")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("range: The A1 notation of the values to retrieve")
-    @doc:Param("dateTimeRenderOption: How dates, times, and durations should be represented in the output")
-    @doc:Param("valueRenderOption: How values should be represented in the output")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Param("majorDimension: The major dimension that results should use")
-    @doc:Return("response object")
+    @doc:Description{ value : "Retrieve any set of cell data from a sheet"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "range: The A1 notation of the values to retrieve"}
+    @doc:Param{ value : "dateTimeRenderOption: How dates, times, and durations should be represented in the output"}
+    @doc:Param{ value : "valueRenderOption: How values should be represented in the output"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Param{ value : "majorDimension: The major dimension that results should use"}
+    @doc:Return{ value : "response object"}
     action getCellData(ClientConnector spreadsheet, string spreadsheetId, string range, string dateTimeRenderOption,
                        string valueRenderOption, string fields, string majorDimension) (message) {
         message request = {};
@@ -121,15 +122,15 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Retrieve any set of cell data including multiple ranges from a sheet")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("ranges: The ranges to retrieve from the spreadsheet")
-    @doc:Param("dateTimeRenderOption: How dates, times, and durations should be represented in the output")
-    @doc:Param("valueRenderOption: How values should be represented in the output")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Param("majorDimension: The major dimension that results should use")
-    @doc:Return("response object")
+    @doc:Description{ value : "Retrieve any set of cell data including multiple ranges from a sheet"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "ranges: The ranges to retrieve from the spreadsheet"}
+    @doc:Param{ value : "dateTimeRenderOption: How dates, times, and durations should be represented in the output"}
+    @doc:Param{ value : "valueRenderOption: How values should be represented in the output"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Param{ value : "majorDimension: The major dimension that results should use"}
+    @doc:Return{ value : "response object"}
     action getMultipleCellData(ClientConnector spreadsheet, string spreadsheetId, string ranges,
                                string dateTimeRenderOption, string valueRenderOption,
                                string fields, string majorDimension) (message) {
@@ -173,15 +174,15 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Edit the content of the cell with new values")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("range: The A1 notation of the values to retrieve")
-    @doc:Param("valueInputOption: How the input data should be interpreted")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Param("payload: It contains data about major dimension that results should use and about
-                the values (the data that was to be written)")
-    @doc:Return("response object")
+    @doc:Description{ value : "Edit the content of the cell with new values"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "range: The A1 notation of the values to retrieve"}
+    @doc:Param{ value : "valueInputOption: How the input data should be interpreted"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Param{ value : "payload: It contains data about major dimension that results should use and about
+                the values (the data that was to be written)"}
+    @doc:Return{ value : "response object"}
     action editCell(ClientConnector spreadsheet, string spreadsheetId, string range, string valueInputOption,
                     json payload, string fields) (message) {
         message request = {};
@@ -198,13 +199,13 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Edit the content of multiple cell with new values")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data about the new values(data) to apply to the spreadsheet and
-                How the input data should be interpreted(valueInputOption)")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Edit the content of multiple cell with new values"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data about the new values(data) to apply to the spreadsheet and
+                How the input data should be interpreted(valueInputOption)"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action editMultipleCell(ClientConnector spreadsheet, string spreadsheetId, json payload, string fields) (message) {
         message request = {};
         string editMultipleCellPath = "/v4/spreadsheets/" + spreadsheetId + "/values:batchUpdate";
@@ -219,11 +220,11 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Create a new spreadsheet")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("payload: The payload containing the information of the post that should be send")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Create a new spreadsheet"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "payload: The payload containing the information of the post that should be send"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action createSpreadsheet(ClientConnector spreadsheet, json payload, string fields) (message) {
         message request = {};
         string createSpreadsheetPath = "/v4/spreadsheets";
@@ -238,12 +239,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Add a sheet or multiple sheets to a spreadsheet")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Add a sheet or multiple sheets to a spreadsheet"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action addSheetBatchRequest(ClientConnector spreadsheet, string spreadsheetId,
                                 json payload, string fields) (message) {
         message request = {};
@@ -259,12 +260,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Remove a sheet or multiple sheets from a given spreadsheet")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Remove a sheet or multiple sheets from a given spreadsheet"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action deleteSheetBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                    string fields) (message) {
         message request = {};
@@ -280,12 +281,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Update all sheet properties")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Update all sheet properties"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action updateSheetPropertiesBatchRequest(ClientConnector spreadsheet, string spreadsheetId,
                                                  json payload, string fields) (message) {
         message request = {};
@@ -302,12 +303,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Removing rows, columns and remove part of a row or column")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Removing rows, columns and remove part of a row or column"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action deleteDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                        string fields) (message) {
         message request = {};
@@ -323,12 +324,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Updates all cells in a range with new data that can be cell value, formatting")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Updates all cells in a range with new data that can be cell value, formatting"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action updateCellsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                        string fields) (message) {
         message request = {};
@@ -344,12 +345,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Append empty rows or columns at the end of the sheet")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Append empty rows or columns at the end of the sheet"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action appendDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                            string fields) (message) {
         message request = {};
@@ -365,12 +366,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Edit cell borders")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Edit cell borders"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action updateBordersBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                          string fields) (message) {
         message request = {};
@@ -386,12 +387,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Repeat formatting of the cell into over a range of cells")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Repeat formatting of the cell into over a range of cells"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action repeatCellsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                        string fields) (message) {
         message request = {};
@@ -407,12 +408,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Merge range of cells into a one cell")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Merge range of cells into a one cell"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action mergeCellsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                       string fields) (message) {
         message request = {};
@@ -428,12 +429,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Apply data validation rule to a range")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Apply data validation rule to a range"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action setDataValidationBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                          string fields) (message) {
         message request = {};
@@ -449,12 +450,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Copy cell formatting in one range and paste it into another range on the same sheet")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Copy cell formatting in one range and paste it into another range on the same sheet"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action copyPasteBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                      string fields) (message) {
         message request = {};
@@ -470,13 +471,13 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Cuts the one range and pastes its data, formats, formulas, and merges to the another range
-                      on the same sheet")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Cuts the one range and pastes its data, formats, formulas, and merges to the another range
+                      on the same sheet"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action cutPasteBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                     string fields) (message) {
         message request = {};
@@ -492,12 +493,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Update a conditional formatting rule or its priority")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Update a conditional formatting rule or its priority"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action updateConditionalFormatRuleBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                                    string fields) (message) {
         message request = {};
@@ -515,12 +516,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Establishes a new conditional formatting rule")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Establishes a new conditional formatting rule"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action addConditionalFormatRuleBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                                 string fields) (message) {
         message request = {};
@@ -542,12 +543,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Delete a conditional formatting rule")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete a conditional formatting rule"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action deleteConditionalFormatRuleBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                                    string fields) (message) {
         message request = {};
@@ -565,12 +566,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Adjust column width or row height")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Adjust column width or row height"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action updateDimensionPropertiesBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                                  string fields) (message) {
         message request = {};
@@ -588,12 +589,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Automatically resize a column")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Automatically resize a column"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action autoResizeDimensionsBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                             string fields) (message) {
         message request = {};
@@ -610,12 +611,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Insert an empty row or column at the end or in the middle")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Insert an empty row or column at the end or in the middle"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action insertDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                            string fields) (message) {
         message request = {};
@@ -631,12 +632,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Move a row or column / range of rows or columns")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Move a row or column / range of rows or columns"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action moveDimensionBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                          string fields) (message) {
         message request = {};
@@ -652,12 +653,12 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Sort a range with multiple sorting specifications")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("payload: It contains data that is a kind of update to apply to a spreadsheet")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Return("response object")
+    @doc:Description{ value : "Sort a range with multiple sorting specifications"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "payload: It contains data that is a kind of update to apply to a spreadsheet"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Return{ value : "response object"}
     action sortRangeBatchRequest(ClientConnector spreadsheet, string spreadsheetId, json payload,
                                      string fields) (message) {
         message request = {};
@@ -673,15 +674,15 @@ connector ClientConnector (string accessToken, string refreshToken, string clien
         return response;
     }
 
-    @doc:Description("Append row/rows/column/columns of data")
-    @doc:Param("spreadsheet: The Google Spreadsheet Connector instance")
-    @doc:Param("spreadsheetId: Unique value of the spreadsheet")
-    @doc:Param("range: The A1 notation of the values to retrieve")
-    @doc:Param("insertDataOption: How the input data should be inserted")
-    @doc:Param("valueInputOption: How the input data should be interpreted")
-    @doc:Param("fields: Specifying which fields to include in a partial response")
-    @doc:Param("payload: It contains the major dimension that results should use and the data that was to be written(values)")
-    @doc:Return("response object")
+    @doc:Description{ value : "Append row/rows/column/columns of data"}
+    @doc:Param{ value : "spreadsheet: The Google Spreadsheet Connector instance"}
+    @doc:Param{ value : "spreadsheetId: Unique value of the spreadsheet"}
+    @doc:Param{ value : "range: The A1 notation of the values to retrieve"}
+    @doc:Param{ value : "insertDataOption: How the input data should be inserted"}
+    @doc:Param{ value : "valueInputOption: How the input data should be interpreted"}
+    @doc:Param{ value : "fields: Specifying which fields to include in a partial response"}
+    @doc:Param{ value : "payload: It contains the major dimension that results should use and the data that was to be written(values)"}
+    @doc:Return{ value : "response object"}
     action addRowsColumnsData(ClientConnector spreadsheet, string spreadsheetId, string range, string insertDataOption,
                               string valueInputOption, string fields, json payload) (message) {
         message request = {};

@@ -1,23 +1,24 @@
 package org.wso2.ballerina.connectors.etcd;
 
+import ballerina.doc;
 import ballerina.lang.messages;
 import ballerina.lang.strings;
 import ballerina.net.http;
 import ballerina.utils;
 
-@doc:Description("etcd client connector")
-@doc:Param("etcdURL : etcd Server URL")
-@doc:Param("username : etcd user")
-@doc:Param("password : etcd user's password")
-@doc:Param("apiVersion : etcd API version")
+@doc:Description{ value : "etcd client connector"}
+@doc:Param{ value : "etcdURL : etcd Server URL"}
+@doc:Param{ value : "username : etcd user"}
+@doc:Param{ value : "password : etcd user's password"}
+@doc:Param{ value : "apiVersion : etcd API version"}
 connector ClientConnector (string etcdURL, string username, string password, string apiVersion) {
 
     http:ClientConnector etcdEP = create http:ClientConnector(etcdURL);
 
-    @doc:Description("Get the value for given key")
-	@doc:Param("t: The etcd Connector instance")
-    @doc:Param("key: key to get the value")
-    @doc:Return("response object")
+    @doc:Description{ value : "Get the value for given key"}
+    @doc:Param{ value : "t: The etcd Connector instance"}
+    @doc:Param{ value : "key: key to get the value"}
+    @doc:Return{ value : "response object"}
     action getValue(ClientConnector t, string key) (message) {
 
 	string encodedBasicAuthHeaderValue;
@@ -34,11 +35,11 @@ connector ClientConnector (string etcdURL, string username, string password, str
         return response;
     }
 
-    @doc:Description("Set/Store key/value pair")
-    @doc:Param("t: The etcd Connector instance")
-    @doc:Param("key: key to set the value")
-    @doc:Param("value: value for the key")
-    @doc:Return("response object")
+    @doc:Description{ value : "Set/Store key/value pair"}
+    @doc:Param{ value : "t: The etcd Connector instance"}
+    @doc:Param{ value : "key: key to set the value"}
+    @doc:Param{ value : "value: value for the key"}
+    @doc:Return{ value : "response object"}
     action setKeyValue(ClientConnector t, string key, string value) (message) {
 
     	string encodedBasicAuthHeaderValue;
@@ -57,11 +58,11 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	return response;
     }
 
-    @doc:Description("Update the value for given key")
-    @doc:Param("t: The etcd Connector instance")
-    @doc:Param("key: key to update the value")
-    @doc:Param("value: value for the key")
-    @doc:Return("response object")
+    @doc:Description{ value : "Update the value for given key"}
+    @doc:Param{ value : "t: The etcd Connector instance"}
+    @doc:Param{ value : "key: key to update the value"}
+    @doc:Param{ value : "value: value for the key"}
+    @doc:Return{ value : "response object"}
     action updateValue(ClientConnector t, string key, string value) (message) {
 
     	string encodedBasicAuthHeaderValue;
@@ -80,10 +81,10 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	return response;
     }
 
-    @doc:Description("Delete the key")
-    @doc:Param("t: The etcd Connector instance")
-    @doc:Param("key: key to delete")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete the key"}
+    @doc:Param{ value : "t: The etcd Connector instance"}
+    @doc:Param{ value : "key: key to delete"}
+    @doc:Return{ value : "response object"}
     action deleteKey(ClientConnector t, string key) (message) {
 
     	string encodedBasicAuthHeaderValue;
@@ -100,10 +101,10 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	return response;
      }
 
-    @doc:Description("Create a directory")
-    @doc:Param("t: The etcd Connector instance")
-    @doc:Param("dir: name of the directory")
-    @doc:Return("response object")
+    @doc:Description{ value : "Create a directory"}
+    @doc:Param{ value : "t: The etcd Connector instance"}
+    @doc:Param{ value : "dir: name of the directory"}
+    @doc:Return{ value : "response object"}
     action createDir(ClientConnector t, string dir) (message) {
 
     	string encodedBasicAuthHeaderValue;
@@ -120,11 +121,11 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	return response;
     }
 
-    @doc:Description("List directory")
-    @doc:Param("t: The etcd Connector instance")
-    @doc:Param("dir: name of the directory")
-    @doc:Param("recursive: recursive=true OR recursive=false")
-    @doc:Return("response object")
+    @doc:Description{ value : "List directory"}
+    @doc:Param{ value : "t: The etcd Connector instance"}
+    @doc:Param{ value : "dir: name of the directory"}
+    @doc:Param{ value : "recursive: recursive=true OR recursive=false"}
+    @doc:Return{ value : "response object"}
     action listDir(ClientConnector t, string dir, string recursive) (message) {
 
     	string encodedBasicAuthHeaderValue;
@@ -141,11 +142,11 @@ connector ClientConnector (string etcdURL, string username, string password, str
     	return response;
     }
 
-    @doc:Description("Delete directory")
-    @doc:Param("t: The etcd Connector instance")
-    @doc:Param("dir: name of the directory")
-    @doc:Param("recursive: recursive=true OR recursive=false")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete directory"}
+    @doc:Param{ value : "t: The etcd Connector instance"}
+    @doc:Param{ value : "dir: name of the directory"}
+    @doc:Param{ value : "recursive: recursive=true OR recursive=false"}
+    @doc:Return{ value : "response object"}
     action deleteDir(ClientConnector t, string dir, string recursive) (message) {
 
     	string encodedBasicAuthHeaderValue;
