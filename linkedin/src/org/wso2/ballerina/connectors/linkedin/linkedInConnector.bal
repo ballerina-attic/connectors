@@ -1,20 +1,21 @@
 package org.wso2.ballerina.connectors.linkedin;
 
 import org.wso2.ballerina.connectors.oauth2;
+import ballerina.doc;
 import ballerina.lang.messages;
 
-@doc:Description("LinkedIn client connector")
-@doc:Param("accessToken: The access token of the LinkedIn Application")
+@doc:Description{ value : "LinkedIn client connector"}
+@doc:Param{ value : "accessToken: The access token of the LinkedIn Application"}
 connector ClientConnector (string accessToken) {
 
     string baseURL = "https://api.linkedin.com";
     oauth2:ClientConnector linkedInEP = create oauth2:ClientConnector(baseURL, accessToken, "null", "null",
             "null", "null");
 
-    @doc:Description("Get Profile Information")
-    @doc:Param("t: The linkedIn Connector instance")
-    @doc:Param("format: Format of the response expected (json/xml)")
-    @doc:Return("response object")
+    @doc:Description{ value : "Get Profile Information"}
+    @doc:Param{ value : "t: The linkedIn Connector instance"}
+    @doc:Param{ value : "format: Format of the response expected (json/xml)"}
+    @doc:Return{ value : "response object"}
     action getProfileInfo(ClientConnector t, string format) (message) {
 
         string getProfileInfoPath;
@@ -28,11 +29,11 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
-    @doc:Description("Get Company Page Information")
-    @doc:Param("t: The linkedIn Connector instance")
-    @doc:Param("companyId: ID of the relevant company")
-    @doc:Param("format: Format of the response expected (json/xml)")
-    @doc:Return("response object")
+    @doc:Description{ value : "Get Company Page Information"}
+    @doc:Param{ value : "t: The linkedIn Connector instance"}
+    @doc:Param{ value : "companyId: ID of the relevant company"}
+    @doc:Param{ value : "format: Format of the response expected (json/xml"}
+    @doc:Return{ value : "response object"}
     action getCompanyInfo(ClientConnector t, string companyId, string format) (message) {
 
         string getProfileInfoPath;
@@ -46,11 +47,11 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
-    @doc:Description("Check if Sharing is enabled for a company page")
-    @doc:Param("t: The linkedIn Connector instance")
-    @doc:Param("companyId: ID of the relevant company")
-    @doc:Param("format: Format of the response expected (json/xml)")
-    @doc:Return("response object")
+    @doc:Description{ value : "Check if Sharing is enabled for a company page"}
+    @doc:Param{ value : "t: The linkedIn Connector instance"}
+    @doc:Param{ value : "companyId: ID of the relevant company"}
+    @doc:Param{ value : "format: Format of the response expected (json/xml)"}
+    @doc:Return{ value : "response object"}
     action isCompanyShareEnabled(ClientConnector t, string companyId, string format) (message) {
 
         string getProfileInfoPath;
@@ -64,11 +65,11 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
-    @doc:Description("Check if the user is an admin of Company Page")
-    @doc:Param("t: The linkedIn Connector instance")
-    @doc:Param("companyId: ID of the relevant company")
-    @doc:Param("format: Format of the response expected (json/xml)")
-    @doc:Return("response object")
+    @doc:Description{ value : "Check if the user is an admin of Company Page"}
+    @doc:Param{ value : "t: The linkedIn Connector instance"}
+    @doc:Param{ value : "companyId: ID of the relevant company"}
+    @doc:Param{ value : "format: Format of the response expected (json/xml)"}
+    @doc:Return{ value : "response object"}
     action isMemberAdmin(ClientConnector t, string companyId, string format) (message) {
 
         string getProfileInfoPath;
@@ -82,10 +83,10 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
-    @doc:Description("Post on the profile of the authenticated user")
-    @doc:Param("t: The linkedIn Connector instance")
-    @doc:Param("payload: json payload containing the post that needed to be shared")
-    @doc:Return("response object")
+    @doc:Description{ value : "Post on the profile of the authenticated user"}
+    @doc:Param{ value : "t: The linkedIn Connector instance"}
+    @doc:Param{ value : "payload: json payload containing the post that needed to be shared"}
+    @doc:Return{ value : "response object"}
     action profileShare(ClientConnector t, json payload) (message) {
 
         string profileSharePath;
@@ -101,10 +102,10 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
-    @doc:Description("Post on the profile of the authenticated user")
-    @doc:Param("t: The linkedIn Connector instance")
-    @doc:Param("payload: xml payload containing the post that needed to be shared")
-    @doc:Return("response object")
+    @doc:Description{ value : "Post on the profile of the authenticated user"}
+    @doc:Param{ value : "t: The linkedIn Connector instance"}
+    @doc:Param{ value : "payload: xml payload containing the post that needed to be shared"}
+    @doc:Return{ value : "response object"}
     action profileShare(ClientConnector t, xml payload) (message) {
 
         string profileSharePath;
@@ -120,11 +121,11 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
-    @doc:Description("Post on a Company Page")
-    @doc:Param("t: The linkedIn Connector instance")
-    @doc:Param("companyId: ID of the relevant company")
-    @doc:Param("payload: json payload containing the post that needed to be shared")
-    @doc:Return("response object")
+    @doc:Description{ value : "Post on a Company Page"}
+    @doc:Param{ value : "t: The linkedIn Connector instance"}
+    @doc:Param{ value : "companyId: ID of the relevant company"}
+    @doc:Param{ value : "payload: json payload containing the post that needed to be shared"}
+    @doc:Return{ value : "response object"}
     action companyShare(ClientConnector t, string companyId, json payload) (message) {
 
         string companySharePath;
@@ -140,11 +141,11 @@ connector ClientConnector (string accessToken) {
         return response;
     }
 
-    @doc:Description("Post on a Company Page")
-    @doc:Param("t: The linkedIn Connector instance")
-    @doc:Param("companyId: ID of the relevant company")
-    @doc:Param("payload: xml payload containing the post that needed to be shared")
-    @doc:Return("response object")
+    @doc:Description{ value : "Post on a Company Page"}
+    @doc:Param{ value : "t: The linkedIn Connector instance"}
+    @doc:Param{ value : "companyId: ID of the relevant company"}
+    @doc:Param{ value : "payload: xml payload containing the post that needed to be shared"}
+    @doc:Return{ value : "response object"}
     action companyShare(ClientConnector t, string companyId, xml payload) (message) {
 
         string companySharePath;

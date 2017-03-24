@@ -1,6 +1,7 @@
 package org.wso2.ballerina.connectors.gmail;
 
 import org.wso2.ballerina.connectors.oauth2;
+import ballerina.doc;
 import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.lang.strings;
@@ -8,12 +9,12 @@ import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.utils;
 
-@doc:Description("Gmail client connector")
-@doc:Param("userId: The userId of the Gmail account which means the email id")
-@doc:Param("accessToken: The accessToken of the Gmail account to access the gmail REST API")
-@doc:Param("refreshToken: The refreshToken of the Gmail App to access the gmail REST API")
-@doc:Param("clientId: The clientId of the App to access the gmail REST API")
-@doc:Param("clientSecret: The clientSecret of the App to access the gmail REST API")
+@doc:Description{ value : "Gmail client connector"}
+@doc:Param{ value : "userId: The userId of the Gmail account which means the email id"}
+@doc:Param{ value : "accessToken: The accessToken of the Gmail account to access the gmail REST API"}
+@doc:Param{ value : "refreshToken: The refreshToken of the Gmail App to access the gmail REST API"}
+@doc:Param{ value : "clientId: The clientId of the App to access the gmail REST API"}
+@doc:Param{ value : "clientSecret: The clientSecret of the App to access the gmail REST API"}
 connector ClientConnector (string userId, string accessToken, string refreshToken, string clientId,
                            string clientSecret) {
 
@@ -23,9 +24,9 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
     oauth2:ClientConnector gmailEP = create oauth2:ClientConnector(baseURL, accessToken, clientId, clientSecret,
                                                                    refreshToken, refreshTokenEP);
 
-    @doc:Description("Retrieve the user profile")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Return("response object")
+    @doc:Description{ value : "Retrieve the user profile"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Return{ value : "response object"}
     action getUserProfile(ClientConnector g) (message) {
 
         message request = {};
@@ -36,17 +37,17 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Create a draft")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("to: Receiver mail ID")
-    @doc:Param("subject: Subject of the message")
-    @doc:Param("from: Sender mail ID")
-    @doc:Param("messageBody: Entire message body")
-    @doc:Param("cc: To whom sender need to cc the mail")
-    @doc:Param("bcc: To whom sender need to bcc the mail")
-    @doc:Param("id: Id of the draft to create")
-    @doc:Param("threadId: thread Id of the draft to reply")
-    @doc:Return("response object")
+    @doc:Description{ value : "Create a draft"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "to: Receiver mail ID"}
+    @doc:Param{ value : "subject: Subject of the message"}
+    @doc:Param{ value : "from: Sender mail ID"}
+    @doc:Param{ value : "messageBody: Entire message body"}
+    @doc:Param{ value : "cc: To whom sender need to cc the mail"}
+    @doc:Param{ value : "bcc: To whom sender need to bcc the mail"}
+    @doc:Param{ value : "id: Id of the draft to create"}
+    @doc:Param{ value : "threadId: thread Id of the draft to reply"}
+    @doc:Return{ value : "response object"}
     action createDraft(ClientConnector g, string to, string subject, string from, string messageBody,
                        string cc , string bcc, string id, string threadId) (message) {
 
@@ -96,18 +97,18 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Update a draft")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("draftId: Id of the draft to update")
-    @doc:Param("to: Receiver mail ID")
-    @doc:Param("subject: Subject of the message")
-    @doc:Param("from: Sender mail ID")
-    @doc:Param("messageBody: Entire message body")
-    @doc:Param("cc: To whom sender need to cc the mail")
-    @doc:Param("bcc: To whom sender need to bcc the mail")
-    @doc:Param("id: Id of the draft to reply")
-    @doc:Param("threadId: thread Id of the draft to reply")
-    @doc:Return("response object")
+    @doc:Description{ value : "Update a draft"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "draftId: Id of the draft to update"}
+    @doc:Param{ value : "to: Receiver mail ID"}
+    @doc:Param{ value : "subject: Subject of the message"}
+    @doc:Param{ value : "from: Sender mail ID"}
+    @doc:Param{ value : "messageBody: Entire message body"}
+    @doc:Param{ value : "cc: To whom sender need to cc the mail"}
+    @doc:Param{ value : "bcc: To whom sender need to bcc the mail"}
+    @doc:Param{ value : "id: Id of the draft to reply"}
+    @doc:Param{ value : "threadId: thread Id of the draft to reply"}
+    @doc:Return{ value : "response object"}
     action updateDraft(ClientConnector g, string draftId, string to, string subject, string from,
                        string messageBody, string cc , string bcc, string id, string threadId) (message) {
 
@@ -157,11 +158,11 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Retrieve a particular draft")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("draftId: Id of the draft to retrieve")
-    @doc:Param("format: The format to return the draft in")
-    @doc:Return("response object")
+    @doc:Description{ value : "Retrieve a particular draft"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "draftId: Id of the draft to retrieve"}
+    @doc:Param{ value : "format: The format to return the draft in"}
+    @doc:Return{ value : "response object"}
     action readDraft(ClientConnector g, string draftId, string format) (message) {
 
         message request = {};
@@ -177,14 +178,14 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Lists the drafts in the user's mailbox")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("includeSpamTrash: Include messages from SPAM and TRASH in the results")
-    @doc:Param("maxResults: Maximum number of messages to return")
-    @doc:Param("pageToken: Page token to retrieve a specific page of results in the list")
-    @doc:Param("q: Only return messages matching the specified query. Supports the same query format as
-                   the Gmail search box")
-    @doc:Return("response object")
+    @doc:Description{ value : "Lists the drafts in the user's mailbox"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "includeSpamTrash: Include messages from SPAM and TRASH in the results"}
+    @doc:Param{ value : "maxResults: Maximum number of messages to return"}
+    @doc:Param{ value : "pageToken: Page token to retrieve a specific page of results in the list"}
+    @doc:Param{ value : "q: Only return messages matching the specified query. Supports the same query format as
+                   the Gmail search box"}
+    @doc:Return{ value : "response object"}
     action listDrafts(ClientConnector g, string includeSpamTrash, string maxResults, string pageToken,
                       string q) (message) {
 
@@ -218,10 +219,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Delete a particular draft")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("draftId: Id of the draft to delete")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete a particular draft"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "draftId: Id of the draft to delete"}
+    @doc:Return{ value : "response object"}
     action deleteDraft(ClientConnector g, string draftId) (message) {
 
         message request = {};
@@ -232,13 +233,13 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Lists the history to of all changes to the given mailbox")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("labelId: Only return messages with a label matching the ID")
-    @doc:Param("maxResults: Maximum number of messages to return")
-    @doc:Param("pageToken: Page token to retrieve a specific page of results in the list")
-    @doc:Param("startHistoryId: Returns history records after the specified startHistoryId")
-    @doc:Return("response object")
+    @doc:Description{ value : "Lists the history to of all changes to the given mailbox"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "labelId: Only return messages with a label matching the ID"}
+    @doc:Param{ value : "maxResults: Maximum number of messages to return"}
+    @doc:Param{ value : "pageToken: Page token to retrieve a specific page of results in the list"}
+    @doc:Param{ value : "startHistoryId: Returns history records after the specified startHistoryId"}
+    @doc:Return{ value : "response object"}
     action listHistory(ClientConnector g, string labelId, string maxResults, string pageToken,
                        string startHistoryId) (message){
 
@@ -263,18 +264,18 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Create a new label")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("labelName: The display name of the label")
-    @doc:Param("messageListVisibility: The visibility of messages with this label in the message list in the
-                                        Gmail web interface")
-    @doc:Param("labelListVisibility: The visibility of the label in the label list in the Gmail web interface")
-    @doc:Param("types: The owner type for the label")
-    @doc:Param("messagesTotal: The total number of messages with the label")
-    @doc:Param("messagesUnread: The number of unread messages with the label")
-    @doc:Param("threadsTotal: The total number of threads with the label")
-    @doc:Param("threadsUnread: The number of unread threads with the label")
-    @doc:Return("response object")
+    @doc:Description{ value : "Create a new label"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "labelName: The display name of the label"}
+    @doc:Param{ value : "messageListVisibility: The visibility of messages with this label in the message list in the
+                                        Gmail web interface"}
+    @doc:Param{ value : "labelListVisibility: The visibility of the label in the label list in the Gmail web interface"}
+    @doc:Param{ value : "types: The owner type for the label"}
+    @doc:Param{ value : "messagesTotal: The total number of messages with the label"}
+    @doc:Param{ value : "messagesUnread: The number of unread messages with the label"}
+    @doc:Param{ value : "threadsTotal: The total number of threads with the label"}
+    @doc:Param{ value : "threadsUnread: The number of unread threads with the label"}
+    @doc:Return{ value : "response object"}
     action createLabel(ClientConnector g, string labelName, string messageListVisibility,
                        string labelListVisibility, string types, string messagesTotal, string messagesUnread,
                        string threadsTotal, string threadsUnread) (message) {
@@ -314,10 +315,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Delete a particular label")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("labelId: Id of the label to delete")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete a particular label"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "labelId: Id of the label to delete"}
+    @doc:Return{ value : "response object"}
     action deleteLabel(ClientConnector g, string labelId) (message) {
 
         message request = {};
@@ -328,9 +329,9 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Lists all labels in the user's mailbox")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Return("response object")
+    @doc:Description{ value : "Lists all labels in the user's mailbox"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Return{ value : "response object"}
     action listLabels(ClientConnector g) (message) {
 
         message request = {};
@@ -341,19 +342,19 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Update a particular label")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("labelId: The Id of the label to update")
-    @doc:Param("labelName: The display name of the label")
-    @doc:Param("messageListVisibility: The visibility of messages with this label in the message list in the
-                                        Gmail web interface")
-    @doc:Param("labelListVisibility: The visibility of the label in the label list in the Gmail web interface")
-    @doc:Param("types: The owner type for the label")
-    @doc:Param("messagesTotal: The total number of messages with the label")
-    @doc:Param("messagesUnread: The number of unread messages with the label")
-    @doc:Param("threadsTotal: The total number of threads with the label")
-    @doc:Param("threadsUnread: The number of unread threads with the label")
-    @doc:Return("response object")
+    @doc:Description{ value : "Update a particular label"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "labelId: The Id of the label to update"}
+    @doc:Param{ value : "labelName: The display name of the label"}
+    @doc:Param{ value : "messageListVisibility: The visibility of messages with this label in the message list in the
+                                        Gmail web interface"}
+    @doc:Param{ value : "labelListVisibility: The visibility of the label in the label list in the Gmail web interface"}
+    @doc:Param{ value : "types: The owner type for the label"}
+    @doc:Param{ value : "messagesTotal: The total number of messages with the label"}
+    @doc:Param{ value : "messagesUnread: The number of unread messages with the label"}
+    @doc:Param{ value : "threadsTotal: The total number of threads with the label"}
+    @doc:Param{ value : "threadsUnread: The number of unread threads with the label"}
+    @doc:Return{ value : "response object"}
     action updateLabel(ClientConnector g, string labelId, string labelName, string messageListVisibility,
                        string labelListVisibility, string types, string messagesTotal, string messagesUnread,
                        string threadsTotal, string threadsUnread) (message) {
@@ -394,10 +395,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Retrieve a particular label")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("labelId: Id of the label to retrieve")
-    @doc:Return("response object")
+    @doc:Description{ value : "Retrieve a particular label"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "labelId: Id of the label to retrieve"}
+    @doc:Return{ value : "response object"}
     action readLabel(ClientConnector g, string labelId) (message) {
 
         message request = {};
@@ -408,12 +409,12 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Retrieve a particular Thread")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("threadId: Id of the thread to retrieve")
-    @doc:Param("format: The format to return the thread in")
-    @doc:Param("metaDataHeaders: When given and format is METADATA, only include headers specified")
-    @doc:Return("response object")
+    @doc:Description{ value : "Retrieve a particular Thread"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "threadId: Id of the thread to retrieve"}
+    @doc:Param{ value : "format: The format to return the thread in"}
+    @doc:Param{ value : "metaDataHeaders: When given and format is METADATA, only include headers specified"}
+    @doc:Return{ value : "response object"}
     action readThread(ClientConnector g, string threadId, string format, string metaDataHeaders) (message) {
 
         message request = {};
@@ -439,15 +440,15 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Lists the threads in the user's mailbox")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("includeSpamTrash: Include messages from SPAM and TRASH in the results")
-    @doc:Param("labelIds: Only return messages with labels that match all of the specified label IDs")
-    @doc:Param("maxResults: Maximum number of messages to return")
-    @doc:Param("pageToken: Page token to retrieve a specific page of results in the list")
-    @doc:Param("q: Only return messages matching the specified query. Supports the same query format as
-                   the Gmail search box")
-    @doc:Return("response object")
+    @doc:Description{ value : "Lists the threads in the user's mailbox"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "includeSpamTrash: Include messages from SPAM and TRASH in the results"}
+    @doc:Param{ value : "labelIds: Only return messages with labels that match all of the specified label IDs"}
+    @doc:Param{ value : "maxResults: Maximum number of messages to return"}
+    @doc:Param{ value : "pageToken: Page token to retrieve a specific page of results in the list"}
+    @doc:Param{ value : "q: Only return messages matching the specified query. Supports the same query format as
+                   the Gmail search box"}
+    @doc:Return{ value : "response object"}
     action listThreads(ClientConnector g, string includeSpamTrash, string labelIds, string maxResults,
                        string pageToken, string q) (message) {
 
@@ -484,10 +485,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Delete a particular thread")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("threadId: Id of the thread to delete")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete a particular thread"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "threadId: Id of the thread to delete"}
+    @doc:Return{ value : "response object"}
     action deleteThread(ClientConnector g, string threadId) (message) {
 
         message request = {};
@@ -498,10 +499,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Trash a particular thread")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("threadId: Id of the thread to Trash")
-    @doc:Return("response object")
+    @doc:Description{ value : "Trash a particular thread"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "threadId: Id of the thread to Trash"}
+    @doc:Return{ value : "response object"}
     action trashThread(ClientConnector g, string threadId) (message) {
 
         message request = {};
@@ -513,10 +514,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("UnTrash a particular thread")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("threadId: Id of the thread to unTrash")
-    @doc:Return("response object")
+    @doc:Description{ value : "UnTrash a particular thread"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "threadId: Id of the thread to unTrash"}
+    @doc:Return{ value : "response object"}
     action unTrashThread(ClientConnector g, string threadId) (message) {
 
         message request = {};
@@ -528,15 +529,15 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Lists the messages in the user's mailbox")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("includeSpamTrash: Include messages from SPAM and TRASH in the results")
-    @doc:Param("labelIds: Only return messages with labels that match all of the specified label IDs")
-    @doc:Param("maxResults: Maximum number of messages to return")
-    @doc:Param("pageToken: Page token to retrieve a specific page of results in the list")
-    @doc:Param("q: Only return messages matching the specified query. Supports the same query format as
-                   the Gmail search box")
-    @doc:Return("response object")
+    @doc:Description{ value : "Lists the messages in the user's mailbox"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "includeSpamTrash: Include messages from SPAM and TRASH in the results"}
+    @doc:Param{ value : "labelIds: Only return messages with labels that match all of the specified label IDs"}
+    @doc:Param{ value : "maxResults: Maximum number of messages to return"}
+    @doc:Param{ value : "pageToken: Page token to retrieve a specific page of results in the list"}
+    @doc:Param{ value : "q: Only return messages matching the specified query. Supports the same query format as
+                   the Gmail search box"}
+    @doc:Return{ value : "response object"}
     action listMails(ClientConnector g, string includeSpamTrash, string labelIds, string maxResults,
                      string pageToken, string q) (message) {
 
@@ -573,17 +574,17 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Send a mail")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("to: Receiver mail ID")
-    @doc:Param("subject: Subject of the message")
-    @doc:Param("from: Sender mail ID")
-    @doc:Param("messageBody: Entire message body")
-    @doc:Param("cc: To whom sender need to cc the mail")
-    @doc:Param("bcc: To whom sender need to bcc the mail")
-    @doc:Param("id: Id of the mail to send")
-    @doc:Param("threadId: thread Id of the mail to reply")
-    @doc:Return("response object")
+    @doc:Description{ value : "Send a mail"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "to: Receiver mail ID"}
+    @doc:Param{ value : "subject: Subject of the message"}
+    @doc:Param{ value : "from: Sender mail ID"}
+    @doc:Param{ value : "messageBody: Entire message body"}
+    @doc:Param{ value : "cc: To whom sender need to cc the mail"}
+    @doc:Param{ value : "bcc: To whom sender need to bcc the mail"}
+    @doc:Param{ value : "id: Id of the mail to send"}
+    @doc:Param{ value : "threadId: thread Id of the mail to reply"}
+    @doc:Return{ value : "response object"}
     action sendMail(ClientConnector g, string to, string subject, string from, string messageBody,
                     string cc , string bcc, string id, string threadId) (message) {
 
@@ -632,12 +633,12 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Modifies the labels on the specified message")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("messageId: The ID of the message to modifies the labels")
-    @doc:Param("addLabelIds: A list of IDs of labels to add to this message")
-    @doc:Param("removeLabelIds: A list IDs of labels to remove from this message")
-    @doc:Return("response object")
+    @doc:Description{ value : "Modifies the labels on the specified message"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "messageId: The ID of the message to modifies the labels"}
+    @doc:Param{ value : "addLabelIds: A list of IDs of labels to add to this message"}
+    @doc:Param{ value : "removeLabelIds: A list IDs of labels to remove from this message"}
+    @doc:Return{ value : "response object"}
     action modifyExistingMessage(ClientConnector g, string messageId, string addLabelIds,
                                  string removeLabelIds) (message) {
 
@@ -662,12 +663,12 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Retrieve a particular Message")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("messageId: Id of the message to retrieve")
-    @doc:Param("format: The format to return the Message in")
-    @doc:Param("metaDataHeaders: When given and format is METADATA, only include headers specified")
-    @doc:Return("response object")
+    @doc:Description{ value : "Retrieve a particular Message"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "messageId: Id of the message to retrieve"}
+    @doc:Param{ value : "format: The format to return the Message in"}
+    @doc:Param{ value : "metaDataHeaders: When given and format is METADATA, only include headers specified"}
+    @doc:Return{ value : "response object"}
     action readMail(ClientConnector g, string messageId, string format, string metaDataHeaders) (message) {
 
         message request = {};
@@ -693,10 +694,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Delete a particular message")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("messageId: Id of the message to delete")
-    @doc:Return("response object")
+    @doc:Description{ value : "Delete a particular message"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "messageId: Id of the message to delete"}
+    @doc:Return{ value : "response object"}
     action deleteMail(ClientConnector g, string messageId) (message) {
 
         message request = {};
@@ -707,10 +708,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("Trash a particular message")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("messageId: Id of the message to Trash")
-    @doc:Return("response object")
+    @doc:Description{ value : "Trash a particular message"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "messageId: Id of the message to Trash"}
+    @doc:Return{ value : "response object"}
     action trashMail(ClientConnector g, string messageId) (message) {
 
         message request = {};
@@ -722,10 +723,10 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         return response;
     }
 
-    @doc:Description("UnTrash a particular message")
-    @doc:Param("g: The gmail Connector instance")
-    @doc:Param("messageId: Id of the message to unTrash")
-    @doc:Return("response object")
+    @doc:Description{ value : "UnTrash a particular message"}
+    @doc:Param{ value : "g: The gmail Connector instance"}
+    @doc:Param{ value : "messageId: Id of the message to unTrash"}
+    @doc:Return{ value : "response object"}
     action unTrashMail(ClientConnector g, string messageId) (message) {
 
         message request = {};

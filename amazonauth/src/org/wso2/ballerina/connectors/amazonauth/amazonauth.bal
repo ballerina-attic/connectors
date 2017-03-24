@@ -1,5 +1,6 @@
 package org.wso2.ballerina.connectors.amazonauth;
 
+import ballerina.doc;
 import ballerina.net.http;
 import ballerina.lang.strings;
 import ballerina.lang.system;
@@ -7,24 +8,24 @@ import ballerina.utils;
 import ballerina.net.uri;
 import ballerina.lang.messages;
 
-@doc:Description("Amazon Auth connector")
-@doc:Param("accessKeyId: The access key ID of the Amazon Account")
-@doc:Param("secretAccessKey: The secret access key of the Amazon Account")
-@doc:Param("region: The region to which the request is made")
-@doc:Param("serviceName: The Amazon service that should be invoked")
-@doc:Param("terminationString: The termination string for the request")
-@doc:Param("endpoint: The Endpoint of the amazon service")
+@doc:Description{ value : "Amazon Auth connector"}
+@doc:Param{ value : "accessKeyId: The access key ID of the Amazon Account"}
+@doc:Param{ value : "secretAccessKey: The secret access key of the Amazon Account"}
+@doc:Param{ value : "region: The region to which the request is made"}
+@doc:Param{ value : "serviceName: The Amazon service that should be invoked"}
+@doc:Param{ value : "terminationString: The termination string for the request"}
+@doc:Param{ value : "endpoint: The Endpoint of the amazon service"}
 connector ClientConnector(string accessKeyId, string secretAccessKey,
                 string region, string serviceName, string terminationString, string endpoint) {
     http:ClientConnector awsEP = create http:ClientConnector(endpoint);
 
-    @doc:Description("Get List of Objects in a bucket")
-    @doc:Param("amazonAuthConnector: The amazonAuthConnector instance")
-    @doc:Param("requestMsg: The request message object")
-    @doc:Param("httpVerb: The HTTP verb")
-    @doc:Param("requestURI: The URI of the service to be invoked")
-    @doc:Param("payload: The payload to be sent")
-    @doc:Return("response object")
+    @doc:Description{ value : "Get List of Objects in a bucket"}
+    @doc:Param{ value : "amazonAuthConnector: The amazonAuthConnector instance"}
+    @doc:Param{ value : "requestMsg: The request message object"}
+    @doc:Param{ value : "httpVerb: The HTTP verb"}
+    @doc:Param{ value : "requestURI: The URI of the service to be invoked"}
+    @doc:Param{ value : "payload: The payload to be sent"}
+    @doc:Return{ value : "response object"}
     action request(ClientConnector amazonAuthConnector, message requestMsg, string httpVerb, string requestURI,
      string payload) (message) throws exception {
 
