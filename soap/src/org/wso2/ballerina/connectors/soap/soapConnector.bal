@@ -31,7 +31,7 @@ connector ClientConnector (string url) {
         } else {
             reqType = "text/xml";
         }
-        string soapDefinition = namespaceMap[soapVersion];
+        string soapDefinition = (string) namespaceMap[soapVersion];
         xml soapPayload = constructSoapRequest (payload, soapDefinition, headers);
         messages:setXmlPayload(backendServiceReq, soapPayload);
         messages:setHeader(backendServiceReq, "Content-Type", reqType);
