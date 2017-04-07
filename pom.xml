@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.ballerinalang</groupId>
         <artifactId>ballerinalang</artifactId>
-        <version>0.86-SNAPSHOT</version>
+        <version>0.86</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -346,7 +346,7 @@
         </plugins>
     </build>
     <properties>
-        <ballerina.version>0.86-SNAPSHOT</ballerina.version>
+        <ballerina.version>0.86</ballerina.version>
         <mvn.exec.plugin.version>1.5.0</mvn.exec.plugin.version>
         <mvn.processor.plugin.version>2.2.4</mvn.processor.plugin.version>
         <mvn.resource.plugins.version>3.0.2</mvn.resource.plugins.version>
@@ -360,6 +360,6 @@
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
         <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
-        <docerina.maven.plugin.version>0.86-SNAPSHOT</docerina.maven.plugin.version>
+        <docerina.maven.plugin.version>0.86</docerina.maven.plugin.version>
     </properties>
 </project>
