@@ -21,7 +21,7 @@ package org.ballerinalang.connector.service;
 import org.ballerinalang.nativeimpl.repository.BallerinaBuiltinPackageRepository;
 
 /**
- * This the provider interface to expose connector packages.
+ * This is the provider interface to expose connector packages.
  */
 public class BuiltinConnectorPackageRepository extends BallerinaBuiltinPackageRepository {
 }
