@@ -499,7 +499,7 @@ function isSessionExpired (xml soapResponse) (boolean) {
     return isValid;
 }
 
-function addFields (xml payload, map fields, string xpath) (boolean) {
+function addFields (xml payload, map fields, string xpath) {
 
     string[] fieldKeys = maps:keys(fields);
     int fieldKeyCount = arrays:length(fieldKeys);
