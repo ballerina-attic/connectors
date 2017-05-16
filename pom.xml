@@ -291,6 +291,7 @@
                         <className>${native.constructs.provider.class}</className>
                         <srcDir>${connectors.source.directory}</srcDir>
                         <targetDir>${generated.connectors.source.directory}</targetDir>
+                        <pkgRepositoryClass>${package.repository.provider.class}</pkgRepositoryClass>
                     </options>
                 </configuration>
                 <executions>
@@ -355,6 +356,8 @@
         <native.constructs.provider.package>org.wso2.ballerina.connectors
         </native.constructs.provider.package>
         <native.constructs.provider.class>BallerinaConnectorsProvider</native.constructs.provider.class>
+        <package.repository.provider.class>org.ballerinalang.connector.service.BuiltinConnectorPackageRepository
+        </package.repository.provider.class>
         <generated.connectors.source.directory>${connectors.source.temp.dir}
         </generated.connectors.source.directory>
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
