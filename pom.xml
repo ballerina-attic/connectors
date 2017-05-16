@@ -291,6 +291,7 @@
                         <className>${native.constructs.provider.class}</className>
                         <srcDir>${connectors.source.directory}</srcDir>
                         <targetDir>${generated.connectors.source.directory}</targetDir>
+                        <pkgRepositoryClass>${package.repository.provider.class}</pkgRepositoryClass>
                     </options>
                 </configuration>
                 <executions>
@@ -316,7 +317,7 @@
                         </goals>
                         <configuration>
                             <mainClass>
-                                org.ballerinalang.natives.annotation.processor.NativeValidator
+                                org.ballerinalang.natives.annotation.processor.BuiltinPackageValidator
                             </mainClass>
                             <arguments>
                                 <argument>${generated.connectors.source.directory}</argument>
@@ -355,7 +356,9 @@
         <native.constructs.provider.package>org.wso2.ballerina.connectors
         </native.constructs.provider.package>
         <native.constructs.provider.class>BallerinaConnectorsProvider</native.constructs.provider.class>
-        <generated.connectors.source.directory>${project.build.directory}/natives
+        <package.repository.provider.class>org.ballerinalang.connector.service.BuiltinConnectorPackageRepository
+        </package.repository.provider.class>
+        <generated.connectors.source.directory>${connectors.source.temp.dir}
         </generated.connectors.source.directory>
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
