@@ -14,14 +14,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.ballerinalang.connector.service;
 
-
-import org.ballerinalang.nativeimpl.repository.BallerinaBuiltinPackageRepository;
+import org.ballerinalang.util.repository.BuiltinExtendedPackageRepository;
 
 /**
  * This is the provider interface to expose connector packages.
  */
-public class BuiltinConnectorPackageRepository extends BallerinaBuiltinPackageRepository {
+public class BuiltinConnectorPackageRepository extends BuiltinExtendedPackageRepository {
+    //TODO to be generated from ANNOTATION Processor
+    public BuiltinConnectorPackageRepository() {
+        super(BuiltinConnectorPackageRepository.class);
+    }
+
 }
