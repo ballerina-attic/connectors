@@ -7,55 +7,83 @@ with a ballerina main function or a service. The following section provide you t
   The Jira action allows to obtain issue information of the provided issue id.
   
 ##### Parameters:
-  issueID: Id of the jira issue
+  issueIdOrKey: A String containing the issue id
+  expand: The parameters to expand
+  fields: The list of fields to return for the issue
   
-## getIssues
-  The Jira action allows to list issues by the provided project name.
-  
-##### Parameters:
-  projectName: Name of the project
-  maxResults: number of max issues to retrieve
-  
-## getIssues  
-  The Jira action allows to list issues by the provided query
-  
-##### Parameters:
-  query: jira-query formatted json 
-  [ex: {"jql":"project = 'WSO2 Identity Server'","startAt":3,"maxResults":2,"fields":["id","key"]}]
+###### Related Jira API documentation
+   [getIssueInfo](https://developer.atlassian.com/static/rest/jira/6.1.html#d2e1160)
 
-## comment
-   The Jira action allows to comment on existing jira issue.
+## searchJira  
+  The Jira action allows to Search jira using JQL.
+  
+##### Parameters:
+  payload: The actual payload that is accepted by back end. Jira query formatted json.
+
+###### Related Jira API documentation
+   [searchJira](https://developer.atlassian.com/static/rest/jira/6.1.html#d2e4071)
+   
+## postComment
+   The Jira action allows to post comment on existing jira issue.
    
 ##### Parameters:
-   issueID: Issue ID
-   comment: comment as a json > {'body': 'This issue is still reproducing.'}
-
-## assign
+  issueIdOrKey: A String containing the issue id
+  expand: The parameters to expand
+  payload: The actual payload that is accepted by back end. It contains the fields of the issue
+  
+###### Related Jira API documentation
+   [postComment](https://developer.atlassian.com/static/rest/jira/6.1.html#d2e953)
+   
+## assignIssueToUser
    The Jira action allows to assign an issue to an existing user.
 
 ##### Parameters:
-   issueID: Issue ID
-   user: Name of the user who will be the assignee
+   issueIdOrKey: A String containing the issue id
+   payload: The actual payload that is accepted by back end. It contains the name of the assignee
 
-## createIssue
-   The Jira action allows to create a new issue
+###### Related Jira API documentation
+   [assignIssueToUser](https://developer.atlassian.com/static/rest/jira/6.1.html#d2e924)
+   
+## createBulkIssue
+   The Jira action allows to create many issues in one bulk operation.
 
 ##### Parameters:
-   projectKey: key of the project where user creates the issue
-   summary: issue summary
-   description: issue description
-   issueType: issue type
+  payload: The actual payload that is accepted by back end. It contains the array of objects containing the issue details
+  
+###### Related Jira API documentation
+   [createBulkIssue](https://developer.atlassian.com/static/rest/jira/6.1.html#d2e1294)
 
+   
 # How to run the sample
 
-To test a connector action written in Ballerina language use the run 
-command as follows.
+To test a connector action written in Ballerina language use the run command as follows.
+
+###### Invoke the actions
 
 Copy the `<Connector>`/samples/`<Connector>`/samples.bal into `<ballerina_home>`/bin folder 
 and run the command like in below,
 
-$ bin ./ballerina run main samples.bal <JIRA_REST_API_URI> <Base64encoded username:password>
+###### NOTE
 
-References:
-[1] https://github.com/ballerinalang/distribution
-[2] https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis
+If the template parameter is indicate as optional you must pass null as default value to run this
+action.
+
+1. getIssueInfo  
+    `bin$ ./ballerina run main samples.bal getIssueInfo <apiInstance:-Required> <username:-Required> 
+    <password:-Required> <issueIdOrKey:-Required> <expand:-Optional> <fields:-Optional>`
+    
+2. searchJira
+    `bin$ ./ballerina run main samples.bal searchJira <apiInstance:-Required> <username:-Required> 
+    <password:-Required> <payload:-Optional>`
+    
+3. postComment  
+    `bin$ ./ballerina run main samples.bal postComment <apiInstance:-Required> <username:-Required> 
+    <password:-Required> <issueIdOrKey:-Required> <expand:-Optional> <payload:-Required>`
+    
+4. assignIssueToUser
+    `bin$ ./ballerina run main samples.bal assignIssueToUser <apiInstance:-Required> <username:-Required> 
+    <password:-Required> <issueIdOrKey:-Required> <payload:-Optional>`
+    
+5. createBulkIssue
+    `bin$ ./ballerina run main samples.bal createBulkIssue <apiInstance:-Required> <username:-Required> 
+    <password:-Required> <payload:-Optional>`
