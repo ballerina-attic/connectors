@@ -3,6 +3,7 @@ import org.wso2.ballerina.connectors.gmail;
 import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.lang.system;
+import ballerina.net.http;
 
 function main (string[] args) {
 
@@ -46,11 +47,7 @@ function main (string[] args) {
 
     if( args[0] == "deleteDraft") {
         gmailResponse = gmail:ClientConnector.deleteDraft(gmailConnector, args[6]);
-        gmailJSONResponse = messages:getJsonPayload(gmailResponse);
-        deleteResponse = jsons:toString(gmailJSONResponse);
-        if(deleteResponse == "null"){
-            system:println("Draft with id: " + args[6] + " deleted successfully.");
-        }
+        system:println("Status code : " + http:getStatusCode(gmailResponse));
     }
 
     if( args[0] == "listHistory") {
@@ -68,11 +65,7 @@ function main (string[] args) {
 
     if( args[0] == "deleteLabel") {
         gmailResponse = gmail:ClientConnector.deleteLabel(gmailConnector, args[6]);
-        gmailJSONResponse = messages:getJsonPayload(gmailResponse);
-        deleteResponse = jsons:toString(gmailJSONResponse);
-        if(deleteResponse == "null"){
-            system:println("Label with id: " + args[6] + " deleted successfully.");
-        }
+        system:println("Status code : " + http:getStatusCode(gmailResponse));
     }
 
     if( args[0] == "listLabels") {
@@ -108,11 +101,7 @@ function main (string[] args) {
 
     if( args[0] == "deleteThread") {
         gmailResponse = gmail:ClientConnector.deleteThread(gmailConnector, args[6]);
-        gmailJSONResponse = messages:getJsonPayload(gmailResponse);
-        deleteResponse = jsons:toString(gmailJSONResponse);
-        if(deleteResponse == "null"){
-            system:println("Thread with id: " + args[6] + " deleted successfully.");
-        }
+        system:println("Status code : " + http:getStatusCode(gmailResponse));
     }
 
     if( args[0] == "trashThread") {
@@ -154,11 +143,7 @@ function main (string[] args) {
 
     if( args[0] == "deleteMail") {
         gmailResponse = gmail:ClientConnector.deleteMail(gmailConnector, args[6]);
-        gmailJSONResponse = messages:getJsonPayload(gmailResponse);
-        deleteResponse = jsons:toString(gmailJSONResponse);
-        if(deleteResponse == "null"){
-            system:println("Mail with id: " + args[6] + " deleted successfully.");
-        }
+        system:println("Status code : " + http:getStatusCode(gmailResponse));
     }
 
     if( args[0] == "trashMail") {

@@ -431,7 +431,7 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
             uriParams = uriParams + "&metaDataHeaders=" + metaDataHeaders;
         }
 
-        if(uriParams != "null") {
+        if(uriParams != "") {
             readThreadPath = readThreadPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
         }
 
