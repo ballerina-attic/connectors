@@ -19,7 +19,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Param{ value : "amz: The amazonLambda connector instance"}
     @doc:Param{ value : "arn: The amazon resource name of the function to invoke"}
     @doc:Return{ value : "response message"}
-    action invokeFunction(ClientConnector amz, string arn) (message) throws exception {
+    action invokeFunction(ClientConnector amz, string arn) (message) {
         string httpMethod;
         string requestURI;
     	string host;
@@ -38,7 +38,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Param{ value : "arn: The amazon resource name of the function to invoke"}
     @doc:Param{ value : "payload: The json payload containing key values of parameters to amazon lambda function"}
     @doc:Return{ value : "response message"}
-    action invokeFunction(ClientConnector amz, string arn, json payload) (message) throws exception {
+    action invokeFunction(ClientConnector amz, string arn, json payload) (message) {
         string httpMethod;
         string requestURI;
       	string host;
@@ -58,7 +58,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Param{ value : "amz: The amazonLambda connector instance"}
     @doc:Param{ value : "arn: The amazon resource name of the function to invoke"}
     @doc:Return{ value : "response message"}
-    action deleteFunction(ClientConnector amz, string arn) (message) throws exception {
+    action deleteFunction(ClientConnector amz, string arn) (message) {
         string httpMethod;
         string requestURI;
     	string host;
@@ -77,7 +77,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Description{ value : "Returns the users' account information"}
     @doc:Param{ value : "amz: The amazonLambda connector instance"}
     @doc:Return{ value : "response message"}
-    action getAccountDetails(ClientConnector amz) (message) throws exception {
+    action getAccountDetails(ClientConnector amz) (message) {
         string httpMethod;
         string requestURI;
     	string host;
@@ -97,7 +97,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Param{ value : "amz: The amazonLambda connector instance"}
     @doc:Param{ value : "arn: The amazon resource name of the function to invoke"}
     @doc:Return{ value : "response message"}
-    action getFunction(ClientConnector amz, string arn) (message) throws exception {
+    action getFunction(ClientConnector amz, string arn) (message) {
         string httpMethod;
         string requestURI;
     	string host;
@@ -117,7 +117,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Param{ value : "amz: The amazonLambda connector instance"}
     @doc:Param{ value : "arn: The amazon resource name of the function to invoke"}
     @doc:Return{ value : "response message"}
-    action listFunctions(ClientConnector amz) (message) throws exception {
+    action listFunctions(ClientConnector amz) (message) {
         string httpMethod;
         string requestURI;
     	string host;
@@ -134,7 +134,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Description{ value : "Lists all versions of a amazon lambda function"}
     @doc:Param{ value : "amz: The amazonLambda connector instance"}
     @doc:Return{ value : "response message"}
-    action getFunctionVersions(ClientConnector amz, string arn) (message) throws exception {
+    action getFunctionVersions(ClientConnector amz, string arn) (message) {
         string httpMethod;
         string requestURI;
     	string host;

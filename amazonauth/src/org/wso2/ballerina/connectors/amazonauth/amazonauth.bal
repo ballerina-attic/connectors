@@ -27,7 +27,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
     @doc:Param{ value : "payload: The payload to be sent"}
     @doc:Return{ value : "response object"}
     action request(ClientConnector amazonAuthConnector, message requestMsg, string httpVerb, string requestURI,
-     string payload) (message) throws exception {
+     string payload) (message) {
 
         message response;
 
@@ -48,7 +48,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,
 }
 
 function generateSignature(message msg, string accessKeyId, string secretAccessKey, string region, string serviceName,
-    string terminationString, string httpVerb, string requestURI, string payload) (message) throws exception {
+    string terminationString, string httpVerb, string requestURI, string payload) (message) {
 
     string canonicalRequest;
     string canonicalQueryString;
