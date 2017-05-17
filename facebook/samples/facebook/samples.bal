@@ -1,5 +1,3 @@
-package samples.facebook;
-
 import org.wso2.ballerina.connectors.facebook;
 
 import ballerina.lang.jsons;
