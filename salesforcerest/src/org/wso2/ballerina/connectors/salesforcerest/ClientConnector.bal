@@ -260,7 +260,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string requestURI;
         message requestMsg = {};
         message response = {};
-        requestURI = "/services/data/" + apiVersion + "/queryMore/" + nextRecordsUrl;
+        requestURI = "/services/data/" + apiVersion + "/query/" + nextRecordsUrl;
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -275,7 +275,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string requestURI;
         message requestMsg = {};
         message response = {};
-        requestURI = "/services/data/" + apiVersion + "/query/?explain=" + "queryString";
+        requestURI = "/services/data/" + apiVersion + "/query/?explain=" + queryString;
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
@@ -396,7 +396,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         message response = {};
         requestURI = "/services/data/" + apiVersion + "/sobjects/" + sobjectName + "/" + recordId;
 	    messages:setJsonPayload(requestMsg, payload);
-        response = oauth2:ClientConnector.post(oauth2Connector, requestURI, requestMsg);
+        response = oauth2:ClientConnector.patch(oauth2Connector, requestURI, requestMsg);
         return response;
     }
 

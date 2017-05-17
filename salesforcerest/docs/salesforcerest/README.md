@@ -291,7 +291,7 @@ action.
 `bin$ ./ballerina run main samples.bal listOrganizationLimits <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <refreshEndpoint> <apiVersion>`
 
 5. listResourcesByApiVersion:
- `bin$ ./ballerina run main samples.bal listResourcesByApiVersion <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <requestingApiVersion>`
+`bin$ ./ballerina run main samples.bal listResourcesByApiVersion <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <refreshEndpoint> <requestingApiVersion>`
 
 6. sObjectBasicInfo:
 `bin$ ./ballerina run main samples.bal sObjectBasicInfo <accessToken> <clientID> <clientSecret> <refreshToken> <apiInstance> <refreshEndpoint> <apiVersion> <sobjectName>`
