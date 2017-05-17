@@ -3,6 +3,7 @@ import org.wso2.ballerina.connectors.salesforcerest;
 import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.lang.system;
+import ballerina.net.http;
 
 function main (string[] args) {
 
@@ -25,7 +26,7 @@ function main (string[] args) {
     }
     
     if (args[0] == "sObjectDescribe"){
-        response = salesforcerest:ClientConnector.sObjectDescribe(salesforceClient, args[7], args[8]);
+        response = salesforcerest:ClientConnector.sObjectDescribe(salesforceClient, args[8], args[7]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
@@ -43,13 +44,13 @@ function main (string[] args) {
     }
     
     if (args[0] == "listResourcesByApiVersion"){
-        response = salesforcerest:ClientConnector.listResourcesByApiVersion(salesforceClient, args[8]);
+        response = salesforcerest:ClientConnector.listResourcesByApiVersion(salesforceClient, args[7]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "sObjectBasicInfo"){
-        response = salesforcerest:ClientConnector.sObjectBasicInfo(salesforceClient, args[7], args[8]);
+        response = salesforcerest:ClientConnector.sObjectBasicInfo(salesforceClient, args[8], args[7]);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
@@ -121,14 +122,14 @@ function main (string[] args) {
     }
 
     if (args[0] == "createRecord"){
-        json sampleCreateRecord = `{"Name":"TestingBallerina"}`;
+        json sampleCreateRecord = {"Name":"TestingBallerina"};
         response = salesforcerest:ClientConnector.createRecord(salesforceClient, args[7], "Account", sampleCreateRecord);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
     }
 
     if (args[0] == "createMultipleRecords"){
-        json sampleCreateMultipleRecords = `{"records" :[{"attributes" : {"type" : "Account", "referenceId" : "ref1"}, "name" : "SampleAccount1"}, {"attributes" : {"type" : "Account", "referenceId" : "ref2"}, "name" : "SampleAccount2"}]}`;
+        json sampleCreateMultipleRecords = {"records" :[{"attributes" : {"type" : "Account", "referenceId" : "ref1"}, "name" : "SampleAccount1"}, {"attributes" : {"type" : "Account", "referenceId" : "ref2"}, "name" : "SampleAccount2"}]};
         response = salesforcerest:ClientConnector.createMultipleRecords(salesforceClient, args[7], "Account", sampleCreateMultipleRecords);
         JSONResponse = messages:getJsonPayload(response);
         system:println(jsons:toString(JSONResponse));
@@ -136,8 +137,7 @@ function main (string[] args) {
 
     if (args[0] == "delete"){
         response = salesforcerest:ClientConnector.delete(salesforceClient, args[7], args[8], args[9]);
-        JSONResponse = messages:getJsonPayload(response);
-        system:println(jsons:toString(JSONResponse));
+        system:println(http:getStatusCode(response));
     }
 
     if (args[0] == "retrieveFieldValues"){
@@ -161,17 +161,15 @@ function main (string[] args) {
     }
 
     if (args[0] == "update"){
-        json sampleUpdate = `{"Name":"TestUpdate"}`;
+        json sampleUpdate = {"Name":"TestUpdate"};
         response = salesforcerest:ClientConnector.update(salesforceClient, args[7], "Account", args[8], sampleUpdate);
-        JSONResponse = messages:getJsonPayload(response);
-        system:println(jsons:toString(JSONResponse));
+        system:println(http:getStatusCode(response));
     }
 
     if (args[0] == "upsert"){
-        json sampleUpsert = `{"Name":"TestUpdate", "Type" : "New Customer"}`;
+        json sampleUpsert = {"Name":"TestUpdate", "Type" : "New Customer"};
         response = salesforcerest:ClientConnector.upsert(salesforceClient, args[7], args[8], args[9], args[10], sampleUpsert);
-        JSONResponse = messages:getJsonPayload(response);
-        system:println(jsons:toString(JSONResponse));
+        system:println(http:getStatusCode(response));
     }
 
 }
