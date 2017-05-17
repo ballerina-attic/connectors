@@ -1,5 +1,3 @@
-package samples.twitter;
-
 import org.wso2.ballerina.connectors.twitter;
 
 import ballerina.lang.jsons;

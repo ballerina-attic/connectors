@@ -54,8 +54,8 @@ Commands to trigger actions:
 
 ###listDir
 
-`bin$ ./ballerina run samples.bal listDir <dir> [recuresive=true]`
+`bin$ ./ballerina run main samples.bal listDir <dir> [recuresive=true]`
 
 ###deleteDir
 
-`bin$ ./ballerina run samples.bal deleteDir <dir> [recursive=true]`
+`bin$ ./ballerina run main samples.bal deleteDir <dir> [recursive=true]`
