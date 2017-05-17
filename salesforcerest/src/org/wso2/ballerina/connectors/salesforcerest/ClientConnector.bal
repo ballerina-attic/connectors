@@ -21,7 +21,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "sf: The salesforcerest connector instance"}
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Return{ value : "response message"}
-    action describeGlobal(ClientConnector sf, string apiVersion) (message) throws exception {
+    action describeGlobal(ClientConnector sf, string apiVersion) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -36,7 +36,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "sobjectName: The relevant sobject name"}
     @doc:Return{ value : "response message"}
-    action sObjectDescribe(ClientConnector sf, string sobjectName, string apiVersion) (message) throws exception {
+    action sObjectDescribe(ClientConnector sf, string sobjectName, string apiVersion) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -49,7 +49,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Description{ value : "Lists summary information about each REST API version currently available"}
     @doc:Param{ value : "sf: The salesforcerest connector instance"}
     @doc:Return{ value : "response message"}
-    action listAvailableApiVersion(ClientConnector sf) (message) throws exception {
+    action listAvailableApiVersion(ClientConnector sf) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -63,7 +63,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "sf: The salesforcerest connector instance"}
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Return{ value : "response message"}
-    action listOrganizationLimits(ClientConnector sf, string apiVersion) (message) throws exception {
+    action listOrganizationLimits(ClientConnector sf, string apiVersion) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -77,7 +77,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "sf: The salesforcerest connector instance"}
     @doc:Param{ value : "requestingApiVersion: The api version to get resources"}
     @doc:Return{ value : "response message"}
-    action listResourcesByApiVersion(ClientConnector sf, string requestingApiVersion) (message) throws exception {
+    action listResourcesByApiVersion(ClientConnector sf, string requestingApiVersion) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -92,7 +92,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "sobjectName: The relevant sobject name"}
     @doc:Return{ value : "response message"}
-    action sObjectBasicInfo(ClientConnector sf, string sobjectName, string apiVersion) (message) throws exception {
+    action sObjectBasicInfo(ClientConnector sf, string sobjectName, string apiVersion) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -111,7 +111,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "endTime: The end time of the time span"}
     @doc:Return{ value : "response message"}
     action sObjectGetDeleted(ClientConnector sf, string apiVersion, string sobjectName, string startTime, string endTime) (message)
-     throws exception {
+     {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -131,7 +131,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "endTime: The end time of the time span"}
     @doc:Return{ value : "response message"}
     action sObjectGetUpdated(ClientConnector sf, string apiVersion, string sobjectName, string startTime, string endTime) (message)
-     throws exception {
+     {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -146,7 +146,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "sf: The salesforcerest connector instance"}
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Return{ value : "response message"}
-    action sObjectPlatformAction(ClientConnector sf, string apiVersion) (message) throws exception {
+    action sObjectPlatformAction(ClientConnector sf, string apiVersion) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -161,7 +161,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "sobjectName: The relevant sobject name"}
     @doc:Return{ value : "response message"}
-    action sObjectRows(ClientConnector sf, string apiVersion, string sobjectName, string rowId) (message) throws exception {
+    action sObjectRows(ClientConnector sf, string apiVersion, string sobjectName, string rowId) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -180,7 +180,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "fieldValue: The external field value"}
     @doc:Return{ value : "response message"}
     action sObjectRowsByExternalId(ClientConnector sf, string apiVersion, string sobjectName, string fieldId, string fieldValue) (message)
-     throws exception {
+     {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -195,7 +195,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "listViewId: The id of the listview to get the feedback from"}
     @doc:Return{ value : "response message"}
-    action listviewQueryPerformanceFeedback(ClientConnector sf, string apiVersion, string listViewId) (message) throws exception {
+    action listviewQueryPerformanceFeedback(ClientConnector sf, string apiVersion, string listViewId) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -210,7 +210,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "queryString: The request SOQL query"}
     @doc:Return{ value : "response message"}
-    action query(ClientConnector sf, string apiVersion, string queryString) (message) throws exception {
+    action query(ClientConnector sf, string apiVersion, string queryString) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -226,7 +226,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "queryString: The request SOQL query"}
     @doc:Return{ value : "response message"}
-    action queryAll(ClientConnector sf, string apiVersion, string queryString) (message) throws exception {
+    action queryAll(ClientConnector sf, string apiVersion, string queryString) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -240,7 +240,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "nextRecordsUrl: The url sent with first batch of queryAll results to get the next batch"}
     @doc:Return{ value : "response message"}
-    action queryAllMore(ClientConnector sf, string apiVersion, string nextRecordsUrl) (message) throws exception {
+    action queryAllMore(ClientConnector sf, string apiVersion, string nextRecordsUrl) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -255,7 +255,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "nextRecordsUrl: The url sent with first batch of query results to get the next batch"}
     @doc:Return{ value : "response message"}
-    action queryMore(ClientConnector sf, string apiVersion, string nextRecordsUrl) (message) throws exception {
+    action queryMore(ClientConnector sf, string apiVersion, string nextRecordsUrl) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -270,7 +270,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "queryString: The request SOQL query"}
     @doc:Return{ value : "response message"}
-    action queryPerformanceFeedback(ClientConnector sf, string apiVersion, string queryString) (message) throws exception {
+    action queryPerformanceFeedback(ClientConnector sf, string apiVersion, string queryString) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -286,7 +286,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "sobjectName: The relevant sobject name"}
     @doc:Param{ value : "payload: json payload containing record data"}
     @doc:Return{ value : "response message"}
-    action createRecord(ClientConnector sf, string apiVersion, string sobjectName, json payload) (message) throws exception {
+    action createRecord(ClientConnector sf, string apiVersion, string sobjectName, json payload) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -303,7 +303,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "sobjectName: The relevant sobject name"}
     @doc:Param{ value : "payload: json payload containing record data"}
     @doc:Return{ value : "response message"}
-    action createMultipleRecords(ClientConnector sf, string apiVersion, string sobjectName, json payload) (message) throws exception {
+    action createMultipleRecords(ClientConnector sf, string apiVersion, string sobjectName, json payload) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -319,7 +319,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "apiVersion: The api version to send request to"}
     @doc:Param{ value : "sobjectName: The relevant sobject name"}
     @doc:Return{ value : "response message"}
-    action delete(ClientConnector sf, string apiVersion, string sobjectName, string deleteId) (message) throws exception {
+    action delete(ClientConnector sf, string apiVersion, string sobjectName, string deleteId) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -337,7 +337,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "fields: The comma separated set of required fields"}
     @doc:Return{ value : "response message"}
     action retrieveFieldValues(ClientConnector sf, string apiVersion, string sobjectName, string rowId, string fields) (message)
-     throws exception {
+     {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -355,7 +355,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "fields: The comma separated set of required fields"}
     @doc:Return{ value : "response message"}
     action retrieveFieldValuesFromExternalObject(ClientConnector sf, string apiVersion, string sobjectName, string rowId, string fields)
-     (message) throws exception {
+     (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -373,7 +373,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "fields: The comma separated set of required fields"}
     @doc:Return{ value : "response message"}
     action retrieveStandardFieldValuesFromExternalObjectWithExternalId(ClientConnector sf, string apiVersion, string sobjectName,
-     string externalId, string fields) (message) throws exception {
+     string externalId, string fields) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -389,7 +389,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "sobjectName: The relevant sobject name"}
     @doc:Param{ value : "payload: json payload containing record data"}
     @doc:Return{ value : "response message"}
-    action update(ClientConnector sf, string apiVersion, string sobjectName, string recordId, json payload) (message) throws exception {
+    action update(ClientConnector sf, string apiVersion, string sobjectName, string recordId, json payload) (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
@@ -409,7 +409,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
     @doc:Param{ value : "payload: json payload containing record data"}
     @doc:Return{ value : "response message"}
     action upsert(ClientConnector sf, string apiVersion, string sobject, string externalField, string fieldValueId, json payload)
-     (message) throws exception {
+     (message) {
         string httpMethod;
         string requestURI;
         message requestMsg = {};
