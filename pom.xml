@@ -148,6 +148,10 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
+                                    <directory>jira/src</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
                                     <directory>linkedin/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
@@ -218,6 +222,10 @@
                                 </resource>
                                 <resource>
                                     <directory>googlespreadsheet/samples</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>jira/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
