@@ -136,7 +136,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string requestURI;
         message requestMsg = {};
         message response = {};
-        requestURI = "/services/data/" + apiVersion + "/sobjects/" + sobjectName + "/deleted/?start=" + uri:encode(startTime)
+        requestURI = "/services/data/" + apiVersion + "/sobjects/" + sobjectName + "/updated/?start=" + uri:encode(startTime)
         + "&end=" + uri:encode(endTime);
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
