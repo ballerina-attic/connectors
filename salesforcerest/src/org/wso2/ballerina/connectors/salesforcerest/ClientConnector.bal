@@ -41,7 +41,7 @@ connector ClientConnector(string accessToken, string clientId, string clientSecr
         string requestURI;
         message requestMsg = {};
         message response = {};
-        requestURI = "/services/data/" + apiVersion + "/sobjects/" + sobjectName;
+        requestURI = "/services/data/" + apiVersion + "/sobjects/" + sobjectName + "/describe/";
         response = oauth2:ClientConnector.get(oauth2Connector, requestURI, requestMsg);
         return response;
     }
