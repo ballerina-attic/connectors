@@ -23,8 +23,8 @@ function testTweet () {
     message response = twitter:ClientConnector.tweet (twitterConnector, "#ballerina");
     json jsonResponse = messages:getJsonPayload(response);
     int status = http:getStatusCode(response);
-    string value = jsons:getString(jsonResponse, "text");
-    tweetId = jsons:getString(jsonResponse, "id_str");
+    string value = (string)jsonResponse.text;
+    tweetId = (string)jsonResponse.id_str;
     system:println("TweetID------- - " + tweetId);
     test:assertEquals(status, 200);
     test:assertEquals(value, "#ballerina");
@@ -56,7 +56,7 @@ function testUnretweet () {
     message response = twitter:ClientConnector.unretweet (twitterConnector, "XXXXXX");
     json jsonResponse = messages:getJsonPayload(response);
     int status = http:getStatusCode(response);
-    string value = jsons:getString(jsonResponse, "text");
+    string value = (string)jsonResponse.text;
     test:assertEquals(status, 200);
     test:assertEquals(value, "#ballerina");
     system:println("===testUnRetweet completed===");
@@ -68,7 +68,7 @@ function testShowStatus () {
     message response = twitter:ClientConnector.showStatus (twitterConnector, "XXXXX");
     json jsonResponse = messages:getJsonPayload(response);
     int status = http:getStatusCode(response);
-    string value = jsons:getString(jsonResponse, "text");
+    string value = (string)jsonResponse.text;
     test:assertEquals(status, 200);
     test:assertEquals(value, "#ballerina");
     system:println("===testShowStatus completed===");
@@ -80,7 +80,7 @@ function testDestroyStatus () {
     message response = twitter:ClientConnector.destroyStatus (twitterConnector, "XXXXX");
     json jsonResponse = messages:getJsonPayload(response);
     int status = http:getStatusCode(response);
-    string value = jsons:getString(jsonResponse, "text");
+    string value = (string)jsonResponse.text;
     test:assertEquals(status, 200);
     test:assertEquals(value, "#ballerina");
     system:println("===testDestroyStatus completed===");
