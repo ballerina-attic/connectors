@@ -15,7 +15,7 @@ The test functions contain hard-coded values for the Bucket Name, File Name, Con
 
  1. Clone the Connector repo and download the latest Ballerina-Tools distribution
  2. Enter your Amazon S3 account details (access key, secret access key and region) on set_env_vars.sh.
- 3. Run the set_env_vars.sh and source the file in the terminal.
+ 3. Source the set_env_vars.sh file in a terminal.
  4. Navigate to $BALLERINA_TOOLS_HOME/bin
  5. Run tests in the same terminal as:
  ./ballerina test ${path_to_test_file_in_connector_repo}/amazonS3_test.bal
