@@ -1,6 +1,5 @@
 import org.wso2.ballerina.connectors.gmail;
 
-import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.lang.system;
 import ballerina.lang.strings;
@@ -278,7 +277,6 @@ function testReadMail () {
     gmail:ClientConnector connectorInstance = init();
     gmailResponse = gmail:ClientConnector.readMail (connectorInstance, messageId, format, metaDataHeaders);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
-    system:println(jsons:toString(gmailJSONResponse));
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
 }
@@ -288,7 +286,6 @@ function testDeleteMail () {
     gmail:ClientConnector connectorInstance = init();
     gmailResponse = gmail:ClientConnector.deleteMail (connectorInstance, messageId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
-    system:println(jsons:toString(gmailJSONResponse));
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
 }
@@ -298,7 +295,6 @@ function testTrashMail () {
     gmail:ClientConnector connectorInstance = init();
     gmailResponse = gmail:ClientConnector.trashMail (connectorInstance, messageId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
-    system:println(jsons:toString(gmailJSONResponse));
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
 }
@@ -308,7 +304,6 @@ function testUnTrashMail () {
     gmail:ClientConnector connectorInstance = init();
     gmailResponse = gmail:ClientConnector.unTrashMail (connectorInstance, messageId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
-    system:println(jsons:toString(gmailJSONResponse));
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
 }
