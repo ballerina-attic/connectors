@@ -1,0 +1,119 @@
+import ballerina.lang.system;
+import org.wso2.ballerina.connectors.linkedin;
+import ballerina.lang.messages;
+import ballerina.test;
+import ballerina.net.http;
+import ballerina.lang.xmls;
+
+string companyId = "2414183";
+message linkedInResponse;
+xml linkedInXMLResponse;
+json linkedInJSONResponse;
+xml shortXmlPayload;
+json shortJsonPayload;
+xml fullXmlPayload;
+json fullJsonPayload;
+
+function init () (linkedin:ClientConnector){
+
+    string accessToken = system:getEnv("LINKEDIN_ACCESS_TOKEN");
+    linkedin:ClientConnector linkedInConnector = create linkedin:ClientConnector(accessToken);
+    return linkedInConnector;
+
+}
+
+function testGetProfileInfoXML () {
+
+    linkedin:ClientConnector linkedInConnector = init();
+    linkedInResponse = linkedin:ClientConnector.getProfileInfo (linkedInConnector, "xml");
+    linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
+    system:println(xmls:toString(linkedInXMLResponse));
+    int status = http:getStatusCode(linkedInResponse);
+    test:assertEquals(status, 200);
+    system:println("===testGetProfileInfoXML completed===\n");
+
+}
+
+function testGetProfileInfoJSON () {
+
+    linkedin:ClientConnector linkedInConnector = init();
+    linkedInResponse = linkedin:ClientConnector.getProfileInfo (linkedInConnector, "json");
+    linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
+    system:println(linkedInJSONResponse);
+    int status = http:getStatusCode(linkedInResponse);
+    test:assertEquals(status, 200);
+    system:println("===testGetProfileInfoJSON completed===\n");
+
+}
+
+function testGetCompanyInfoXML () {
+
+    linkedin:ClientConnector linkedInConnector = init();
+    linkedInResponse = linkedin:ClientConnector.getCompanyInfo (linkedInConnector, companyId, "xml");
+    linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
+    system:println(xmls:toString(linkedInXMLResponse));
+    int status = http:getStatusCode(linkedInResponse);
+    test:assertEquals(status, 200);
+    system:println("===testGetCompanyInfoXML completed===\n");
+
+}
+
+function testGetCompanyInfoJSON () {
+
+    linkedin:ClientConnector linkedInConnector = init();
+    linkedInResponse = linkedin:ClientConnector.getCompanyInfo (linkedInConnector, companyId, "json");
+    linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
+    system:println(linkedInJSONResponse);
+    int status = http:getStatusCode(linkedInResponse);
+    test:assertEquals(status, 200);
+    system:println("===testGetCompanyInfoJSON completed===\n");
+
+}
+
+function testIsCompanyShareEnabledXML () {
+
+    linkedin:ClientConnector linkedInConnector = init();
+    linkedInResponse = linkedin:ClientConnector.isCompanyShareEnabled (linkedInConnector, companyId, "xml");
+    linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
+    system:println(xmls:toString(linkedInXMLResponse));
+    int status = http:getStatusCode(linkedInResponse);
+    test:assertEquals(status, 200);
+    system:println("===testIsCompanyShareEnabledXML completed===\n");
+
+}
+
+function testIsCompanyShareEnabledJSON () {
+
+    linkedin:ClientConnector linkedInConnector = init();
+    linkedInResponse = linkedin:ClientConnector.isCompanyShareEnabled (linkedInConnector, companyId, "json");
+    linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
+    system:println(linkedInJSONResponse);
+    int status = http:getStatusCode(linkedInResponse);
+    test:assertEquals(status, 200);
+    system:println("===testIsCompanyShareEnabledJSON completed===\n");
+
+}
+
+function testIsMemberAdminXML () {
+
+    linkedin:ClientConnector linkedInConnector = init();
+    linkedInResponse = linkedin:ClientConnector.isMemberAdmin (linkedInConnector, companyId, "xml");
+    linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
+    system:println(xmls:toString(linkedInXMLResponse));
+    int status = http:getStatusCode(linkedInResponse);
+    test:assertEquals(status, 200);
+    system:println("===testIsMemberAdminXML completed===\n");
+
+}
+
+function testIsMemberAdminJSON () {
+
+    linkedin:ClientConnector linkedInConnector = init();
+    linkedInResponse = linkedin:ClientConnector.isMemberAdmin (linkedInConnector, companyId, "json");
+    linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
+    system:println(linkedInJSONResponse);
+    int status = http:getStatusCode(linkedInResponse);
+    test:assertEquals(status, 200);
+    system:println("===testIsMemberAdminJSON completed===\n");
+
+}
