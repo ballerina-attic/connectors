@@ -19,7 +19,7 @@ These tests can be improved to use the same Object ID generated in the testCreat
  2. Create a facebook app and a sample Facebook page 
  3. Get the AccessToken for the created Facebook page from https://developers.facebook.com/tools/explorer. Make sure to set the required permissions.
  2. Set the access token in the set_env_vars.sh.
- 3. Run the set_env_vars.sh and source the file in a terminal.
+ 3. Source the set_env_vars.sh in a terminal.
  4. Navigate to $BALLERINA_TOOLS_HOME/bin
  5. Run tests in the same terminal as:
  ./ballerina test ${path_to_test_file_in_connector_repo}/facebook_test.bal
