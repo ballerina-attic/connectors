@@ -1,8 +1,6 @@
 import org.wso2.ballerina.connectors.jira;
 
-import ballerina.lang.jsons;
 import ballerina.lang.system;
-import ballerina.lang.messages;
 import ballerina.net.http;
 import ballerina.test;
 
@@ -25,8 +23,6 @@ function testGetIssueInfo () {
 
     jira:ClientConnector jiraConnector = init();
     jiraResponse = jira:ClientConnector.getIssueInfo (jiraConnector, issueId, "", "summary");
-    jiraJSONResponse = messages:getJsonPayload(jiraResponse);
-    system:println((string)(jiraJSONResponse));
     int status = http:getStatusCode(jiraResponse);
     test:assertEquals(status, 200);
     system:println("===testGetIssueInfo completed===\n");
@@ -48,8 +44,6 @@ function testSearchJira () {
                    };
     jira:ClientConnector jiraConnector = init();
     jiraResponse = jira:ClientConnector.searchJira (jiraConnector, payload);
-    jiraJSONResponse = messages:getJsonPayload(jiraResponse);
-    system:println(jsons:toString(jiraJSONResponse));
     int status = http:getStatusCode(jiraResponse);
     test:assertEquals(status, 200);
     system:println("===testSearchJira completed===\n");
@@ -67,8 +61,6 @@ function testPostComment () {
                    };
     jira:ClientConnector jiraConnector = init();
     jiraResponse = jira:ClientConnector.postComment (jiraConnector, issueId, "", payload);
-    jiraJSONResponse = messages:getJsonPayload(jiraResponse);
-    system:println(jsons:toString(jiraJSONResponse));
     int status = http:getStatusCode(jiraResponse);
     test:assertEquals(status, 201);
     system:println("===testPostComment completed===\n");
@@ -178,8 +170,6 @@ function testCreateBulkIssue () {
                    };
     jira:ClientConnector jiraConnector = init();
     jiraResponse = jira:ClientConnector.createBulkIssue (jiraConnector, payload);
-    jiraJSONResponse = messages:getJsonPayload(jiraResponse);
-    system:println(jsons:toString(jiraJSONResponse));
     int status = http:getStatusCode(jiraResponse);
     test:assertEquals(status, 201);
     system:println("===testCreateBulkIssue completed===\n");
