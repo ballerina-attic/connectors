@@ -18,11 +18,11 @@ These tests can be improved to use the same Object ID generated in the testCreat
  1. Clone the Connector repo and download the latest Ballerina-Tools distribution
  2. Create a facebook app and a sample Facebook page 
  3. Get the AccessToken for the created Facebook page from https://developers.facebook.com/tools/explorer. Make sure to set the required permissions.
- 2. Set the access token in the set_env_vars.sh.
- 3. Source the set_env_vars.sh in a terminal.
- 4. Navigate to $BALLERINA_TOOLS_HOME/bin
- 5. Run tests in the same terminal as:
+ 4. Set the access token in the set_env_vars.sh.
+ 5. Source the set_env_vars.sh in a terminal.
+ 6. Navigate to $BALLERINA_TOOLS_HOME/bin
+ 7. Run tests in the same terminal as:
  ./ballerina test ${path_to_test_file_in_connector_repo}/facebook_test.bal
- 6. Get the Object ID which will be printed on the console
- 7. Replace the "postID" value with the Object ID obtained in the test file and run the test again
+ 8. Get the Object ID which will be printed on the console
+ 9. Replace the "postID" value with the Object ID obtained in the test file and run the test again
 
