@@ -99,7 +99,7 @@ function testCreateBulkIssue () {
                                            "project":{
                                                      "id":"10000"
                                                      },
-                                           "summary":"This is a test issue created by a Ballerina program - Something's wrong",
+                                           "summary":"This is a test issue created by a Ballerina program",
                                            "issuetype":{
                                                        "id":"1"
                                                        },
@@ -140,7 +140,7 @@ function testCreateBulkIssue () {
                                            "project":{
                                                      "id":"10000"
                                                      },
-                                           "summary":"This is the test issue 2 created by a Ballerina program - Something's wrong",
+                                           "summary":"This is the test issue 2 created by a Ballerina program",
                                            "issuetype":{
                                                        "id":"1"
                                                        },
