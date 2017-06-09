@@ -4,7 +4,6 @@ import ballerina.doc;
 import ballerina.lang.messages;
 import ballerina.net.http;
 import ballerina.lang.xmls;
-import ballerina.lang.arrays;
 
 @doc:Description{ value : "The SOAP client connector"}
 @doc:Param{ value : "url: The url"}
@@ -42,32 +41,32 @@ connector ClientConnector (string url) {
         message response = http:ClientConnector.post(httpConnector, url, backendServiceReq);
         xml resp = messages:getXmlPayload(response);
         map m = {"soapenv" : namespaceMap[soapVersion]};
-        xml soapBody = xmls:getXml(resp, "/soapenv:Envelope/soapenv:Body/*", m);
+        xml soapBody = xmls:getXmlWithNamespace(resp, "/soapenv:Envelope/soapenv:Body/*", m);
         return soapBody;
     }
 }
 
 function constructSoapRequest (xml payload, string namespace, xml[] headers) (xml) {
 
-    int headerCount = arrays:length(headers);
+    int headerCount = headers.length;
     map n = {"soapenv" : namespace};
-    xml soapRequest = `<soapenv:Envelope xmlns:soapenv="${namespace}">
-    	               </soapenv:Envelope>`;
+    xml soapRequest = xmls:parse("<soapenv:Envelope xmlns:soapenv=\"${namespace}\">
+    	               </soapenv:Envelope>");
     if (headerCount != 0) {
-        xml value = `<soapenv:Header xmlns:soapenv="${namespace}">
-                     </soapenv:Header>`;
-        xmls:addElement(soapRequest, "/soapenv:Envelope", value, n);
+        xml value = xmls:parse("<soapenv:Header xmlns:soapenv=\"${namespace}\">
+                     </soapenv:Header>");
+        xmls:addElementWithNamespace(soapRequest, "/soapenv:Envelope", value, n);
         int i = 0;
         while (i < headerCount){
             value = headers[i];
-            xmls:addElement(soapRequest, "/soapenv:Envelope/soapenv:Header", value, n);
+            xmls:addElementWithNamespace(soapRequest, "/soapenv:Envelope/soapenv:Header", value, n);
             i = i+1;
         }
     }
-    xml body = `<soapenv:Body xmlns:soapenv="${namespace}">
+    xml body = xmls:parse("<soapenv:Body xmlns:soapenv=\"${namespace}\">
                     ${payload}
-                </soapenv:Body>`;
-    xmls:addElement(soapRequest, "/soapenv:Envelope", body, n);
+                </soapenv:Body>");
+    xmls:addElementWithNamespace(soapRequest, "/soapenv:Envelope", body, n);
 
     return soapRequest;
 }
