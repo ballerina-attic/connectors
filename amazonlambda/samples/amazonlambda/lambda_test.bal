@@ -28,7 +28,7 @@ function testInvokeFunction () {
 function testInvokeFunctionWithParam () {
     amazonlambda:ClientConnector lambdaConnector = init();
     json payload = {"name":"Ballerina"};
-    lambdaResponse = amazonlambda:ClientConnector.invokeFunction (lambdaConnector, "BallerinaTestFunction", payload);
+    lambdaResponse = amazonlambda:ClientConnector.invokeFunctionWithParam (lambdaConnector, "BallerinaTestFunction", payload);
     int status = http:getStatusCode(lambdaResponse);
     test:assertEquals(status, 200);
     system:println("===testInvokeFunctionWithParam completed===\n");

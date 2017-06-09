@@ -17,7 +17,7 @@ function main (string[] args) {
     }
     if (args[0] == "invokeFunctionWithParam"){
         json payload = {"name":"Ballerina"};
-        lambdaResponse = amazonlambda:ClientConnector.invokeFunction(amzLamConnector, args[4], payload);
+        lambdaResponse = amazonlambda:ClientConnector.invokeFunctionWithParam(amzLamConnector, args[4], payload);
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
         system:println(jsons:toString(lambdaJSONResponse));
     }
