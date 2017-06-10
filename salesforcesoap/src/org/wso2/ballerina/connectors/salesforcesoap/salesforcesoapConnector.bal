@@ -30,7 +30,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
@@ -43,7 +43,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -65,12 +65,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:describeSObject xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:sObjectType>${type}</urn:sObjectType>
+                           <urn:sObjectType>" + type + "</urn:sObjectType>
                        </urn:describeSObject>");
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -78,7 +78,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -101,12 +101,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:describeSObjects xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:sObjectType>${type}</urn:sObjectType>
+                           <urn:sObjectType>" + type + "</urn:sObjectType>
                        </urn:describeSObjects>");
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -114,7 +114,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -137,7 +137,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
@@ -154,7 +154,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -177,7 +177,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
@@ -194,7 +194,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -218,12 +218,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:upsert xmlns:urn=\"urn:partner.soap.sforce.com\" xmlns:urn1=\"urn:sobject.partner.soap.sforce.com\">
-                            <urn:externalIDFieldName>${externalId}</urn:externalIDFieldName>
+                            <urn:externalIDFieldName>" + externalId + "</urn:externalIDFieldName>
                             <urn:sObjects>
                             </urn:sObjects>
                        </urn:upsert>");
@@ -236,7 +236,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -259,12 +259,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:query xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:queryString>${query}</urn:queryString>
+                           <urn:queryString>" + query + "</urn:queryString>
                        </urn:query>");
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -272,7 +272,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -295,12 +295,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:queryAll xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:queryString>${query}</urn:queryString>
+                           <urn:queryString>" + query + "</urn:queryString>
                        </urn:queryAll>");
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -308,7 +308,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -331,12 +331,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:queryMore xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:queryLocator>${queryLocator}</urn:queryLocator>
+                           <urn:queryLocator>" + queryLocator + "</urn:queryLocator>
                        </urn:queryMore>");
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -344,7 +344,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -366,12 +366,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:delete xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:ids>${recordId}</urn:ids>
+                           <urn:ids>" + recordId + "</urn:ids>
                        </urn:delete>");
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -379,7 +379,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -405,14 +405,14 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:retrieve xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:fieldList>${fieldList}</urn:fieldList>
-                           <urn:sObjectType>${type}</urn:sObjectType>
-                           <urn:ids>${recordId}</urn:ids>
+                           <urn:fieldList>" + fieldList + "</urn:fieldList>
+                           <urn:sObjectType>" + type + "</urn:sObjectType>
+                           <urn:ids>" + recordId + "</urn:ids>
                        </urn:retrieve>");
 
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
@@ -421,7 +421,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -444,12 +444,12 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:search xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:searchString>${query}</urn:searchString>
+                           <urn:searchString>" + query + "</urn:searchString>
                        </urn:search>");
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -457,7 +457,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
             map n = {"ns":"urn:partner.soap.sforce.com"};
             sessionId = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:sessionId/text()", n);
-            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>${sessionId}</urn:sessionId></urn:SessionHeader>");
+            session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
             soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
@@ -473,8 +473,8 @@ function login (string username, string password, string loginUrl, string soapVe
     xml[] headers = [];
     soap:ClientConnector soapConnector = create soap:ClientConnector("");
     xml payload = xmls:parse("<urn:login xmlns:urn=\"urn:partner.soap.sforce.com\">
-        	               <urn:username>${username}</urn:username>
-        	               <urn:password>${password}</urn:password>
+        	               <urn:username>" + username + "</urn:username>
+        	               <urn:password>" + password + "</urn:password>
         	           </urn:login>");
     xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", loginUrl, soapVersion);
     return soapResponse;
@@ -500,7 +500,7 @@ function addFields (xml payload, map fields, string xpath) {
         while (i < fieldKeyCount){
             key = fieldKeys[i];
             stringValue = (string) fields[key];
-            xmlValue = xmls:parse("<urn1:${key} xmlns:urn=\"urn:partner.soap.sforce.com\" xmlns:urn1=\"urn:sobject.partner.soap.sforce.com\">${stringValue}</urn1:${key}>");
+            xmlValue = xmls:parse("<urn1:" + key + " xmlns:urn=\"urn:partner.soap.sforce.com\" xmlns:urn1=\"urn:sobject.partner.soap.sforce.com\">" + stringValue + "</urn1:" + key + ">");
             xmls:addElementWithNamespace(payload, xpath, xmlValue, n);
             i = i+1;
         }
