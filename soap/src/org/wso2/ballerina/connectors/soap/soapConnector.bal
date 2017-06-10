@@ -50,11 +50,9 @@ function constructSoapRequest (xml payload, string namespace, xml[] headers) (xm
 
     int headerCount = headers.length;
     map n = {"soapenv" : namespace};
-    xml soapRequest = xmls:parse("<soapenv:Envelope xmlns:soapenv=\"${namespace}\">
-    	               </soapenv:Envelope>");
+    xml soapRequest = xmls:parse("<soapenv:Envelope xmlns:soapenv=\"" + namespace + "\"></soapenv:Envelope>");
     if (headerCount != 0) {
-        xml value = xmls:parse("<soapenv:Header xmlns:soapenv=\"${namespace}\">
-                     </soapenv:Header>");
+        xml value = xmls:parse("<soapenv:Header xmlns:soapenv=\"" + namespace + "\"></soapenv:Header>");
         xmls:addElementWithNamespace(soapRequest, "/soapenv:Envelope", value, n);
         int i = 0;
         while (i < headerCount){
@@ -63,9 +61,8 @@ function constructSoapRequest (xml payload, string namespace, xml[] headers) (xm
             i = i+1;
         }
     }
-    xml body = xmls:parse("<soapenv:Body xmlns:soapenv=\"${namespace}\">
-                    ${payload}
-                </soapenv:Body>");
+    xml body = xmls:parse("<soapenv:Body xmlns:soapenv=\"" + namespace + "\"></soapenv:Body>");
+    xmls:addElementWithNamespace(body, "/soapenv:Body", payload, n);
     xmls:addElementWithNamespace(soapRequest, "/soapenv:Envelope", body, n);
 
     return soapRequest;
