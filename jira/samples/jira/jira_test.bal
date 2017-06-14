@@ -6,7 +6,7 @@ import ballerina.test;
 
 message jiraResponse;
 json jiraJSONResponse;
-string issueId = "MB-1563";
+string issueId = "ABC-1234";
 
 function init () (jira:ClientConnector){
 
