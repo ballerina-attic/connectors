@@ -6,7 +6,7 @@ import ballerina.test;
 
 message response;
 json facebookJSONResponse;
-string postID = "XXXX";
+string postID;
 
 function init () (facebook:ClientConnector){
     string accessToken = system:getEnv("FB_ACCESS_TOKEN");
@@ -18,6 +18,7 @@ function testCreatePost () {
     facebook:ClientConnector facebookConnector = init();
     response = facebook:ClientConnector.createPost (facebookConnector, "me", "Test Message", "", "");
     facebookJSONResponse = messages:getJsonPayload(response);
+    postID = (string)facebookJSONResponse["id"];
     system:println(facebookJSONResponse);
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "CreatePost Failed");
