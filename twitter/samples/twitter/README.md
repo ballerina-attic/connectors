@@ -9,10 +9,8 @@ This repository consists of the samples that can be referred in using the Baller
   - set_env_vars.sh - Environment variable setter
  
 ### Important
-The test functions contain hard-coded values for the Twitter message and search query which can be changed according to your requirement before running the test file. Also, the "XXXXX" values should be replaced with the twitter ID once a tweet is posted.
+The test functions contain hard-coded values for the Twitter message and search query which can be changed according to your requirement before running the test file.
 
-These tests can be improved to use the same Twitter ID generated in the testTweet when the global variables are supported for Testarina, so that all the tests can be run from one attempt.
-  
 # Steps to run the test file
 
  1. Clone the Connector repo and download the latest Ballerina-Tools distribution
