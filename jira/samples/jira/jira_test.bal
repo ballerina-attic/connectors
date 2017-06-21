@@ -24,7 +24,7 @@ function testGetIssueInfo () {
     jira:ClientConnector jiraConnector = init();
     jiraResponse = jira:ClientConnector.getIssueInfo (jiraConnector, issueId, "", "summary");
     int status = http:getStatusCode(jiraResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "GetIssueInfo Failed");
     system:println("===testGetIssueInfo completed===\n");
 
 }
@@ -45,7 +45,7 @@ function testSearchJira () {
     jira:ClientConnector jiraConnector = init();
     jiraResponse = jira:ClientConnector.searchJira (jiraConnector, payload);
     int status = http:getStatusCode(jiraResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "SearchJira Failed");
     system:println("===testSearchJira completed===\n");
 
 }
@@ -62,7 +62,7 @@ function testPostComment () {
     jira:ClientConnector jiraConnector = init();
     jiraResponse = jira:ClientConnector.postComment (jiraConnector, issueId, "", payload);
     int status = http:getStatusCode(jiraResponse);
-    test:assertEquals(status, 201);
+    test:assertIntEquals(status, 201, "PostComment Failed");
     system:println("===testPostComment completed===\n");
 
 }
@@ -75,7 +75,7 @@ function testAssignIssueToUser () {
     jira:ClientConnector jiraConnector = init();
     jiraResponse = jira:ClientConnector.assignIssueToUser (jiraConnector, issueId, payload);
     int status = http:getStatusCode(jiraResponse);
-    test:assertEquals(status, 204);
+    test:assertIntEquals(status, 204, "AssignIssueToUser Failed");
     system:println("===testAssignIssueToUser completed===\n");
 
 }
@@ -171,7 +171,7 @@ function testCreateBulkIssue () {
     jira:ClientConnector jiraConnector = init();
     jiraResponse = jira:ClientConnector.createBulkIssue (jiraConnector, payload);
     int status = http:getStatusCode(jiraResponse);
-    test:assertEquals(status, 201);
+    test:assertIntEquals(status, 201, "CreateBulkIssue Failed");
     system:println("===testCreateBulkIssue completed===\n");
 
 }
