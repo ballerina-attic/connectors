@@ -90,42 +90,42 @@ function runPOSTSamples(linkedin:ClientConnector linkedInConnector, string compa
 
     system:println("Share Short Profile Post in XML format");
 
-    linkedInResponse = linkedin:ClientConnector.profileShare(linkedInConnector, shortXmlPayload);
+    linkedInResponse = linkedin:ClientConnector.profileShareXml(linkedInConnector, shortXmlPayload);
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Short Profile Post in JSON format");
-    linkedInResponse = linkedin:ClientConnector.profileShare(linkedInConnector, shortJsonPayload);
+    linkedInResponse = linkedin:ClientConnector.profileShareJson(linkedInConnector, shortJsonPayload);
     printJsonResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Full Profile Post in XML format");
-    linkedInResponse = linkedin:ClientConnector.profileShare(linkedInConnector, fullXmlPayload);
+    linkedInResponse = linkedin:ClientConnector.profileShareXml(linkedInConnector, fullXmlPayload);
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Full Profile Post in JSON format");
-    linkedInResponse = linkedin:ClientConnector.profileShare(linkedInConnector, fullJsonPayload);
+    linkedInResponse = linkedin:ClientConnector.profileShareJson(linkedInConnector, fullJsonPayload);
     printJsonResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Short Company Post in XML format");
-    linkedInResponse = linkedin:ClientConnector.companyShare(linkedInConnector, companyId, shortXmlPayload);
+    linkedInResponse = linkedin:ClientConnector.companyShareXml(linkedInConnector, companyId, shortXmlPayload);
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Short Company Post in JSON format");
-    linkedInResponse = linkedin:ClientConnector.companyShare(linkedInConnector, companyId, shortJsonPayload);
+    linkedInResponse = linkedin:ClientConnector.companyShareJson(linkedInConnector, companyId, shortJsonPayload);
     printJsonResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Full Company Post in XML format");
-    linkedInResponse = linkedin:ClientConnector.companyShare(linkedInConnector, companyId, fullXmlPayload);
+    linkedInResponse = linkedin:ClientConnector.companyShareXml(linkedInConnector, companyId, fullXmlPayload);
     printXmlResponse(linkedInResponse);
     system:println(" ");
 
     system:println("Share Full Company Post in JSON format");
-    linkedInResponse = linkedin:ClientConnector.companyShare(linkedInConnector, companyId, fullJsonPayload);
+    linkedInResponse = linkedin:ClientConnector.companyShareJson(linkedInConnector, companyId, fullJsonPayload);
     printJsonResponse(linkedInResponse);
     system:println(" ");
 }
@@ -220,22 +220,22 @@ function main (string[] args) {
 
     	system:println(" ");
         system:println("Share Short Profile Post in XML format");
-        linkedInResponse = linkedin:ClientConnector.profileShare(linkedInConnector, shortXmlPayload);
+        linkedInResponse = linkedin:ClientConnector.profileShareXml(linkedInConnector, shortXmlPayload);
         printXmlResponse(linkedInResponse);
         system:println(" ");
 
         system:println("Share Short Profile Post in JSON format");
-        linkedInResponse = linkedin:ClientConnector.profileShare(linkedInConnector, shortJsonPayload);
+        linkedInResponse = linkedin:ClientConnector.profileShareJson(linkedInConnector, shortJsonPayload);
         printJsonResponse(linkedInResponse);
         system:println(" ");
 
         system:println("Share Full Profile Post in XML format");
-        linkedInResponse = linkedin:ClientConnector.profileShare(linkedInConnector, fullXmlPayload);
+        linkedInResponse = linkedin:ClientConnector.profileShareXml(linkedInConnector, fullXmlPayload);
         printXmlResponse(linkedInResponse);
         system:println(" ");
 
         system:println("Share Full Profile Post in JSON format");
-        linkedInResponse = linkedin:ClientConnector.profileShare(linkedInConnector, fullJsonPayload);
+        linkedInResponse = linkedin:ClientConnector.profileShareJson(linkedInConnector, fullJsonPayload);
         printJsonResponse(linkedInResponse);
         system:println(" ");
 
@@ -245,22 +245,22 @@ function main (string[] args) {
 
         system:println(" ");
         system:println("Share Short Company Post in XML format");
-        linkedInResponse = linkedin:ClientConnector.companyShare(linkedInConnector, companyId, shortXmlPayload);
+        linkedInResponse = linkedin:ClientConnector.companyShareXml(linkedInConnector, companyId, shortXmlPayload);
         printXmlResponse(linkedInResponse);
         system:println(" ");
 
         system:println("Share Short Company Post in JSON format");
-        linkedInResponse = linkedin:ClientConnector.companyShare(linkedInConnector, companyId, shortJsonPayload);
+        linkedInResponse = linkedin:ClientConnector.companyShareJson(linkedInConnector, companyId, shortJsonPayload);
         printJsonResponse(linkedInResponse);
         system:println(" ");
 
         system:println("Share Full Company Post in XML format");
-        linkedInResponse = linkedin:ClientConnector.companyShare(linkedInConnector, companyId, fullXmlPayload);
+        linkedInResponse = linkedin:ClientConnector.companyShareXml(linkedInConnector, companyId, fullXmlPayload);
         printXmlResponse(linkedInResponse);
         system:println(" ");
 
         system:println("Share Full Company Post in JSON format");
-        linkedInResponse = linkedin:ClientConnector.companyShare(linkedInConnector, companyId, fullJsonPayload);
+        linkedInResponse = linkedin:ClientConnector.companyShareJson(linkedInConnector, companyId, fullJsonPayload);
         printJsonResponse(linkedInResponse);
         system:println(" ");
 

@@ -1,0 +1,6 @@
+export USER_ID="xxxxxxxxxxxxxx"
+export ACCESS_TOKEN="xxxxxxxxxxxxx"
+export REFRESH_TOKEN="xxxxxxxxxxxxxx"
+export CLIENT_ID="xxxxxxxxxxxxx"
+export CLIENT_SECRET="xxxxxxxxxxxxxxx"
+export RECIPIENT_ADDRESS="xxxxxxxxxxx"

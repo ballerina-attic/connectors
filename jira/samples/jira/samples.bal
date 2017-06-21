@@ -11,7 +11,7 @@ function main(string[] args){
 
     message jiraResponse;
     json jiraJSONResponse;
-    int argumentLength = arrays:length(args);
+    int argumentLength = args.length;
 
     if( args[0] == "getIssueInfo") {
         jiraResponse = jira:ClientConnector.getIssueInfo(jiraConnector, args[4], args[5], args[6]);

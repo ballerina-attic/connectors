@@ -38,7 +38,7 @@ connector ClientConnector(string accessKeyId, string secretAccessKey,string regi
     @doc:Param{ value : "arn: The amazon resource name of the function to invoke"}
     @doc:Param{ value : "payload: The json payload containing key values of parameters to amazon lambda function"}
     @doc:Return{ value : "response message"}
-    action invokeFunction(ClientConnector amz, string arn, json payload) (message) {
+    action invokeFunctionWithParam(ClientConnector amz, string arn, json payload) (message) {
         string httpMethod;
         string requestURI;
       	string host;

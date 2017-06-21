@@ -23,7 +23,7 @@ function testGetProfileInfo () {
     medium:ClientConnector mediumConnector = init();
     mediumResponse = medium:ClientConnector.getProfileInfo (mediumConnector);
     int status = http:getStatusCode(mediumResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "GetProfileInfo Failed");
     system:println("===testGetProfileInfo completed===\n");
 }
 
@@ -31,7 +31,7 @@ function testGetContributors () {
     medium:ClientConnector mediumConnector = init();
     mediumResponse = medium:ClientConnector.getContributors (mediumConnector, publicationId);
     int status = http:getStatusCode(mediumResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "GetContributors Failed");
     system:println("===testGetContributors completed===\n");
 }
 
@@ -39,7 +39,7 @@ function testGetPublications () {
     medium:ClientConnector mediumConnector = init();
     mediumResponse = medium:ClientConnector.getPublications (mediumConnector, userId);
     int status = http:getStatusCode(mediumResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "GetPublications Failed");
     system:println("===testGetPublications skipped===\n");
 }
 
@@ -48,7 +48,7 @@ function testCreateProfilePost () {
     json payload = {"title":"Test Payload", "contentFormat":"html", "content":"<h1>Test Payload</h1><p>This is a sample post</p>", "canonicalUrl":"http://wso2.com", "tags":["sample", "test"], "publishStatus":"draft"};
     mediumResponse = medium:ClientConnector.createProfilePost (mediumConnector, userId, payload);
     int status = http:getStatusCode(mediumResponse);
-    test:assertEquals(status, 201);
+    test:assertIntEquals(status, 201, "CreateProfilePost Failed");
     system:println("===testCreateProfilePost completed===\n");
 }
 
@@ -57,7 +57,7 @@ function testCreatePublicationPost () {
     json payload = {"title":"Test Payload", "contentFormat":"html", "content":"<h1>Test Payload</h1><p>This is a publication post</p>", "canonicalUrl":"http://wso2.com", "tags":["sample", "test"], "publishStatus":"unlisted"};
     mediumResponse = medium:ClientConnector.createPublicationPost (mediumConnector, publicationId, payload);
     int status = http:getStatusCode(mediumResponse);
-    test:assertEquals(status, 201);
+    test:assertIntEquals(status, 201, "CreatePublicationPost Failed");
     system:println("===testCreatePublicationPost completed===\n");
 }
 
