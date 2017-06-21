@@ -87,7 +87,7 @@ connector ClientConnector (string accessToken) {
     @doc:Param{ value : "t: The linkedIn Connector instance"}
     @doc:Param{ value : "payload: json payload containing the post that needed to be shared"}
     @doc:Return{ value : "response object"}
-    action profileShare(ClientConnector t, json payload) (message) {
+    action profileShareJson(ClientConnector t, json payload) (message) {
 
         string profileSharePath;
         message request = {};
@@ -106,7 +106,7 @@ connector ClientConnector (string accessToken) {
     @doc:Param{ value : "t: The linkedIn Connector instance"}
     @doc:Param{ value : "payload: xml payload containing the post that needed to be shared"}
     @doc:Return{ value : "response object"}
-    action profileShare(ClientConnector t, xml payload) (message) {
+    action profileShareXml(ClientConnector t, xml payload) (message) {
 
         string profileSharePath;
         message request = {};
@@ -126,7 +126,7 @@ connector ClientConnector (string accessToken) {
     @doc:Param{ value : "companyId: ID of the relevant company"}
     @doc:Param{ value : "payload: json payload containing the post that needed to be shared"}
     @doc:Return{ value : "response object"}
-    action companyShare(ClientConnector t, string companyId, json payload) (message) {
+    action companyShareJson(ClientConnector t, string companyId, json payload) (message) {
 
         string companySharePath;
         message request = {};
@@ -146,7 +146,7 @@ connector ClientConnector (string accessToken) {
     @doc:Param{ value : "companyId: ID of the relevant company"}
     @doc:Param{ value : "payload: xml payload containing the post that needed to be shared"}
     @doc:Return{ value : "response object"}
-    action companyShare(ClientConnector t, string companyId, xml payload) (message) {
+    action companyShareXml(ClientConnector t, string companyId, xml payload) (message) {
 
         string companySharePath;
         message request = {};

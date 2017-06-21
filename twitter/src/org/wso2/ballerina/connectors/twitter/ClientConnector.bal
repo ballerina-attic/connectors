@@ -200,7 +200,7 @@ function constructRequestHeaders(message request, string httpMethod, string serv
 
     string[] parameterKeys = maps:keys(parameters);
     string[] sortedParameters = arrays:sort(parameterKeys);
-    while (index < arrays:length(sortedParameters)){
+    while (index < sortedParameters.length){
         key =  sortedParameters[index];
         value = (string) parameters[key];
         paramStr = paramStr + key + "=" + value + "&";
