@@ -29,7 +29,7 @@ function testGetProfileInfoXML () {
     linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
     system:println(xmls:toString(linkedInXMLResponse));
     int status = http:getStatusCode(linkedInResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "GetProfileInfoXML Failed");
     system:println("===testGetProfileInfoXML completed===\n");
 
 }
@@ -41,7 +41,7 @@ function testGetProfileInfoJSON () {
     linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
     system:println(linkedInJSONResponse);
     int status = http:getStatusCode(linkedInResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "GetProfileInfoJSON Failed");
     system:println("===testGetProfileInfoJSON completed===\n");
 
 }
@@ -53,7 +53,7 @@ function testGetCompanyInfoXML () {
     linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
     system:println(xmls:toString(linkedInXMLResponse));
     int status = http:getStatusCode(linkedInResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "GetCompanyInfoXML Failed");
     system:println("===testGetCompanyInfoXML completed===\n");
 
 }
@@ -65,7 +65,7 @@ function testGetCompanyInfoJSON () {
     linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
     system:println(linkedInJSONResponse);
     int status = http:getStatusCode(linkedInResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "GetCompanyInfoJSON Failed");
     system:println("===testGetCompanyInfoJSON completed===\n");
 
 }
@@ -77,7 +77,7 @@ function testIsCompanyShareEnabledXML () {
     linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
     system:println(xmls:toString(linkedInXMLResponse));
     int status = http:getStatusCode(linkedInResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "IsCompanyShareEnabledXML Failed");
     system:println("===testIsCompanyShareEnabledXML completed===\n");
 
 }
@@ -89,7 +89,7 @@ function testIsCompanyShareEnabledJSON () {
     linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
     system:println(linkedInJSONResponse);
     int status = http:getStatusCode(linkedInResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "IsCompanyShareEnabledJSON Failed");
     system:println("===testIsCompanyShareEnabledJSON completed===\n");
 
 }
@@ -101,7 +101,7 @@ function testIsMemberAdminXML () {
     linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
     system:println(xmls:toString(linkedInXMLResponse));
     int status = http:getStatusCode(linkedInResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "IsMemberAdminXML Failed");
     system:println("===testIsMemberAdminXML completed===\n");
 
 }
@@ -113,7 +113,7 @@ function testIsMemberAdminJSON () {
     linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
     system:println(linkedInJSONResponse);
     int status = http:getStatusCode(linkedInResponse);
-    test:assertEquals(status, 200);
+    test:assertIntEquals(status, 200, "IsMemberAdminJSON Failed");
     system:println("===testIsMemberAdminJSON completed===\n");
 
 }
