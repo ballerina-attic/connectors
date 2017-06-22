@@ -24,6 +24,3 @@ The test functions contain hard-coded values for the Twitter message and search 
  5. Navigate to $BALLERINA_TOOLS_HOME/bin
  6. Run tests in the same terminal as:
  ./ballerina test ${path_to_test_file_in_connector_repo}/twitter_test.bal
- 7. Get the Twitter ID which will be printed on the console
- 8. Replace the "XXXXX" values with the Twitter ID obtained in the test file and run the test again
-
