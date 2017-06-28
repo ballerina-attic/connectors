@@ -499,7 +499,7 @@ function addFields (xml payload, map fields, string xpath) {
         map n = {"urn":"urn:partner.soap.sforce.com", "urn1" : "urn1:sobject.partner.soap.sforce.com"};
         while (i < fieldKeyCount){
             key = fieldKeys[i];
-            stringValue = (string) fields[key];
+            stringValue, _ = (string) fields[key];
             xmlValue = xmls:parse("<urn1:" + key + " xmlns:urn=\"urn:partner.soap.sforce.com\" xmlns:urn1=\"urn:sobject.partner.soap.sforce.com\">" + stringValue + "</urn1:" + key + ">");
             xmls:addElementWithNamespace(payload, xpath, xmlValue, n);
             i = i+1;
