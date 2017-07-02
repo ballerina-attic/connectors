@@ -1,6 +1,6 @@
 # Gmail Connector
 
-The Gmail connector allows you to access the [Gmail REST API](https://developers.google.com/gmail/api/)through Ballerina. You can invoke this connector's actions within a Ballerina `main()` function. The following sections provide details on the connector actions and the sample you can use to invoke them.
+The Gmail connector allows you to access the [Gmail REST API](https://developers.google.com/gmail/api/) through Ballerina. You can invoke this connector's actions within a Ballerina `main()` function. The following sections provide details on the connector actions and the sample you can use to invoke them.
 
 ## getUserProfile
 The getUserProfile action helps to Get the current user's Gmail profile.
