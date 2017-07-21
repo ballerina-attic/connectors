@@ -25,8 +25,8 @@ function main (string[] args) {
 
     if (args[0] == "createDraft") {
         gmail:Draft gmailResponse;
-        gmail:Message createDraft = {to:"birunthagnanes@gmail.com", subject:"This is subject",
-                                    from:"birunthagnanes@gmail.com"};
+        gmail:Message createDraft = {to:"test@gmail.com", subject:"This is subject",
+                                    from:"test@gmail.com"};
         gmailResponse, errorResponse = gmail:ClientConnector.createDraft (gmailConnector, createDraft);
 
         if (gmailResponse.id != "") {
@@ -43,8 +43,8 @@ function main (string[] args) {
     if (args[0] == "updateDraft") {
         gmail:Draft gmailResponse;
         string draftId = args[6];
-        gmail:Message updateDraft = {to:"birunthagnanes@gmail.com", subject:"This is subject",
-                                    from:"birunthagnanes@gmail.com"};
+        gmail:Message updateDraft = {to:"test@gmail.com", subject:"This is subject",
+                                    from:"test@gmail.com"};
         gmailResponse, errorResponse = gmail:ClientConnector.updateDraft (gmailConnector, draftId, updateDraft);
 
         if (gmailResponse.id != "") {
@@ -328,8 +328,8 @@ function main (string[] args) {
 
     if (args[0] == "sendMail") {
         gmail:EmailMessage gmailResponse;
-        gmail:Message sendMail = {to:"birunthagnanes@gmail.com", subject:"This is subject",
-                                 from:"birunthagnanes@gmail.com"};
+        gmail:Message sendMail = {to:"test@gmail.com", subject:"This is subject",
+                                 from:"test@gmail.com"};
         gmailResponse, errorResponse = gmail:ClientConnector.sendMail (gmailConnector, sendMail);
         if (gmailResponse.id != "") {
             system:println(gmailResponse.id);
