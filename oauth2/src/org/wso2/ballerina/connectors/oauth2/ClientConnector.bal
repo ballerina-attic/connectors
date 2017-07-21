@@ -31,7 +31,7 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = http:ClientConnector.get(httpConnectorEP, path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
+        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
              response = http:ClientConnector.get(httpConnectorEP, path, request);
@@ -52,7 +52,7 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = http:ClientConnector.post(httpConnectorEP, path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
+        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
              accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
              response = http:ClientConnector.post(httpConnectorEP, path, request);
@@ -73,7 +73,7 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = http:ClientConnector.put(httpConnectorEP, path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
+        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
             response = http:ClientConnector.put(httpConnectorEP, path, request);
@@ -94,7 +94,7 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = http:ClientConnector.delete(httpConnectorEP, path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
+        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                           refreshTokenEP);
             response = http:ClientConnector.delete(httpConnectorEP, path, request);
@@ -115,7 +115,7 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = http:ClientConnector.patch(httpConnectorEP, path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "null")) {
+        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = http:ClientConnector.patch(httpConnectorEP, path, request);
