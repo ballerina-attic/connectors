@@ -93,7 +93,7 @@ The deleteDraft action helps to Immediately and permanently deletes the specifie
 The listHistory action helps Lists the history to of all changes to the given mailbox. History results are returned in chronological order (increasing historyId)
 
 #### Properties
-* startHistoryId - Returns history records after the specified startHistoryId.
+* startHistoryId (Mandatory)- Returns history records after the specified startHistoryId.
 * listHistory - It is a struct. Which contains all optional parameters (labelId,maxResults,pageToken) to list history.
 
     Description for struct parameters,
@@ -287,7 +287,7 @@ The modifyExistingMessage action helps to Modifies the labels on the specified m
 The readMail action helps to Gets the specified message.
 
 #### Properties
-* messageId - Id of the message to retrieve.
+* messageId (Mandatory)- Id of the message to retrieve.
 * readMail - It is a struct. Which contains all optional parameters (format,metaDataHeaders).
 
     Description for struct parameters,
