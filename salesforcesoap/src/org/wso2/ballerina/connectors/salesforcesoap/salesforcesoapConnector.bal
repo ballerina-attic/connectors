@@ -55,9 +55,9 @@ connector ClientConnector (string username, string password, string loginUrl, st
     @doc:Description{ value : "Retrieves metadata (field list and object properties) for the specified object type"}
     @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
-    @doc:Param{ value : "type: Name of SObject"}
+    @doc:Param{ value : "sObjectType: Name of SObject"}
     @doc:Return{ value : "response message"}
-    action describeSObject (ClientConnector s, xml[] headers, string type) (xml) {
+    action describeSObject (ClientConnector s, xml[] headers, string sObjectType) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -70,7 +70,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:describeSObject xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:sObjectType>" + type + "</urn:sObjectType>
+                           <urn:sObjectType>" + sObjectType + "</urn:sObjectType>
                        </urn:describeSObject>");
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -91,9 +91,9 @@ connector ClientConnector (string username, string password, string loginUrl, st
     @doc:Description{ value : "An array-based version of describeSObject"}
     @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
-    @doc:Param{ value : "type: Name of SObject"}
+    @doc:Param{ value : "sObjectType: Name of SObject"}
     @doc:Return{ value : "response message"}
-    action describeSObjects (ClientConnector s, xml[] headers, string type) (xml) {
+    action describeSObjects (ClientConnector s, xml[] headers, string sObjectType) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -106,7 +106,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         }
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:describeSObjects xmlns:urn=\"urn:partner.soap.sforce.com\">
-                           <urn:sObjectType>" + type + "</urn:sObjectType>
+                           <urn:sObjectType>" + sObjectType + "</urn:sObjectType>
                        </urn:describeSObjects>");
         xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
@@ -393,10 +393,10 @@ connector ClientConnector (string username, string password, string loginUrl, st
     @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "fieldList: List of fields that needs to be retrieved"}
-    @doc:Param{ value : "type: Name of SObject"}
+    @doc:Param{ value : "sObjectType: Name of SObject"}
     @doc:Param{ value : "recordId: Id of Record"}
     @doc:Return{ value : "response message"}
-    action retrieve (ClientConnector s, xml[] headers, string fieldList, string type, string recordId) (xml) {
+    action retrieve (ClientConnector s, xml[] headers, string fieldList, string sObjectType, string recordId) (xml) {
 
         int headerCount = headers.length;
         xml queryOptions = xmls:parse("<urn:QueryOptions xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:batchSize>200</urn:batchSize></urn:QueryOptions>");
@@ -411,7 +411,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:retrieve xmlns:urn=\"urn:partner.soap.sforce.com\">
                            <urn:fieldList>" + fieldList + "</urn:fieldList>
-                           <urn:sObjectType>" + type + "</urn:sObjectType>
+                           <urn:sObjectType>" + sObjectType + "</urn:sObjectType>
                            <urn:ids>" + recordId + "</urn:ids>
                        </urn:retrieve>");
 
