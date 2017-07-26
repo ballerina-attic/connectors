@@ -316,50 +316,50 @@ The unTrashMail action helps to Removes the specified message from the trash.
 >**NOTE** If the template parameter is indicate as optional you must pass null as default value to run this action.
 
 * getUserProfile  
-`bin$ ./ballerina run main samples.bal getUserProfile <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>`
+`bin$ ./ballerina run samples.bal getUserProfile <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>`
 * createDraft  
-`bin$ ./ballerina run main samples.bal createDraft  <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
+`bin$ ./ballerina run samples.bal createDraft  <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
 * updateDraft  
-`bin$ ./ballerina run main samples.bal updateDraft <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <draftId:Required> <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
+`bin$ ./ballerina run samples.bal updateDraft <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <draftId:Required> <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
 * readDraft  
-`bin$ ./ballerina run main samples.bal readDraft <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <draftId:-Required> <format:-Optional>`
+`bin$ ./ballerina run samples.bal readDraft <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <draftId:-Required> <format:-Optional>`
 * listDrafts  
-`bin$ ./ballerina run main samples.bal listDrafts <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <includeSpamTrash> <maxResults> <pageToken> <q>`
+`bin$ ./ballerina run samples.bal listDrafts <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <includeSpamTrash> <maxResults> <pageToken> <q>`
 * deleteDraft  
-`bin$ ./ballerina run main samples.bal deleteDraft <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <draftId:-Required>`
+`bin$ ./ballerina run samples.bal deleteDraft <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <draftId:-Required>`
 * listHistory  
-`bin$ ./ballerina run main samples.bal listHistory <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelId:-Optional> <maxResults:-Optional> <pageToken:-Optional> <startHistoryId:-Required>`
+`bin$ ./ballerina run samples.bal listHistory <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelId:-Optional> <maxResults:-Optional> <pageToken:-Optional> <startHistoryId:-Required>`
 * createLabel  
-`bin$ ./ballerina run main samples.bal createLabel <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelName:-Required> <messageListVisibility:-Required> <labelListVisibility:-Required> <types:-Optional> <messagesTotal:-Optional> <messagesUnread:-Optional> <threadsTotal:-Optional> <threadsUnread:-Optional>`
+`bin$ ./ballerina run samples.bal createLabel <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelName:-Required> <messageListVisibility:-Required> <labelListVisibility:-Required> <types:-Optional> <messagesTotal:-Optional> <messagesUnread:-Optional> <threadsTotal:-Optional> <threadsUnread:-Optional>`
 * deleteLabel  
-`bin$ ./ballerina run main samples.bal deleteLabel <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelId:-Required>`
+`bin$ ./ballerina run samples.bal deleteLabel <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelId:-Required>`
 * listLabels  
-`bin$ ./ballerina run main samples.bal listLabels <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>`
+`bin$ ./ballerina run samples.bal listLabels <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional>`
 * updateLabel  
-`bin$ ./ballerina run main samples.bal updateLabel <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelId:-Required> <labelName:-Required> <messageListVisibility:-Required> <labelListVisibility:-Required> <types:-Optional> <messagesTotal:-Optional> <messagesUnread:-Optional> <threadsTotal:-Optional> <threadsUnread:-Optional>`
+`bin$ ./ballerina run samples.bal updateLabel <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelId:-Required> <labelName:-Required> <messageListVisibility:-Required> <labelListVisibility:-Required> <types:-Optional> <messagesTotal:-Optional> <messagesUnread:-Optional> <threadsTotal:-Optional> <threadsUnread:-Optional>`
 * readLabel  
-`bin$ ./ballerina run main samples.bal readLabel <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelId:-Required>`
+`bin$ ./ballerina run samples.bal readLabel <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <labelId:-Required>`
 * readThread  
-`bin$ ./ballerina run main samples.bal readThread <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <threadId:-Required> <format:-Optional> <metaDataHeaders:-Optional>`
+`bin$ ./ballerina run samples.bal readThread <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <threadId:-Required> <format:-Optional> <metaDataHeaders:-Optional>`
 * listThreads  
-`bin$ ./ballerina run main samples.bal listThreads <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <includeSpamTrash:-Optional> <labelIds:-Optional> <maxResults:-Optional> <pageToken:-Optional> <q:-Optional>`
+`bin$ ./ballerina run samples.bal listThreads <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <includeSpamTrash:-Optional> <labelIds:-Optional> <maxResults:-Optional> <pageToken:-Optional> <q:-Optional>`
 * deleteThread  
-`bin$ ./ballerina run main samples.bal deleteThread <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <threadId:-Required>`
+`bin$ ./ballerina run samples.bal deleteThread <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <threadId:-Required>`
 * trashThread  
-`bin$ ./ballerina run main samples.bal trashThread <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <threadId:-Required>`
+`bin$ ./ballerina run samples.bal trashThread <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <threadId:-Required>`
 * unTrashThread  
-`bin$ ./ballerina run main samples.bal unTrashThread <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <threadId:-Required>`
+`bin$ ./ballerina run samples.bal unTrashThread <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <threadId:-Required>`
 * listMails  
-`bin$ ./ballerina run main samples.bal listMails <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <includeSpamTrash:-Optional> <labelIds:-Optional> <maxResults:-Optional> <pageToken:-Optional> <q:-Optional>`
+`bin$ ./ballerina run samples.bal listMails <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <includeSpamTrash:-Optional> <labelIds:-Optional> <maxResults:-Optional> <pageToken:-Optional> <q:-Optional>`
 * sendMail  
-`bin$ ./ballerina run main samples.bal sendMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
+`bin$ ./ballerina run samples.bal sendMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
 * modifyExistingMessage  
-`bin$ ./ballerina run main samples.bal modifyExistingMessage <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required> <addLabelIds:-Either addLabelIds or removeLabelIds is required> <removeLabelIds:- Either addLabelIds or removeLabelIds is required>`
+`bin$ ./ballerina run samples.bal modifyExistingMessage <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required> <addLabelIds:-Either addLabelIds or removeLabelIds is required> <removeLabelIds:- Either addLabelIds or removeLabelIds is required>`
 * readMail  
-`bin$ ./ballerina run main samples.bal readMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required> <format:-Optional> <metaDataHeaders:-Optional>`
+`bin$ ./ballerina run samples.bal readMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required> <format:-Optional> <metaDataHeaders:-Optional>`
 * deleteMail  
-`bin$ ./ballerina run main samples.bal deleteMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required>`
+`bin$ ./ballerina run samples.bal deleteMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required>`
 * trashMail  
-`bin$ ./ballerina run main samples.bal trashMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required>`
+`bin$ ./ballerina run samples.bal trashMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required>`
 * unTrashMail  
-`bin$ ./ballerina run main samples.bal unTrashMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required>`
+`bin$ ./ballerina run samples.bal unTrashMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required>`
