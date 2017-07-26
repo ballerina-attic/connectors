@@ -1,7 +1,6 @@
 package org.wso2.ballerina.connectors.oauth2;
 
 import ballerina.doc;
-import ballerina.lang.system;
 import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.net.http;
