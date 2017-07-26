@@ -69,21 +69,21 @@ If the template parameter is indicate as optional you must pass null as default 
 action.
 
 1. getIssueInfo  
-    `bin$ ./ballerina run main samples.bal getIssueInfo <apiInstance:-Required> <username:-Required> 
+    `bin$ ./ballerina run samples.bal getIssueInfo <apiInstance:-Required> <username:-Required> 
     <password:-Required> <issueIdOrKey:-Required> <expand:-Optional> <fields:-Optional>`
     
 2. searchJira
-    `bin$ ./ballerina run main samples.bal searchJira <apiInstance:-Required> <username:-Required> 
+    `bin$ ./ballerina run samples.bal searchJira <apiInstance:-Required> <username:-Required> 
     <password:-Required> <payload:-Optional>`
     
 3. postComment  
-    `bin$ ./ballerina run main samples.bal postComment <apiInstance:-Required> <username:-Required> 
+    `bin$ ./ballerina run samples.bal postComment <apiInstance:-Required> <username:-Required> 
     <password:-Required> <issueIdOrKey:-Required> <expand:-Optional> <payload:-Required>`
     
 4. assignIssueToUser
-    `bin$ ./ballerina run main samples.bal assignIssueToUser <apiInstance:-Required> <username:-Required> 
+    `bin$ ./ballerina run samples.bal assignIssueToUser <apiInstance:-Required> <username:-Required> 
     <password:-Required> <issueIdOrKey:-Required> <payload:-Optional>`
     
 5. createBulkIssue
-    `bin$ ./ballerina run main samples.bal createBulkIssue <apiInstance:-Required> <username:-Required> 
+    `bin$ ./ballerina run samples.bal createBulkIssue <apiInstance:-Required> <username:-Required> 
     <password:-Required> <payload:-Optional>`
