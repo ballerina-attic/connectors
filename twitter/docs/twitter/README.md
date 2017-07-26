@@ -94,22 +94,22 @@ The getTopTrendsByPlace action allows to retrieve the top topics for a specified
 **IMPORTANT:** This access token can be used to make API requests on your own account's behalf. Do not share your access token secret with anyone.
 
 ###### Invoke the actions
-- Place facebook/sample/facebook/samples.bal into <ballerina_home>/bin$ folder 
+- Place twitter/sample/twitter/samples.bal into <ballerina_home>/bin$ folder
 - To run the following commands to execute the relevant action.
   1. tweet:   
-  `bin$ ./ballerina run main samples.bal tweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <status>`
+  `bin$ ./ballerina run samples.bal tweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <status>`
   2. search:    
-  `bin$ ./ballerina run main samples.bal search <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <query>`
+  `bin$ ./ballerina run samples.bal search <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <query>`
   3. retweet: 
-  `bin$ ./ballerina run main samples.bal retweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
+  `bin$ ./ballerina run samples.bal retweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   4. unretweet: 
-  `bin$ ./ballerina run main samples.bal unretweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
+  `bin$ ./ballerina run samples.bal unretweet <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   5. showStatus: 
-  `bin$ ./ballerina run main samples.bal showStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
+  `bin$ ./ballerina run samples.bal showStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   6. destroyStatus:
-  `bin$ ./ballerina run main samples.bal destroyStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
+  `bin$ ./ballerina run samples.bal destroyStatus <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <id>`
   7. getClosestTrendLocations:
-  `bin$ ./ballerina run main samples.bal getClosestTrendLocations <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <latitude> <longitude>`
+  `bin$ ./ballerina run samples.bal getClosestTrendLocations <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <latitude> <longitude>`
   8. getTopTrendsByPlace:
-  `bin$ ./ballerina run main samples.bal getTopTrendsByPlace <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <locationId>`
+  `bin$ ./ballerina run samples.bal getTopTrendsByPlace <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> <locationId>`
 

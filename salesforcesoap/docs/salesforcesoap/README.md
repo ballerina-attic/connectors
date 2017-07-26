@@ -136,26 +136,26 @@
 - copy Salesforce/sample/Salesforce/samples.bal into <ballerina_home>/bin$ folder
 - Run the following commands to execute the relevant action.
   1. describe global:
-  `bin$ ./ballerina run main samples.bal describeGlobal <userName> <password+securityToken>`
+  `bin$ ./ballerina run samples.bal describeGlobal <userName> <password+securityToken>`
   2. describe SObject:
-  `bin$ ./ballerina run main samples.bal describeSObject <userName> <password+securityToken> <SObjectName>`
+  `bin$ ./ballerina run samples.bal describeSObject <userName> <password+securityToken> <SObjectName>`
   3. create record:
-  `bin$ ./ballerina run main samples.bal createRecord <userName> <password+securityToken> <SObjectName> <RecordName>`
+  `bin$ ./ballerina run samples.bal createRecord <userName> <password+securityToken> <SObjectName> <RecordName>`
   4. describe SObjects:
-  `bin$ ./ballerina run main samples.bal describeSObjects <userName> <password+securityToken> <SObjectName>`
+  `bin$ ./ballerina run samples.bal describeSObjects <userName> <password+securityToken> <SObjectName>`
   5. search:
-  `bin$ ./ballerina run main samples.bal search <userName> <password+securityToken> <searchString>`
+  `bin$ ./ballerina run samples.bal search <userName> <password+securityToken> <searchString>`
   6. retrieve:
-  `bin$ ./ballerina run main samples.bal retrieve <userName> <password+securityToken> <fieldNames> <SObjectName> <RecordId>`
+  `bin$ ./ballerina run samples.bal retrieve <userName> <password+securityToken> <fieldNames> <SObjectName> <RecordId>`
   7. delete record:
-  `bin$ ./ballerina run main samples.bal deleteRecord <userName> <password+securityToken> <RecordId>`
+  `bin$ ./ballerina run samples.bal deleteRecord <userName> <password+securityToken> <RecordId>`
   8. query:
-  `bin$ ./ballerina run main samples.bal query <userName> <password+securityToken> <queryString>`
+  `bin$ ./ballerina run samples.bal query <userName> <password+securityToken> <queryString>`
   5. query all:
-  `bin$ ./ballerina run main samples.bal queryAll <userName> <password+securityToken> <queryString>`
+  `bin$ ./ballerina run samples.bal queryAll <userName> <password+securityToken> <queryString>`
   5. query more:
-  `bin$ ./ballerina run main samples.bal queryMore <userName> <password+securityToken> <queryLocator>`
+  `bin$ ./ballerina run samples.bal queryMore <userName> <password+securityToken> <queryLocator>`
   6. update record:
-  `bin$ ./ballerina run main samples.bal updateRecord <userName> <password+securityToken> <recordId> <recordName> <SObjectName>`
+  `bin$ ./ballerina run samples.bal updateRecord <userName> <password+securityToken> <recordId> <recordName> <SObjectName>`
   7. upsert record:
-  `bin$ ./ballerina run main samples.bal upsertRecord <userName> <password+securityToken> <externalId> <recordName> <SObjectName>`
+  `bin$ ./ballerina run samples.bal upsertRecord <userName> <password+securityToken> <externalId> <recordName> <SObjectName>`

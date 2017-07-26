@@ -25,4 +25,4 @@ Do not share those with anyone.
 - To run the following command to execute the action.
 
   1. send:  
-  `bin$ ./ballerina run main samples.bal <username> <password+securityToken>`
+  `bin$ ./ballerina run samples.bal <username> <password+securityToken>`

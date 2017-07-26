@@ -376,116 +376,116 @@ If the template parameter is indicate as optional you must pass null as default 
 action.
 
 1. getSheetMetaData  
-    `bin$ ./ballerina run main samples.bal getSheetMetaData <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal getSheetMetaData <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <includeGridData:-Optional> 
     <fields:-Optional> <ranges:-Optional>`
 
 2. copyTo  
-    `bin$ ./ballerina run main samples.bal copyTo <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal copyTo <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <sheetId:-Required> 
     <payload:-Required> <fields:-Optional>`
     
 3. getCellData  
-    `bin$ ./ballerina run main samples.bal getCellData <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal getCellData <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <range:-Required> 
     <dateTimeRenderOption:-Optional> <valueRenderOption:-Optional> <fields:-Optional> <majorDimension:-Optional>`
     
 4. getMultipleCellData  
-    `bin$ ./ballerina run main samples.bal getMultipleCellData <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal getMultipleCellData <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <ranges:-Optional> 
     <dateTimeRenderOption:-Optional> <valueRenderOption:-Optional> <fields:-Optional> <majorDimension:-Optional>`
     
 5. editCell  
-    `bin$ ./ballerina run main samples.bal editCell <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal editCell <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <range:-Required> 
     <valueInputOption:-Required> <payload:-Required> <fields:-Optional>`
     
 6. editMultipleCell  
-    `bin$ ./ballerina run main samples.bal editMultipleCell <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal editMultipleCell <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 7. createSpreadsheet  
-    `bin$ ./ballerina run main samples.bal createSpreadsheet <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal createSpreadsheet <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 8. addSheetBatchRequest  
-    `bin$ ./ballerina run main samples.bal addSheetBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal addSheetBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 9. deleteSheetBatchRequest  
-    `bin$ ./ballerina run main samples.bal deleteSheetBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal deleteSheetBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 10. updateSheetPropertiesBatchRequest  
-    `bin$ ./ballerina run main samples.bal updateSheetPropertiesBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal updateSheetPropertiesBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 11. deleteDimensionBatchRequest  
-    `bin$ ./ballerina run main samples.bal deleteDimensionBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal deleteDimensionBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 12. updateCellsBatchRequest  
-    `bin$ ./ballerina run main samples.bal updateCellsBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal updateCellsBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
 
 13. appendDimensionBatchRequest  
-    `bin$ ./ballerina run main samples.bal appendDimensionBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal appendDimensionBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
  
 14. updateBordersBatchRequest  
-    `bin$ ./ballerina run main samples.bal updateBordersBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal updateBordersBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 15. repeatCellsBatchRequest  
-    `bin$ ./ballerina run main samples.bal repeatCellsBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal repeatCellsBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 16. mergeCellsBatchRequest  
-    `bin$ ./ballerina run main samples.bal mergeCellsBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal mergeCellsBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 17. setDataValidationBatchRequest  
-    `bin$ ./ballerina run main samples.bal setDataValidationBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal setDataValidationBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 18. copyPasteBatchRequest  
-    `bin$ ./ballerina run main samples.bal copyPasteBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal copyPasteBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 19. cutPasteBatchRequest  
-    `bin$ ./ballerina run main samples.bal cutPasteBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal cutPasteBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 20. updateConditionalFormatRuleBatchRequest  
-    `bin$ ./ballerina run main samples.bal updateConditionalFormatRuleBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal updateConditionalFormatRuleBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 21. addConditionalFormatRuleBatchRequest  
-    `bin$ ./ballerina run main samples.bal addConditionalFormatRuleBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal addConditionalFormatRuleBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 22. deleteConditionalFormatRuleBatchRequest  
-    `bin$ ./ballerina run main samples.bal deleteConditionalFormatRuleBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal deleteConditionalFormatRuleBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 23. updateDimensionPropertiesBatchRequest  
-    `bin$ ./ballerina run main samples.bal updateDimensionPropertiesBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal updateDimensionPropertiesBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 24. autoResizeDimensionsBatchRequest  
-    `bin$ ./ballerina run main samples.bal autoResizeDimensionsBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal autoResizeDimensionsBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 25. insertDimensionBatchRequest  
-    `bin$ ./ballerina run main samples.bal insertDimensionBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal insertDimensionBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 26. moveDimensionBatchRequest  
-    `bin$ ./ballerina run main samples.bal moveDimensionBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal moveDimensionBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 27. sortRangeBatchRequest  
-    `bin$ ./ballerina run main samples.bal sortRangeBatchRequest <accessToken:-Required> <refreshToken:-Optional> 
+    `bin$ ./ballerina run samples.bal sortRangeBatchRequest <accessToken:-Required> <refreshToken:-Optional>
     <clientId:-Optional> <clientSecret:-Optional> <spreadsheetId:-Required> <payload:-Required> <fields:-Optional>`
     
 28. addRowsColumnsData  

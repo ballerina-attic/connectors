@@ -112,20 +112,20 @@ The getComments action retrieves comments for an object such as a video, post, s
 1. Copy the `facebook/sample/facebook/samples.bal` file into the `<ballerina_home>/bin` folder. 
 1. Run the following commands to execute the relevant actions:
   *  createPost:   
-  `bin$ ./ballerina run main samples.bal createPost <token> <id> <message> <link> <place>`
+  `bin$ ./ballerina run samples.bal createPost <token> <id> <message> <link> <place>`
   *  retrievePost:    
-  `bin$ ./ballerina run main samples.bal retrievePost <token> <postId> <fields>`
+  `bin$ ./ballerina run samples.bal retrievePost <token> <postId> <fields>`
   * deletePost:    
-  `bin$ ./ballerina run main samples.bal deletePost <token> <postId>`
+  `bin$ ./ballerina run samples.bal deletePost <token> <postId>`
   * updatePost:    
-  `bin$ ./ballerina run main samples.bal updatePost <token> <postId> <message> <tags> <privacy>`
+  `bin$ ./ballerina run samples.bal updatePost <token> <postId> <message> <tags> <privacy>`
   * addLikes:    
-  `bin$ ./ballerina run main samples.bal addLikes <token> <objectId>`
+  `bin$ ./ballerina run samples.bal addLikes <token> <objectId>`
   * getLikesDetails:    
-  `bin$ ./ballerina run main samples.bal getLikesDetails <token> <objectId> <fields>`
+  `bin$ ./ballerina run samples.bal getLikesDetails <token> <objectId> <fields>`
   * deleteLikes:    
-  `bin$ ./ballerina run main samples.bal deleteLikes <token> <objectId>`
+  `bin$ ./ballerina run samples.bal deleteLikes <token> <objectId>`
   * addComments:    
-  `bin$ ./ballerina run main samples.bal addComments <token> <objectId> <message> <attachmentId> <attachmentUrl>`
+  `bin$ ./ballerina run samples.bal addComments <token> <objectId> <message> <attachmentId> <attachmentUrl>`
   * getComments:    
-  `bin$ ./ballerina run main samples.bal getComments <token> <objectId> <fields>`
+  `bin$ ./ballerina run samples.bal getComments <token> <objectId> <fields>`

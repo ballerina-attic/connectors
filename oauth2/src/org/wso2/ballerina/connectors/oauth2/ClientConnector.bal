@@ -1,6 +1,7 @@
 package org.wso2.ballerina.connectors.oauth2;
 
 import ballerina.doc;
+import ballerina.lang.system;
 import ballerina.lang.jsons;
 import ballerina.lang.messages;
 import ballerina.net.http;
@@ -153,8 +154,7 @@ function getAccessTokenFromRefreshToken (message request, string accessToken, st
     refreshTokenResponse = http:ClientConnector.post(refreshTokenHTTPEP, accessTokenFromRefreshTokenReq,
                                                    refreshTokenRequest);
     accessTokenFromRefreshTokenJSONResponse = messages:getJsonPayload(refreshTokenResponse);
-    accessToken = jsons:getString(accessTokenFromRefreshTokenJSONResponse, "$.access_token");
-
+    accessToken = jsons:toString(accessTokenFromRefreshTokenJSONResponse.access_token);
     messages:setHeader(request, "Authorization", "Bearer " + accessToken);
     return accessToken;
 
