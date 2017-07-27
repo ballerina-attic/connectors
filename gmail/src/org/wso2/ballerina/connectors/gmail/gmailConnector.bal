@@ -288,23 +288,23 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         "threadsTotal": threadsTotal, "threadsUnread": threadsUnread};
 
         if (types == "null") {
-            jsons:remove(createLabelRequest, "$.type");
+            jsons:remove(createLabelRequest, "type");
         }
 
         if (messagesTotal == "null") {
-            jsons:remove(createLabelRequest, "$.messagesTotal");
+            jsons:remove(createLabelRequest, "messagesTotal");
         }
 
         if (messagesUnread == "null") {
-            jsons:remove(createLabelRequest, "$.messagesUnread");
+            jsons:remove(createLabelRequest, "messagesUnread");
         }
 
         if (threadsTotal == "null") {
-            jsons:remove(createLabelRequest, "$.threadsTotal");
+            jsons:remove(createLabelRequest, "threadsTotal");
         }
 
         if (threadsUnread == "null") {
-            jsons:remove(createLabelRequest, "$.threadsUnread");
+            jsons:remove(createLabelRequest, "threadsUnread");
         }
 
         string createLabelPath = "/v1/users/" + userId + "/labels";
@@ -368,23 +368,23 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         "threadsUnread": threadsUnread};
 
         if (types == "null") {
-            jsons:remove(updateLabelRequest, "$.type");
+            jsons:remove(updateLabelRequest, "type");
         }
 
         if (messagesTotal == "null") {
-            jsons:remove(updateLabelRequest, "$.messagesTotal");
+            jsons:remove(updateLabelRequest, "messagesTotal");
         }
 
         if (messagesUnread == "null") {
-            jsons:remove(updateLabelRequest, "$.messagesUnread");
+            jsons:remove(updateLabelRequest, "messagesUnread");
         }
 
         if (threadsTotal == "null") {
-            jsons:remove(updateLabelRequest, "$.threadsTotal");
+            jsons:remove(updateLabelRequest, "threadsTotal");
         }
 
         if (threadsUnread == "null") {
-            jsons:remove(updateLabelRequest, "$.threadsUnread");
+            jsons:remove(updateLabelRequest, "threadsUnread");
         }
 
         string updateLabelPath = "/v1/users/" + userId + "/labels/" + labelId;
@@ -648,11 +648,11 @@ connector ClientConnector (string userId, string accessToken, string refreshToke
         "removeLabelIds":[removeLabelIds]};
 
         if(addLabelIds == "null") {
-            jsons:remove(modifyExistingMessageRequest, "$.addLabelIds");
+            jsons:remove(modifyExistingMessageRequest, "addLabelIds");
         }
 
         if(removeLabelIds == "null") {
-            jsons:remove(modifyExistingMessageRequest, "$.removeLabelIds");
+            jsons:remove(modifyExistingMessageRequest, "removeLabelIds");
         }
 
         string modifyExistingMessagePath = "/v1/users/" + userId + "/messages/" + messageId + "/modify";
