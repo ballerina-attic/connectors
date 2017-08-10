@@ -18,7 +18,7 @@ function init () (twitter:ClientConnector) {
 
 function testTweet () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitter:ClientConnector.tweet (twitterConnector, "#ballerina");
+    message response = twitterConnector.tweet ("#ballerina");
     json jsonResponse = messages:getJsonPayload(response);
     int status = http:getStatusCode(response);
     string value = (string)jsonResponse.text;
@@ -32,7 +32,7 @@ function testTweet () {
 
 function testSearch () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitter:ClientConnector.search (twitterConnector, "#ballerina");
+    message response = twitterConnector.search ("#ballerina");
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "Search Failed");
     system:println("===testSearch completed===");
@@ -41,7 +41,7 @@ function testSearch () {
 
 function testRetweet () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitter:ClientConnector.retweet (twitterConnector, tweetId);
+    message response = twitterConnector.retweet (tweetId);
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "Retweet Failed");
     system:println("===testRetweet completed===");
@@ -50,7 +50,7 @@ function testRetweet () {
 
 function testUnretweet () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitter:ClientConnector.unretweet (twitterConnector, tweetId);
+    message response = twitterConnector.unretweet (tweetId);
     json jsonResponse = messages:getJsonPayload(response);
     int status = http:getStatusCode(response);
     string value = (string)jsonResponse.text;
@@ -62,7 +62,7 @@ function testUnretweet () {
 
 function testShowStatus () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitter:ClientConnector.showStatus (twitterConnector, tweetId);
+    message response = twitterConnector.showStatus (tweetId);
     json jsonResponse = messages:getJsonPayload(response);
     int status = http:getStatusCode(response);
     string value = (string)jsonResponse.text;
@@ -74,7 +74,7 @@ function testShowStatus () {
 
 function testDestroyStatus () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitter:ClientConnector.destroyStatus (twitterConnector, tweetId);
+    message response = twitterConnector.destroyStatus (tweetId);
     json jsonResponse = messages:getJsonPayload(response);
     int status = http:getStatusCode(response);
     string value = (string)jsonResponse.text;
