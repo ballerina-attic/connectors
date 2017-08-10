@@ -52,7 +52,7 @@ function testCreateSpreadSheet () {
     int statusCode;
 
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.createSpreadsheet (connectorInstance, payload, fields);
+    googlespreadsheetResponse = connectorInstance.createSpreadsheet (payload, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -75,8 +75,7 @@ function testGetSheetMetaData () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.getSheetMetaData (connectorInstance, spreadSheetId
-                                                                                    , includeGridInfo, fields, range);
+    googlespreadsheetResponse = connectorInstance.getSheetMetaData (spreadSheetId, includeGridInfo, fields, range);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -99,8 +98,7 @@ function testCopyTo () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.copyTo (connectorInstance, sourceSpreadSheetId
-                                                                          , sourceSheetId, payloadToSend, fields);
+    googlespreadsheetResponse = connectorInstance.copyTo (sourceSpreadSheetId, sourceSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedTitleOfCopy = (string)payload.title;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -125,9 +123,8 @@ function testGetCellData () {
     boolean assertValue = false;
     int statusCode;
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.getCellData (connectorInstance, spreadSheetId, range
-                                                                               , dateTimeRenderOption, valueRenderOption
-                                                                               , fields, majorDimension);
+    googlespreadsheetResponse = connectorInstance.getCellData (spreadSheetId, range, dateTimeRenderOption,
+                                                               valueRenderOption, fields, majorDimension);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedRange = (string)payload.range;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -152,10 +149,8 @@ function testGetMultipleCellData () {
     boolean assertValue = false;
     int statusCode;
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.getMultipleCellData (connectorInstance, spreadSheetId
-                                                                                       , range, dateTimeRenderOption
-                                                                                       , valueRenderOption, fields
-                                                                                       , majorDimension);
+    googlespreadsheetResponse = connectorInstance.getMultipleCellData (spreadSheetId, range, dateTimeRenderOption,
+                                                                       valueRenderOption, fields, majorDimension);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -179,8 +174,8 @@ function testEditCell () {
     boolean assertValue = false;
     int statusCode;
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.editCell (connectorInstance, spreadSheetId, range
-                                                                            , valueInputOption, payloadToSend, fields);
+    googlespreadsheetResponse = connectorInstance.editCell (spreadSheetId, range, valueInputOption, payloadToSend,
+                                                            fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -221,8 +216,7 @@ function testEditMultipleCells () {
     boolean assertValue = false;
     int statusCode;
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.editMultipleCell (connectorInstance, spreadSheetId
-                                                                                    , payloadToSend, fields);
+    googlespreadsheetResponse = connectorInstance.editMultipleCell (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -263,9 +257,7 @@ function testAddSheets () {
     boolean assertValue = false;
     int statusCode;
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.addSheetBatchRequest (connectorInstance
-                                                                                        , spreadSheetId, payloadToSend
-                                                                                        , fields);
+    googlespreadsheetResponse = connectorInstance.addSheetBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -296,9 +288,7 @@ function testDeleteSheets () {
                                     ]
                          };
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.deleteSheetBatchRequest (connectorInstance
-                                                                                           , spreadSheetId
-                                                                                           , payloadToSend, fields);
+    googlespreadsheetResponse = connectorInstance.deleteSheetBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -327,10 +317,8 @@ function testUpdateSheetBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.updateSheetPropertiesBatchRequest (connectorInstance
-                                                                                                     , spreadSheetId
-                                                                                                     , payloadToSend
-                                                                                                     , fields);
+    googlespreadsheetResponse = connectorInstance.updateSheetPropertiesBatchRequest (spreadSheetId, payloadToSend
+                                                                                     , fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -365,9 +353,7 @@ function testDeleteDimensionBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.deleteDimensionBatchRequest (connectorInstance
-                                                                                               , spreadSheetId
-                                                                                               , payloadToSend, fields);
+    googlespreadsheetResponse = connectorInstance.deleteDimensionBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -400,10 +386,7 @@ function testUpdateCellsBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.updateCellsBatchRequest (connectorInstance
-                                                                                           , spreadSheetId
-                                                                                           , payloadToSend
-                                                                                           , fields);
+    googlespreadsheetResponse = connectorInstance.updateCellsBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -437,10 +420,7 @@ function testAppendCellsBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.appendDimensionBatchRequest (connectorInstance
-                                                                                               , spreadSheetId
-                                                                                               , payloadToSend
-                                                                                               , fields);
+    googlespreadsheetResponse = connectorInstance.appendDimensionBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -476,10 +456,7 @@ function testUpdateBorderBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.updateBordersBatchRequest (connectorInstance
-                                                                                             , spreadSheetId
-                                                                                             , payloadToSend
-                                                                                             , fields);
+    googlespreadsheetResponse = connectorInstance.updateBordersBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -533,9 +510,7 @@ function testRepeatCellsBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.repeatCellsBatchRequest (connectorInstance
-                                                                                           , spreadSheetId
-                                                                                           , payloadToSend, fields);
+    googlespreadsheetResponse = connectorInstance.repeatCellsBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -572,9 +547,7 @@ function testMergeCellsBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.mergeCellsBatchRequest (connectorInstance
-                                                                                          , spreadSheetId
-                                                                                          , payloadToSend, fields);
+    googlespreadsheetResponse = connectorInstance.mergeCellsBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -622,10 +595,7 @@ function testSetDataValidationBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.setDataValidationBatchRequest (connectorInstance
-                                                                                                 , spreadSheetId
-                                                                                                 , payloadToSend
-                                                                                                 , fields);
+    googlespreadsheetResponse = connectorInstance.setDataValidationBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -670,10 +640,7 @@ function testCopyPasteBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.copyPasteBatchRequest (connectorInstance
-                                                                                         , spreadSheetId
-                                                                                         , payloadToSend
-                                                                                         , fields);
+    googlespreadsheetResponse = connectorInstance.copyPasteBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -715,10 +682,7 @@ function testCutPasteBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.cutPasteBatchRequest (connectorInstance
-                                                                                        , spreadSheetId
-                                                                                        , payloadToSend
-                                                                                        , fields);
+    googlespreadsheetResponse = connectorInstance.cutPasteBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -772,10 +736,8 @@ function testAddConditionalFormatRuleBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.addConditionalFormatRuleBatchRequest (connectorInstance
-                                                                                                        , spreadSheetId
-                                                                                                        , payloadToSend
-                                                                                                        , fields);
+    googlespreadsheetResponse = connectorInstance.addConditionalFormatRuleBatchRequest (spreadSheetId, payloadToSend
+                                                                                        , fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -832,10 +794,8 @@ function testUpdateConidtionalFormatRuleBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.updateConditionalFormatRuleBatchRequest (connectorInstance
-                                                                                                           , spreadSheetId
-                                                                                                           , payloadToSend
-                                                                                                           , fields);
+    googlespreadsheetResponse = connectorInstance.updateConditionalFormatRuleBatchRequest (spreadSheetId, payloadToSend
+                                                                                           , fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -866,10 +826,8 @@ function testDeleteConditionalFormatRuleBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.deleteConditionalFormatRuleBatchRequest (connectorInstance
-                                                                                                           , spreadSheetId
-                                                                                                           , payloadToSend
-                                                                                                           , fields);
+    googlespreadsheetResponse = connectorInstance.deleteConditionalFormatRuleBatchRequest (spreadSheetId, payloadToSend
+                                                                                           , fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -908,10 +866,8 @@ function testUpdateDimensionPropertiesBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.updateDimensionPropertiesBatchRequest (connectorInstance
-                                                                                                         , spreadSheetId
-                                                                                                         , payloadToSend
-                                                                                                         , fields);
+    googlespreadsheetResponse = connectorInstance.updateDimensionPropertiesBatchRequest (spreadSheetId, payloadToSend
+                                                                                         , fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -946,10 +902,8 @@ function testAutoResizeBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.autoResizeDimensionsBatchRequest (connectorInstance
-                                                                                                    , spreadSheetId
-                                                                                                    , payloadToSend
-                                                                                                    , fields);
+    googlespreadsheetResponse = connectorInstance.autoResizeDimensionsBatchRequest (spreadSheetId, payloadToSend
+                                                                                    , fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -985,10 +939,7 @@ function testInsertDimensionBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.insertDimensionBatchRequest (connectorInstance
-                                                                                               , spreadSheetId
-                                                                                               , payloadToSend
-                                                                                               , fields);
+    googlespreadsheetResponse = connectorInstance.insertDimensionBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -1024,10 +975,8 @@ function testMoveDimensionBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.moveDimensionBatchRequest (connectorInstance
-                                                                                             , spreadSheetId
-                                                                                             , payloadToSend
-                                                                                             , fields);
+    googlespreadsheetResponse = connectorInstance.moveDimensionBatchRequest (spreadSheetId, payloadToSend
+                                                                             , fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -1077,10 +1026,7 @@ function testSortRangeBatchRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.sortRangeBatchRequest (connectorInstance
-                                                                                         , spreadSheetId
-                                                                                         , payloadToSend
-                                                                                         , fields);
+    googlespreadsheetResponse = connectorInstance.sortRangeBatchRequest (spreadSheetId, payloadToSend, fields);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
@@ -1117,13 +1063,8 @@ function testAddRowsColumnsDataRequest () {
     int statusCode;
     message googlespreadsheetResponse = {};
 
-    googlespreadsheetResponse = googlespreadsheet:ClientConnector.addRowsColumnsData (connectorInstance
-                                                                                      , spreadSheetId
-                                                                                      , range
-                                                                                      , insertDataOption
-                                                                                      , valueInputOption
-                                                                                      , fields
-                                                                                      , payloadToSend);
+    googlespreadsheetResponse = connectorInstance.addRowsColumnsData (spreadSheetId, range, insertDataOption,
+                                                                      valueInputOption, fields, payloadToSend);
     payload = messages:getJsonPayload(googlespreadsheetResponse);
     returnedSpreadSheetId = (string)payload.spreadsheetId;
     statusCode = http:getStatusCode(googlespreadsheetResponse);
