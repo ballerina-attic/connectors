@@ -22,7 +22,7 @@ function init () (salesforcesoap:ClientConnector sales){
 
 function testDescribeGlobal () {
     salesforcesoap:ClientConnector connectorInstance = init();
-    soapResponse = salesforcesoap:ClientConnector.describeGlobal (connectorInstance, headers);
+    soapResponse = connectorInstance.describeGlobal (headers);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "describeGlobalResponse") && strings:contains(convertedString
                                                                                                     , "sobjects"));
@@ -30,7 +30,7 @@ function testDescribeGlobal () {
 
 function testDescribeSObject () {
     salesforcesoap:ClientConnector connectorInstance = init();
-    soapResponse = salesforcesoap:ClientConnector.describeSObject (connectorInstance, headers, type);
+    soapResponse = connectorInstance.describeSObject (headers, type);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "describeSObjectResponse")
                     && strings:contains(convertedString, "childRelationships")
@@ -43,7 +43,7 @@ function testCreateRecord () {
     headers = [allOrNoneHeader, allowFieldTruncationHeader];
     salesforcesoap:ClientConnector connectorInstance = init();
     map fields = {"type":type, "Name":name};
-    soapResponse = salesforcesoap:ClientConnector.createRecord (connectorInstance, headers, fields);
+    soapResponse = connectorInstance.createRecord (headers, fields);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "createResponse") && strings:contains(convertedString, "result")
                     && strings:contains(convertedString, "id"));
@@ -51,7 +51,7 @@ function testCreateRecord () {
 
 function testDescribeSObjects () {
     salesforcesoap:ClientConnector connectorInstance = init();
-    soapResponse = salesforcesoap:ClientConnector.describeSObjects (connectorInstance, headers, type);
+    soapResponse = connectorInstance.describeSObjects (headers, type);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "describeSObjectsResponse") && strings:contains(convertedString, "result")
                     && strings:contains(convertedString, "childRelationships"));
@@ -60,7 +60,7 @@ function testDescribeSObjects () {
 function testSearch () {
     salesforcesoap:ClientConnector connectorInstance = init();
     string arg1 = "FIND {Kesavan}";
-    soapResponse = salesforcesoap:ClientConnector.search (connectorInstance, headers, arg1);
+    soapResponse = connectorInstance.search (headers, arg1);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "searchResponse") && strings:contains(convertedString, "result")
                     && strings:contains(convertedString, "searchRecords"));
@@ -71,7 +71,7 @@ function testRetrieve () {
     string arg1 = "Id,Name";
     string arg2 = "Account";
     string arg3 = "0012800000jkIZY";
-    soapResponse = salesforcesoap:ClientConnector.retrieve (connectorInstance, headers, arg1, arg2, arg3);
+    soapResponse = connectorInstance.retrieve (headers, arg1, arg2, arg3);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "retrieveResponse") && strings:contains(convertedString, "result")
                     && strings:contains(convertedString, "sf:type"));
@@ -82,7 +82,7 @@ function testDeleteRecord () {
     xml allOrNoneHeader = `<urn:AllOrNoneHeader xmlns:urn="urn:partner.soap.sforce.com"><urn:allOrNone>0</urn:allOrNone></urn:AllOrNoneHeader>`;
     string arg1 = "0012800001HxFPP";
     headers = [allOrNoneHeader];
-    soapResponse = salesforcesoap:ClientConnector.deleteRecord (connectorInstance, headers, arg1);
+    soapResponse = connectorInstance.deleteRecord (headers, arg1);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "deleteResponse") && strings:contains(convertedString, "result")
                     && strings:contains(convertedString, "entity is deleted"));
@@ -93,7 +93,7 @@ function testQuery () {
     xml queryOptions = `<urn:QueryOptions xmlns:urn="urn:partner.soap.sforce.com"><urn:batchSize>200</urn:batchSize></urn:QueryOptions>`;
     headers = [queryOptions];
     string arg1 = "select name from Account";
-    soapResponse = salesforcesoap:ClientConnector.query (connectorInstance, headers, arg1);
+    soapResponse = connectorInstance.query (headers, arg1);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "queryResponse") && strings:contains(convertedString, "records")
                     && strings:contains(convertedString, "sf:type"));
@@ -104,7 +104,7 @@ function testQueryAll () {
     xml queryOptions = `<urn:QueryOptions xmlns:urn="urn:partner.soap.sforce.com"><urn:batchSize>200</urn:batchSize></urn:QueryOptions>`;
     headers = [queryOptions];
     string arg1 = "select name from Account";
-    soapResponse = salesforcesoap:ClientConnector.queryAll (connectorInstance, headers, arg1);
+    soapResponse = connectorInstance.queryAll (headers, arg1);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "queryAllResponse") && strings:contains(convertedString, "records")
                     && strings:contains(convertedString, "sf:type"));
@@ -115,7 +115,7 @@ function testQueryMore () {
     xml queryOptions = `<urn:QueryOptions xmlns:urn="urn:partner.soap.sforce.com"><urn:batchSize>200</urn:batchSize></urn:QueryOptions>`;
     headers = [queryOptions];
     string arg1 = "01g2800002d7e8nAAA-200";
-    soapResponse = salesforcesoap:ClientConnector.queryMore (connectorInstance, headers, arg1);
+    soapResponse = connectorInstance.queryMore (headers, arg1);
     system:println(xmls:toString(soapResponse));
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "queryMoreResponse") && strings:contains(convertedString, "records")
@@ -130,7 +130,7 @@ function testUpdateRecord () {
     headers = [allOrNoneHeader, allowFieldTruncationHeader];
     string arg1 = "0012800000jkIZY";
     map fields = {"type":type, "Name":name, "Id":arg1};
-    soapResponse = salesforcesoap:ClientConnector.updateRecord (connectorInstance, headers, fields);
+    soapResponse = connectorInstance.updateRecord (headers, fields);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "updateResponse") && strings:contains(convertedString, "result")
                     && strings:contains(convertedString, "id"));
@@ -141,7 +141,7 @@ function testUpsertRecord () {
     salesforcesoap:ClientConnector connectorInstance = init();
     map fields = {"type":"Contact", "Languages__c":"english", "Email":"abcd@asd.com"};
     string arg1 = "0012800000jkIZY";
-    soapResponse = salesforcesoap:ClientConnector.upsertRecord (connectorInstance, headers, "Languages__c", fields);
+    soapResponse = connectorInstance.upsertRecord (headers, "Languages__c", fields);
     convertedString = xmls:toString(soapResponse);
     test:assertTrue(strings:contains(convertedString, "upsertResponse") && strings:contains(convertedString, "result")
                     && strings:contains(convertedString, "id"));

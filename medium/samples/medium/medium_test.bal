@@ -21,7 +21,7 @@ function init () (medium:ClientConnector){
 
 function testGetProfileInfo () {
     medium:ClientConnector mediumConnector = init();
-    mediumResponse = medium:ClientConnector.getProfileInfo (mediumConnector);
+    mediumResponse = mediumConnector.getProfileInfo ();
     int status = http:getStatusCode(mediumResponse);
     test:assertIntEquals(status, 200, "GetProfileInfo Failed");
     system:println("===testGetProfileInfo completed===\n");
@@ -29,7 +29,7 @@ function testGetProfileInfo () {
 
 function testGetContributors () {
     medium:ClientConnector mediumConnector = init();
-    mediumResponse = medium:ClientConnector.getContributors (mediumConnector, publicationId);
+    mediumResponse = mediumConnector.getContributors (publicationId);
     int status = http:getStatusCode(mediumResponse);
     test:assertIntEquals(status, 200, "GetContributors Failed");
     system:println("===testGetContributors completed===\n");
@@ -37,7 +37,7 @@ function testGetContributors () {
 
 function testGetPublications () {
     medium:ClientConnector mediumConnector = init();
-    mediumResponse = medium:ClientConnector.getPublications (mediumConnector, userId);
+    mediumResponse = mediumConnector.getPublications (userId);
     int status = http:getStatusCode(mediumResponse);
     test:assertIntEquals(status, 200, "GetPublications Failed");
     system:println("===testGetPublications skipped===\n");
@@ -46,7 +46,7 @@ function testGetPublications () {
 function testCreateProfilePost () {
     medium:ClientConnector mediumConnector = init();
     json payload = {"title":"Test Payload", "contentFormat":"html", "content":"<h1>Test Payload</h1><p>This is a sample post</p>", "canonicalUrl":"http://wso2.com", "tags":["sample", "test"], "publishStatus":"draft"};
-    mediumResponse = medium:ClientConnector.createProfilePost (mediumConnector, userId, payload);
+    mediumResponse = mediumConnector.createProfilePost (userId, payload);
     int status = http:getStatusCode(mediumResponse);
     test:assertIntEquals(status, 201, "CreateProfilePost Failed");
     system:println("===testCreateProfilePost completed===\n");
@@ -55,7 +55,7 @@ function testCreateProfilePost () {
 function testCreatePublicationPost () {
     medium:ClientConnector mediumConnector = init();
     json payload = {"title":"Test Payload", "contentFormat":"html", "content":"<h1>Test Payload</h1><p>This is a publication post</p>", "canonicalUrl":"http://wso2.com", "tags":["sample", "test"], "publishStatus":"unlisted"};
-    mediumResponse = medium:ClientConnector.createPublicationPost (mediumConnector, publicationId, payload);
+    mediumResponse = mediumConnector.createPublicationPost (publicationId, payload);
     int status = http:getStatusCode(mediumResponse);
     test:assertIntEquals(status, 201, "CreatePublicationPost Failed");
     system:println("===testCreatePublicationPost completed===\n");

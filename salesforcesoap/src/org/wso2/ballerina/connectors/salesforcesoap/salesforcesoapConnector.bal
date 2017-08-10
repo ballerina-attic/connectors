@@ -19,10 +19,9 @@ connector ClientConnector (string username, string password, string loginUrl, st
     string serverUrl;
 
     @doc:Description{ value : "Lists the available objects and their metadata for your organization’s data"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Return{ value : "response message"}
-    action describeGlobal (ClientConnector s, xml[] headers) (xml) {
+    action describeGlobal (xml[] headers) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -36,8 +35,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         headers[headerCount] = session;
         xml payload = xmls:parse("<urn:describeGlobal xmlns:urn=\"urn:partner.soap.sforce.com\">
         	           </urn:describeGlobal>");
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-         serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -46,18 +44,16 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                         serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
         return soapResponse;
     }
 
     @doc:Description{ value : "Retrieves metadata (field list and object properties) for the specified object type"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "sObjectType: Name of SObject"}
     @doc:Return{ value : "response message"}
-    action describeSObject (ClientConnector s, xml[] headers, string sObjectType) (xml) {
+    action describeSObject (xml[] headers, string sObjectType) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -72,7 +68,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         xml payload = xmls:parse("<urn:describeSObject xmlns:urn=\"urn:partner.soap.sforce.com\">
                            <urn:sObjectType>" + sObjectType + "</urn:sObjectType>
                        </urn:describeSObject>");
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -81,19 +77,17 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
          return soapResponse;
     }
 
     @doc:Description{ value : "An array-based version of describeSObject"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "sObjectType: Name of SObject"}
     @doc:Return{ value : "response message"}
-    action describeSObjects (ClientConnector s, xml[] headers, string sObjectType) (xml) {
+    action describeSObjects (xml[] headers, string sObjectType) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -108,7 +102,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         xml payload = xmls:parse("<urn:describeSObjects xmlns:urn=\"urn:partner.soap.sforce.com\">
                            <urn:sObjectType>" + sObjectType + "</urn:sObjectType>
                        </urn:describeSObjects>");
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -117,19 +111,17 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
          return soapResponse;
     }
 
     @doc:Description{ value : "Adds one or more new records to your organization’s data"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "fields: Map of fields of records"}
     @doc:Return{ value : "response message"}
-    action createRecord (ClientConnector s, xml[] headers, map fields) (xml) {
+    action createRecord (xml[] headers, map fields) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -148,7 +140,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
         addFields(payload, fields, "/urn:create/urn:sObjects");
 
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -157,19 +149,17 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
         return soapResponse;
     }
 
     @doc:Description{ value : "Updates one or more existing records in your organization’s data"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "fields: Map of fields of records"}
     @doc:Return{ value : "response message"}
-    action updateRecord (ClientConnector s, xml[] headers, map fields) (xml) {
+    action updateRecord (xml[] headers, map fields) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -188,7 +178,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
         addFields(payload, fields, "/urn:update/urn:sObjects");
 
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -197,20 +187,18 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
          return soapResponse;
     }
 
     @doc:Description{ value : "Creates new records and updates existing records"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "externalId: External Id"}
     @doc:Param{ value : "fields: Map of fields of records"}
     @doc:Return{ value : "response message"}
-    action upsertRecord (ClientConnector s, xml[] headers, string externalId, map fields) (xml) {
+    action upsertRecord (xml[] headers, string externalId, map fields) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -230,7 +218,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
 
         addFields(payload, fields, "/urn:upsert/urn:sObjects");
 
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -239,19 +227,17 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
          return soapResponse;
     }
 
     @doc:Description{ value : "Executes a query against the specified object and returns data that matches the specified criteria"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "query: Query String"}
     @doc:Return{ value : "response message"}
-    action query (ClientConnector s, xml[] headers, string query) (xml) {
+    action query (xml[] headers, string query) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -266,7 +252,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         xml payload = xmls:parse("<urn:query xmlns:urn=\"urn:partner.soap.sforce.com\">
                            <urn:queryString>" + query + "</urn:queryString>
                        </urn:query>");
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -275,19 +261,17 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
         return soapResponse;
     }
 
     @doc:Description{ value : "Retrieves data from specified objects, whether or not they have been deleted"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "query: Query String"}
     @doc:Return{ value : "response message"}
-    action queryAll (ClientConnector s, xml[] headers, string query) (xml) {
+    action queryAll (xml[] headers, string query) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -302,7 +286,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         xml payload = xmls:parse("<urn:queryAll xmlns:urn=\"urn:partner.soap.sforce.com\">
                            <urn:queryString>" + query + "</urn:queryString>
                        </urn:queryAll>");
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -311,19 +295,17 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
         return soapResponse;
     }
 
     @doc:Description{ value : "Retrieves the next batch of objects from a query"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "queryLocator: Url to retrieve the balance query results"}
     @doc:Return{ value : "response message"}
-    action queryMore (ClientConnector s, xml[] headers, string queryLocator) (xml) {
+    action queryMore (xml[] headers, string queryLocator) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -338,7 +320,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         xml payload = xmls:parse("<urn:queryMore xmlns:urn=\"urn:partner.soap.sforce.com\">
                            <urn:queryLocator>" + queryLocator + "</urn:queryLocator>
                        </urn:queryMore>");
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -347,18 +329,16 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
         return soapResponse;
     }
     @doc:Description{ value : "Deletes one or more records from your organization’s data"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "recordId: Id of Record to be deleted"}
     @doc:Return{ value : "response message"}
-    action deleteRecord (ClientConnector s, xml[] headers, string recordId) (xml) {
+    action deleteRecord (xml[] headers, string recordId) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -373,7 +353,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         xml payload = xmls:parse("<urn:delete xmlns:urn=\"urn:partner.soap.sforce.com\">
                            <urn:ids>" + recordId + "</urn:ids>
                        </urn:delete>");
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -382,21 +362,19 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
         return soapResponse;
     }
 
     @doc:Description{ value : "Retrieves one or more records based on the specified IDs"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "fieldList: List of fields that needs to be retrieved"}
     @doc:Param{ value : "sObjectType: Name of SObject"}
     @doc:Param{ value : "recordId: Id of Record"}
     @doc:Return{ value : "response message"}
-    action retrieve (ClientConnector s, xml[] headers, string fieldList, string sObjectType, string recordId) (xml) {
+    action retrieve (xml[] headers, string fieldList, string sObjectType, string recordId) (xml) {
 
         int headerCount = headers.length;
         xml queryOptions = xmls:parse("<urn:QueryOptions xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:batchSize>200</urn:batchSize></urn:QueryOptions>");
@@ -415,7 +393,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
                            <urn:ids>" + recordId + "</urn:ids>
                        </urn:retrieve>");
 
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -424,19 +402,17 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
         return soapResponse;
     }
 
     @doc:Description{ value : "Executes a text search in your organization’s data"}
-    @doc:Param{ value : "s: The salesforcesoap connector instance"}
     @doc:Param{ value : "headers: Soap header values"}
     @doc:Param{ value : "query: Search String"}
     @doc:Return{ value : "response message"}
-    action search (ClientConnector s, xml[] headers, string query) (xml) {
+    action search (xml[] headers, string query) (xml) {
 
         int headerCount = headers.length;
         if (serverUrl == ""){
@@ -451,7 +427,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
         xml payload = xmls:parse("<urn:search xmlns:urn=\"urn:partner.soap.sforce.com\">
                            <urn:searchString>" + query + "</urn:searchString>
                        </urn:search>");
-        xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", serverUrl, soapVersion);
+        xml soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         if (isSessionExpired(soapResponse)) {
             xml loginResponse = login(username, password, loginUrl, soapVersion);
 
@@ -460,8 +436,7 @@ connector ClientConnector (string username, string password, string loginUrl, st
             session = xmls:parse("<urn:SessionHeader xmlns:urn=\"urn:partner.soap.sforce.com\"><urn:sessionId>" + sessionId + "</urn:sessionId></urn:SessionHeader>");
             serverUrl = xmls:getStringWithNamespace(loginResponse, "/ns:loginResponse/ns:result/ns:serverUrl/text()", n);
             headers[headerCount] = session;
-            soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
-                                                     serverUrl, soapVersion);
+            soapResponse = soapConnector.send(headers, payload, "''", serverUrl, soapVersion);
         }
 
         return soapResponse;
@@ -476,7 +451,7 @@ function login (string username, string password, string loginUrl, string soapVe
         	               <urn:username>" + username + "</urn:username>
         	               <urn:password>" + password + "</urn:password>
         	           </urn:login>");
-    xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''", loginUrl, soapVersion);
+    xml soapResponse = soapConnector.send(headers, payload, "''", loginUrl, soapVersion);
     return soapResponse;
 }
 

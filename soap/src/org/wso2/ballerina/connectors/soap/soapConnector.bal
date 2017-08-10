@@ -13,14 +13,13 @@ connector ClientConnector (string url) {
     map namespaceMap = {"1.2":"http://www.w3.org/2003/05/soap-envelope","1.1":"http://schemas.xmlsoap.org/soap/envelope/"};
 
     @doc:Description{ value : "Call a soap endpoint"}
-    @doc:Param{ value : "s: The soap Connector instance"}
     @doc:Param{ value : "headers: Headers of the SOAP request"}
     @doc:Param{ value : "payload: The payload to request"}
     @doc:Param{ value : "soapAction: The soap action"}
     @doc:Param{ value : "url: The soap endpoint url"}
     @doc:Param{ value : "soapVersion: The soap version"}
     @doc:Return{ value : "response xml"}
-    action send (ClientConnector s, xml[] headers, xml payload, string soapAction, string url, string soapVersion) (xml) {
+    action send (xml[] headers, xml payload, string soapAction, string url, string soapVersion) (xml) {
 
         message backendServiceReq ={};
         string reqType;
@@ -39,7 +38,7 @@ connector ClientConnector (string url) {
             messages:setHeader(backendServiceReq, "SOAPAction", soapAction);
         }
 
-        message response = http:ClientConnector.post(httpConnector, url, backendServiceReq);
+        message response = httpConnector.post(url, backendServiceReq);
         xml resp = messages:getXmlPayload(response);
         map m = {"soapenv" : namespaceMap[soapVersion]};
         xml soapBody = xmls:getXmlWithNamespace(resp, "/soapenv:Envelope/soapenv:Body/*", m);
