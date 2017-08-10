@@ -25,11 +25,12 @@ function init () (gmail:ClientConnector gmailConnector) {
 
 function testGetProfile () {
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.getUserProfile (connectorInstance);
+    gmailResponse = connectorInstance.cgetUserProfile ();
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string returnedEmailAddress = (string)gmailJSONResponse.emailAddress;
     string statusCode = (string)http:getStatusCode(gmailResponse);
-    test:assertTrue(strings:equalsIgnoreCase(returnedEmailAddress, userId) && strings:equalsIgnoreCase(statusCode, "200"));
+    test:assertTrue(strings:equalsIgnoreCase(returnedEmailAddress, userId) && strings:equalsIgnoreCase(statusCode,
+                                                                                                       "200"));
 }
 
 function testCreateDraft () {
@@ -41,8 +42,7 @@ function testCreateDraft () {
     string id = "154b8c77e551c510";
     string threadId = "154b8c77e551c510";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.createDraft (connectorInstance, recipientAddress, subject, from, messageBody
-                                                       , cc, bcc, id, threadId);
+    gmailResponse = connectorInstance.createDraft (recipientAddress, subject, from, messageBody, cc, bcc, id, threadId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string returnedId = (string)gmailJSONResponse.id;
     string statusCode = (string)http:getStatusCode(gmailResponse);
@@ -59,8 +59,8 @@ function testUpdateDraft () {
     string id = "154b8c77e551c510";
     string threadId = "154b8c77e551c510";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.updateDraft (connectorInstance, draftId, recipientAddress, subject, from
-                                                       , messageBody, cc, bcc, id, threadId);
+    gmailResponse = connectorInstance.updateDraft (draftId, recipientAddress, subject, from, messageBody, cc, bcc, id,
+                                                   threadId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string returnedId = (string)gmailJSONResponse.id;
     string statusCode = (string)http:getStatusCode(gmailResponse);
@@ -71,7 +71,7 @@ function testReadDraft () {
     string draftId = "r-6158712664976689510";
     string format = "raw";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.readDraft (connectorInstance, draftId, format);
+    gmailResponse = connectorInstance.readDraft (draftId, format);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string returnedId = (string)gmailJSONResponse.id;
     string statusCode = (string)http:getStatusCode(gmailResponse);
@@ -84,7 +84,7 @@ function testListDraft () {
     string pageToken = "09876536614133772469";
     string q = "";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.listDrafts (connectorInstance, includeSpamTrash, maxResults, pageToken, q);
+    gmailResponse = connectorInstance.listDrafts (includeSpamTrash, maxResults, pageToken, q);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -93,7 +93,7 @@ function testListDraft () {
 function testDeleteDraft () {
     string draftId = "1489453812801109582";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.deleteDraft (connectorInstance, draftId);
+    gmailResponse = connectorInstance.deleteDraft (draftId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -105,7 +105,7 @@ function testListHistory () {
     string pageToken = "";
     string startHistoryId = "1482987";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.listHistory (connectorInstance, labelId, maxResults, pageToken, startHistoryId);
+    gmailResponse = connectorInstance.listHistory (labelId, maxResults, pageToken, startHistoryId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -121,9 +121,8 @@ function testCreateLabel () {
     string threadsTotal = "100";
     string threadsUnread = "100";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.createLabel (connectorInstance, labelName, messageListVisibility
-                                                       , labelListVisibility, types, messagesTotal
-                                                       , messagesUnread, threadsTotal, threadsUnread);
+    gmailResponse = connectorInstance.createLabel (labelName, messageListVisibility, labelListVisibility, types,
+                                                   messagesTotal, messagesUnread, threadsTotal, threadsUnread);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -132,7 +131,7 @@ function testCreateLabel () {
 function testDeleteLabel () {
     string labelId = "Label_5";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.deleteLabel (connectorInstance, labelId);
+    gmailResponse = connectorInstance.deleteLabel (labelId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -140,7 +139,7 @@ function testDeleteLabel () {
 
 function testListLabels () {
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.listLabels (connectorInstance);
+    gmailResponse = connectorInstance.listLabels ();
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -158,9 +157,8 @@ function testUpdateLabel () {
     string threadsUnread = "100";
 
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.updateLabel (connectorInstance, labelId, labelName, messageListVisibility
-                                                       , labelListVisibility, types, messagesTotal, messagesUnread
-                                                       , threadsTotal, threadsUnread);
+    gmailResponse = connectorInstance.updateLabel (labelId, labelName, messageListVisibility, labelListVisibility,
+                                                   types, messagesTotal, messagesUnread, threadsTotal, threadsUnread);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -169,7 +167,7 @@ function testUpdateLabel () {
 function testReadLabel () {
     string labelId = "Label_7";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.readLabel (connectorInstance, labelId);
+    gmailResponse = connectorInstance.readLabel (labelId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -180,7 +178,7 @@ function testReadThread () {
     string format = "metadata";
     string metaDataHeaders = "";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.readThread (connectorInstance, threadId, format, metaDataHeaders);
+    gmailResponse = connectorInstance.readThread (threadId, format, metaDataHeaders);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -193,8 +191,8 @@ function testListThread () {
     string pageToken = "";
     string q = "";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.listThreads (connectorInstance, includeSpamTrash, labelIds, maxResults
-                                                       , pageToken, q);
+    gmailResponse = connectorInstance.listThreads (includeSpamTrash, labelIds, maxResults
+                                                   , pageToken, q);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -203,7 +201,7 @@ function testListThread () {
 function testDeleteThread () {
     string threadId = "15c39eb2dcc84a3d";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.deleteThread (connectorInstance, threadId);
+    gmailResponse = connectorInstance.deleteThread (threadId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -212,7 +210,7 @@ function testDeleteThread () {
 function testTrashThread () {
     string threadId = "15c39eb2dcc84a3d";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.trashThread (connectorInstance, threadId);
+    gmailResponse = connectorInstance.trashThread (threadId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -221,7 +219,7 @@ function testTrashThread () {
 function testUnTrashThread () {
     string threadId = "15c39eb2dcc84a3d";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.unTrashThread (connectorInstance, threadId);
+    gmailResponse = connectorInstance.unTrashThread (threadId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -234,8 +232,7 @@ function testListMails () {
     string pageToken = "";
     string q = "";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.listMails (connectorInstance, includeSpamTrash, labelIds
-                                                     , maxResults, pageToken, q);
+    gmailResponse = connectorInstance.listMails (includeSpamTrash, labelIds, maxResults, pageToken, q);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -251,8 +248,7 @@ function testSendMails () {
     string id = "154b8c77e551c511";
     string threadId = "154b8c77e551c512";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.sendMail (connectorInstance, to, subject, from, messageBody
-                                                    , cc, bcc, id, threadId);
+    gmailResponse = connectorInstance.sendMail (to, subject, from, messageBody, cc, bcc, id, threadId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -263,8 +259,7 @@ function testModifyExistingMessage () {
     string addLabelIds = "SPAM";
     string removeLabelIds = "UNREAD";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.modifyExistingMessage (connectorInstance, messageId
-                                                                 , addLabelIds, removeLabelIds);
+    gmailResponse = connectorInstance.modifyExistingMessage (messageId, addLabelIds, removeLabelIds);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -275,7 +270,7 @@ function testReadMail () {
     string format = "minimal";
     string metaDataHeaders = "";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.readMail (connectorInstance, messageId, format, metaDataHeaders);
+    gmailResponse = connectorInstance.readMail (messageId, format, metaDataHeaders);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -284,7 +279,7 @@ function testReadMail () {
 function testDeleteMail () {
     string messageId = "15c3a75d7e757965";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.deleteMail (connectorInstance, messageId);
+    gmailResponse = connectorInstance.deleteMail (messageId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -293,7 +288,7 @@ function testDeleteMail () {
 function testTrashMail () {
     string messageId = "15c3a75d7e757965";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.trashMail (connectorInstance, messageId);
+    gmailResponse = connectorInstance.trashMail (messageId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -302,7 +297,7 @@ function testTrashMail () {
 function testUnTrashMail () {
     string messageId = "15c3a75d7e757965";
     gmail:ClientConnector connectorInstance = init();
-    gmailResponse = gmail:ClientConnector.unTrashMail (connectorInstance, messageId);
+    gmailResponse = connectorInstance.unTrashMail (messageId);
     gmailJSONResponse = messages:getJsonPayload(gmailResponse);
     string statusCode = (string)http:getStatusCode(gmailResponse);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
