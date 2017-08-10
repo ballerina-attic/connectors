@@ -8,47 +8,45 @@ import ballerina.utils;
 import ballerina.net.uri;
 import ballerina.lang.messages;
 
-@doc:Description{ value : "Amazon Auth connector"}
-@doc:Param{ value : "accessKeyId: The access key ID of the Amazon Account"}
-@doc:Param{ value : "secretAccessKey: The secret access key of the Amazon Account"}
-@doc:Param{ value : "region: The region to which the request is made"}
-@doc:Param{ value : "serviceName: The Amazon service that should be invoked"}
-@doc:Param{ value : "terminationString: The termination string for the request"}
-@doc:Param{ value : "endpoint: The Endpoint of the amazon service"}
-connector ClientConnector(string accessKeyId, string secretAccessKey,
-                string region, string serviceName, string terminationString, string endpoint) {
+@doc:Description { value:"Amazon Auth connector"}
+@doc:Param { value:"accessKeyId: The access key ID of the Amazon Account"}
+@doc:Param { value:"secretAccessKey: The secret access key of the Amazon Account"}
+@doc:Param { value:"region: The region to which the request is made"}
+@doc:Param { value:"serviceName: The Amazon service that should be invoked"}
+@doc:Param { value:"terminationString: The termination string for the request"}
+@doc:Param { value:"endpoint: The Endpoint of the amazon service"}
+connector ClientConnector (string accessKeyId, string secretAccessKey,
+                           string region, string serviceName, string terminationString, string endpoint) {
     http:ClientConnector awsEP = create http:ClientConnector(endpoint);
 
-    @doc:Description{ value : "Get List of Objects in a bucket"}
-    @doc:Param{ value : "amazonAuthConnector: The amazonAuthConnector instance"}
-    @doc:Param{ value : "requestMsg: The request message object"}
-    @doc:Param{ value : "httpVerb: The HTTP verb"}
-    @doc:Param{ value : "requestURI: The URI of the service to be invoked"}
-    @doc:Param{ value : "payload: The payload to be sent"}
-    @doc:Return{ value : "response object"}
-    action request(ClientConnector amazonAuthConnector, message requestMsg, string httpVerb, string requestURI,
-     string payload) (message) {
+    @doc:Description { value:"Get List of Objects in a bucket"}
+    @doc:Param { value:"requestMsg: The request message object"}
+    @doc:Param { value:"httpVerb: The HTTP verb"}
+    @doc:Param { value:"requestURI: The URI of the service to be invoked"}
+    @doc:Param { value:"payload: The payload to be sent"}
+    @doc:Return { value:"response object"}
+    action request (message requestMsg, string httpVerb, string requestURI, string payload) (message) {
 
         message response;
 
         requestMsg = generateSignature(requestMsg, accessKeyId, secretAccessKey, region, serviceName, terminationString,
-         httpVerb, requestURI, payload);
+                                       httpVerb, requestURI, payload);
 
-        if(strings:equalsIgnoreCase(httpVerb,"POST")){
-            response = http:ClientConnector.post(awsEP, requestURI, requestMsg);
-        }else if(strings:equalsIgnoreCase(httpVerb,"GET")){
-            response = http:ClientConnector.get(awsEP, requestURI, requestMsg);
-        }else if(strings:equalsIgnoreCase(httpVerb,"PUT")){
-            response = http:ClientConnector.put(awsEP, requestURI, requestMsg);
-        }else if(strings:equalsIgnoreCase(httpVerb,"DELETE")){
-            response = http:ClientConnector.delete(awsEP, requestURI, requestMsg);
+        if (strings:equalsIgnoreCase(httpVerb, "POST")) {
+            response = awsEP.post (requestURI, requestMsg);
+        } else if (strings:equalsIgnoreCase(httpVerb, "GET")) {
+            response = awsEP.get (requestURI, requestMsg);
+        } else if (strings:equalsIgnoreCase(httpVerb, "PUT")) {
+            response = awsEP.put (requestURI, requestMsg);
+        } else if (strings:equalsIgnoreCase(httpVerb, "DELETE")) {
+            response = awsEP.delete (requestURI, requestMsg);
         }
         return response;
     }
 }
 
-function generateSignature(message msg, string accessKeyId, string secretAccessKey, string region, string serviceName,
-    string terminationString, string httpVerb, string requestURI, string payload) (message) {
+function generateSignature (message msg, string accessKeyId, string secretAccessKey, string region, string serviceName,
+                            string terminationString, string httpVerb, string requestURI, string payload) (message) {
 
     string canonicalRequest;
     string canonicalQueryString;
@@ -78,7 +76,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     canonicalRequest = canonicalRequest + canonicalQueryString;
     canonicalRequest = canonicalRequest + "\n";
 
-    if(payload != "" && payload != "UNSIGNED-PAYLOAD"){
+    if (payload != "" && payload != "UNSIGNED-PAYLOAD") {
         canonicalHeaders = canonicalHeaders + strings:toLowerCase("Content-Type");
         canonicalHeaders = canonicalHeaders + ":";
         canonicalHeaders = canonicalHeaders + (messages:getHeader(msg, strings:toLowerCase("Content-Type")));
@@ -94,7 +92,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     signedHeader = signedHeader + strings:toLowerCase("Host");
     signedHeader = signedHeader + ";";
 
-    if(payload == "UNSIGNED-PAYLOAD"){
+    if (payload == "UNSIGNED-PAYLOAD") {
         canonicalHeaders = canonicalHeaders + strings:toLowerCase("X-Amz-Content-Sha256");
         canonicalHeaders = canonicalHeaders + ":";
         canonicalHeaders = canonicalHeaders + messages:getHeader(msg, strings:toLowerCase("X-Amz-Content-Sha256"));
@@ -144,9 +142,9 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     stringToSign = stringToSign + "\n";
     stringToSign = stringToSign + strings:toLowerCase(utils:getHash(canonicalRequest, algorithm));
 
-    signingKey =  utils:getHmacFromBase64( terminationString,utils:getHmacFromBase64( serviceName,
-    utils:getHmacFromBase64( region,utils:getHmacFromBase64(shortDate,utils:base64encode("AWS4" + secretAccessKey),
-    algorithm), algorithm), algorithm), algorithm);
+    signingKey = utils:getHmacFromBase64(terminationString, utils:getHmacFromBase64(serviceName,
+                                                                                    utils:getHmacFromBase64(region, utils:getHmacFromBase64(shortDate, utils:base64encode("AWS4" + secretAccessKey),
+                                                                                                                                            algorithm), algorithm), algorithm), algorithm);
 
     authHeader = authHeader + ("AWS4-HMAC-SHA256");
     authHeader = authHeader + (" ");
@@ -169,7 +167,7 @@ function generateSignature(message msg, string accessKeyId, string secretAccessK
     authHeader = authHeader + (" Signature");
     authHeader = authHeader + ("=");
     authHeader = authHeader + strings:toLowerCase(utils:base64ToBase16Encode(utils:getHmacFromBase64(stringToSign,
-     signingKey, algorithm)));
+                                                                                                     signingKey, algorithm)));
     messages:setHeader(msg, "Authorization", authHeader);
     return msg;
 }

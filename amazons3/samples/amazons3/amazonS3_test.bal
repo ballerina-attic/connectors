@@ -16,7 +16,7 @@ function init () (amazons3:ClientConnector) {
 
 function testCreateBucket () {
     amazons3:ClientConnector s3Connector = init();
-    message s3Response = amazons3:ClientConnector.createBucket (s3Connector, "BallerinaTest");
+    message s3Response = s3Connector.createBucket ("BallerinaTest");
     int s3Status = http:getStatusCode(s3Response);
     test:assertIntEquals(s3Status, 200, "CreateBucket Failed");
     system:println("===testCreateBucket completed===");
@@ -24,7 +24,7 @@ function testCreateBucket () {
 
 function testPutObject () {
     amazons3:ClientConnector s3Connector = init();
-    message s3Response = amazons3:ClientConnector.putObject (s3Connector, "BallerinaTest", "test.txt", "Sample Content");
+    message s3Response = s3Connector.putObject ("BallerinaTest", "test.txt", "Sample Content");
     int s3Status = http:getStatusCode(s3Response);
     test:assertIntEquals(s3Status, 200, "PutObject Failed");
     system:println("===testPutBucket completed===");
@@ -33,7 +33,7 @@ function testPutObject () {
 
 function testPutInvalidBucket () {
     amazons3:ClientConnector s3Connector = init();
-    message s3Response = amazons3:ClientConnector.putObject (s3Connector, "BallerinaTest1", "test.txt", "Sample Content");
+    message s3Response = s3Connector.putObject ("BallerinaTest1", "test.txt", "Sample Content");
     int s3Status = http:getStatusCode(s3Response);
     xml s3XmlResponse = messages:getXmlPayload(s3Response);
     string code = xmls:getString(s3XmlResponse, "/Error/Code/text()");
@@ -44,7 +44,7 @@ function testPutInvalidBucket () {
 
 function testGetObject () {
     amazons3:ClientConnector s3Connector = init();
-    message s3Response = amazons3:ClientConnector.getObject (s3Connector, "BallerinaTest", "test.txt");
+    message s3Response = s3Connector.getObject ("BallerinaTest", "test.txt");
     int s3Status = http:getStatusCode(s3Response);
     string s3StringResponse = messages:getStringPayload(s3Response);
     test:assertIntEquals(s3Status, 200, "GetObject Failed");
@@ -54,7 +54,7 @@ function testGetObject () {
 
 function testGetObjectList () {
     amazons3:ClientConnector s3Connector = init();
-    message s3Response = amazons3:ClientConnector.getObjectList (s3Connector, "BallerinaTest");
+    message s3Response = s3Connector.getObjectList ("BallerinaTest");
     int s3Status = http:getStatusCode(s3Response);
     test:assertIntEquals(s3Status, 200, "GetObjectList Failed");
     system:println("===testGetObjectList completed===");
@@ -62,7 +62,7 @@ function testGetObjectList () {
 
 function testGetBucketList () {
     amazons3:ClientConnector s3Connector = init();
-    message s3Response = amazons3:ClientConnector.getBucketList (s3Connector);
+    message s3Response = s3Connector.getBucketList ();
     int s3Status = http:getStatusCode(s3Response);
     xml s3XmlResponse = messages:getXmlPayload(s3Response);
     test:assertIntEquals(s3Status, 200, "GetBucketList Failed");
@@ -71,7 +71,7 @@ function testGetBucketList () {
 
 function testDeleteObject () {
     amazons3:ClientConnector s3Connector = init();
-    message s3Response = amazons3:ClientConnector.deleteObject (s3Connector, "BallerinaTest", "test.txt");
+    message s3Response = s3Connector.deleteObject ("BallerinaTest", "test.txt");
     int s3Status = http:getStatusCode(s3Response);
     test:assertIntEquals(s3Status, 204, "DeleteObject Failed");
     system:println("===testDeleteObject completed===");
@@ -79,7 +79,7 @@ function testDeleteObject () {
 
 function testDeleteBucket () {
     amazons3:ClientConnector s3Connector = init();
-    message s3Response = amazons3:ClientConnector.deleteBucket (s3Connector, "BallerinaTest");
+    message s3Response = s3Connector.deleteBucket ("BallerinaTest");
     int s3Status = http:getStatusCode(s3Response);
     test:assertIntEquals(s3Status, 204, "DeleteBucket Failed");
     system:println("===testDeleteBucket completed===");

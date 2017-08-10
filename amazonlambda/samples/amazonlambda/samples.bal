@@ -10,39 +10,39 @@ function main (string[] args) {
     message lambdaResponse;
     json lambdaJSONResponse;
 
-    if (args[0] == "invokeFunction"){
-        lambdaResponse = amazonlambda:ClientConnector.invokeFunction(amzLamConnector, args[4]);
+    if (args[0] == "invokeFunction") {
+        lambdaResponse = amzLamConnector.invokeFunction (args[4]);
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
         system:println(jsons:toString(lambdaJSONResponse));
     }
-    if (args[0] == "invokeFunctionWithParam"){
+    if (args[0] == "invokeFunctionWithParam") {
         json payload = {"name":"Ballerina"};
-        lambdaResponse = amazonlambda:ClientConnector.invokeFunctionWithParam(amzLamConnector, args[4], payload);
+        lambdaResponse = amzLamConnector.invokeFunctionWithParam (args[4], payload);
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
         system:println(jsons:toString(lambdaJSONResponse));
     }
-    if (args[0] == "deleteFunction"){
-        lambdaResponse = amazonlambda:ClientConnector.deleteFunction(amzLamConnector, args[4]);
+    if (args[0] == "deleteFunction") {
+        lambdaResponse = amzLamConnector.deleteFunction (args[4]);
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
         system:println(jsons:toString(lambdaJSONResponse));
     }
-    if (args[0] == "listFunctions"){
-        lambdaResponse = amazonlambda:ClientConnector.listFunctions(amzLamConnector);
+    if (args[0] == "listFunctions") {
+        lambdaResponse = amzLamConnector.listFunctions ();
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
         system:println(jsons:toString(lambdaJSONResponse));
     }
-    if (args[0] == "listFunctionVersions"){
-        lambdaResponse = amazonlambda:ClientConnector.getFunctionVersions(amzLamConnector, args[4]);
+    if (args[0] == "listFunctionVersions") {
+        lambdaResponse = amzLamConnector.getFunctionVersions (args[4]);
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
         system:println(jsons:toString(lambdaJSONResponse));
     }
-    if (args[0] == "getFunction"){
-        lambdaResponse = amazonlambda:ClientConnector.getFunction(amzLamConnector, args[4]);
+    if (args[0] == "getFunction") {
+        lambdaResponse = amzLamConnector.getFunction (args[4]);
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
         system:println(jsons:toString(lambdaJSONResponse));
     }
-    if (args[0] == "getAccountDetails"){
-        lambdaResponse = amazonlambda:ClientConnector.getAccountDetails(amzLamConnector);
+    if (args[0] == "getAccountDetails") {
+        lambdaResponse = amzLamConnector.getAccountDetails ();
         lambdaJSONResponse = messages:getJsonPayload(lambdaResponse);
         system:println(jsons:toString(lambdaJSONResponse));
     }

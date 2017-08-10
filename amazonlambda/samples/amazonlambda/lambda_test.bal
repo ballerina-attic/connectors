@@ -18,7 +18,7 @@ function init () (amazonlambda:ClientConnector){
 
 function testInvokeFunction () {
     amazonlambda:ClientConnector lambdaConnector = init();
-    lambdaResponse = amazonlambda:ClientConnector.invokeFunction (lambdaConnector, "BallerinaTestFunction");
+    lambdaResponse = lambdaConnector.invokeFunction ("BallerinaTestFunction");
     int status = http:getStatusCode(lambdaResponse);
     test:assertIntEquals(status, 200, "InvokeFunction Failed");
     system:println("===testInvokeFunction completed===\n");
@@ -28,7 +28,7 @@ function testInvokeFunction () {
 function testInvokeFunctionWithParam () {
     amazonlambda:ClientConnector lambdaConnector = init();
     json payload = {"name":"Ballerina"};
-    lambdaResponse = amazonlambda:ClientConnector.invokeFunctionWithParam (lambdaConnector, "BallerinaTestFunction", payload);
+    lambdaResponse = lambdaConnector.invokeFunctionWithParam ("BallerinaTestFunction", payload);
     int status = http:getStatusCode(lambdaResponse);
     test:assertIntEquals(status, 200, "InvokeFunctionWithParam Failed");
     system:println("===testInvokeFunctionWithParam completed===\n");
@@ -37,7 +37,7 @@ function testInvokeFunctionWithParam () {
 
 function testListFunctions () {
     amazonlambda:ClientConnector lambdaConnector = init();
-    lambdaResponse = amazonlambda:ClientConnector.listFunctions (lambdaConnector);
+    lambdaResponse = lambdaConnector.listFunctions ();
     int status = http:getStatusCode(lambdaResponse);
     test:assertIntEquals(status, 200, "ListFunctions Failed");
     system:println("===testListFunctions completed===\n");
@@ -46,7 +46,7 @@ function testListFunctions () {
 
 function testGetFunctionVersions () {
     amazonlambda:ClientConnector lambdaConnector = init();
-    lambdaResponse = amazonlambda:ClientConnector.getFunctionVersions (lambdaConnector, "BallerinaTestFunction");
+    lambdaResponse = lambdaConnector.getFunctionVersions ("BallerinaTestFunction");
     int status = http:getStatusCode(lambdaResponse);
     test:assertIntEquals(status, 200, "GetFunctionVersions Failed");
     system:println("===testGetFunctionVersions completed===\n");
@@ -55,7 +55,7 @@ function testGetFunctionVersions () {
 
 function testGetFunction () {
     amazonlambda:ClientConnector lambdaConnector = init();
-    lambdaResponse = amazonlambda:ClientConnector.getFunction (lambdaConnector, "BallerinaTestFunction");
+    lambdaResponse = lambdaConnector.getFunction ("BallerinaTestFunction");
     int status = http:getStatusCode(lambdaResponse);
     test:assertIntEquals(status, 200, "GetFunction Failed");
     system:println("===testGetFunction completed===\n");
@@ -64,7 +64,7 @@ function testGetFunction () {
 
 function testGetAccountDetails () {
     amazonlambda:ClientConnector lambdaConnector = init();
-    lambdaResponse = amazonlambda:ClientConnector.getAccountDetails (lambdaConnector);
+    lambdaResponse = lambdaConnector.getAccountDetails ();
     int status = http:getStatusCode(lambdaResponse);
     test:assertIntEquals(status, 200, "GetAccountDetails Failed");
     system:println("===testGetAccountDetails completed===\n");
@@ -73,7 +73,7 @@ function testGetAccountDetails () {
 
 function testDeleteFunction () {
     amazonlambda:ClientConnector lambdaConnector = init();
-    lambdaResponse = amazonlambda:ClientConnector.deleteFunction (lambdaConnector, "BallerinaTestFunction");
+    lambdaResponse = lambdaConnector.deleteFunction ("BallerinaTestFunction");
     int status = http:getStatusCode(lambdaResponse);
     test:assertIntEquals(status, 204, "DeleteFunction Failed");
     system:println("===testDeleteFunction completed===\n");
