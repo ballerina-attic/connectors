@@ -25,7 +25,7 @@ function init () (linkedin:ClientConnector){
 function testGetProfileInfoXML () {
 
     linkedin:ClientConnector linkedInConnector = init();
-    linkedInResponse = linkedin:ClientConnector.getProfileInfo (linkedInConnector, "xml");
+    linkedInResponse = linkedInConnector.getProfileInfo ("xml");
     linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
     system:println(xmls:toString(linkedInXMLResponse));
     int status = http:getStatusCode(linkedInResponse);
@@ -37,7 +37,7 @@ function testGetProfileInfoXML () {
 function testGetProfileInfoJSON () {
 
     linkedin:ClientConnector linkedInConnector = init();
-    linkedInResponse = linkedin:ClientConnector.getProfileInfo (linkedInConnector, "json");
+    linkedInResponse = linkedInConnector.getProfileInfo ("json");
     linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
     system:println(linkedInJSONResponse);
     int status = http:getStatusCode(linkedInResponse);
@@ -49,7 +49,7 @@ function testGetProfileInfoJSON () {
 function testGetCompanyInfoXML () {
 
     linkedin:ClientConnector linkedInConnector = init();
-    linkedInResponse = linkedin:ClientConnector.getCompanyInfo (linkedInConnector, companyId, "xml");
+    linkedInResponse = linkedInConnector.getCompanyInfo (companyId, "xml");
     linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
     system:println(xmls:toString(linkedInXMLResponse));
     int status = http:getStatusCode(linkedInResponse);
@@ -61,7 +61,7 @@ function testGetCompanyInfoXML () {
 function testGetCompanyInfoJSON () {
 
     linkedin:ClientConnector linkedInConnector = init();
-    linkedInResponse = linkedin:ClientConnector.getCompanyInfo (linkedInConnector, companyId, "json");
+    linkedInResponse = linkedInConnector.getCompanyInfo (companyId, "json");
     linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
     system:println(linkedInJSONResponse);
     int status = http:getStatusCode(linkedInResponse);
@@ -73,7 +73,7 @@ function testGetCompanyInfoJSON () {
 function testIsCompanyShareEnabledXML () {
 
     linkedin:ClientConnector linkedInConnector = init();
-    linkedInResponse = linkedin:ClientConnector.isCompanyShareEnabled (linkedInConnector, companyId, "xml");
+    linkedInResponse = linkedInConnector.isCompanyShareEnabled (companyId, "xml");
     linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
     system:println(xmls:toString(linkedInXMLResponse));
     int status = http:getStatusCode(linkedInResponse);
@@ -85,7 +85,7 @@ function testIsCompanyShareEnabledXML () {
 function testIsCompanyShareEnabledJSON () {
 
     linkedin:ClientConnector linkedInConnector = init();
-    linkedInResponse = linkedin:ClientConnector.isCompanyShareEnabled (linkedInConnector, companyId, "json");
+    linkedInResponse = linkedInConnector.isCompanyShareEnabled (companyId, "json");
     linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
     system:println(linkedInJSONResponse);
     int status = http:getStatusCode(linkedInResponse);
@@ -97,7 +97,7 @@ function testIsCompanyShareEnabledJSON () {
 function testIsMemberAdminXML () {
 
     linkedin:ClientConnector linkedInConnector = init();
-    linkedInResponse = linkedin:ClientConnector.isMemberAdmin (linkedInConnector, companyId, "xml");
+    linkedInResponse = linkedInConnector.isMemberAdmin (companyId, "xml");
     linkedInXMLResponse = messages:getXmlPayload(linkedInResponse);
     system:println(xmls:toString(linkedInXMLResponse));
     int status = http:getStatusCode(linkedInResponse);
@@ -109,7 +109,7 @@ function testIsMemberAdminXML () {
 function testIsMemberAdminJSON () {
 
     linkedin:ClientConnector linkedInConnector = init();
-    linkedInResponse = linkedin:ClientConnector.isMemberAdmin (linkedInConnector, companyId, "json");
+    linkedInResponse = linkedInConnector.isMemberAdmin (companyId, "json");
     linkedInJSONResponse = messages:getJsonPayload(linkedInResponse);
     system:println(linkedInJSONResponse);
     int status = http:getStatusCode(linkedInResponse);

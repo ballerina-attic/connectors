@@ -15,7 +15,7 @@ function main (string[] args) {
     basicauth:ClientConnector basicAuthConnector = create basicauth:ClientConnector(args[1], args[2], args[3]);
 
     if (args[0] == "get"){
-        basicAuthResponse = basicauth:ClientConnector.get(basicAuthConnector, args[4], request);
+        basicAuthResponse = basicAuthConnector.get(args[4], request);
         basicJSONResponse = messages:getJsonPayload(basicAuthResponse);
         system:println(jsons:toString(basicJSONResponse));
     }
@@ -23,7 +23,7 @@ function main (string[] args) {
     if (args[0] == "post"){
         messages:setHeader(request, "Content-Type", "application/json");
         messages:setJsonPayload(request, sampleJsonRequest);
-        basicAuthResponse = basicauth:ClientConnector.post(basicAuthConnector, args[4], request);
+        basicAuthResponse = basicAuthConnector.post(args[4], request);
         basicJSONResponse = messages:getJsonPayload(basicAuthResponse);
         system:println(jsons:toString(basicJSONResponse));
     }

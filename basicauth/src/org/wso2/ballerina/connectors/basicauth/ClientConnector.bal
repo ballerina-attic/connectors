@@ -16,61 +16,57 @@ connector ClientConnector (string baseUrl, string userName, string password) {
     string encodedBasicAuthValue;
 
     @doc:Description{ value : "Get with basic authentication"}
-    @doc:Param{ value : "clientConnector: The basicauth Connector instance"}
     @doc:Param{ value : "path: The endpoint path"}
     @doc:Param{ value : "request: The request of the method"}
     @doc:Return{ value : "response object"}
-    action get(ClientConnector clientConnector, string path, message request) (message) {
+    action get(string path, message request) (message) {
 
         message response;
 
         encodedBasicAuthValue = constructBasicAuthHeader (request, encodedBasicAuthValue, userName, password);
-        response = http:ClientConnector.get(httpConnectorEP, path, request);
+        response = httpConnectorEP.get(path, request);
 
         return response;
     }
 
     @doc:Description{ value : "Post with basic authentication"}
-    @doc:Param{ value : "clientConnector: The basicauth Connector instance"}
     @doc:Param{ value : "path: The endpoint path"}
     @doc:Param{ value : "request: The request of the method"}
     @doc:Return{ value : "response object"}
-    action post(ClientConnector clientConnector, string path, message request) (message) {
+    action post(string path, message request) (message) {
 
         message response;
 
         encodedBasicAuthValue = constructBasicAuthHeader (request, encodedBasicAuthValue, userName, password);
-        response = http:ClientConnector.post(httpConnectorEP, path, request);
+        response = httpConnectorEP.post(path, request);
 
         return response;
     }
 
     @doc:Description{ value : "Put with basic authentication"}
-    @doc:Param{ value : "clientConnector: The basicauth Connector instance"}
     @doc:Param{ value : "path: The endpoint path"}
     @doc:Param{ value : "request: The request of the method"}
     @doc:Return{ value : "response object"}
-    action put(ClientConnector clientConnector, string path, message request) (message) {
+    action put(string path, message request) (message) {
 
         message response;
 
         encodedBasicAuthValue = constructBasicAuthHeader (request, encodedBasicAuthValue, userName, password);
-        response = http:ClientConnector.put(httpConnectorEP, path, request);
+        response = httpConnectorEP.put(path, request);
 
         return response;
     }
 
     @doc:Description{ value : "Delete with basic authentication"}
-    @doc:Param{ value : "clientConnector: The basicauth Connector instance"}
     @doc:Param{ value : "path: The endpoint path"}
     @doc:Param{ value : "request: The request of the method"}
     @doc:Return{ value : "response object"}
-    action delete(ClientConnector clientConnector, string path, message request)(message) {
+    action delete(string path, message request)(message) {
 
         message response;
 
         encodedBasicAuthValue = constructBasicAuthHeader (request, encodedBasicAuthValue, userName, password);
-        response = http:ClientConnector.delete(httpConnectorEP, path, request);
+        response = httpConnectorEP.delete(path, request);
 
         return response;
     }
