@@ -16,7 +16,7 @@ function init () (facebook:ClientConnector){
 
 function testCreatePost () {
     facebook:ClientConnector facebookConnector = init();
-    response = facebook:ClientConnector.createPost (facebookConnector, "me", "Test Message", "", "");
+    response = facebookConnector.createPost ("me", "Test Message", "", "");
     facebookJSONResponse = messages:getJsonPayload(response);
     postID = (string)facebookJSONResponse["id"];
     system:println(facebookJSONResponse);
@@ -27,7 +27,7 @@ function testCreatePost () {
 
 function testRetrievePost () {
     facebook:ClientConnector facebookConnector = init();
-    response = facebook:ClientConnector.retrievePost (facebookConnector, postID, "message");
+    response = facebookConnector.retrievePost (postID, "message");
     facebookJSONResponse = messages:getJsonPayload(response);
     string msg = (string)facebookJSONResponse["message"];
     int status = http:getStatusCode(response);
@@ -38,7 +38,7 @@ function testRetrievePost () {
 
 function testUpdatePost () {
     facebook:ClientConnector facebookConnector = init();
-    response = facebook:ClientConnector.updatePost (facebookConnector, postID, "Updated Test Message", "", "");
+    response = facebookConnector.updatePost (postID, "Updated Test Message", "", "");
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "UpdatePost Failed");
     system:println("===testUpdatePost completed===\n");
@@ -46,7 +46,7 @@ function testUpdatePost () {
 
 function testAddLikes () {
     facebook:ClientConnector facebookConnector = init();
-    response = facebook:ClientConnector.addLikes (facebookConnector, postID);
+    response = facebookConnector.addLikes (postID);
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "AddLikes Failed");
     system:println("===testAddLikes completed===\n");
@@ -54,7 +54,7 @@ function testAddLikes () {
 
 function testGetLikes () {
     facebook:ClientConnector facebookConnector = init();
-    response = facebook:ClientConnector.getLikesDetails (facebookConnector, postID, "");
+    response = facebookConnector.getLikesDetails (postID, "");
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "GetLikes Failed");
     system:println("===testGetLikes completed===\n");
@@ -62,7 +62,7 @@ function testGetLikes () {
 
 function testDeleteLikes () {
     facebook:ClientConnector facebookConnector = init();
-    response = facebook:ClientConnector.deleteLikes (facebookConnector, postID);
+    response = facebookConnector.deleteLikes (postID);
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "DeleteLikes Failed");
     system:println("===testDeleteLikes completed===\n");
@@ -70,7 +70,7 @@ function testDeleteLikes () {
 
 function testAddComments () {
     facebook:ClientConnector facebookConnector = init();
-    response = facebook:ClientConnector.addComments (facebookConnector, postID, "Comment123", "", "");
+    response = facebookConnector.addComments (postID, "Comment123", "", "");
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "AddComments Failed");
     system:println("===testAddComments completed===\n");
@@ -78,7 +78,7 @@ function testAddComments () {
 
 function testGetComments () {
     facebook:ClientConnector facebookConnector = init();
-    response = facebook:ClientConnector.getComments (facebookConnector, postID, "");
+    response = facebookConnector.getComments (postID, "");
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "GetComments Failed");
     system:println("===testGetComments completed===\n");
@@ -86,7 +86,7 @@ function testGetComments () {
 
 function testDeletePost () {
     facebook:ClientConnector facebookConnector = init();
-    response = facebook:ClientConnector.deletePost (facebookConnector, postID);
+    response = facebookConnector.deletePost (postID);
     int status = http:getStatusCode(response);
     test:assertIntEquals(status, 200, "DeletePost Failed");
     system:println("===testDeletePost completed===\n");

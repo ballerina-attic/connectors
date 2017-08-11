@@ -7,88 +7,88 @@ import ballerina.lang.system;
 function main (string[] args) {
 
     twitter:ClientConnector twitterConnector = create twitter:ClientConnector(args[1], args[2], args[3], args[4]);
-    
+
     message tweetResponse;
     json tweetJSONResponse;
-    if (args[0] == "tweet"){
-        tweetResponse = twitter:ClientConnector.tweet(twitterConnector, args[5]);
+    if (args[0] == "tweet") {
+        tweetResponse = twitterConnector.tweet (args[5]);
 
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-    } else if (args[0] == "search"){
-        tweetResponse = twitter:ClientConnector.search(twitterConnector, args[5]);
-        
+    } else if (args[0] == "search") {
+        tweetResponse = twitterConnector.search (args[5]);
+
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-    } else if (args[0] == "retweet"){
-        tweetResponse = twitter:ClientConnector.retweet(twitterConnector, args[5]);
-        
+    } else if (args[0] == "retweet") {
+        tweetResponse = twitterConnector.retweet (args[5]);
+
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-    } else if (args[0] == "unretweet"){
-        tweetResponse = twitter:ClientConnector.unretweet(twitterConnector, args[5]);
-        
+    } else if (args[0] == "unretweet") {
+        tweetResponse = twitterConnector.unretweet (args[5]);
+
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-    } else if (args[0] == "showStatus"){
-        tweetResponse = twitter:ClientConnector.showStatus(twitterConnector, args[5]);
-        
+    } else if (args[0] == "showStatus") {
+        tweetResponse = twitterConnector.showStatus (args[5]);
+
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-    } else if (args[0] == "destroyStatus"){
-        tweetResponse = twitter:ClientConnector.destroyStatus(twitterConnector, args[5]);
-        
+    } else if (args[0] == "destroyStatus") {
+        tweetResponse = twitterConnector.destroyStatus (args[5]);
+
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-    } else if (args[0] == "getClosestTrendLocations"){
-        tweetResponse = twitter:ClientConnector.getClosestTrendLocations(twitterConnector, args[5], args[6]);
-        
+    } else if (args[0] == "getClosestTrendLocations") {
+        tweetResponse = twitterConnector.getClosestTrendLocations (args[5], args[6]);
+
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-    } else if (args[0] == "getTopTrendsByPlace"){
-        tweetResponse = twitter:ClientConnector.getTopTrendsByPlace(twitterConnector, args[5]);
-        
+    } else if (args[0] == "getTopTrendsByPlace") {
+        tweetResponse = twitterConnector.getTopTrendsByPlace (args[5]);
+
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-    } else{
-    system:println("====== Update Status =====");
-        tweetResponse = twitter:ClientConnector.tweet(twitterConnector, "Tweet messages");
+    } else {
+        system:println("====== Update Status =====");
+        tweetResponse = twitterConnector.tweet ("Tweet messages");
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         string tweetId = jsons:getString(tweetJSONResponse, "$.id_str");
         system:println(jsons:toString(tweetJSONResponse));
-        
+
         system:println("====== search =====");
-        tweetResponse = twitter:ClientConnector.search(twitterConnector, "Tweet messages");
+        tweetResponse = twitterConnector.search ("Tweet messages");
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-        
+
         system:println("====== Retweet a tweet =====");
-        tweetResponse = twitter:ClientConnector.retweet(twitterConnector, tweetId);
+        tweetResponse = twitterConnector.retweet (tweetId);
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-        
+
         system:println("====== Untweet a retweeted status =====");
-        tweetResponse = twitter:ClientConnector.unretweet(twitterConnector, tweetId);
+        tweetResponse = twitterConnector.unretweet (tweetId);
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-        
+
         system:println("====== Retrive a single status =====");
-        tweetResponse = twitter:ClientConnector.showStatus(twitterConnector, tweetId);
+        tweetResponse = twitterConnector.showStatus (tweetId);
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-        
+
         system:println("====== Distroy a status =====");
-        tweetResponse = twitter:ClientConnector.destroyStatus(twitterConnector, tweetId);
+        tweetResponse = twitterConnector.destroyStatus (tweetId);
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-        
+
         system:println("====== Retrive closest trend locations =====");
-        tweetResponse = twitter:ClientConnector.getClosestTrendLocations(twitterConnector, "37.781157", "-122.400612831116");
+        tweetResponse = twitterConnector.getClosestTrendLocations ("37.781157", "-122.400612831116");
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
-        
+
         system:println("====== Retrieve top trends by place =====");
-        tweetResponse = twitter:ClientConnector.getTopTrendsByPlace(twitterConnector, "1");
+        tweetResponse = twitterConnector.getTopTrendsByPlace ("1");
         tweetJSONResponse = messages:getJsonPayload(tweetResponse);
         system:println(jsons:toString(tweetJSONResponse));
     }

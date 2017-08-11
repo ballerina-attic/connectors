@@ -20,10 +20,9 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
     http:ClientConnector tweeterEP = create http:ClientConnector("https://api.twitter.com");
 
     @doc:Description{ value : "Update the authenticated user's current status."}
-    @doc:Param{ value : "t: The twitter Connector instance"}
     @doc:Param{ value : "status: The text of status update"}
     @doc:Return{ value : "Response object."}
-    action tweet(ClientConnector t, string status) (message) {
+    action tweet(string status) (message) {
         message request = {};
         map parameters = {};
         string urlParams;
@@ -36,16 +35,15 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + urlParams;
 
-        message response = http:ClientConnector.post(tweeterEP, tweetPath, request);
+        message response = tweeterEP.post(tweetPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Retweet a tweet."}
-    @doc:Param{ value : "t: The twitter Connector instance"}
     @doc:Param{ value : "id: The numerical ID of the desired status."}
     @doc:Return{ value : "Response object."}
-    action retweet(ClientConnector t, string id) (message) {
+    action retweet(string id) (message) {
         message request = {};
         map parameters = {};
 
@@ -53,16 +51,15 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         constructRequestHeaders(request, "POST", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
 
-        message response = http:ClientConnector.post(tweeterEP, tweetPath, request);
+        message response = tweeterEP.post(tweetPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Untweet a retweeted status."}
-    @doc:Param{ value : "t: The twitter Connector instance"}
     @doc:Param{ value : "id: The numerical ID of the desired status."}
     @doc:Return{ value : "Response object."}
-    action unretweet(ClientConnector t, string id) (message) {
+    action unretweet(string id) (message) {
         message request = {};
         map parameters = {};
 
@@ -70,16 +67,15 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         constructRequestHeaders(request, "POST", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
 
-        message response = http:ClientConnector.post(tweeterEP, tweetPath, request);
+        message response = tweeterEP.post(tweetPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Search for tweets."}
-    @doc:Param{ value : "t: The twitter Connector instance"}
     @doc:Param{ value : "query: Query string to retrieve the related tweets."}
     @doc:Return{ value : "Response object."}
-    action search(ClientConnector t, string query) (message) {
+    action search(string query) (message) {
         message request = {};
         map parameters = {};
         string urlParams;
@@ -91,16 +87,15 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + urlParams;
 
-        message response = http:ClientConnector.get(tweeterEP, tweetPath, request);
+        message response = tweeterEP.get(tweetPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Retrive a single status."}
-    @doc:Param{ value : "t: The twitter Connector instance"}
     @doc:Param{ value : "id: The numerical ID of the desired status."}
     @doc:Return{ value : "Response object."}
-    action showStatus(ClientConnector t, string id) (message) {
+    action showStatus(string id) (message) {
         string urlParams;
         message request = {};
         map parameters = {};
@@ -112,16 +107,15 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + urlParams;
 
-        message response = http:ClientConnector.get(tweeterEP, tweetPath, request);
+        message response = tweeterEP.get(tweetPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Distroy a status."}
-    @doc:Param{ value : "t: The twitter Connector instance"}
     @doc:Param{ value : "id: The numerical ID of the desired status."}
     @doc:Return{ value : "Response object."}
-    action destroyStatus(ClientConnector t, string id) (message) {
+    action destroyStatus(string id) (message) {
         message request = {};
         map parameters = {};
 
@@ -129,17 +123,16 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
         constructRequestHeaders(request, "POST", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
 
-        message response = http:ClientConnector.post(tweeterEP, tweetPath, request);
+        message response = tweeterEP.post(tweetPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Retrive closest trend locations."}
-    @doc:Param{ value : "t: The twitter Connector instance"}
     @doc:Param{ value : "lat: Latitude of the location."}
     @doc:Param{ value : "long: Longitude of the location"}
     @doc:Return{ value : "Response object."}
-    action getClosestTrendLocations(ClientConnector t, string lat, string long) (message) {
+    action getClosestTrendLocations(string lat, string long) (message) {
         string urlParams;
         message request = {};
         map parameters = {};
@@ -153,16 +146,15 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + strings:subString(urlParams, 1, strings:length(urlParams));
 
-        message response = http:ClientConnector.get(tweeterEP, tweetPath, request);
+        message response = tweeterEP.get(tweetPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Retrive top trends by place."}
-    @doc:Param{ value : "t: The twitter Connector instance"}
     @doc:Param{ value : "locationId: The Yahoo! Where On Earth ID of the location to return trending information for."}
     @doc:Return{ value : "Response object."}
-    action getTopTrendsByPlace(ClientConnector t, string locationId) (message) {
+    action getTopTrendsByPlace(string locationId) (message) {
         string urlParams;
         message request = {};
         map parameters = {};
@@ -174,7 +166,7 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + urlParams;
 
-        message response = http:ClientConnector.get(tweeterEP, tweetPath, request);
+        message response = tweeterEP.get(tweetPath, request);
 
         return response;
     }

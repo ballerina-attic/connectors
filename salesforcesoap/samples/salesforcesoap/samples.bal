@@ -11,11 +11,11 @@ function main (string[] args) {
     salesforcesoap:ClientConnector sales = create salesforcesoap:ClientConnector(username, password, "https://login.salesforce.com/services/Soap/u/39.0", "1.1");
 
     if (args[0] == "describeGlobal"){
-        soapResponse = salesforcesoap:ClientConnector.describeGlobal(sales, headers);
+        soapResponse = sales.describeGlobal(headers);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "describeSObject") {
-        soapResponse = salesforcesoap:ClientConnector.describeSObject(sales, headers, args[3]);
+        soapResponse = sales.describeSObject(headers, args[3]);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "createRecord") {
@@ -23,43 +23,43 @@ function main (string[] args) {
         xml allowFieldTruncationHeader = `<urn:AllowFieldTruncationHeader xmlns:urn="urn:partner.soap.sforce.com"><urn:allowFieldTruncation>0</urn:allowFieldTruncation></urn:AllowFieldTruncationHeader>`;
         headers = [allOrNoneHeader, allowFieldTruncationHeader];
         map fields = {"type" : args[3], "Name" : args[4]};
-        soapResponse = salesforcesoap:ClientConnector.createRecord(sales, headers, fields);
+        soapResponse = sales.createRecord(headers, fields);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "describeSObjects") {
-        soapResponse = salesforcesoap:ClientConnector.describeSObjects(sales, headers, args[3]);
+        soapResponse = sales.describeSObjects(headers, args[3]);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "search") {
-        soapResponse = salesforcesoap:ClientConnector.search(sales, headers, args[3]);
+        soapResponse = sales.search(headers, args[3]);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "retrieve") {
-        soapResponse = salesforcesoap:ClientConnector.retrieve(sales, headers, args[3], args[4], args[5]);
+        soapResponse = sales.retrieve(headers, args[3], args[4], args[5]);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "deleteRecord") {
         xml allOrNoneHeader = `<urn:AllOrNoneHeader xmlns:urn="urn:partner.soap.sforce.com"><urn:allOrNone>0</urn:allOrNone></urn:AllOrNoneHeader>`;
         headers = [allOrNoneHeader];
-        soapResponse = salesforcesoap:ClientConnector.deleteRecord(sales, headers, args[3]);
+        soapResponse = sales.deleteRecord(headers, args[3]);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "query") {
         xml queryOptions = `<urn:QueryOptions xmlns:urn="urn:partner.soap.sforce.com"><urn:batchSize>200</urn:batchSize></urn:QueryOptions>`;
         headers = [queryOptions];
-        soapResponse = salesforcesoap:ClientConnector.query(sales, headers, args[3]);
+        soapResponse = sales.query(headers, args[3]);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "queryAll") {
         xml queryOptions = `<urn:QueryOptions xmlns:urn="urn:partner.soap.sforce.com"><urn:batchSize>200</urn:batchSize></urn:QueryOptions>`;
         headers = [queryOptions];
-        soapResponse = salesforcesoap:ClientConnector.queryAll(sales, headers, args[3]);
+        soapResponse = sales.queryAll(headers, args[3]);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "queryMore") {
         xml queryOptions = `<urn:QueryOptions xmlns:urn="urn:partner.soap.sforce.com"><urn:batchSize>200</urn:batchSize></urn:QueryOptions>`;
         headers = [queryOptions];
-        soapResponse = salesforcesoap:ClientConnector.queryMore(sales, headers, args[3]);
+        soapResponse = sales.queryMore(headers, args[3]);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "updateRecord") {
@@ -67,12 +67,12 @@ function main (string[] args) {
         xml allowFieldTruncationHeader = `<urn:AllowFieldTruncationHeader xmlns:urn="urn:partner.soap.sforce.com"><urn:allowFieldTruncation>0</urn:allowFieldTruncation></urn:AllowFieldTruncationHeader>`;
         headers = [allOrNoneHeader, allowFieldTruncationHeader];
         map fields = {"type" : args[5], "Name" : args[4], "Id" : args[3]};
-        soapResponse = salesforcesoap:ClientConnector.updateRecord(sales, headers, fields);
+        soapResponse = sales.updateRecord(headers, fields);
         system:println(xmls:toString(soapResponse));
 
     } else if (args[0] == "upsertRecord") {
         map fields = {"type" : args[5], "Name" : args[4]};
-        soapResponse = salesforcesoap:ClientConnector.upsertRecord(sales, headers, args[3], fields);
+        soapResponse = sales.upsertRecord(headers, args[3], fields);
         system:println(xmls:toString(soapResponse));
 
     } else {

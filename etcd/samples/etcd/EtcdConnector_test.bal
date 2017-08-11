@@ -21,7 +21,7 @@ function testSetKeyValue () {
     string arg1 = "key4";
     string arg2 = "testValueForKey4";
     etcd:ClientConnector connectorInstance = init();
-    etcdResponse = etcd:ClientConnector.setKeyValue (connectorInstance, arg1, arg2);
+    etcdResponse = connectorInstance.setKeyValue (arg1, arg2);
     system:println(messages:getStringPayload(etcdResponse));
     payload = messages:getJsonPayload(etcdResponse);
     string returnedKey = (string)payload.node.key;
@@ -35,7 +35,7 @@ function testGetKeyValue () {
     string arg2 = "testValueForKey4";
     string arg3 = "get";
     etcd:ClientConnector connectorInstance = init();
-    etcdResponse = etcd:ClientConnector.getValue (connectorInstance, arg1);
+    etcdResponse = connectorInstance.getValue (arg1);
     system:println(messages:getStringPayload(etcdResponse));
     payload = messages:getJsonPayload(etcdResponse);
     string returnedKey = (string)payload.node.key;
@@ -49,7 +49,7 @@ function testUpdateKeyValue () {
     string arg3 = "testValueForKey4";
     string arg4 = "set";
     etcd:ClientConnector connectorInstance = init();
-    etcdResponse = etcd:ClientConnector.updateValue (connectorInstance, arg1, arg2);
+    etcdResponse = connectorInstance.updateValue (arg1, arg2);
     system:println(messages:getStringPayload(etcdResponse));
     payload = messages:getJsonPayload(etcdResponse);
     string returnedKey = (string)payload.node.key;
@@ -63,7 +63,7 @@ function testDeleteKeyValue () {
     string arg1 = "key4";
     string arg2 = "delete";
     etcd:ClientConnector connectorInstance = init();
-    etcdResponse = etcd:ClientConnector.deleteKey (connectorInstance, arg1);
+    etcdResponse = connectorInstance.deleteKey (arg1);
     system:println(messages:getStringPayload(etcdResponse));
     payload = messages:getJsonPayload(etcdResponse);
     string returnedKey = (string)payload.node.key;
@@ -73,7 +73,7 @@ function testDeleteKeyValue () {
 function testCreateDirectory () {
     string arg1 = "dir6";
     etcd:ClientConnector connectorInstance = init();
-    etcdResponse = etcd:ClientConnector.createDir (connectorInstance, arg1);
+    etcdResponse = connectorInstance.createDir (arg1);
     system:println(messages:getStringPayload(etcdResponse));
     payload = messages:getJsonPayload(etcdResponse);
     string returnedKey = (string)payload.node.key;
@@ -84,7 +84,7 @@ function testListDirectoryRecursiveFalse () {
     string arg1 = "/dir2";
     string arg2 = "recursive=false";
     etcd:ClientConnector connectorInstance = init();
-    etcdResponse = etcd:ClientConnector.listDir (connectorInstance, arg1, arg2);
+    etcdResponse = connectorInstance.listDir (arg1, arg2);
     system:println(messages:getStringPayload(etcdResponse));
     payload = messages:getJsonPayload(etcdResponse);
     string returnedDir = (string)payload.node.key;
@@ -95,7 +95,7 @@ function testListDirectoryRecursiveTrue () {
     string arg1 = "/dir2";
     string arg2 = "recursive=true";
     etcd:ClientConnector connectorInstance = init();
-    etcdResponse = etcd:ClientConnector.listDir (connectorInstance, arg1, arg2);
+    etcdResponse = connectorInstance.listDir (arg1, arg2);
     system:println(messages:getStringPayload(etcdResponse));
     payload = messages:getJsonPayload(etcdResponse);
     string returnedDir = (string)payload.node.key;
@@ -106,7 +106,7 @@ function testDeleteDirectoryRecursiveFalse () {
     string arg1 = "/dir4";
     string arg2 = "recursive=false";
     etcd:ClientConnector connectorInstance = init();
-    etcdResponse = etcd:ClientConnector.deleteDir (connectorInstance, arg1, arg2);
+    etcdResponse = connectorInstance.deleteDir (arg1, arg2);
     system:println(messages:getStringPayload(etcdResponse));
     payload = messages:getJsonPayload(etcdResponse);
     string returnedDir = (string)payload.node.key;
@@ -117,7 +117,7 @@ function testDeleteDirectoryRecursiveTrue () {
     string arg1 = "/dir5";
     string arg2 = "recursive=true";
     etcd:ClientConnector connectorInstance = init();
-    etcdResponse = etcd:ClientConnector.deleteDir (connectorInstance, arg1, arg2);
+    etcdResponse = connectorInstance.deleteDir (arg1, arg2);
     system:println(messages:getStringPayload(etcdResponse));
     payload = messages:getJsonPayload(etcdResponse);
     string returnedDir = (string)payload.node.key;

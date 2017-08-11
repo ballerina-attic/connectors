@@ -23,7 +23,7 @@ function init () (salesforcerest:ClientConnector salesforceClient){
 function testDescribeGlobal () {
     string args1 = "v32.0";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.describeGlobal (connectorInstance, args1);
+    response = connectorInstance.describeGlobal (args1);
     JSONResponse = messages:getJsonPayload(response);
     string returnedValue_1 = (string)JSONResponse.sobjects[0].activateable;
     string statusCode = (string)http:getStatusCode(response);
@@ -33,7 +33,7 @@ function testDescribeGlobal () {
 function testListAvailableApiVersion () {
     string args1 = "v32.0";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.listAvailableApiVersion (connectorInstance);
+    response = connectorInstance.listAvailableApiVersion ();
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     string returnedLabel = (string)JSONResponse[0].label;
@@ -46,7 +46,7 @@ function testListAvailableApiVersion () {
 function testListOrganizationLimits () {
     string args1 = "v32.0";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.listOrganizationLimits (connectorInstance, args1);
+    response = connectorInstance.listOrganizationLimits (args1);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     string returnedValue_1 = (string)JSONResponse.ConcurrentAsyncGetReportInstances.Max;
@@ -56,7 +56,7 @@ function testListOrganizationLimits () {
 function testListResourcesByApiVersion () {
     string args1 = "v32.0";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.listResourcesByApiVersion (connectorInstance, args1);
+    response = connectorInstance.listResourcesByApiVersion (args1);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     string returnedValue_1 = (string)JSONResponse.tooling;
@@ -67,7 +67,7 @@ function testSObjectBasicInfo () {
     string args1 = "v32.0";
     string args2 = "Account";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.sObjectBasicInfo (connectorInstance, args2, args1);
+    response = connectorInstance.sObjectBasicInfo (args2, args1);
     JSONResponse = messages:getJsonPayload(response);
     string returnedValue_1 = (string)JSONResponse.objectDescribe.activateable;
     string statusCode = (string)http:getStatusCode(response);
@@ -80,7 +80,7 @@ function testSObjectGetDeleted () {
     string args3 = "2017-05-01T00:00:00Z";
     string args4 = "2017-05-15T00:00:00Z";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.sObjectGetDeleted (connectorInstance, args1, args2, args3, args4);
+    response = connectorInstance.sObjectGetDeleted (args1, args2, args3, args4);
     JSONResponse = messages:getJsonPayload(response);
     string returnedValue_1 = (string)JSONResponse.deletedRecords[0].id;
     string statusCode = (string)http:getStatusCode(response);
@@ -90,7 +90,7 @@ function testSObjectGetDeleted () {
 function testSObjectPlatformAction () {
     string args1 = "v32.0";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.sObjectPlatformAction (connectorInstance, args1);
+    response = connectorInstance.sObjectPlatformAction (args1);
     JSONResponse = messages:getJsonPayload(response);
     string returnedValue_1 = (string)JSONResponse.objectDescribe.activateable;
     string statusCode = (string)http:getStatusCode(response);
@@ -102,7 +102,7 @@ function testSObjectRows () {
     string args2 = "Account";
     string args3 = "0012800001HxHFC";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.sObjectRows (connectorInstance, args1, args2, args3);
+    response = connectorInstance.sObjectRows (args1, args2, args3);
     JSONResponse = messages:getJsonPayload(response);
     string returnedValue_1 = (string)JSONResponse.attributes.url;
     string statusCode = (string)http:getStatusCode(response);
@@ -115,7 +115,7 @@ function testSObjectRowsByExternalId () {
     string args3 = "Languages__c";
     string args4 = "tamil";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.sObjectRowsByExternalId (connectorInstance, args1, args2, args3, args4);
+    response = connectorInstance.sObjectRowsByExternalId (args1, args2, args3, args4);
     JSONResponse = messages:getJsonPayload(response);
     string returnedValue_1 = (string)JSONResponse.attributes.url;
     string statusCode = (string)http:getStatusCode(response);
@@ -126,7 +126,7 @@ function testListviewQueryPerformanceFeedback () {
     string args1 = "v32.0";
     string args2 = "00B2800000AVUaa";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.listviewQueryPerformanceFeedback (connectorInstance, args1, args2);
+    response = connectorInstance.listviewQueryPerformanceFeedback (args1, args2);
     JSONResponse = messages:getJsonPayload(response);
     string returnedValue_1 = (string)JSONResponse.plans[0].cardinality;
     string statusCode = (string)http:getStatusCode(response);
@@ -137,7 +137,7 @@ function testQuery () {
     string args1 = "v32.0";
     string args2 = "SELECT+Name+FROM+account";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.query (connectorInstance, args1, args2);
+    response = connectorInstance.query (args1, args2);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -147,7 +147,7 @@ function testQueryAll () {
     string args1 = "v32.0";
     string args2 = "SELECT+Name+FROM+account";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.queryAll (connectorInstance, args1, args2);
+    response = connectorInstance.queryAll (args1, args2);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -157,7 +157,7 @@ function testQueryAllMore () {
     string args1 = "v32.0";
     string args2 = "01g2800002j2XJPAA2-2000";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.queryAllMore (connectorInstance, args1, args2);
+    response = connectorInstance.queryAllMore (args1, args2);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -167,7 +167,7 @@ function testQueryMore () {
     string args1 = "v32.0";
     string args2 = "01g2800002j2XJPAA2-2000";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.queryMore (connectorInstance, args1, args2);
+    response = connectorInstance.queryMore (args1, args2);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -177,7 +177,7 @@ function testQueryPerformanceFeedback () {
     string args1 = "v32.0";
     string args2 = "SELECT+Name+FROM+account";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.queryPerformanceFeedback (connectorInstance, args1, args2);
+    response = connectorInstance.queryPerformanceFeedback (args1, args2);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -187,7 +187,7 @@ function testCreateRecord () {
     string args1 = "v32.0";
     json sampleCreateRecord = {"Name":"TestingBallerina2"};
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.createRecord (connectorInstance, args1, "Account", sampleCreateRecord);
+    response = connectorInstance.createRecord (args1, "Account", sampleCreateRecord);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -198,7 +198,7 @@ function testDelete () {
     string args2 = "Account";
     string args3 = "0012800000GQpV2AAL";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.delete (connectorInstance, args1, args2, args3);
+    response = connectorInstance.delete (args1, args2, args3);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -210,7 +210,7 @@ function testRetrieveFieldValues () {
     string args3 = "0012800000GQpqw";
     string args4 = "Name";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.retrieveFieldValues (connectorInstance, args1, args2, args3, args4);
+    response = connectorInstance.retrieveFieldValues (args1, args2, args3, args4);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -222,8 +222,7 @@ function testRetrieveFieldValuesFromExternalObject () {
     string args3 = "a002800000lnj6u";
     string args4 = "Name";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.retrieveFieldValuesFromExternalObject (connectorInstance, args1
-                                                                                     , args2, args3, args4);
+    response = connectorInstance.retrieveFieldValuesFromExternalObject (args1, args2, args3, args4);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -235,11 +234,8 @@ function testRetrieveStandardFieldValuesFromExternalObjectWithExternalId () {
     string args3 = "a002800000lnj6u";
     string args4 = "Description__c";
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.retrieveStandardFieldValuesFromExternalObjectWithExternalId (connectorInstance
-                                                                                                           , args1
-                                                                                                           , args2
-                                                                                                           , args3
-                                                                                                           , args4);
+    response = connectorInstance.retrieveStandardFieldValuesFromExternalObjectWithExternalId (args1, args2, args3,
+                                                                                              args4);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));
@@ -250,7 +246,7 @@ function testUpdate () {
     string args2 = "0012800001IoxHMAAZ";
     json sampleUpdate = {"Name":"TestUpdate"};
     salesforcerest:ClientConnector connectorInstance = init();
-    response = salesforcerest:ClientConnector.update (connectorInstance, args1, "Account", args2, sampleUpdate);
+    response = connectorInstance.update (args1, "Account", args2, sampleUpdate);
     JSONResponse = messages:getJsonPayload(response);
     string statusCode = (string)http:getStatusCode(response);
     test:assertTrue(strings:equalsIgnoreCase(statusCode, "200"));

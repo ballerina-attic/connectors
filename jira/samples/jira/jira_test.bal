@@ -22,7 +22,7 @@ function init () (jira:ClientConnector){
 function testGetIssueInfo () {
 
     jira:ClientConnector jiraConnector = init();
-    jiraResponse = jira:ClientConnector.getIssueInfo (jiraConnector, issueId, "", "summary");
+    jiraResponse = jiraConnector.getIssueInfo (issueId, "", "summary");
     int status = http:getStatusCode(jiraResponse);
     test:assertIntEquals(status, 200, "GetIssueInfo Failed");
     system:println("===testGetIssueInfo completed===\n");
@@ -43,7 +43,7 @@ function testSearchJira () {
                             ]
                    };
     jira:ClientConnector jiraConnector = init();
-    jiraResponse = jira:ClientConnector.searchJira (jiraConnector, payload);
+    jiraResponse = jiraConnector.searchJira (payload);
     int status = http:getStatusCode(jiraResponse);
     test:assertIntEquals(status, 200, "SearchJira Failed");
     system:println("===testSearchJira completed===\n");
@@ -60,7 +60,7 @@ function testPostComment () {
                                 }
                    };
     jira:ClientConnector jiraConnector = init();
-    jiraResponse = jira:ClientConnector.postComment (jiraConnector, issueId, "", payload);
+    jiraResponse = jiraConnector.postComment (issueId, "", payload);
     int status = http:getStatusCode(jiraResponse);
     test:assertIntEquals(status, 201, "PostComment Failed");
     system:println("===testPostComment completed===\n");
@@ -73,7 +73,7 @@ function testAssignIssueToUser () {
                    "name":"user@example.com"
                    };
     jira:ClientConnector jiraConnector = init();
-    jiraResponse = jira:ClientConnector.assignIssueToUser (jiraConnector, issueId, payload);
+    jiraResponse = jiraConnector.assignIssueToUser (issueId, payload);
     int status = http:getStatusCode(jiraResponse);
     test:assertIntEquals(status, 204, "AssignIssueToUser Failed");
     system:println("===testAssignIssueToUser completed===\n");
@@ -169,7 +169,7 @@ function testCreateBulkIssue () {
                                   ]
                    };
     jira:ClientConnector jiraConnector = init();
-    jiraResponse = jira:ClientConnector.createBulkIssue (jiraConnector, payload);
+    jiraResponse = jiraConnector.createBulkIssue (payload);
     int status = http:getStatusCode(jiraResponse);
     test:assertIntEquals(status, 201, "CreateBulkIssue Failed");
     system:println("===testCreateBulkIssue completed===\n");

@@ -352,7 +352,7 @@ The unTrashMail action helps to Removes the specified message from the trash.
 * listMails  
 `bin$ ./ballerina run samples.bal listMails <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <includeSpamTrash:-Optional> <labelIds:-Optional> <maxResults:-Optional> <pageToken:-Optional> <q:-Optional>`
 * sendMail  
-`bin$ ./ballerina run samples.bal sendMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <to:-Optional> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
+`bin$ ./ballerina run samples.bal sendMail <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <to:-Required> <subject:-Optional> <from:-Optional> <"messageBody":-Optional> <cc:-Optional> <bcc:-Optional> <id:-Optional> <threadId:-Optional>`
 * modifyExistingMessage  
 `bin$ ./ballerina run samples.bal modifyExistingMessage <userId:-Required> <accessToken:-Required> <refreshToken:-Optional> <clientId:-Optional> <clientSecret:-Optional> <messageId:-Required> <addLabelIds:-Either addLabelIds or removeLabelIds is required> <removeLabelIds:- Either addLabelIds or removeLabelIds is required>`
 * readMail  

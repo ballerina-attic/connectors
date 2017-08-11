@@ -15,13 +15,12 @@ connector ClientConnector (string accessToken) {
     oauth2:ClientConnector facebookEP = create oauth2:ClientConnector(baseURL, accessToken, "null", "null",
                                         "null", "null");
     @doc:Description{ value : "Create a post for user, page, event or group. "}
-    @doc:Param{ value : "f: The facebook Connector instance"}
     @doc:Param{ value : "id: The identifier."}
     @doc:Param{ value : "msg: The main body of the post."}
     @doc:Param{ value : "link: The URL of a link to attach to the post."}
     @doc:Param{ value : "place: Page ID of a location associated with this post."}
     @doc:Return{ value : "Response object."}
-    action createPost(ClientConnector f, string id, string msg, string link, string place) (message) {
+    action createPost(string id, string msg, string link, string place) (message) {
         string uriParams;
         message request = {};
         string facebookPath = "/v2.8/" + id + "/feed";
@@ -37,17 +36,16 @@ connector ClientConnector (string accessToken) {
         }
         facebookPath = facebookPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
                                                                                                   
-        message response = oauth2:ClientConnector.post(facebookEP, facebookPath, request);
+        message response = facebookEP.post(facebookPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Retrieve a post."}
-    @doc:Param{ value : "f: The facebook Connector instance"}
     @doc:Param{ value : "postId: The post ID."}
     @doc:Param{ value : "fields: The fields to retrieve which belongs to an object."}
     @doc:Return{ value : "Response object."}
-    action retrievePost(ClientConnector f, string postId, string fields) (message) {
+    action retrievePost(string postId, string fields) (message) {
         message request = {};
         string facebookPath = "/v2.8/" + postId;
 
@@ -55,32 +53,30 @@ connector ClientConnector (string accessToken) {
             facebookPath = facebookPath + "?fields=" + fields;
         }
 
-        message response = oauth2:ClientConnector.get(facebookEP, facebookPath, request);
+        message response = facebookEP.get(facebookPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Delete a post."}
-    @doc:Param{ value : "f: The facebook Connector instance"}
     @doc:Param{ value : "postId: The post ID."}
     @doc:Return{ value : "Response object."}
-    action deletePost(ClientConnector f, string postId) (message) {
+    action deletePost(string postId) (message) {
         message request = {};
         string facebookPath = "/v2.8/" + postId;
 
-        message response = oauth2:ClientConnector.delete(facebookEP, facebookPath, request);
+        message response = facebookEP.delete(facebookPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Update a post."}
-    @doc:Param{ value : "f: The facebook Connector instance"}
     @doc:Param{ value : "postId: The post ID."}
     @doc:Param{ value : "msg: The main body of the post."}
     @doc:Param{ value : "tags: Comma-separated list of user IDs of people tagged in this post."}
     @doc:Param{ value : "privacy: Privacy settings of the post."}
     @doc:Return{ value : "Response object"}
-    action updatePost(ClientConnector f, string postId, string msg, string tags, string privacy) (message) {
+    action updatePost(string postId, string msg, string tags, string privacy) (message) {
         string uriParams;
         message request = {};
         string facebookPath = "/v2.8/" + postId;
@@ -96,31 +92,29 @@ connector ClientConnector (string accessToken) {
         }
         facebookPath = facebookPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
 
-        message response = oauth2:ClientConnector.post(facebookEP, facebookPath, request);
+        message response = facebookEP.post(facebookPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Add likes."}
-    @doc:Param{ value : "f: The facebook Connector instance"}
     @doc:Param{ value : "objectId: The object ID to add like."}
     @doc:Return{ value : "Response object"}
-    action addLikes(ClientConnector f, string objectId) (message) {
+    action addLikes(string objectId) (message) {
         message request = {};
         string facebookPath = "/v2.8/" + objectId + "/likes";
 
-        message response = oauth2:ClientConnector.post(facebookEP, facebookPath, request);
+        message response = facebookEP.post(facebookPath, request);
 
         return response;
 
     }
 
     @doc:Description{ value : "Get like details."}
-    @doc:Param{ value : "f: The facebook Connector instance"}
     @doc:Param{ value : "objectId: The object ID to get the like details."}
     @doc:Param{ value : "fields: The fields to retrieve."}
     @doc:Return{ value : "Response object."}
-    action getLikesDetails(ClientConnector f, string objectId, string fields) (message) {
+    action getLikesDetails(string objectId, string fields) (message) {
         message request = {};
         string facebookPath = "/v2.8/" + objectId + "/likes";
 
@@ -128,32 +122,30 @@ connector ClientConnector (string accessToken) {
             facebookPath = facebookPath + "?fields=" + fields;
         }
 
-        message response = oauth2:ClientConnector.get(facebookEP, facebookPath, request);
+        message response = facebookEP.get(facebookPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Delete likes."}
-    @doc:Param{ value : "f: The facebook Connector instance"}
     @doc:Param{ value : "objectId: The object ID to remove the likes."}
     @doc:Return{ value : "Response object."}
-    action deleteLikes(ClientConnector f, string objectId) (message) {
+    action deleteLikes(string objectId) (message) {
         message request = {};
         string facebookPath = "/v2.8/" + objectId + "/likes";
 
-        message response = oauth2:ClientConnector.delete(facebookEP, facebookPath, request);
+        message response = facebookEP.delete(facebookPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Add comments"}
-    @doc:Param{ value : "f: The facebook Connector instance"}
     @doc:Param{ value : "objectId: The ID of the object such as a page, video, etc."}
     @doc:Param{ value : "msg: The comment text."}
     @doc:Param{ value : "attachmentId: An ID of an unpublished photo."}
     @doc:Param{ value : "attachmentUrl: The URL of an image to include as a photo comment."}
     @doc:Return{ value : "Response object."}
-    action addComments(ClientConnector f, string objectId, string msg, string attachmentId, string attachmentUrl) (message) {
+    action addComments(string objectId, string msg, string attachmentId, string attachmentUrl) (message) {
         string uriParams;
         message request = {};
         string facebookPath = "/v2.8/" + objectId + "/comments";
@@ -169,17 +161,16 @@ connector ClientConnector (string accessToken) {
         }
         facebookPath = facebookPath + "?" + strings:subString(uriParams, 1, strings:length(uriParams));
 
-        message response = oauth2:ClientConnector.post(facebookEP, facebookPath, request);
+        message response = facebookEP.post(facebookPath, request);
 
         return response;
     }
 
     @doc:Description{ value : "Get comments."}
-    @doc:Param{ value : "f: The facebook Connector instance"}
     @doc:Param{ value : "objectId: The ID of the object such as a page, video, etc."}
     @doc:Param{ value : "fields: The fields to retrieve."}
     @doc:Return{ value : "Response object."}
-    action getComments(ClientConnector f, string objectId, string fields) (message) {
+    action getComments(string objectId, string fields) (message) {
         message request = {};
         string facebookPath = "/v2.8/" + objectId + "/comments";
 
@@ -187,7 +178,7 @@ connector ClientConnector (string accessToken) {
             facebookPath = facebookPath + "?fields=" + fields;
         }
 
-        message response = oauth2:ClientConnector.get(facebookEP, facebookPath, request);
+        message response = facebookEP.get(facebookPath, request);
 
         return response;
     }

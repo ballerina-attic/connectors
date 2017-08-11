@@ -14,7 +14,7 @@ function main (string[] args) {
 	<urn:password>${password}</urn:password>
 	</urn:login>`;
 
-    xml soapResponse = soap:ClientConnector.send(soapConnector, headers, payload, "''",
+    xml soapResponse = soapConnector.send(headers, payload, "''",
     "https://login.salesforce.com/services/Soap/u/27.0", "1.1");
 
     map n = {"ns":"urn:partner.soap.sforce.com"};
