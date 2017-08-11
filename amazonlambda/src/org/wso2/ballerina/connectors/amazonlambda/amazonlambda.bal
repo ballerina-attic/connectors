@@ -109,7 +109,6 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
     }
 
     @doc:Description { value:"Gets the list of functions and their configuration information"}
-    @doc:Param { value:"arn: The amazon resource name of the function to invoke"}
     @doc:Return { value:"response message"}
     action listFunctions () (message) {
         string httpMethod;
@@ -126,6 +125,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
     }
 
     @doc:Description { value:"Lists all versions of a amazon lambda function"}
+    @doc:Param { value:"arn: The amazon resource name of the function to invoke"}
     @doc:Return { value:"response message"}
     action getFunctionVersions (string arn) (message) {
         string httpMethod;
