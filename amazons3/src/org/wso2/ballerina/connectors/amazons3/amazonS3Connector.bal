@@ -16,6 +16,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
     @doc:Return { value:"response object"}
     action getBucketList () (message) {
         message requestMsg = {};
+        message response = {};
 
         string httpMethod = "GET";
         string requestURI = "/";
@@ -25,7 +26,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
                                                                 "s3", "aws4_request", endpoint);
         messages:setHeader(requestMsg, "Host", host);
         messages:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-        message response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
+        response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
 
         return response;
     }
@@ -35,6 +36,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
     @doc:Return { value:"response object"}
     action getObjectList (string bucketName) (message) {
         message requestMsg = {};
+        message response = {};
 
         string httpMethod = "GET";
         string requestURI = "/";
@@ -45,7 +47,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
 
         messages:setHeader(requestMsg, "Host", host);
         messages:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-        message response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
+        response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
 
         return response;
     }
@@ -55,6 +57,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
     @doc:Return { value:"response object"}
     action createBucket (string bucketName) (message) {
         message requestMsg = {};
+        message response = {};
 
         string httpMethod = "PUT";
         string requestURI = "/";
@@ -64,7 +67,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
                                                                 "aws4_request", endpoint);
         messages:setHeader(requestMsg, "Host", host);
         messages:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-        message response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
+        response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
 
         return response;
     }
@@ -74,6 +77,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
     @doc:Return { value:"response object"}
     action deleteBucket (string bucketName) (message) {
         message requestMsg = {};
+        message response = {};
 
         string httpMethod = "DELETE";
         string requestURI = "/";
@@ -83,7 +87,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
                                                                 "aws4_request", endpoint);
         messages:setHeader(requestMsg, "Host", host);
         messages:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-        message response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
+        response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
 
         return response;
     }
@@ -94,6 +98,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
     @doc:Return { value:"response object"}
     action getObject (string bucketName, string objectName) (message) {
         message requestMsg = {};
+        message response = {};
 
         string httpMethod = "GET";
         string requestURI = "/" + objectName;
@@ -103,7 +108,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
                                                                 "aws4_request", endpoint);
         messages:setHeader(requestMsg, "Host", host);
         messages:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-        message response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
+        response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
 
         return response;
     }
@@ -114,6 +119,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
     @doc:Return { value:"response object"}
     action deleteObject (string bucketName, string objectName) (message) {
         message requestMsg = {};
+        message response = {};
 
         string httpMethod = "DELETE";
         string requestURI = "/" + objectName;
@@ -123,7 +129,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
                                                                 "aws4_request", endpoint);
         messages:setHeader(requestMsg, "Host", host);
         messages:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
-        message response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
+        response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
 
         return response;
     }
@@ -135,6 +141,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
     @doc:Return { value:"response object"}
     action putObject (string bucketName, string objectName, string payload) (message) {
         message requestMsg = {};
+        message response = {};
 
         string httpMethod = "PUT";
         string requestURI = "/" + objectName;
@@ -145,7 +152,7 @@ connector ClientConnector (string accessKeyId, string secretAccessKey, string re
         messages:setStringPayload(requestMsg, payload);
         messages:setHeader(requestMsg, "X-Amz-Content-Sha256", "UNSIGNED-PAYLOAD");
         messages:setHeader(requestMsg, "Host", host);
-        message response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
+        response = amazonAuthConnector.request (requestMsg, httpMethod, requestURI, "UNSIGNED-PAYLOAD");
 
         return response;
     }
