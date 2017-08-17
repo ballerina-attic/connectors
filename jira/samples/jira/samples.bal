@@ -19,27 +19,27 @@ function main (string[] args) {
     }
 
     if (args[0] == "searchJira" && argumentLength == 5) {
-        json payload = (json)args[4];
+        json payload = jsons:parse(args[4]);
         jiraResponse = jiraConnector.searchJira (payload);
         jiraJSONResponse = messages:getJsonPayload(jiraResponse);
         system:println(jsons:toString(jiraJSONResponse));
     }
 
     if (args[0] == "postComment") {
-        json payload = (json)args[6];
+        json payload = jsons:parse(args[6]);
         jiraResponse = jiraConnector.postComment (args[4], args[5], payload);
         jiraJSONResponse = messages:getJsonPayload(jiraResponse);
         system:println(jsons:toString(jiraJSONResponse));
     }
 
     if (args[0] == "assignIssueToUser") {
-        json payload = (json)args[5];
+        json payload = jsons:parse(args[5]);
         jiraResponse = jiraConnector.assignIssueToUser (args[4], payload);
         system:println("Status code : " + http:getStatusCode(jiraResponse));
     }
 
     if (args[0] == "createBulkIssue") {
-        json payload = (json)args[4];
+        json payload = jsons:parse(args[4]);
         jiraResponse = jiraConnector.createBulkIssue (payload);
         jiraJSONResponse = messages:getJsonPayload(jiraResponse);
         system:println(jsons:toString(jiraJSONResponse));
