@@ -6,7 +6,7 @@ import ballerina.lang.maps;
 import ballerina.lang.messages;
 import ballerina.lang.strings;
 import ballerina.lang.system;
-import ballerina.net.http as http;
+import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.utils;
 
