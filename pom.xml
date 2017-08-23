@@ -355,7 +355,7 @@
         </plugins>
     </build>
     <properties>
-        <ballerina.version>${project.version}</ballerina.version>
+        <ballerina.version>0.93</ballerina.version>
         <mvn.exec.plugin.version>1.5.0</mvn.exec.plugin.version>
         <mvn.processor.plugin.version>2.2.4</mvn.processor.plugin.version>
         <mvn.resource.plugins.version>3.0.2</mvn.resource.plugins.version>
@@ -371,6 +371,6 @@
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
         <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
-        <docerina.maven.plugin.version>${project.version}</docerina.maven.plugin.version>
+        <docerina.maven.plugin.version>0.93</docerina.maven.plugin.version>
     </properties>
 </project>
