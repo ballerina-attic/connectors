@@ -102,7 +102,7 @@
             </resource>
             <!-- copy built-in ballerina sources to the jar -->
             <resource>
-                <directory>${generated.connectors.source.directory}</directory>
+                <directory>${generated.ballerina.source.directory}</directory>
                 <targetPath>META-INF/natives</targetPath>
             </resource>
             <!-- copy the connector docs to the jar -->
@@ -115,6 +115,8 @@
                 <directory>${connectors.samples.dir}</directory>
                 <targetPath>SAMPLES</targetPath>
             </resource>
+
+
         </resources>
         <plugins>
             <!-- For creating the ballerina structure from connector structure -->
@@ -293,23 +295,18 @@
                     <!--</execution>-->
                 <!--</executions>-->
             <!--</plugin>-->
-            <!-- For ballerina natives processing/validation -->
+            <!-- For ballerina annotation processing -->
             <plugin>
                 <groupId>org.bsc.maven</groupId>
                 <artifactId>maven-processor-plugin</artifactId>
                 <version>${mvn.processor.plugin.version}</version>
                 <configuration>
                     <processors>
-                        <processor>
-                            org.ballerinalang.codegen.BallerinaAnnotationProcessor
-                        </processor>
+                        <processor>org.ballerinalang.codegen.BallerinaAnnotationProcessor</processor>
                     </processors>
                     <options>
-                        <packageName>${native.constructs.provider.package}</packageName>
-                        <className>${native.constructs.provider.class}</className>
-                        <srcDir>${connectors.source.directory}</srcDir>
-                        <targetDir>${generated.connectors.source.directory}</targetDir>
-                        <pkgRepositoryClass>${package.repository.provider.class}</pkgRepositoryClass>
+                        <nativeEntityProviderPackage>org.ballerinalang.generated.providers</nativeEntityProviderPackage>
+                        <nativeEntityProviderClass>StandardNativeElementProvider</nativeEntityProviderClass>
                     </options>
                 </configuration>
                 <executions>
@@ -319,28 +316,6 @@
                             <goal>process</goal>
                         </goals>
                         <phase>generate-sources</phase>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- For ballerina natives processing/validation -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>${mvn.exec.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>
-                                org.ballerinalang.natives.annotation.processor.BuiltinPackageValidator
-                            </mainClass>
-                            <arguments>
-                                <argument>${generated.connectors.source.directory}</argument>
-                            </arguments>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -364,21 +339,23 @@
 
         </plugins>
     </build>
+
     <properties>
         <ballerina.version>${project.version}</ballerina.version>
         <mvn.exec.plugin.version>1.5.0</mvn.exec.plugin.version>
         <mvn.processor.plugin.version>2.2.4</mvn.processor.plugin.version>
         <mvn.resource.plugins.version>3.0.2</mvn.resource.plugins.version>
 
-        <!-- Path to the generated natives ballerina files temp directory -->
-        <native.constructs.provider.package>org.ballerinalang.connectors</native.constructs.provider.package>
-        <native.constructs.provider.class>BallerinaConnectorConstructsProvider</native.constructs.provider.class>
-        <package.repository.provider.class>org.ballerinalang.connectors.repository.BallerinaBuiltinPackageRepository</package.repository.provider.class>
-        <generated.connectors.source.directory>${connectors.source.temp.dir}
-        </generated.connectors.source.directory>
-        <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
         <connectors.source.temp.dir>${basedir}/target/extra-resources</connectors.source.temp.dir>
         <connectors.samples.dir>${basedir}/target/extra-samples</connectors.samples.dir>
-        <docerina.maven.plugin.version>${project.version}</docerina.maven.plugin.version>
+
+        <!-- Path to the ballerina source directory -->
+        <package.repository.provider.class>org.ballerinalang.connectors.repository.BallerinaBuiltinPackageRepository
+        </package.repository.provider.class>
+        <native.constructs.provider.package>org.ballerinalang.connectors</native.constructs.provider.package>
+        <native.constructs.provider.class>BallerinaConnectorConstructsProvider</native.constructs.provider.class>
+
+        <!-- Path to the generated natives ballerina files temp directory -->
+        <generated.ballerina.source.directory>${connectors.source.temp.dir}</generated.ballerina.source.directory>
     </properties>
 </project>
