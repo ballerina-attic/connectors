@@ -73,7 +73,22 @@
         </dependency>
         <dependency>
             <groupId>org.ballerinalang</groupId>
+            <artifactId>ballerina-lang</artifactId>
+            <version>${ballerina.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinalang</groupId>
+            <artifactId>ballerina-http</artifactId>
+            <version>${ballerina.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinalang</groupId>
             <artifactId>ballerina-native</artifactId>
+            <version>${ballerina.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ballerinalang</groupId>
+            <artifactId>ballerina-builtin</artifactId>
             <version>${ballerina.version}</version>
         </dependency>
         <dependency>
@@ -291,7 +306,7 @@
                 <configuration>
                     <processors>
                         <processor>
-                            org.ballerinalang.natives.annotation.processor.BallerinaAnnotationProcessor
+                            org.ballerinalang.codegen.BallerinaAnnotationProcessor
                         </processor>
                     </processors>
                     <options>
@@ -361,11 +376,9 @@
         <mvn.resource.plugins.version>3.0.2</mvn.resource.plugins.version>
 
         <!-- Path to the generated natives ballerina files temp directory -->
-        <native.constructs.provider.package>org.wso2.ballerina.connectors
-        </native.constructs.provider.package>
-        <native.constructs.provider.class>BallerinaConnectorsProvider</native.constructs.provider.class>
-        <package.repository.provider.class>org.ballerinalang.connector.service.BuiltinConnectorPackageRepository
-        </package.repository.provider.class>
+        <native.constructs.provider.package>org.ballerinalang.connectors</native.constructs.provider.package>
+        <native.constructs.provider.class>BallerinaConnectorConstructsProvider</native.constructs.provider.class>
+        <package.repository.provider.class>org.ballerinalang.connectors.repository.BallerinaBuiltinPackageRepository</package.repository.provider.class>
         <generated.connectors.source.directory>${connectors.source.temp.dir}
         </generated.connectors.source.directory>
         <connectors.source.directory>${connectors.source.temp.dir}</connectors.source.directory>
