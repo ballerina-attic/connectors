@@ -6,7 +6,8 @@ import ballerina.lang.strings;
 import ballerina.lang.system;
 import ballerina.utils;
 import ballerina.net.uri;
-import ballerina.lang.messages;
+import ballerina.net.http.request;
+
 
 @doc:Description { value:"Amazon Auth connector"}
 @doc:Param { value:"accessKeyId: The access key ID of the Amazon Account"}
@@ -15,20 +16,17 @@ import ballerina.lang.messages;
 @doc:Param { value:"serviceName: The Amazon service that should be invoked"}
 @doc:Param { value:"terminationString: The termination string for the request"}
 @doc:Param { value:"endpoint: The Endpoint of the amazon service"}
-connector ClientConnector (string accessKeyId, string secretAccessKey,
-                           string region, string serviceName, string terminationString, string endpoint) {
-    http:ClientConnector awsEP = create http:ClientConnector(endpoint);
-
+public connector ClientConnector (string accessKeyId, string secretAccessKey, string region, string serviceName,
+                           string terminationString, string endpoint) {
+    http:ClientConnector awsEP = create http:ClientConnector(endpoint, {});
     @doc:Description { value:"Get List of Objects in a bucket"}
     @doc:Param { value:"requestMsg: The request message object"}
     @doc:Param { value:"httpVerb: The HTTP verb"}
     @doc:Param { value:"requestURI: The URI of the service to be invoked"}
     @doc:Param { value:"payload: The payload to be sent"}
     @doc:Return { value:"response object"}
-    action request (message requestMsg, string httpVerb, string requestURI, string payload) (message) {
-
-        message response;
-
+    action request (http:Request requestMsg, string httpVerb, string requestURI, string payload) (http:Response) {
+        http:Response response;
         requestMsg = generateSignature(requestMsg, accessKeyId, secretAccessKey, region, serviceName, terminationString,
                                        httpVerb, requestURI, payload);
 
@@ -45,9 +43,8 @@ connector ClientConnector (string accessKeyId, string secretAccessKey,
     }
 }
 
-function generateSignature (message msg, string accessKeyId, string secretAccessKey, string region, string serviceName,
-                            string terminationString, string httpVerb, string requestURI, string payload) (message) {
-
+function generateSignature (http:Request req, string accessKeyId, string secretAccessKey, string region, string serviceName,
+                            string terminationString, string httpVerb, string requestURI, string payload) (http:Response) {
     string canonicalRequest;
     string canonicalQueryString;
     string stringToSign;
@@ -67,7 +64,7 @@ function generateSignature (message msg, string accessKeyId, string secretAccess
 
     amzDate = system:getDateFormat("yyyyMMdd'T'HHmmss'Z'");
     shortDate = system:getDateFormat("yyyyMMdd");
-    messages:setHeader(msg, "X-Amz-Date", amzDate);
+    request:setHeader(req, "X-Amz-Date", amzDate);
     canonicalRequest = httpVerb;
     canonicalRequest = canonicalRequest + "\n";
     canonicalRequest = canonicalRequest + strings:replaceAll(uri:encode(requestURI), "%2F", "/");
@@ -79,7 +76,7 @@ function generateSignature (message msg, string accessKeyId, string secretAccess
     if (payload != "" && payload != "UNSIGNED-PAYLOAD") {
         canonicalHeaders = canonicalHeaders + strings:toLowerCase("Content-Type");
         canonicalHeaders = canonicalHeaders + ":";
-        canonicalHeaders = canonicalHeaders + (messages:getHeader(msg, strings:toLowerCase("Content-Type")));
+        canonicalHeaders = canonicalHeaders + (request:getHeader(req, strings:toLowerCase("Content-Type")));
         canonicalHeaders = canonicalHeaders + "\n";
         signedHeader = signedHeader + strings:toLowerCase("Content-Type");
         signedHeader = signedHeader + ";";
@@ -87,7 +84,7 @@ function generateSignature (message msg, string accessKeyId, string secretAccess
 
     canonicalHeaders = canonicalHeaders + strings:toLowerCase("Host");
     canonicalHeaders = canonicalHeaders + ":";
-    canonicalHeaders = canonicalHeaders + messages:getHeader(msg, strings:toLowerCase("Host"));
+    canonicalHeaders = canonicalHeaders + request:getHeader(req, strings:toLowerCase("Host"));
     canonicalHeaders = canonicalHeaders + "\n";
     signedHeader = signedHeader + strings:toLowerCase("Host");
     signedHeader = signedHeader + ";";
@@ -95,7 +92,7 @@ function generateSignature (message msg, string accessKeyId, string secretAccess
     if (payload == "UNSIGNED-PAYLOAD") {
         canonicalHeaders = canonicalHeaders + strings:toLowerCase("X-Amz-Content-Sha256");
         canonicalHeaders = canonicalHeaders + ":";
-        canonicalHeaders = canonicalHeaders + messages:getHeader(msg, strings:toLowerCase("X-Amz-Content-Sha256"));
+        canonicalHeaders = canonicalHeaders + request:getHeader(req, strings:toLowerCase("X-Amz-Content-Sha256"));
         canonicalHeaders = canonicalHeaders + "\n";
         signedHeader = signedHeader + strings:toLowerCase("x-amz-content-sha256");
         signedHeader = signedHeader + ";";
@@ -103,7 +100,7 @@ function generateSignature (message msg, string accessKeyId, string secretAccess
 
     canonicalHeaders = canonicalHeaders + strings:toLowerCase("X-Amz-Date");
     canonicalHeaders = canonicalHeaders + ":";
-    canonicalHeaders = canonicalHeaders + (messages:getHeader(msg, strings:toLowerCase("X-Amz-Date")));
+    canonicalHeaders = canonicalHeaders + (request:getHeader(req, strings:toLowerCase("X-Amz-Date")));
     canonicalHeaders = canonicalHeaders + "\n";
     signedHeader = signedHeader + strings:toLowerCase("X-Amz-Date");
     signedHeader = signedHeader;
@@ -140,12 +137,11 @@ function generateSignature (message msg, string accessKeyId, string secretAccess
     stringToSign = stringToSign + "/";
     stringToSign = stringToSign + terminationString;
     stringToSign = stringToSign + "\n";
-    stringToSign = stringToSign + strings:toLowerCase(utils:getHash(canonicalRequest, algorithm));
-
+    string hashedValue = utils:getHash(canonicalRequest, algorithm);
+    stringToSign = stringToSign + strings:toLowerCase(hashedValue);
     signingKey = utils:getHmacFromBase64(terminationString, utils:getHmacFromBase64(serviceName,
                                                                                     utils:getHmacFromBase64(region, utils:getHmacFromBase64(shortDate, utils:base64encode("AWS4" + secretAccessKey),
                                                                                                                                             algorithm), algorithm), algorithm), algorithm);
-
     authHeader = authHeader + ("AWS4-HMAC-SHA256");
     authHeader = authHeader + (" ");
     authHeader = authHeader + ("Credential");
@@ -166,8 +162,9 @@ function generateSignature (message msg, string accessKeyId, string secretAccess
     authHeader = authHeader + (",");
     authHeader = authHeader + (" Signature");
     authHeader = authHeader + ("=");
-    authHeader = authHeader + strings:toLowerCase(utils:base64ToBase16Encode(utils:getHmacFromBase64(stringToSign,
-                                                                                                     signingKey, algorithm)));
-    messages:setHeader(msg, "Authorization", authHeader);
-    return msg;
+    string encodedValue = utils:base64ToBase16Encode(utils:getHmacFromBase64(stringToSign, signingKey, algorithm));
+    authHeader = authHeader + strings:toLowerCase(encodedValue);
+    request:setHeader(req, "Authorization", authHeader);
+
+    return req;
 }
