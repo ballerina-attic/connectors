@@ -88,7 +88,7 @@ public connector ClientConnector (string baseUrl, string accessToken, string cli
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.delete (path, request);
 
-        if ((response.getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.delete (path, request);
@@ -108,7 +108,7 @@ public connector ClientConnector (string baseUrl, string accessToken, string cli
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.patch (path, request);
 
-        if ((response.getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.patch (path, request);
