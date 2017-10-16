@@ -3,8 +3,6 @@ package org.wso2.ballerina.connectors.oauth2;
 import ballerina.doc;
 import ballerina.lang.jsons;
 import ballerina.net.http;
-import ballerina.net.http.request;
-import ballerina.net.http.response;
 
 @doc:Description { value:"OAuth2 client connector"}
 @doc:Param { value:"baseUrl: The endpoint base url"}
@@ -30,7 +28,7 @@ public connector ClientConnector (string baseUrl, string accessToken, string cli
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.get (path, request);
 
-        if ((response:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.get (path, request);
@@ -50,7 +48,7 @@ public connector ClientConnector (string baseUrl, string accessToken, string cli
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.post (path, request);
 
-        if ((response:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.post (path, request);
@@ -70,7 +68,7 @@ public connector ClientConnector (string baseUrl, string accessToken, string cli
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.put (path, request);
 
-        if ((response:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.put (path, request);
@@ -90,7 +88,7 @@ public connector ClientConnector (string baseUrl, string accessToken, string cli
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.delete (path, request);
 
-        if ((response:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.delete (path, request);
@@ -110,7 +108,7 @@ public connector ClientConnector (string baseUrl, string accessToken, string cli
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.patch (path, request);
 
-        if ((response:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.patch (path, request);
@@ -126,7 +124,7 @@ function constructAuthHeader (http:Request request, string accessTokenValue, str
         accessTokenValue = accessToken;
     }
 
-    request:setHeader(request, "Authorization", "Bearer " + accessTokenValue);
+    request.setHeader("Authorization", "Bearer " + accessTokenValue);
 
     return accessTokenValue;
 }
@@ -145,11 +143,11 @@ function getAccessTokenFromRefreshToken (http:Request request, string accessToke
                                      + "&grant_type=refresh_token&client_secret="
                                      + clientSecret + "&client_id=" + clientId;
 
-    request:setContentLength(refreshTokenRequest, 0);
+    refreshTokenRequest.setContentLength(0);
     refreshTokenResponse = refreshTokenHTTPEP.post (accessTokenFromRefreshTokenReq, refreshTokenRequest);
-    accessTokenFromRefreshTokenJSONResponse = request:getJsonPayload(refreshTokenResponse);
+    accessTokenFromRefreshTokenJSONResponse = refreshTokenResponse.getJsonPayload();
     accessToken = jsons:toString(accessTokenFromRefreshTokenJSONResponse.access_token);
-    request:setHeader(request, "Authorization", "Bearer " + accessToken);
+    request.setHeader("Authorization", "Bearer " + accessToken);
     return accessToken;
 
 }
