@@ -3,7 +3,6 @@ package org.wso2.ballerina.connectors.twitter;
 import ballerina.doc;
 import ballerina.lang.arrays;
 import ballerina.lang.maps;
-import ballerina.lang.messages;
 import ballerina.lang.strings;
 import ballerina.lang.system;
 import ballerina.net.http;
@@ -15,15 +14,15 @@ import ballerina.utils;
 @doc:Param{ value : "consumerSecret: The consumer secret of the Twitter account."}
 @doc:Param{ value : "accessToken: The access token of the Twitter account."}
 @doc:Param{ value : "accessTokenSecret: The access token secret of the Twitter account."}
-connector ClientConnector (string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret) {
+public connector ClientConnector (string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret) {
 
-    http:ClientConnector tweeterEP = create http:ClientConnector("https://api.twitter.com");
+    http:ClientConnector tweeterEP = create http:ClientConnector("https://api.twitter.com", {});
 
     @doc:Description{ value : "Update the authenticated user's current status."}
     @doc:Param{ value : "status: The text of status update"}
     @doc:Return{ value : "Response object."}
-    action tweet(string status) (message) {
-        message request = {};
+    action tweet(string status) (http:Response) {
+        http:Request request = {};
         map parameters = {};
         string urlParams;
         string tweetPath = "/1.1/statuses/update.json";
@@ -35,7 +34,7 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + urlParams;
 
-        message response = tweeterEP.post(tweetPath, request);
+        http:Response response = tweeterEP.post(tweetPath, request);
 
         return response;
     }
@@ -43,15 +42,15 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
     @doc:Description{ value : "Retweet a tweet."}
     @doc:Param{ value : "id: The numerical ID of the desired status."}
     @doc:Return{ value : "Response object."}
-    action retweet(string id) (message) {
-        message request = {};
+    action retweet(string id) (http:Response) {
+        http:Request request = {};
         map parameters = {};
 
         string tweetPath = "/1.1/statuses/retweet/" + id + ".json";
         constructRequestHeaders(request, "POST", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
 
-        message response = tweeterEP.post(tweetPath, request);
+        http:Response response = tweeterEP.post(tweetPath, request);
 
         return response;
     }
@@ -59,15 +58,15 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
     @doc:Description{ value : "Untweet a retweeted status."}
     @doc:Param{ value : "id: The numerical ID of the desired status."}
     @doc:Return{ value : "Response object."}
-    action unretweet(string id) (message) {
-        message request = {};
+    action unretweet(string id) (http:Response) {
+        http:Request request = {};
         map parameters = {};
 
         string tweetPath = "/1.1/statuses/unretweet/" + id + ".json";
         constructRequestHeaders(request, "POST", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
 
-        message response = tweeterEP.post(tweetPath, request);
+        http:Response response = tweeterEP.post(tweetPath, request);
 
         return response;
     }
@@ -75,8 +74,8 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
     @doc:Description{ value : "Search for tweets."}
     @doc:Param{ value : "query: Query string to retrieve the related tweets."}
     @doc:Return{ value : "Response object."}
-    action search(string query) (message) {
-        message request = {};
+    action search(string query) (http:Response) {
+        http:Request request = {};
         map parameters = {};
         string urlParams;
         string tweetPath = "/1.1/search/tweets.json";
@@ -87,7 +86,7 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + urlParams;
 
-        message response = tweeterEP.get(tweetPath, request);
+        http:Response response = tweeterEP.get(tweetPath, request);
 
         return response;
     }
@@ -95,9 +94,9 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
     @doc:Description{ value : "Retrive a single status."}
     @doc:Param{ value : "id: The numerical ID of the desired status."}
     @doc:Return{ value : "Response object."}
-    action showStatus(string id) (message) {
+    action showStatus(string id) (http:Response) {
         string urlParams;
-        message request = {};
+        http:Request request = {};
         map parameters = {};
 
         string tweetPath = "/1.1/statuses/show.json";
@@ -107,7 +106,7 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + urlParams;
 
-        message response = tweeterEP.get(tweetPath, request);
+        http:Response response = tweeterEP.get(tweetPath, request);
 
         return response;
     }
@@ -115,15 +114,15 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
     @doc:Description{ value : "Distroy a status."}
     @doc:Param{ value : "id: The numerical ID of the desired status."}
     @doc:Return{ value : "Response object."}
-    action destroyStatus(string id) (message) {
-        message request = {};
+    action destroyStatus(string id) (http:Response) {
+        http:Request request = {};
         map parameters = {};
 
         string tweetPath = "/1.1/statuses/destroy/" + id + ".json";
         constructRequestHeaders(request, "POST", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
 
-        message response = tweeterEP.post(tweetPath, request);
+        http:Response response = tweeterEP.post(tweetPath, request);
 
         return response;
     }
@@ -132,9 +131,9 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
     @doc:Param{ value : "lat: Latitude of the location."}
     @doc:Param{ value : "long: Longitude of the location"}
     @doc:Return{ value : "Response object."}
-    action getClosestTrendLocations(string lat, string long) (message) {
+    action getClosestTrendLocations(string lat, string long) (http:Response) {
         string urlParams;
-        message request = {};
+        http:Request request = {};
         map parameters = {};
 
         string tweetPath = "/1.1/trends/closest.json";
@@ -146,7 +145,7 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + strings:subString(urlParams, 1, strings:length(urlParams));
 
-        message response = tweeterEP.get(tweetPath, request);
+        http:Response response = tweeterEP.get(tweetPath, request);
 
         return response;
     }
@@ -154,9 +153,9 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
     @doc:Description{ value : "Retrive top trends by place."}
     @doc:Param{ value : "locationId: The Yahoo! Where On Earth ID of the location to return trending information for."}
     @doc:Return{ value : "Response object."}
-    action getTopTrendsByPlace(string locationId) (message) {
+    action getTopTrendsByPlace(string locationId) (http:Response) {
         string urlParams;
-        message request = {};
+        http:Request request = {};
         map parameters = {};
 
         string tweetPath = "/1.1/trends/place.json";
@@ -166,14 +165,14 @@ connector ClientConnector (string consumerKey, string consumerSecret, string acc
                             accessTokenSecret, parameters);
         tweetPath = tweetPath + "?" + urlParams;
 
-        message response = tweeterEP.get(tweetPath, request);
+        http:Response response = tweeterEP.get(tweetPath, request);
 
         return response;
     }
 }
 
-function constructRequestHeaders(message request, string httpMethod, string serviceEP, string consumerKey,
-                            string consumerSecret, string accessToken, string accessTokenSecret, map parameters) {
+function constructRequestHeaders(http:Request request, string httpMethod, string serviceEP, string consumerKey,
+                                 string consumerSecret, string accessToken, string accessTokenSecret, map parameters) {
     int index;
     string paramStr;
     string key;
@@ -192,7 +191,7 @@ function constructRequestHeaders(message request, string httpMethod, string serv
 
     string[] parameterKeys = maps:keys(parameters);
     string[] sortedParameters = arrays:sort(parameterKeys);
-    while (index < sortedParameters.length){
+    while (index < lengthof sortedParameters){
         key =  sortedParameters[index];
         value, _ = (string) parameters[key];
         paramStr = paramStr + key + "=" + value + "&";
@@ -207,5 +206,5 @@ function constructRequestHeaders(message request, string httpMethod, string serv
                 "\",oauth_nonce=\"" + nonceString + "\",oauth_version=\"1.0\",oauth_signature=\"" +
                 uri:encode(signature) + "\",oauth_token=\"" + uri:encode(accessToken) + "\"";
 
-    messages:setHeader(request, "Authorization", strings:unescape(oauthHeaderString));
+    request.setHeader("Authorization", strings:unescape(oauthHeaderString));
 }

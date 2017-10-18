@@ -1,5 +1,4 @@
 import ballerina.lang.system;
-import ballerina.lang.messages;
 import ballerina.net.http;
 import org.wso2.ballerina.connectors.twitter;
 import ballerina.test;
@@ -7,20 +6,21 @@ import ballerina.test;
 string tweetId;
 
 function init () (twitter:ClientConnector) {
+    twitter:ClientConnector twitterConnector;
     string consumerKey = system:getEnv("CONSUMER_KEY");
     string consumerSecret = system:getEnv("CONSUMER_SECRET");
     string accessToken = system:getEnv("ACCESS_TOKEN");
     string accessTokenSecret = system:getEnv("ACCESS_TOKEN_SECRET");
-    twitter:ClientConnector twitterConnector = create twitter:ClientConnector(consumerKey, consumerSecret, accessToken, accessTokenSecret);
+    twitterConnector = create twitter:ClientConnector(consumerKey, consumerSecret, accessToken, accessTokenSecret);
     return twitterConnector;
 }
 
 
 function testTweet () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitterConnector.tweet ("#ballerina");
-    json jsonResponse = messages:getJsonPayload(response);
-    int status = http:getStatusCode(response);
+    http:Response response = twitterConnector.tweet ("#ballerina");
+    json jsonResponse = response.getJsonPayload();
+    int status = response.getStatusCode();
     string value = (string)jsonResponse.text;
     tweetId = (string)jsonResponse.id_str;
     system:println("TweetID------- - " + tweetId);
@@ -32,8 +32,8 @@ function testTweet () {
 
 function testSearch () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitterConnector.search ("#ballerina");
-    int status = http:getStatusCode(response);
+    http:Response response = twitterConnector.search ("#ballerina");
+    int status = response.getStatusCode();
     test:assertIntEquals(status, 200, "Search Failed");
     system:println("===testSearch completed===");
 }
@@ -41,8 +41,8 @@ function testSearch () {
 
 function testRetweet () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitterConnector.retweet (tweetId);
-    int status = http:getStatusCode(response);
+    http:Response response = twitterConnector.retweet (tweetId);
+    int status = response.getStatusCode();
     test:assertIntEquals(status, 200, "Retweet Failed");
     system:println("===testRetweet completed===");
 }
@@ -50,9 +50,9 @@ function testRetweet () {
 
 function testUnretweet () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitterConnector.unretweet (tweetId);
-    json jsonResponse = messages:getJsonPayload(response);
-    int status = http:getStatusCode(response);
+    http:Response response = twitterConnector.unretweet (tweetId);
+    json jsonResponse = response.getJsonPayload();
+    int status = response.getStatusCode();
     string value = (string)jsonResponse.text;
     test:assertIntEquals(status, 200, "Unretweet Failed");
     test:assertStringEquals(value, "#ballerina", "Unretweet Failed");
@@ -62,9 +62,9 @@ function testUnretweet () {
 
 function testShowStatus () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitterConnector.showStatus (tweetId);
-    json jsonResponse = messages:getJsonPayload(response);
-    int status = http:getStatusCode(response);
+    http:Response response = twitterConnector.showStatus (tweetId);
+    json jsonResponse = response.getJsonPayload();
+    int status = response.getStatusCode();
     string value = (string)jsonResponse.text;
     test:assertIntEquals(status, 200, "ShowStatus Failed");
     test:assertStringEquals(value, "#ballerina", "ShowStatus Failed");
@@ -74,9 +74,9 @@ function testShowStatus () {
 
 function testDestroyStatus () {
     twitter:ClientConnector twitterConnector = init();
-    message response = twitterConnector.destroyStatus (tweetId);
-    json jsonResponse = messages:getJsonPayload(response);
-    int status = http:getStatusCode(response);
+    http:Response response = twitterConnector.destroyStatus (tweetId);
+    json jsonResponse = response.getJsonPayload();
+    int status = response.getStatusCode();
     string value = (string)jsonResponse.text;
     test:assertIntEquals(status, 200, "DestroyStatus Failed");
     test:assertStringEquals(value, "#ballerina" , "DestroyStatus Failed");

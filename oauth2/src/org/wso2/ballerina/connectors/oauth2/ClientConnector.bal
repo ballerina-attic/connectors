@@ -2,7 +2,6 @@ package org.wso2.ballerina.connectors.oauth2;
 
 import ballerina.doc;
 import ballerina.lang.jsons;
-import ballerina.lang.messages;
 import ballerina.net.http;
 
 @doc:Description { value:"OAuth2 client connector"}
@@ -12,10 +11,10 @@ import ballerina.net.http;
 @doc:Param { value:"clientSecret: The client secret of the account"}
 @doc:Param { value:"refreshToken: The refresh token of the account"}
 @doc:Param { value:"refreshTokenEP: The refresh token endpoint url"}
-connector ClientConnector (string baseUrl, string accessToken, string clientId, string clientSecret,
+public connector ClientConnector (string baseUrl, string accessToken, string clientId, string clientSecret,
                            string refreshToken, string refreshTokenEP) {
 
-    http:ClientConnector httpConnectorEP = create http:ClientConnector(baseUrl);
+    http:ClientConnector httpConnectorEP = create http:ClientConnector(baseUrl, {});
 
     string accessTokenValue;
 
@@ -23,13 +22,13 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
     @doc:Param { value:"path: The endpoint path"}
     @doc:Param { value:"request: The request of the method"}
     @doc:Return { value:"response object"}
-    action get (string path, message request) (message) {
-        message response;
+    action get (string path, http:Request request) (http:Response) {
+        http:Response response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.get (path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.get (path, request);
@@ -42,14 +41,14 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
     @doc:Param { value:"path: The endpoint path"}
     @doc:Param { value:"request: The request of the method"}
     @doc:Return { value:"response object"}
-    action post (string path, message request) (message) {
+    action post (string path, http:Request request) (http:Response) {
 
-        message response;
+        http:Response response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.post (path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.post (path, request);
@@ -62,14 +61,14 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
     @doc:Param { value:"path: The endpoint path"}
     @doc:Param { value:"request: The request of the method"}
     @doc:Return { value:"response object"}
-    action put (string path, message request) (message) {
+    action put (string path, http:Request request) (http:Response) {
 
-        message response;
+        http:Response response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.put (path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.put (path, request);
@@ -82,14 +81,14 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
     @doc:Param { value:"path: The endpoint path"}
     @doc:Param { value:"request: The request of the method"}
     @doc:Return { value:"response object"}
-    action delete (string path, message request) (message) {
+    action delete (string path, http:Request request) (http:Response) {
 
-        message response;
+        http:Response response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.delete (path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.delete (path, request);
@@ -102,14 +101,14 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
     @doc:Param { value:"path: The endpoint path"}
     @doc:Param { value:"request: The request of the method"}
     @doc:Return { value:"response object"}
-    action patch (string path, message request) (message) {
+    action patch (string path, http:Request request) (http:Response) {
 
-        message response;
+        http:Response response;
 
         accessTokenValue = constructAuthHeader (request, accessTokenValue, accessToken);
         response = httpConnectorEP.patch (path, request);
 
-        if ((http:getStatusCode(response) == 401) && (refreshToken != "" || refreshToken != "null")) {
+        if ((response.getStatusCode() == 401) && (refreshToken != "" || refreshToken != "null")) {
             accessTokenValue = getAccessTokenFromRefreshToken(request, accessToken, clientId, clientSecret, refreshToken,
                                                               refreshTokenEP);
             response = httpConnectorEP.patch (path, request);
@@ -119,23 +118,24 @@ connector ClientConnector (string baseUrl, string accessToken, string clientId, 
     }
 }
 
-function constructAuthHeader (message request, string accessTokenValue, string accessToken) (string) {
+function constructAuthHeader (http:Request request, string accessTokenValue, string accessToken) (string) {
 
     if (accessTokenValue == "") {
         accessTokenValue = accessToken;
     }
 
-    messages:setHeader(request, "Authorization", "Bearer " + accessTokenValue);
+    request.setHeader("Authorization", "Bearer " + accessTokenValue);
 
     return accessTokenValue;
 }
 
-function getAccessTokenFromRefreshToken (message request, string accessToken, string clientId, string clientSecret,
+function getAccessTokenFromRefreshToken (http:Request request, string accessToken, string clientId, string clientSecret,
                                          string refreshToken, string refreshTokenEP) (string) {
 
-    http:ClientConnector refreshTokenHTTPEP = create http:ClientConnector("");
-    message refreshTokenRequest = {};
-    message refreshTokenResponse;
+    http:ClientConnector refreshTokenHTTPEP;
+    refreshTokenHTTPEP = create http:ClientConnector("", {});
+    http:Request refreshTokenRequest = {};
+    http:Response refreshTokenResponse;
     string accessTokenFromRefreshTokenReq;
     json accessTokenFromRefreshTokenJSONResponse;
 
@@ -143,11 +143,11 @@ function getAccessTokenFromRefreshToken (message request, string accessToken, st
                                      + "&grant_type=refresh_token&client_secret="
                                      + clientSecret + "&client_id=" + clientId;
 
-    http:setContentLength(refreshTokenRequest, 0);
+    refreshTokenRequest.setContentLength(0);
     refreshTokenResponse = refreshTokenHTTPEP.post (accessTokenFromRefreshTokenReq, refreshTokenRequest);
-    accessTokenFromRefreshTokenJSONResponse = messages:getJsonPayload(refreshTokenResponse);
+    accessTokenFromRefreshTokenJSONResponse = refreshTokenResponse.getJsonPayload();
     accessToken = jsons:toString(accessTokenFromRefreshTokenJSONResponse.access_token);
-    messages:setHeader(request, "Authorization", "Bearer " + accessToken);
+    request.setHeader("Authorization", "Bearer " + accessToken);
     return accessToken;
 
 }

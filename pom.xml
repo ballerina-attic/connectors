@@ -144,34 +144,6 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>etcd/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>facebook/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>gmail/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>googlespreadsheet/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>jira/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>linkedin/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>medium/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
                                     <directory>oauth2/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
@@ -188,15 +160,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonlambda/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
                                     <directory>salesforcerest/src</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>salesforcesoap/src</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
@@ -221,34 +185,6 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>etcd/samples</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>facebook/samples</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>gmail/samples</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>googlespreadsheet/samples</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>jira/samples</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>linkedin/samples</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>medium/samples</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
                                     <directory>oauth2/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
@@ -261,15 +197,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>amazonlambda/samples</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
                                     <directory>salesforcerest/samples</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>salesforcesoap/samples</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
