@@ -6,7 +6,6 @@ import ballerina.lang.maps;
 import ballerina.lang.strings;
 import ballerina.lang.system;
 import ballerina.net.http;
-import ballerina.net.http.request;
 import ballerina.net.uri;
 import ballerina.utils;
 
@@ -207,5 +206,5 @@ function constructRequestHeaders(http:Request request, string httpMethod, string
                 "\",oauth_nonce=\"" + nonceString + "\",oauth_version=\"1.0\",oauth_signature=\"" +
                 uri:encode(signature) + "\",oauth_token=\"" + uri:encode(accessToken) + "\"";
 
-    request:setHeader(request, "Authorization", strings:unescape(oauthHeaderString));
+    request.setHeader("Authorization", strings:unescape(oauthHeaderString));
 }

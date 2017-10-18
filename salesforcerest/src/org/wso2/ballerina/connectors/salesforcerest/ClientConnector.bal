@@ -4,7 +4,6 @@ import ballerina.doc;
 import ballerina.net.uri;
 import org.wso2.ballerina.connectors.oauth2;
 import ballerina.net.http;
-import ballerina.net.http.request;
 
 @doc:Description { value:"Salesforcerest client connector"}
 @doc:Param { value:"accessToken: The accessToken of the salesforce connected app to access the salesforce REST API"}
@@ -254,7 +253,7 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         http:Response response = {};
 
         string requestURI = "/services/data/" + apiVersion + "/sobjects/" + sobjectName;
-        request:setJsonPayload(requestMsg, payload);
+        requestMsg.setJsonPayload(payload);
         response = oauth2Connector.post (requestURI, requestMsg);
         return response;
     }
@@ -269,7 +268,7 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         http:Response response = {};
 
         string requestURI = "/services/data/" + apiVersion + "/composite/tree/" + sobjectName;
-        request:setJsonPayload(requestMsg, payload);
+        requestMsg.setJsonPayload(payload);
         response = oauth2Connector.post (requestURI, requestMsg);
         return response;
     }
@@ -344,7 +343,7 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         http:Response response = {};
 
         string requestURI = "/services/data/" + apiVersion + "/sobjects/" + sobjectName + "/" + recordId;
-        request:setJsonPayload(requestMsg, payload);
+        requestMsg.setJsonPayload(payload);
         response = oauth2Connector.patch (requestURI, requestMsg);
         return response;
     }
@@ -362,7 +361,7 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         http:Response response = {};
 
         string requestURI = "/services/data/" + apiVersion + "/sobjects/" + sobject + "/" + externalField + "/" + fieldValueId;
-        request:setJsonPayload(requestMsg, payload);
+        requestMsg.setJsonPayload(payload);
         response = oauth2Connector.patch (requestURI, requestMsg);
         return response;
     }
