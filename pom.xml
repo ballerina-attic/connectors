@@ -86,11 +86,6 @@
             <artifactId>ballerina-builtin</artifactId>
             <version>${ballerina.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.ballerinalang</groupId>
-            <artifactId>annotation-processor</artifactId>
-            <version>${ballerina.version}</version>
-        </dependency>
     </dependencies>
     <build>
         <resources>
@@ -206,23 +201,30 @@
                 </executions>
             </plugin>
             <!-- Generate api doc -->
-            <!--<plugin>-->
-                <!--<groupId>org.ballerinalang</groupId>-->
-                <!--<artifactId>docerina-maven-plugin</artifactId>-->
-                <!--<version>${docerina.maven.plugin.version}</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>validate</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>docerina</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<outputDir>${project.build.directory}/docs</outputDir>-->
-                            <!--<sourceDir>${connectors.source.temp.dir}</sourceDir>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.ballerinalang</groupId>
+                <artifactId>docerina-maven-plugin</artifactId>
+                <version>${docerina.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>docerina</goal>
+                        </goals>
+                        <configuration>
+                            <outputDir>${project.build.directory}/docs</outputDir>
+                            <sourceDir>${connectors.source.temp.dir}</sourceDir>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ballerinalang</groupId>
+                        <artifactId>ballerina-http</artifactId>
+                        <version>${ballerina.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <!-- For ballerina annotation processing -->
             <plugin>
                 <groupId>org.bsc.maven</groupId>
@@ -285,5 +287,6 @@
 
         <!-- Path to the generated natives ballerina files temp directory -->
         <generated.ballerina.source.directory>${connectors.source.temp.dir}</generated.ballerina.source.directory>
+        <docerina.maven.plugin.version>${project.version}</docerina.maven.plugin.version>
     </properties>
 </project>
