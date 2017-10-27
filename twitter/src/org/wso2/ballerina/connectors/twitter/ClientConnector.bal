@@ -1,22 +1,21 @@
 package org.wso2.ballerina.connectors.twitter;
 
-import ballerina.doc;
 import ballerina.net.http;
 import ballerina.net.uri;
 import ballerina.util;
 
-@doc:Description{ value : "Twitter client connector."}
-@doc:Param{ value : "consumerKey: The consumer key of the Twitter account."}
-@doc:Param{ value : "consumerSecret: The consumer secret of the Twitter account."}
-@doc:Param{ value : "accessToken: The access token of the Twitter account."}
-@doc:Param{ value : "accessTokenSecret: The access token secret of the Twitter account."}
+@Description{ value : "Twitter client connector."}
+@Param{ value : "consumerKey: The consumer key of the Twitter account."}
+@Param{ value : "consumerSecret: The consumer secret of the Twitter account."}
+@Param{ value : "accessToken: The access token of the Twitter account."}
+@Param{ value : "accessTokenSecret: The access token secret of the Twitter account."}
 public connector ClientConnector (string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret) {
 
     http:ClientConnector tweeterEP = create http:ClientConnector("https://api.twitter.com", {});
 
-    @doc:Description{ value : "Update the authenticated user's current status."}
-    @doc:Param{ value : "status: The text of status update"}
-    @doc:Return{ value : "Response object."}
+    @Description{ value : "Update the authenticated user's current status."}
+    @Param{ value : "status: The text of status update"}
+    @Return{ value : "Response object."}
     action tweet(string status) (http:Response) {
         http:Request request = {};
         map parameters = {};
@@ -35,9 +34,9 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response;
     }
 
-    @doc:Description{ value : "Retweet a tweet."}
-    @doc:Param{ value : "id: The numerical ID of the desired status."}
-    @doc:Return{ value : "Response object."}
+    @Description{ value : "Retweet a tweet."}
+    @Param{ value : "id: The numerical ID of the desired status."}
+    @Return{ value : "Response object."}
     action retweet(string id) (http:Response) {
         http:Request request = {};
         map parameters = {};
@@ -51,9 +50,9 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response;
     }
 
-    @doc:Description{ value : "Untweet a retweeted status."}
-    @doc:Param{ value : "id: The numerical ID of the desired status."}
-    @doc:Return{ value : "Response object."}
+    @Description{ value : "Untweet a retweeted status."}
+    @Param{ value : "id: The numerical ID of the desired status."}
+    @Return{ value : "Response object."}
     action unretweet(string id) (http:Response) {
         http:Request request = {};
         map parameters = {};
@@ -67,9 +66,9 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response;
     }
 
-    @doc:Description{ value : "Search for tweets."}
-    @doc:Param{ value : "query: Query string to retrieve the related tweets."}
-    @doc:Return{ value : "Response object."}
+    @Description{ value : "Search for tweets."}
+    @Param{ value : "query: Query string to retrieve the related tweets."}
+    @Return{ value : "Response object."}
     action search(string query) (http:Response) {
         http:Request request = {};
         map parameters = {};
@@ -87,9 +86,9 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response;
     }
 
-    @doc:Description{ value : "Retrive a single status."}
-    @doc:Param{ value : "id: The numerical ID of the desired status."}
-    @doc:Return{ value : "Response object."}
+    @Description{ value : "Retrive a single status."}
+    @Param{ value : "id: The numerical ID of the desired status."}
+    @Return{ value : "Response object."}
     action showStatus(string id) (http:Response) {
         string urlParams;
         http:Request request = {};
@@ -107,9 +106,9 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response;
     }
 
-    @doc:Description{ value : "Distroy a status."}
-    @doc:Param{ value : "id: The numerical ID of the desired status."}
-    @doc:Return{ value : "Response object."}
+    @Description{ value : "Distroy a status."}
+    @Param{ value : "id: The numerical ID of the desired status."}
+    @Return{ value : "Response object."}
     action destroyStatus(string id) (http:Response) {
         http:Request request = {};
         map parameters = {};
@@ -123,10 +122,10 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response;
     }
 
-    @doc:Description{ value : "Retrive closest trend locations."}
-    @doc:Param{ value : "lat: Latitude of the location."}
-    @doc:Param{ value : "long: Longitude of the location"}
-    @doc:Return{ value : "Response object."}
+    @Description{ value : "Retrive closest trend locations."}
+    @Param{ value : "lat: Latitude of the location."}
+    @Param{ value : "long: Longitude of the location"}
+    @Return{ value : "Response object."}
     action getClosestTrendLocations(string lat, string long) (http:Response) {
         string urlParams;
         http:Request request = {};
@@ -146,9 +145,9 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         return response;
     }
 
-    @doc:Description{ value : "Retrive top trends by place."}
-    @doc:Param{ value : "locationId: The Yahoo! Where On Earth ID of the location to return trending information for."}
-    @doc:Return{ value : "Response object."}
+    @Description{ value : "Retrive top trends by place."}
+    @Param{ value : "locationId: The Yahoo! Where On Earth ID of the location to return trending information for."}
+    @Return{ value : "Response object."}
     action getTopTrendsByPlace(string locationId) (http:Response) {
         string urlParams;
         http:Request request = {};
