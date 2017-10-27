@@ -1,13 +1,9 @@
 package org.wso2.ballerina.connectors.twitter;
 
 import ballerina.doc;
-import ballerina.lang.arrays;
-import ballerina.lang.maps;
-import ballerina.lang.strings;
-import ballerina.lang.system;
 import ballerina.net.http;
 import ballerina.net.uri;
-import ballerina.utils;
+import ballerina.util;
 
 @doc:Description{ value : "Twitter client connector."}
 @doc:Param{ value : "consumerKey: The consumer key of the Twitter account."}
@@ -143,7 +139,7 @@ public connector ClientConnector (string consumerKey, string consumerSecret, str
         urlParams = urlParams + "&long=" + long;
         constructRequestHeaders(request, "GET", tweetPath, consumerKey, consumerSecret, accessToken,
                             accessTokenSecret, parameters);
-        tweetPath = tweetPath + "?" + strings:subString(urlParams, 1, strings:length(urlParams));
+        tweetPath = tweetPath + "?" + urlParams.subString(1, urlParams.length());
 
         http:Response response = tweeterEP.get(tweetPath, request);
 
@@ -178,8 +174,8 @@ function constructRequestHeaders(http:Request request, string httpMethod, string
     string key;
     string value;
 
-    string timeStamp = strings:valueOf(system:epochTime());
-    string nonceString = utils:getRandomString();
+    string timeStamp = currentTime().toString();
+    string nonceString = util:uuid();
     serviceEP = "https://api.twitter.com" + serviceEP;
 
     parameters["oauth_consumer_key"] = consumerKey;
@@ -189,22 +185,22 @@ function constructRequestHeaders(http:Request request, string httpMethod, string
     parameters["oauth_token"] = accessToken;
     parameters["oauth_version"] = "1.0";
 
-    string[] parameterKeys = maps:keys(parameters);
-    string[] sortedParameters = arrays:sort(parameterKeys);
+    string[] parameterKeys = parameters.keys();
+    string[] sortedParameters = parameterKeys.sort();
     while (index < lengthof sortedParameters){
         key =  sortedParameters[index];
         value, _ = (string) parameters[key];
         paramStr = paramStr + key + "=" + value + "&";
         index = index + 1;
     }
-    paramStr = strings:subString(paramStr, 0, strings:length(paramStr)-1);
+    paramStr = paramStr.subString(0, paramStr.length() - 1);
     string baseString = httpMethod + "&" + uri:encode(serviceEP) + "&" + uri:encode(paramStr);
     string keyStr = uri:encode(consumerSecret) + "&" + uri:encode(accessTokenSecret);
-    string signature = utils:getHmac(baseString, keyStr, "SHA1");
+    string signature = util:getHmac(baseString, keyStr, "SHA1");
     string oauthHeaderString = "OAuth oauth_consumer_key=\"" + consumerKey +
                 "\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"" + timeStamp +
                 "\",oauth_nonce=\"" + nonceString + "\",oauth_version=\"1.0\",oauth_signature=\"" +
                 uri:encode(signature) + "\",oauth_token=\"" + uri:encode(accessToken) + "\"";
 
-    request.setHeader("Authorization", strings:unescape(oauthHeaderString));
+    request.setHeader("Authorization", oauthHeaderString.unescape());
 }

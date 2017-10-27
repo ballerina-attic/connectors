@@ -1,7 +1,6 @@
 package org.wso2.ballerina.connectors.oauth2;
 
 import ballerina.doc;
-import ballerina.lang.jsons;
 import ballerina.net.http;
 
 @doc:Description { value:"OAuth2 client connector"}
@@ -144,10 +143,9 @@ function getAccessTokenFromRefreshToken (http:Request request, string accessToke
                                      + clientSecret + "&client_id=" + clientId;
 
     refreshTokenRequest.setContentLength(0);
-    refreshTokenResponse = refreshTokenHTTPEP.post (accessTokenFromRefreshTokenReq, refreshTokenRequest);
+    refreshTokenResponse = refreshTokenHTTPEP.post(accessTokenFromRefreshTokenReq, refreshTokenRequest);
     accessTokenFromRefreshTokenJSONResponse = refreshTokenResponse.getJsonPayload();
-    accessToken = jsons:toString(accessTokenFromRefreshTokenJSONResponse.access_token);
+    accessToken = accessTokenFromRefreshTokenJSONResponse.access_token.toString();
     request.setHeader("Authorization", "Bearer " + accessToken);
     return accessToken;
-
 }
