@@ -1,25 +1,24 @@
 package org.wso2.ballerina.connectors.salesforcerest;
 
-import ballerina.doc;
 import ballerina.net.uri;
 import org.wso2.ballerina.connectors.oauth2;
 import ballerina.net.http;
 
-@doc:Description { value:"Salesforcerest client connector"}
-@doc:Param { value:"accessToken: The accessToken of the salesforce connected app to access the salesforce REST API"}
-@doc:Param { value:"clientId: The clientId of the salesforce connected app to access the salesforce REST API"}
-@doc:Param { value:"clientSecret: The clientSecret of the salesforce connected app to access the salesforce REST API"}
-@doc:Param { value:"refreshToken: The refreshToken of the salesforce connected app to access the salesforce REST API"}
-@doc:Param { value:"apiInstance: The api instance of the organization"}
+@Description { value:"Salesforcerest client connector"}
+@Param { value:"accessToken: The accessToken of the salesforce connected app to access the salesforce REST API"}
+@Param { value:"clientId: The clientId of the salesforce connected app to access the salesforce REST API"}
+@Param { value:"clientSecret: The clientSecret of the salesforce connected app to access the salesforce REST API"}
+@Param { value:"refreshToken: The refreshToken of the salesforce connected app to access the salesforce REST API"}
+@Param { value:"apiInstance: The api instance of the organization"}
 public connector ClientConnector (string accessToken, string clientId, string clientSecret, string refreshToken,
                            string apiInstance, string refreshEndpoint) {
 
     oauth2:ClientConnector oauth2Connector = create oauth2:ClientConnector(buildBaseUrl(apiInstance), accessToken, clientId,
                                                                            clientSecret, refreshToken, refreshEndpoint);
 
-    @doc:Description { value:"Lists the available objects and their metadata for your organization’s data"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Lists the available objects and their metadata for your organization’s data"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Return { value:"response message"}
     action describeGlobal (string apiVersion) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -29,10 +28,10 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Completely describes the individual metadata at all levels for the specified object"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Completely describes the individual metadata at all levels for the specified object"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Return { value:"response message"}
     action sObjectDescribe (string sobjectName, string apiVersion) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -42,8 +41,8 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Lists summary information about each REST API version currently available"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Lists summary information about each REST API version currently available"}
+    @Return { value:"response message"}
     action listAvailableApiVersion () (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -53,9 +52,9 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Lists limits information for your organization"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Lists limits information for your organization"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Return { value:"response message"}
     action listOrganizationLimits (string apiVersion) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -65,9 +64,9 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Lists the resources available for the specified API version"}
-    @doc:Param { value:"requestingApiVersion: The api version to get resources"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Lists the resources available for the specified API version"}
+    @Param { value:"requestingApiVersion: The api version to get resources"}
+    @Return { value:"response message"}
     action listResourcesByApiVersion (string requestingApiVersion) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -77,10 +76,10 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Describes the individual metadata for the specified object"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Describes the individual metadata for the specified object"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Return { value:"response message"}
     action sObjectBasicInfo (string sobjectName, string apiVersion) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -90,13 +89,13 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Retrieves the list of individual records that have been deleted within the given timespan
+    @Description { value:"Retrieves the list of individual records that have been deleted within the given timespan
      for the specified object"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"startTime: The start time of the time span"}
-    @doc:Param { value:"endTime: The end time of the time span"}
-    @doc:Return { value:"response message"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"startTime: The start time of the time span"}
+    @Param { value:"endTime: The end time of the time span"}
+    @Return { value:"response message"}
     action sObjectGetDeleted (string apiVersion, string sobjectName, string startTime, string endTime) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -107,13 +106,13 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Retrieves the list of individual records that have been updated (added or changed)
+    @Description { value:"Retrieves the list of individual records that have been updated (added or changed)
      within the given timespan for the specified object"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"startTime: The start time of the time span"}
-    @doc:Param { value:"endTime: The end time of the time span"}
-    @doc:Return { value:"response message"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"startTime: The start time of the time span"}
+    @Param { value:"endTime: The end time of the time span"}
+    @Return { value:"response message"}
     action sObjectGetUpdated (string apiVersion, string sobjectName, string startTime, string endTime) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -124,9 +123,9 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Query for actions displayed in the UI, given a user, a context, device format, and a record ID"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Query for actions displayed in the UI, given a user, a context, device format, and a record ID"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Return { value:"response message"}
     action sObjectPlatformAction (string apiVersion) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -136,10 +135,10 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Accesses records based on the specified object ID"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Accesses records based on the specified object ID"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Return { value:"response message"}
     action sObjectRows (string apiVersion, string sobjectName, string rowId) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -149,13 +148,13 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Creates new records or updates existing records (upserts records) based on the value of a
+    @Description { value:"Creates new records or updates existing records (upserts records) based on the value of a
      specified external ID field"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"fieldId: The external field id"}
-    @doc:Param { value:"fieldValue: The external field value"}
-    @doc:Return { value:"response message"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"fieldId: The external field id"}
+    @Param { value:"fieldValue: The external field value"}
+    @Return { value:"response message"}
     action sObjectRowsByExternalId (string apiVersion, string sobjectName, string fieldId, string fieldValue) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -165,10 +164,10 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Get feedback on how Salesforce will execute your list view"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"listViewId: The id of the listview to get the feedback from"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Get feedback on how Salesforce will execute your list view"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"listViewId: The id of the listview to get the feedback from"}
+    @Return { value:"response message"}
     action listviewQueryPerformanceFeedback (string apiVersion, string listViewId) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -178,10 +177,10 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Executes the specified SOQL query"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"queryString: The request SOQL query"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Executes the specified SOQL query"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"queryString: The request SOQL query"}
+    @Return { value:"response message"}
     action query (string apiVersion, string queryString) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -191,11 +190,11 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"QueryAll will return records that have been deleted because of a merge or delete, archived Task
+    @Description { value:"QueryAll will return records that have been deleted because of a merge or delete, archived Task
      and Event records"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"queryString: The request SOQL query"}
-    @doc:Return { value:"response message"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"queryString: The request SOQL query"}
+    @Return { value:"response message"}
     action queryAll (string apiVersion, string queryString) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -204,10 +203,10 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         response = oauth2Connector.get (requestURI, requestMsg);
         return response;
     }
-    @doc:Description { value:"If the queryAll results are too large, retrieve the next batch of results"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"nextRecordsUrl: The url sent with first batch of queryAll results to get the next batch"}
-    @doc:Return { value:"response message"}
+    @Description { value:"If the queryAll results are too large, retrieve the next batch of results"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"nextRecordsUrl: The url sent with first batch of queryAll results to get the next batch"}
+    @Return { value:"response message"}
     action queryAllMore (string apiVersion, string nextRecordsUrl) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -217,10 +216,10 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"If the query results are too large, retrieve the next batch of results"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"nextRecordsUrl: The url sent with first batch of query results to get the next batch"}
-    @doc:Return { value:"response message"}
+    @Description { value:"If the query results are too large, retrieve the next batch of results"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"nextRecordsUrl: The url sent with first batch of query results to get the next batch"}
+    @Return { value:"response message"}
     action queryMore (string apiVersion, string nextRecordsUrl) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -230,10 +229,10 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Get feedback on how Salesforce will execute your query"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"queryString: The request SOQL query"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Get feedback on how Salesforce will execute your query"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"queryString: The request SOQL query"}
+    @Return { value:"response message"}
     action queryPerformanceFeedback (string apiVersion, string queryString) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -243,11 +242,11 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Creates new records"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"payload: json payload containing record data"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Creates new records"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"payload: json payload containing record data"}
+    @Return { value:"response message"}
     action createRecord (string apiVersion, string sobjectName, json payload) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -258,11 +257,11 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Create multiple records"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"payload: json payload containing record data"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Create multiple records"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"payload: json payload containing record data"}
+    @Return { value:"response message"}
     action createMultipleRecords (string apiVersion, string sobjectName, json payload) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -273,10 +272,10 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Deletes existing record"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Deletes existing record"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Return { value:"response message"}
     action delete (string apiVersion, string sobjectName, string deleteId) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -286,12 +285,12 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Retrieve field values from a record"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"rowId: The row ID of the required record"}
-    @doc:Param { value:"fields: The comma separated set of required fields"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Retrieve field values from a record"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"rowId: The row ID of the required record"}
+    @Param { value:"fields: The comma separated set of required fields"}
+    @Return { value:"response message"}
     action retrieveFieldValues (string apiVersion, string sobjectName, string rowId, string fields) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -301,12 +300,12 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Retrieve field values from an external record"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"rowId: The row ID of the required record"}
-    @doc:Param { value:"fields: The comma separated set of required fields"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Retrieve field values from an external record"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"rowId: The row ID of the required record"}
+    @Param { value:"fields: The comma separated set of required fields"}
+    @Return { value:"response message"}
     action retrieveFieldValuesFromExternalObject (string apiVersion, string sobjectName, string rowId, string fields)
     (http:Response) {
         http:Request requestMsg = {};
@@ -317,12 +316,12 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Retrieve field values from an external record with external ID"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"externalId: The row ID of the required external record"}
-    @doc:Param { value:"fields: The comma separated set of required fields"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Retrieve field values from an external record with external ID"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"externalId: The row ID of the required external record"}
+    @Param { value:"fields: The comma separated set of required fields"}
+    @Return { value:"response message"}
     action retrieveStandardFieldValuesFromExternalObjectWithExternalId (string apiVersion, string sobjectName,
                                                                         string externalId, string fields) (http:Response) {
         http:Request requestMsg = {};
@@ -333,11 +332,11 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"Updates an existing record"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"payload: json payload containing record data"}
-    @doc:Return { value:"response message"}
+    @Description { value:"Updates an existing record"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"payload: json payload containing record data"}
+    @Return { value:"response message"}
     action update (string apiVersion, string sobjectName, string recordId, json payload) (http:Response) {
         http:Request requestMsg = {};
         http:Response response = {};
@@ -348,13 +347,13 @@ public connector ClientConnector (string accessToken, string clientId, string cl
         return response;
     }
 
-    @doc:Description { value:"If record exists, update it else inserts it"}
-    @doc:Param { value:"apiVersion: The api version to send request to"}
-    @doc:Param { value:"sobjectName: The relevant sobject name"}
-    @doc:Param { value:"externalField: The external field id"}
-    @doc:Param { value:"fieldValueId: The external field value"}
-    @doc:Param { value:"payload: json payload containing record data"}
-    @doc:Return { value:"response message"}
+    @Description { value:"If record exists, update it else inserts it"}
+    @Param { value:"apiVersion: The api version to send request to"}
+    @Param { value:"sobjectName: The relevant sobject name"}
+    @Param { value:"externalField: The external field id"}
+    @Param { value:"fieldValueId: The external field value"}
+    @Param { value:"payload: json payload containing record data"}
+    @Return { value:"response message"}
     action upsert (string apiVersion, string sobject, string externalField, string fieldValueId, json payload)
     (http:Response) {
         http:Request requestMsg = {};
