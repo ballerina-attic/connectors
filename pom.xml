@@ -271,7 +271,7 @@
     </build>
 
     <properties>
-        <ballerina.version>0.94.1</ballerina.version>
+        <ballerina.version>0.94.2-SNAPSHOT</ballerina.version>
         <mvn.exec.plugin.version>1.5.0</mvn.exec.plugin.version>
         <mvn.processor.plugin.version>2.2.4</mvn.processor.plugin.version>
         <mvn.resource.plugins.version>3.0.2</mvn.resource.plugins.version>
@@ -287,6 +287,6 @@
 
         <!-- Path to the generated natives ballerina files temp directory -->
         <generated.ballerina.source.directory>${connectors.source.temp.dir}</generated.ballerina.source.directory>
-        <docerina.maven.plugin.version>0.94.1</docerina.maven.plugin.version>
+        <docerina.maven.plugin.version>0.94.2-SNAPSHOT</docerina.maven.plugin.version>
     </properties>
 </project>
